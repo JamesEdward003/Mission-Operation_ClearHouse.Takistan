@@ -1,4 +1,3 @@
-// ws_assassins.sqf //
 /* Civilian assassins and sleeper agents
 By Wolfenswan [FA]: wolfenswanarps@gmail.com | folkarps.com
 Video showcase: https://www.youtube.com/watch?v=wLw7mqZDpgk
@@ -75,10 +74,10 @@ private ["_count","_done","_check","_listclose","_listclosealive","_sleep","_ran
 // These variables can freely be defined by the user!
 
 //Modify and de-comment this array for the randomized weapon selection in ArmA2.
-//_weaponarr = ["Sa61_EP1","UZI_EP1","revolver_EP1","Makarov"];
+_weaponarr = ["Sa61_EP1","UZI_EP1","revolver_EP1","Makarov"];
 
  //Modify and de-comment this array for the randomized weapon selection in ArmA3.
-_weaponarr = ["hgun_Rook40_F","hgun_P07_F","hgun_ACPC2_F","hgun_PDW2000_F"];
+//_weaponarr = ["hgun_Rook40_F","hgun_P07_F","hgun_ACPC2_F","hgun_PDW2000_F"];
 
 //can be any value between 0 and 1. if 1 the sleepers flee as long as they are disguised, if 0 they are less prone to (but still might)
 _flee = 0.5;
@@ -198,9 +197,10 @@ _unit setSkill [_x,_skillvalue];
 //{_unit disableAI _x} forEach ["Target","AUTOTARGET","FSM"];
 
 //Weapon selection, Random if set to "ran"
-if (_weapon == "") then {
-_ran = (floor(random(count _weaponarr)));
-_weapon = _weaponarr select _ran;
+if (_weapon == "ran") then {
+//_ran = (floor(random(count _weaponarr)));
+//_weapon = _weaponarr select _ran;
+_weapon = _weaponarr call BIS_fnc_selectRandom;
 };
 _weaponmag = (getArray (configFile >> "CfgWeapons" >> _weapon >> "magazines")) select 0;
 
@@ -255,6 +255,9 @@ player globalchat format ["ws_assassins.sqf DEBUG: _unit:%1,_target1:%2,_target2
 
 //Wait until 5 seconds in the mission before beginning the loop
 waitUntil {time > 5};
+
+//Added death sequence...ai die standing stay standing...not wanted
+_unit addEventHandler ["Killed",{(_this select 0) playActionNow "Die"}];
 
 //LOOPING
 //The magical (and ugly) double loop where it all happens

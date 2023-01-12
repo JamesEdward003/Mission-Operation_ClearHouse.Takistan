@@ -57,8 +57,8 @@ onGroupIconClick  {
 	_ctrl = _this select 7;
 	_alt = _this select 8;
 
-    (vehicle ((units _group) select 0)) cameraEffect ["FixedWithZoom","LEFT TOP"];if (moonIntensity < .3) then {showCinemaBorder false;camUseNVG true};
-    if (_RMB == 1) then { (vehicle ((units _group) select 0)) cameraEffect ["FixedWithZoom","FRONT TOP"];if (moonIntensity < .3) then {showCinemaBorder false;camUseNVG true}; };
+    (vehicle ((units _group) select 0)) cameraEffect ["FixedWithZoom","LEFT TOP"];if (moonIntensity < .2) then {showCinemaBorder false;camUseNVG true};
+    if (_RMB == 1) then { (vehicle ((units _group) select 0)) cameraEffect ["FixedWithZoom","FRONT TOP"];if (moonIntensity < .2) then {showCinemaBorder false;camUseNVG true}; };
     titleText [format ["GROUP: %1\nLEADER GROUP: %2",_group,leader _group],"PLAIN DOWN"];
 };
 
@@ -72,7 +72,7 @@ onGroupIconClick  {
 
 {if (side _x == sideEnemy) then {_x removeWeapon "NVGoggles"}} forEach allUnits;
 
-if (moonIntensity > .7) then {
+if (moonIntensity > .5) then {
 	{if (_x hasWeapon "NVGoggles" ) then  {_x removeweapon "NVGoggles"}} forEach (if ismultiplayer then {playableunits} else {switchableunits});
 };
 
@@ -117,6 +117,12 @@ this addEventHandler ["GetOut", {_unit = _this select 2;[_unit] spawn { while {s
 
 _unit addeventhandler ["fired", {if((_this select 1) in ["Put","Throw"]) then {
 (_this select 0) addMagazine (_this select 5);};}];
+
+_unit addEventHandler ["Killed",{(_this select 0) playActionNow "Die"}];
+
+[this] spawn {while {sleep 1; alive _this} do {{if (((side _x) == West) and (damage _x > 0)) then {_x action ["heal", _this]} forEach allUnits;}}};
+_null = [this] spawn {while {sleep 1; alive (_this select 0)} do {{if (((side _x) == West) and (damage _x > 0)) then {_x action ["heal", (_this select 0)]} forEach allUnits;}}}
+_null = [this] spawn {while {sleep 1; alive (_this select 0)} do {{if (((side _x) == West) and (damage _x > 0)) then {_x action ["heal", (_this select 0)];waitUntil {AISFinishHeal [_x, (_this select 0), true];}} forEach allUnits;}}};
 
 camera cameraEffect [effectName, effectPosition, r2tName]
 "Internal", "External", "Fixed", "FixedWithZoom", "Terminate"

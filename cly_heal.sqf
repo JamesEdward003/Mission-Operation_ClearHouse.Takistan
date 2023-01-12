@@ -294,4 +294,3 @@ if (!alive _unit) then {_unit setVariable ["CLY_healings",nil,true]};
 waitUntil {alive player};
 _target=player;
 };
-

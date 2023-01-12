@@ -8,7 +8,6 @@ _from enableAI "TeamSwitch";
 
 [] execVM "briefing.sqf";
 /*
-[player,0.2,0.15,3,true] execVM "cly_heal.sqf";
 [player] execVM "weaponrespawn.sqf";
 [player] execVM "markerID.sqf";
 [player] execVM "OnLeaderRespawn.sqf";

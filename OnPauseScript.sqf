@@ -9,12 +9,21 @@ if ((lifeState player == "UNCONSCIOUS") || (lifeState player == "ALIVE") and (da
         [] execVM "HealPlayer.sqf";
 
 };
+/*
+_MedicArray = [];
+switch (playerSide) do 
+    {
+    case west: {_MedicArray = ["US_Delta_Force_Medic_EP1","US_Soldier_Medic_EP1","GER_Soldier_Medic_EP1","BAF_Soldier_Medic_DDPM","BAF_Soldier_Medic_W","BAF_Soldier_Medic_MTP","FR_Sykes","FR_Corpsman","USMC_Soldier_Medic","CDF_Soldier_Medic","Doctor","RU_Doctor"];};
+    case east: {_MedicArray = ["TK_Soldier_Medic_EP1","RU_Soldier_Medic","INS_Soldier_Medic","Doctor","RU_Doctor"];};
+    case resistance: {_MedicArray = ["Soldier_Medic_PMC","GUE_Soldier_Medic","Doctor","RU_Doctor"];};
+    case civilian: {_MedicArray = ["Doctor","RU_Doctor"];};
+    }:
 
 [((units group player) select 5)] spawn 
     {
     _medic = _this select 0; 
 
-    if (alive _medic) then 
+    if (sleep 1;alive _medic) then 
         {
             _medic setCaptive true;
 
@@ -35,7 +44,11 @@ if ((lifeState player == "UNCONSCIOUS") || (lifeState player == "ALIVE") and (da
             hintSilent "";
     };
 };
+*/
 /*
+[this] spawn {while {sleep 1; alive _this} do {{if (((side _x) == West) and (damage _x > 0)) then {_x action ["heal", _this]} forEach allUnits;}}};
+
+
 Arma 3 Script;
 h = [] spawn {
     private _fncLightning = {

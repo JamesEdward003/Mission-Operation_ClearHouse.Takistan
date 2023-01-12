@@ -508,7 +508,7 @@ class Mission
 				{
 					position[]={8221.2725,296.03552,1774.7086};
 					type="GETOUT";
-					expActiv="(vehicle this) land ""land"";";
+					expActiv="Echo1_AH6J_1 land ""land""; Echo1_AH6J_2 land ""land"";";
 					class Effects
 					{
 					};
@@ -1515,7 +1515,7 @@ class Mission
 					position[]={8104.5859,296.04001,1946.5065};
 					type="GETOUT";
 					speed="LIMITED";
-					expActiv="Kilo6_4 land ""land"";";
+					expActiv="MH47E_Kilo6_4 land ""land"";";
 					class Effects
 					{
 					};
@@ -1965,7 +1965,7 @@ class Mission
 					position[]={8168.5386,296.04001,1983.5486};
 					type="GETOUT";
 					speed="LIMITED";
-					expActiv="Kilo6_3 land ""land"";";
+					expActiv="MH47E_Kilo6_3 land ""land"";";
 					class Effects
 					{
 					};
@@ -2610,7 +2610,7 @@ class Mission
 					position[]={8288.4072,296.04001,2050.9402};
 					type="GETOUT";
 					speed="LIMITED";
-					expActiv="Kilo6_1 land ""land"";";
+					expActiv="MH47E_Kilo6_1 land ""land"";";
 					class Effects
 					{
 					};
@@ -2914,7 +2914,7 @@ class Mission
 					leader=1;
 					lock="UNLOCKED";
 					skill=0.60000002;
-					init="[this,""ALICE_civilianinit"",[{_null = [_this,'Sa61_EP1',(40+random 35),10,west,1,1] execVM 'ws_assassins.sqf'}]] call BIS_fnc_variableSpaceAdd;";
+					init="[this,""ALICE_civilianinit"",[{_null = [_this,""ran"",90,10,west,1,random 0.8] execVM ""ws_assassins.sqf""}]] call BIS_fnc_variableSpaceAdd;";
 					synchronizations[]={97};
 				};
 			};
@@ -3012,7 +3012,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="Medic2";
-					init="_null = [this,""fullAuto""] execVM ""medicAuto.sqf"";";
+					init="_null = [this] spawn {while {sleep 1; alive (_this select 0)} do {{if (((side _x) == West) and (damage _x > 0)) then {_x action [""heal"", (_this select 0)];waitUntil {AISFinishHeal [_x, (_this select 0), true];}} forEach allUnits;}}};";
 				};
 			};
 			class Waypoints
@@ -3061,7 +3061,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="Medic1";
-					init="_null = [this,""fullAuto""] execVM ""medicAuto.sqf"";";
+					init="_null = [this] spawn {while {sleep 1; alive (_this select 0)} do {{if (((side _x) == West) and (damage _x > 0)) then {_x action [""heal"", (_this select 0)];waitUntil {AISFinishHeal [_x, (_this select 0), true];}} forEach allUnits;}}};";
 				};
 			};
 			class Waypoints
@@ -3959,7 +3959,7 @@ class Mission
 				{
 					position[]={8230.1309,296.04001,2017.1218};
 					type="GETOUT";
-					expActiv="Kilo6_2 land ""land"";";
+					expActiv="MH47E_Kilo6_2 land ""land"";";
 					class Effects
 					{
 					};

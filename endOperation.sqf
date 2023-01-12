@@ -1,5 +1,4 @@
 // endOperation.sqf //
-
 [] spawn {
 	_radio=createTrigger["EmptyDetector",[0,0]];
 	_radio setTriggerActivation["Alpha","PRESENT",true];
@@ -9,7 +8,7 @@
 End_Operation = {
 
 	{ for "_i" from count waypoints _x - 1 to 0 step -1 do { deleteWaypoint [_x, _i]; }; } forEach allGroups; 
-	hintsilent "Operation Called Off!";
+	hintsilent "End the Operation!";
 	uisleep 10;
 	{ _wp1 = _x addWaypoint [position leader _x, 10]; 
 	  _wp1 setWaypointType "GETIN NEAREST"; 
