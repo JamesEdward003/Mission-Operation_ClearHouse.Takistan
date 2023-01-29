@@ -2268,7 +2268,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="Bravo1_6";
-					init="this setIdentity ""Bravo1_6""; _null=[this] execVM ""markerID.sqf"";";
+					init="this setIdentity ""Bravo1_6""; _null=[this] execVM ""markerID.sqf""; _null = [this] spawn {while {sleep 1; alive (_this select 0)} do {{if (((side _x) == West) and (damage _x > 0)) then {_x action [""heal"", (_this select 0)];waitUntil {AISFinishHeal [_x, (_this select 0), true];}} forEach units group player;}}};";
 				};
 			};
 			class Waypoints
