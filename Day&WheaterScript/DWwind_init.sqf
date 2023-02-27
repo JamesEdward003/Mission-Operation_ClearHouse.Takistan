@@ -1,6 +1,7 @@
 /*==============================================
 Day&Weather Script - by Moerderhoschi - revised
 ================================================*/
+OpforElim = false;publicVariable "OpforElim";
 _P = [];
 if (isNil "paramsArray") then { // SP or Editor Preview
 	if (isClass (missionConfigFile/"Params")) then {

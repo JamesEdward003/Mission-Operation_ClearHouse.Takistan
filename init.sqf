@@ -43,8 +43,6 @@ set_m_time=false;publicVariable "set_m_time";
 
 weathercheck=false;publicVariable "weathercheck";
 
-OpforElim = false;publicVariable "OpforElim";
-
 onGroupIconClick  { 
 
 	_is3D = _this select 0;
