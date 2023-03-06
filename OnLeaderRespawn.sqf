@@ -1,9 +1,13 @@
 // OnLeaderRespawn.sqf //
-OnLeaderRespawn = true;publicVariable "OnLeaderRespawn";
+waituntil {!isNil "OnLeaderRespawn"};
+if ( ((missionNamespace getVariable "OnLeaderRespawn") ==2) ) exitWith {};
 
-player addEventHandler ["Respawn", {[] execVM "OnLeaderRespawn.sqf"}];
+LeaderRespawn=true;publicVariable "LeaderRespawn";
 
-while {alive player and OnLeaderRespawn} do {
+uisleep 16;
+if (alive player) then {[west, "HQ"] commandChat "On Leader Respawn!";};
+
+while {alive player and LeaderRespawn} do {
    	_spawnPos = getPos leader player;
    	"respawn_west" setMarkerPos _spawnPos;
    	"respawn_west" setMarkerText "";
@@ -11,6 +15,10 @@ while {alive player and OnLeaderRespawn} do {
 };
 
 /*
+_null=[] spawn { if (LeaderRespawn) then {LeaderRespawn=false; publicVariable "LeaderRespawn"; hintSilent "Leader Respawn is OFF"; uisleep 6; hintSilent "";if (shownMap) then {openMap true}; player globalChat "Click on map to place stationary respawn marker";  onMapSingleClick "deleteMarker 'respawn_west'; LeaderRespawn=false;publicVariable 'LeaderRespawn'; _marker = createmarker ['respawn_west',_pos]; 'respawn_west' setMarkerType 'Dot';  'respawn_west' setMarkerSize [1, 1]; 'respawn_west' setMarkerDir 0.9999; 'respawn_west' setMarkerColor 'ColorGreen'; 'respawn_west' setMarkerText 'Stat Respawn';  openMap false; true; onMapSingleClick '';";} else {LeaderRespawn=true; publicVariable "LeaderRespawn"; hintSilent "Leader Respawn is ON"; uisleep 6; hintSilent "";execVM "OnLeaderRespawn.sqf";};};
+
+if (shownMap) then {openMap true}; player globalChat "Click on map to place stationary respawn marker";  onMapSingleClick "deleteMarker 'respawn_west'; LeaderRespawn=false;publicVariable 'LeaderRespawn'; _marker = createmarker ['respawn_west',_pos]; 'respawn_west' setMarkerType 'Dot';  'respawn_west' setMarkerSize [1, 1]; 'respawn_west' setMarkerDir 0.9999; 'respawn_west' setMarkerColor 'ColorGreen'; 'respawn_west' setMarkerText 'Base Respawn';  openMap false; true; onMapSingleClick '';";
+
 To make respawn marker stationary put in radio trigger: (ceil (estimatedEndServerTime - serverTime) / 60)
 if (shownMap) then {openMap true}; player globalChat "Click on map to place stationary respawn marker";  onMapSingleClick "OnLeaderRespawn = false; 'respawn_west' setMarkerPos _pos; openMap false; true; onMapSingleClick '';";
 

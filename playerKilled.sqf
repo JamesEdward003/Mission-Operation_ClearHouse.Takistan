@@ -179,9 +179,24 @@ camDestroy _camera;
 //run any initialization scripts for the player here
 //_null = [] execVM "blahblahblah.sqf";
 //_null = [_plyr,_kilr,"respawn_west"] execVM "playerKilled.sqf";
-[] execVM "briefing.sqf";
-[player,0.2,0.15,3,true] execVM "cly_heal.sqf";
+
+execVM "briefing.sqf";
+
+[player] execVM "Cly_addweapon\cly_unitweapons.sqf";
+
+[player] execVM "Cly_addweapon\cly_unlimited.sqf";
+
 [player] execVM "weaponrespawn.sqf";
+
+[player] execVM "aiHealthRegen2.sqf";
+
+[player,0.1,0,5,true] execVM "cly_heal.sqf";
+
 [player] execVM "markerID.sqf";
-[player] execVM "OnLeaderRespawn.sqf";
-[player] execVM "safeWeapon.sqf";
+
+execVM "OnLeaderRespawn.sqf";
+
+player action ["WEAPONONBACK", player];
+
+[nil,nil,rSPAWN,hintSilent format ["Welcome Back\n %1",name player]] call RE;
+

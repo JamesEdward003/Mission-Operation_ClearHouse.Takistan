@@ -1,3 +1,4 @@
 titleCut ["", "BLACK OUT"]; titleFadeOut 8;
-sleep 2;
+tskRTB setTaskState "SUCCEEDED";
+sleep 6;
 endMission "End1";

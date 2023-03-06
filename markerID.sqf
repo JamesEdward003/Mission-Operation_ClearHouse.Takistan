@@ -1,4 +1,7 @@
 // markerID.sqf //
+waituntil {!isNil "UnitMarkers"};
+if ( ((missionNamespace getVariable "UnitMarkers") ==4) ) exitWith {};
+
 private ["_unit","_dead","_varName","_rank","_mrkrCnt","_mrkrName","_mrkrcolor","_marker","_mrkr"];
 _unit = _this select 0;    
 _varName = vehicleVarName _unit;
@@ -13,7 +16,8 @@ _rank = rank _unit;
       _mrkrCnt = 1;
       _unit setVariable ["markerCount", [_varName,_rank,_mrkrCnt], true];
   };
-
+uisleep 15;
+if (isPlayer _unit) then {[west, "HQ"] commandChat "Marker ID!";};
 switch true do 
   {
   case (!isMultiplayer): {

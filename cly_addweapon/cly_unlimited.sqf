@@ -1,6 +1,9 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////		
 _unit = _this select 0;
 
+waituntil {!isNil "UnlimitedAmmo"};
+if ( ((missionNamespace getVariable "UnlimitedAmmo") ==4) ) exitWith {};
+
 _unit addEventHandler [
 	"Fired",
 		{		
@@ -38,3 +41,6 @@ _unit addEventHandler [
 /*2=FlareGreen_M203*/				if (_this select 5=="FlareGreen_M203") then {_this select 0 addMagazine "FlareGreen_M203"};
 /*3=FlareRed_M203*/				if (_this select 5=="FlareRed_M203") then {_this select 0 addMagazine "FlareRed_M203"};
 /*4=FlareYellow_M203*/			if (_this select 5=="FlareYellow_M203") then {_this select 0 addMagazine "FlareYellow_M203"}}];
+
+uisleep 12;
+if (isPlayer _unit) then {[west, "HQ"] commandChat "Cly Unlimited!";};

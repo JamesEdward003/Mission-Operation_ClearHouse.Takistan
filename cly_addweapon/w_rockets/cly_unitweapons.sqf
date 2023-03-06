@@ -2,10 +2,7 @@
 private ["_unit"];
 _unit = _this select 0;
 
-waituntil {!isNil "WeaponParam"};
-if ( ((missionNamespace getVariable "WeaponParam") ==6) or ((missionNamespace getVariable "WeaponParam") ==7) ) exitWith {};
-
-if (daytime > 18.50 || daytime < 4.50) then {
+if (daytime > 18.25 || daytime < 5.50) then {
 	
 switch (side _unit) do {
 	
@@ -14,55 +11,55 @@ switch (side _unit) do {
 	    switch (typeOf _unit) do {
 
 	    case "USMC_Soldier_Officer"							: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         };		    
 	    case "USMC_Soldier_SL"								: {
 		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_SCAR_H_STD_TWS_SD.sqf";
         };
 	    case "USMC_Soldier_TL"								: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         };
 	    case "USMC_Soldier_Medic"							: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_FN_FAL_ANPVS4.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_FN_FAL_ANPVS4_RPG7V.sqf";
         };
 	    case "USMC_Soldier_LAT"								: {
-	    		[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";
+	    		[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         };
 	    case "USMC_Soldier_AT"								: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws_smaw.sqf";
         };
 	    case "USMC_Soldier_HAT"								: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_Javelin.sqf";
         };
 	    case "USMC_Soldier_AA"								: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws_stinger.sqf";
         };
 	    case "USMC_SoldierS_Sniper"							: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M107_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M107_TWS_smaw.sqf";
         }; 
 	    case "USMC_SoldierM_Marksman"							: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M107_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M107_TWS_smaw.sqf";
         }; 
 	    case "USMC_Soldier_GL"								: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M4A3_RCO_GL_EP1.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M4A3_RCO_GL_EP1_RPG7V.sqf";
         };
 	    case "USMC_Soldier_MG"								: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws.sqf";   
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws_smaw.sqf";   
 	    };
 	    case "USMC_SoldierS_Engineer"							: {
 	    		[_unit] execvm "Cly_AddWeapon\cly_addweapon_SVD_NSPU_EP1.sqf";
         };   
 	    case "FR_Commander"									: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_FN_FAL_ANPVS4.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws_smaw.sqf";
         };
 	    case "FR_TL"										: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_FN_FAL_ANPVS4.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_SCAR_H_STD_TWS_SD.sqf";
         };
 	    case "FR_Assault_R"									: {
 		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_SCAR_H_STD_TWS_SD.sqf";
         };
 	    case "FR_Assault_GL"								: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws_smaw.sqf";
         };
 	    case "FR_GL"										: {
 		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws_smaw.sqf";
@@ -71,7 +68,7 @@ switch (side _unit) do {
 		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_SCAR_H_STD_TWS_SD.sqf";
         };
 	    case "FR_AR"										: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws_smaw.sqf";
         };
 	    case "FR_AC"										: {
 		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_SCAR_H_STD_TWS_SD.sqf";
@@ -85,180 +82,159 @@ switch (side _unit) do {
 	    case "FR_R"										: {
 		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_SCAR_H_STD_TWS_SD.sqf";
         };
-	    case "FR_Miles"										: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";
-        };
 	    case "FR_Cooper"									: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_FN_FAL_ANPVS4.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M107_TWS_smaw.sqf";
+        };
+	    case "FR_Miles"										: {
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         };
 	    case "FR_OHara"										: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         };
 	    case "FR_Rodriguez"									: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         };
 	    case "FR_Sykes"										: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M107_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M107_TWS_smaw.sqf";
         };
 	    case "US_Soldier_Officer_EP1"							: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         };		    
 	    case "US_Soldier_SL_EP1"								: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_FN_FAL_ANPVS4.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         };
 	    case "US_Soldier_TL_EP1"								: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         };
 	    case "US_Soldier_Spotter_EP1"							: {
-	    		[_unit] execvm "Cly_AddWeapon\cly_addweapon_M110_TWS.sqf";
+	    		[_unit] execvm "Cly_AddWeapon\cly_addweapon_M110_TWS_smaw.sqf";
         };
 	    case "US_Soldier_Sniper_NV_EP1"						: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M110_NVG.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M110_NVG_smaw.sqf";
         };
 	    case "US_Soldier_Sniper_EP1"							: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M107_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M107_TWS_smaw.sqf";
         };
 	    case "US_Soldier_SniperH_EP1"							: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M110_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M110_TWS_smaw.sqf";
         };
 	    case "US_Soldier_Pilot_EP1"							: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         }; 
 	    case "US_Soldier_Medic_EP1"							: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         }; 
 	    case "US_Soldier_Marksman_EP1"						: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M107_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         };
 	    case "US_Soldier_MG_EP1"								: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";   
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";   
 	    };
 	    case "US_Soldier_HAT_EP1"							: {
-	    		[_unit] execvm "Cly_AddWeapon\cly_addweapon_FN_FAL_ANPVS4.sqf";
+	    		[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_Javelin.sqf";
         };
 	    case "US_Soldier_LAT_EP1"							: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_FN_FAL_ANPVS4.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         };
 	    case "US_Soldier_GL_EP1"								: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         };
 	    case "US_Soldier_Engineer_EP1"						: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         };
 	    case "US_Soldier_Crew_EP1"							: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         };
 	    case "US_Soldier_Light_EP1"							: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         };
 	    case "US_Soldier_EP1"								: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         };
 	    case "US_Delta_Force_AR_EP1"							: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         };
 	    case "US_Delta_Force_Air_Controller_EP1"				: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         }; 
 	    case "US_Delta_Force_MG_EP1"							: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         }; 
 	    case "US_Delta_Force_Assault_EP1"						: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         };
 	    case "US_Delta_Force_EP1"							: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";   
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";   
 	    };
 	    case "US_Delta_Force_M14_EP1"							: {
-	    		[_unit] execvm "Cly_AddWeapon\cly_addweapon_FN_FAL_ANPVS4.sqf";
+	    		[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_Javelin.sqf";
         };
 	    case "US_Delta_Force_Marksman_EP1"						: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_FN_FAL_ANPVS4.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         };
 	    case "US_Delta_Force_Medic_EP1"						: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         };
 	    case "US_Delta_Force_Night_EP1"						: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_FN_FAL_ANPVS4.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         };
 	    case "US_Delta_Force_SD_EP1"							: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         };
 	    case "US_Delta_Force_TL_EP1"							: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_FN_FAL_ANPVS4.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_dmr_smaw.sqf";
         };
 	    case "US_Delta_Force_Undercover_Takistani06_EP1"			: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         };
 	    case "WDL_Mercenary_Default9"							: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         };		    
 	    case "Mercenary_Default11"							: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_M249_TWS_M136.sqf";
         };
       };
     };
-
-    /* 	night vision rifles-best choice order:
-    	scoped-w-magnification:
-    cly_addweapon_FN_FAL_ANPVS4
-    cly_addweapon_FN_FAL_ANPVS4_RPG7V
-    cly_addweapon_SCAR_L_STD_Mk4CQT
-    cly_addweapon_AKS_74_GOSHAWK
-    cly_addweapon_AKS_74_NSPU_RPG7V
-    	scoped-sniper:
-    cly_addweapon_M110_NVG
-    cly_addweapon_M110_TWS
-    cly_addweapon_M107_TWS
-	scoped-marksman:
-    cly_addweapon_M14_EP1
-    	scoped-no-magnification:
-    cly_addweapon_SCAR_H_CQC_CCO
-    	iron-sights:
-    cly_addweapon_FN_FAL
-    cly_addweapon_M16A2
-    cly_addweapon_bizon
-    */
-
+    
     case east							: {
 	    
 	    switch (typeOf _unit) do {
 		    
 	    case "USMC_Soldier_SL"			: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws_smaw.sqf";
         };
 	    case "USMC_Soldier_TL"			: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws_smaw.sqf";
         };
 	    case "USMC_Soldier_Medic"		: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws_smaw.sqf";
         };
 	    case "USMC_Soldier_LAT"			: {
-	    		[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws.sqf";
+	    		[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws_smaw.sqf";
         };
 	    case "USMC_Soldier_AT"			: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws_smaw.sqf";
         };
 	    case "USMC_Soldier_HAT"			: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws_smaw.sqf";
         };
 	    case "USMC_Soldier_AA"			: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws_smaw.sqf";
         };
 	    case "USMC_SoldierS_Sniper"		: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws_smaw.sqf";
         }; 
 	    case "USMC_Soldier_GL"			: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws.sqf";
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_m249_tws_smaw.sqf";
         };
 	    case "RU_Soldier"				: {
-	    		[_unit] execvm "Cly_AddWeapon\cly_addweapon_FN_FAL_ANPVS4.sqf";
+	    		[_unit] execvm "Cly_AddWeapon\cly_addweapon_FN_FAL_ANPVS4_RPG7V.sqf";
         };  
 	    case "RUS_Commander"			: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_bizon_silenced.sqf";   
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_bizon_silenced_RPG7V.sqf";   
 	    }; 
 	    case "RUS_Soldier_TL"			: {
-		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_bizon.sqf";   
+		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_bizon_JAVELIN.sqf";   
 	    };
 	    case "RUS_Soldier1"				: {
 		    	[_unit] execvm "Cly_AddWeapon\cly_addweapon_bizon_RPG7V.sqf";   
@@ -791,6 +767,3 @@ switch (side _unit) do {
     };
   };
 };
-uisleep 10;
-if (isPlayer _unit) then {[west, "HQ"] commandChat "Weapon Param!";};
-

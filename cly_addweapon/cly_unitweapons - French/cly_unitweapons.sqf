@@ -5,12 +5,6 @@ _loadOut 	= [];
 
 if (isNil "_loadOut") then {_loadOut = objNull};
 
-if (isMultiplayer) then {	
-
-_unit addMPEventHandler ["MPRespawn",{_this execVM "Cly_addweapon\cly_unitweapons.sqf"}];
-
-};
-
 if (daytime > 18.25 || daytime < 5.50) then {
 		    
 switch (typeOf _unit) do {

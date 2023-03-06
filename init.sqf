@@ -2,13 +2,9 @@
 0 fadeSound 1;
 0 fadeMusic 1;
 
-if (isMultiplayer) then {
-	[] execVM "Day&WheaterScript\DWwind_init.sqf";
-	//[1, 1, 1, [-8.75, 0, true]] execVM "DRN\DynamicWeatherEffects\DynamicWeatherEffects.sqf";
-} else {
-	[] execVM "Day&WheaterScript\DWwind_init.sqf";
-	//[1, 1, 1, [-8.75, 0, true]] execVM "DRN\DynamicWeatherEffects\DynamicWeatherEffects.sqf";
-};
+execVM "Day&WheaterScript\DWwind_init.sqf";
+
+execVM "ParamScript\Params_init.sqf";
 
 //RydFAW_OnePhase = true;
 //RydFAW_Manual = true;
@@ -21,17 +17,9 @@ RydFAW_ShellView = true;
 
 [] execVM "FAW\faw.sqf";
 
-[] execVM "briefing.sqf";
-
 [] execvm "House_Lights\tpw_houselights108.sqf";
 
 [] execVM "bon_loadoutpresets\bon_init_loadoutpresets.sqf";
-
-[objNull,player] execVM "OnLeaderRespawn.sqf";
-
-[player] execVM "safeWeapon.sqf";
-
-[player,0.1,0.05,-1,true] execVM "cly_heal.sqf";
 
 onTeamSwitch { [_from, _to] execVM "OnTeamSwitch.sqf" };
 
@@ -55,8 +43,8 @@ onGroupIconClick  {
 	_ctrl = _this select 7;
 	_alt = _this select 8;
 
-    (vehicle ((units _group) select 0)) cameraEffect ["FixedWithZoom","LEFT TOP"];if (moonIntensity < .2) then {showCinemaBorder false;camUseNVG true};
-    if (_RMB == 1) then { (vehicle ((units _group) select 0)) cameraEffect ["FixedWithZoom","FRONT TOP"];if (moonIntensity < .2) then {showCinemaBorder false;camUseNVG true}; };
+    (vehicle ((units _group) select 0)) cameraEffect ["FixedWithZoom","LEFT TOP"];if (daytime > 18.50 || daytime < 4.50) then {showCinemaBorder false;camUseNVG true};
+    if (_RMB == 1) then { (vehicle ((units _group) select 0)) cameraEffect ["FixedWithZoom","FRONT TOP"];if (daytime > 18.50 || daytime < 4.50) then {showCinemaBorder false;camUseNVG true}; };
     titleText [format ["GROUP: %1\nLEADER GROUP: %2",_group,leader _group],"PLAIN DOWN"];
 };
 
@@ -70,7 +58,9 @@ onGroupIconClick  {
 
 {if (side _x == sideEnemy) then {_x removeWeapon "NVGoggles"}} forEach allUnits;
 
-if (moonIntensity > .5) then {
+{if (side _x == sideEnemy) then {_x allowFleeing 0}} forEach allUnits;
+
+if (daytime < 18.50 || daytime > 4.50) then {
 	{if (_x hasWeapon "NVGoggles" ) then  {_x removeweapon "NVGoggles"}} forEach (if ismultiplayer then {playableunits} else {switchableunits});
 };
 
@@ -154,4 +144,15 @@ if (weathercheck) then { weathercheck=false;publicVariable "weathercheck"; hintS
 if (set_h_time) then { player globalChat "Player set time done"; set_h_time=false;publicVariable "setTime"; } else { player globalChat "Player setting time"; set_h_time=true;publicVariable "set_h_time"; _null=[] spawn {while {set_h_time} do { skipTime 1; sleep 1; };};};
 
 if (!isEngineOn Echo1_AH6J_1) then { Echo1_AH6J_1 engineOn true; (driver Echo1_AH6J_1) action ["engineOn", Echo1_AH6J_1]; }; if (!isEngineOn Echo1_AH6J_2) then { Echo1_AH6J_2 engineOn true; (driver Echo1_AH6J_2) action ["engineOn", Echo1_AH6J_2];}; Echo1_AH6J_1 flyInHeight 45; Echo1_AH6J_2 flyInHeight 40; StartedMission = true; publicVariable "StartedMission";
+
+_null = [this] spawn {while {sleep 1; alive (_this select 0)} do {{if (((side _x) == West) and (damage _x > .3)) then {_x action ["Heal", (_this select 0)];waitUntil {AISFinishHeal [_x, (_this select 0), true];}} forEach allUnits;}}};
+
+this addEventHandler ["GetOut","(_this select 2) setBehaviour 'COMBAT'"];
+
+Passed array: [vehicle, position, unit]
+
+vehicle: Object - Vehicle the event handler is assigned to
+position: String - Can be either "driver", "gunner", "commander" or "cargo"
+unit: Object - Unit that leaved the vehicle
+
 */

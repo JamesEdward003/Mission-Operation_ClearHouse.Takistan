@@ -32,7 +32,7 @@ class Header
 {
 	gameType=Coop;
 	minPlayers=1;
-	maxPlayers=10;
+	maxPlayers=60;
 };
 class Params
 {
@@ -48,7 +48,7 @@ class Params
       title = "Weather:";
       values[] = {1, 2, 3, 4, 5, 6};
       texts[] = {"Random", "Clear", "Partly Cloudy", "Cloudy", "Overcast", "Storm"};     
-      default = 5;
+      default = 6;
 	};
 	class FogParam
    {
@@ -70,6 +70,62 @@ class Params
 		values[] = {1, 2, 3, 4, 5, 6, 7, 8};
 		texts[] = {"Dead Still","Whisper","Gentle Breeze","Moderate Breeze","Strong Breeze","High Winds","Near Gale","Gale Force"};
 		default = 7;
+	};
+ 	class AICurrentSkill 
+ 	{
+	  title = "AI Skill Level:"; 
+	  values[] = {1,2,3,4,5}; 
+	  texts[] = {"Novice","Rookie","Veteran","Expert","Elite"}; 
+	  default = 3; 
+	};
+  class WeaponParam
+  {
+	  title="Weapon Type:";
+	  values[]={1,2,3,4,5,6,7};
+	  texts[]={"Cly Weapons for Player with Weapon Respawn","Cly Weapons for Player Group with Weapon Respawn","Cly Weapons for Every Group with Weapon Respawn","Cly Weapons for Player Group with Rockets and Weapon Respawn","Cly Weapons for Everyone with Rockets and Weapon Respawn","Game Weapons with Weapon Respawn","Game Weapons Only"};
+	  default=2;
+  };
+  class WeaponRespawn
+  {
+	  title="Weapon Respawn:";
+	  values[]={1,2,3,4};
+	  texts[]={"Player Only","Player Group","Whole Team","None"};
+	  default=2;
+  };
+  	class UnlimitedAmmo 
+ 	{
+	  title = "Unlimited Ammo:"; 
+	  values[] = {1,2,3,4}; 
+	  texts[] = {"Player Only","Player Group","Whole Team","None"}; 
+	  default = 2; 
+	};
+  	class UnitArmor 
+ 	{
+	  title = "Unit Armor:"; 
+	  values[] = {1,2,3,4}; 
+	  texts[] = {"Player Only","Player Group","Whole Team","None"}; 
+	  default = 4; 
+	};
+  	class ClyHeal
+ 	{
+	  title = "Player Heal:"; 
+	  values[] = {1,2,3,4}; 
+	  texts[] = {"Player Only","Player Group","Whole Team","None"}; 
+	  default = 1; 
+	};
+  	class UnitMarkers
+ 	{
+	  title = "Unit Markers:"; 
+	  values[] = {1,2,3,4}; 
+	  texts[] = {"Player Only","Player Group","Whole Team","None"}; 
+	  default = 3; 
+	};
+  	class OnLeaderRespawn
+ 	{
+	  title = "On Leader Respawn:"; 
+	  values[] = {1,2}; 
+	  texts[] = {"Yes","No"}; 
+	  default = 1; 
 	};
 };
 class CfgSounds
@@ -775,5 +831,37 @@ class CfgIdentities
 		speaker="Male04EN";
 		pitch=0.99;
 	};
+  class Adams
+  {
+    name="Adams";
+    face="Face67";
+    glasses="None";
+    speaker=Male04EN;
+    pitch=.987;
+  };
+  class Boston
+  {
+    name="Boston";
+    face="Face61";
+    glasses="None";
+    speaker=Male03EN;
+    pitch=.987;
+  };
+  class Chicago
+  {
+    name="Chicago";
+    face="Face102";
+    glasses="None";
+    speaker=Male04EN;
+    pitch=.987;
+  };
+  class Denver
+  {
+    name="Denver";
+    face="Face107";
+    glasses="None";
+    speaker=Male03EN;
+    pitch=.987;
+  };
 };
 

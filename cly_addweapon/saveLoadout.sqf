@@ -20,12 +20,12 @@ WaitUntil{alive _new};
 
 removeAllWeapons _new;
 removeAllItems _new;
-     removeBackpack _new;
+removeBackpack _new;
 {_new addMagazine _x} foreach _magazines;
 {_new addWeapon _x} foreach _weapons;
 if (primaryWeapon _new != "") then {
-      	_new selectWeapon (primaryWeapon _new);
-        	_muzzles = getArray(configFile>>"cfgWeapons" >> primaryWeapon _new >> "muzzles"); // Fix for weapons with grenade launcher
+     _new selectWeapon (primaryWeapon _new);
+     _muzzles = getArray(configFile>>"cfgWeapons" >> primaryWeapon _new >> "muzzles"); // Fix for weapons with grenade launcher
      _new selectWeapon (_muzzles select 0);
 };
 if(_backpack != "") then {
@@ -39,8 +39,7 @@ if(_backpack != "") then {
 	};
 };
 
-if (isPlayer _new) then {	
-_new action ["WEAPONONBACK", _new];
+if (isPlayer _new) then {_new action ["WEAPONONBACK", _new];
 if (daytime > 18.25 || daytime < 5.50) then {_new action ["nvGoggles", _new]};
 };
 

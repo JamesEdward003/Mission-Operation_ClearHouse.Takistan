@@ -1,4 +1,5 @@
 // cly_heal.sqf //
+
 /*
 CLY Heal - a self-bandaging script written by Celery.
 
@@ -7,7 +8,7 @@ Execute in init script:
 	[player,0.2,0.15,3,true] execVM "cly_heal.sqf";
 The first number is the damage threshold after which you are given the option to heal.
 The second one is the player's damage after healing.
-The third one is the number of bandages. -1 is unlimited.
+The third one is the number of bandages. -1 is unlimited. [player,0.1,0,5,true]
 The boolean at the end is optional, setting it to true will make the bandaging action
 pop up when the player is injured. It's false by default.
 
@@ -16,6 +17,8 @@ How to add bandages to a unit:
 Make an AI unit drop bandages when it dies:
 	0=[this,0,0,1,true] execVM "cly_heal.sqf";
 */
+waituntil {!isNil "ClyHeal"};
+if ( ((missionNamespace getVariable "ClyHeal") ==4) ) exitWith {};
 
 _target=_this select 0;
 _caller=_this select 1;
@@ -47,7 +50,8 @@ CLY_healfirstrun=true;
 	};
 };
 };
-
+uisleep 14;
+if (isPlayer _target) then {[west, "HQ"] commandChat "Cly Heal!";};
 //Give bandage
 if (_id in ["give"]) then {
 _caller setVariable ["CLY_healings",(_caller getVariable "CLY_healings")-1,true];
@@ -293,4 +297,4 @@ if (!alive _unit) then {_unit setVariable ["CLY_healings",nil,true]};
 
 waitUntil {alive player};
 _target=player;
-};
+

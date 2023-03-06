@@ -1,7 +1,7 @@
 waitUntil {!isNil {player}};
 waitUntil {player == player};
 
-player createDiaryRecord["Diary", ["Help", "Hints from 'Hellouise':<br/>
+player createDiaryRecord["Diary", ["Help", "Hints from 'Helluigi':<br/>
 	- GPS toggle option set to 'Insert' or 'Home' in Control Options<br/>
 	- Use Your Radio To Toggle Group Icons! '0-0-6' -> 'ICONS ON/OFF!'<br/>
 	- LeftClick or Alt-LeftClick On Group Icons To Get Info and Camera View
@@ -181,4 +181,27 @@ switch (group player) do
 		tskInsertLZ setSimpleTaskDescription ["Insert on <marker name='LZ_Delta'>Landing Zone Delta</marker> that is just on the out skirts of the Village to the South, Code Named LZ DELTA", "Insert at LZ Delta", "Insert at LZ Delta"];
 		tskInsertLZ setSimpleTaskDestination (getMarkerPos "LZ_Delta");	
 	};	
+};
+
+if (!isMultiplayer) then {
+	
+	publicVariable "mk_killedEHadded";
+
+	if ( isNil{player getVariable "mk_killedEHadded"} ) then {
+		
+		player addEventHandler ["killed", {
+				
+			[] spawn {
+				
+				waitUntil { alive player };
+
+				execVM "briefing.sqf";
+
+			};
+
+		}];
+
+		player setVariable ["mk_killedEHadded", true];
+
+	};
 };

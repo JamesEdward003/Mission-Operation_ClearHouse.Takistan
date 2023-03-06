@@ -107,7 +107,7 @@ _i=0;
 				_unit selectWeapon _muzzle;
 				//switchMove to correct stance
 				if (vehicle _unit==_unit and alive _unit) then {
-					_anim="amovpercmstpsnonwnondnon";
+					_anim="WeaponMagazineReloadStand";  //"amovpercmstpsnonwnondnon";
 					if (_guntype in [1,5]) then {_anim="amovpercmstpsraswrfldnon"};
 					if (_guntype==2) then {_anim="amovpercmstpsraswpstdnon"};
 					if (_guntype==4) then {_anim="amovpercmstpsraswlnrdnon"};
@@ -155,7 +155,7 @@ if (!isPlayer _unit) then {_unit removemagazine "Laserbatteries";};
 if (!isPlayer _unit) then {_unit removeweapon "BINOCULAR_VECTOR";};
 
 if (!isPlayer _unit) then {_unit removeweapon "BINOCULAR";};
-
+/*
 if (!isPlayer _unit) then {_unit removeweapon "OFrP_Binocular_Vector";};
 
 if (!isPlayer _unit) then {_unit removeweapon "OFrP_Binocular_JIMMR";};
@@ -172,7 +172,7 @@ if (_unit hasWeapon "OFrP_Laserdesignator") then {
 
 	};	
 };
-
+*/
 if (isPlayer _unit) then {
 	
 if !(_unit hasWeapon "ItemGPS") then {
@@ -186,6 +186,6 @@ if (isPlayer _unit) then {
 	
 _unit action ["WEAPONONBACK", _unit];
 
-if (daytime > 18.25 || daytime < 5.50) then {_unit action ["nvGoggles", _unit]};
+if (daytime > 18.50 || daytime < 4.50) then {_unit action ["nvGoggles", _unit]};
 
 };

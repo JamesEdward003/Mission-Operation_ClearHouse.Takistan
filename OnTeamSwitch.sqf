@@ -4,13 +4,6 @@ _to = _this select 1;
 
 _from enableAI "TeamSwitch";
 
-[_to] execVM "markerID.sqf";
+[_to] execVM "initJIPcompatible.sqf";
 
-[] execVM "briefing.sqf";
-/*
-[player] execVM "weaponrespawn.sqf";
-[player] execVM "markerID.sqf";
-[player] execVM "OnLeaderRespawn.sqf";
-[player] execVM "safeWeapon.sqf";
-*/
 hintSilent "Switched!";

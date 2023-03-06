@@ -14,7 +14,7 @@ _vehicle = [];
 
 switch (playerSide) do 
 {
-	case west: 		{_vehicle = "UH1Y"};
+	case west: 		{_vehicle = "CH_47F_EP1";      //"UH1Y"};
 	case east: 		{_vehicle = "Mi17_rockets_RU"};
 	case resistance: 	{_vehicle = "UH1H_TK_GUE_EP1"};
 	case civilian: 	{_vehicle = "Mi17_Civilian"};
@@ -70,12 +70,12 @@ onMapSingleClick "infTarget = _pos;dt=false";
 waitUntil {!dt};
 onMapSingleClick "";
 
-	createMarkerLocal ["LZ", infTarget];
-	_hEnd setMarkerTypeLocal "b_air";
-	_hEnd setMarkerShapeLocal "Icon";
-	_hEnd setMarkerTextLocal "LZ";
-	_hEnd setMarkerSizeLocal [1,1];
-	_hEnd setMarkerColorLocal _mrkrcolor;
+	_mrkr = createMarkerLocal ["LZ", infTarget];
+	_mrkr setMarkerTypeLocal "b_air";
+	_mrkr setMarkerShapeLocal "Icon";
+	_mrkr setMarkerTextLocal "LZ";
+	_mrkr setMarkerSizeLocal [1,1];
+	_mrkr setMarkerColorLocal _mrkrcolor;
 			
 sleep 2;
 openMap false;	
