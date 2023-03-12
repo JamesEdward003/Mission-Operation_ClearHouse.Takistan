@@ -2,9 +2,6 @@
 private ["_unit"];
 _unit = _this select 0;
 
-waituntil {!isNil "WeaponParam"};
-if ( ((missionNamespace getVariable "WeaponParam") ==6) or ((missionNamespace getVariable "WeaponParam") ==7) ) exitWith {};
-
 if (daytime > 18.50 || daytime < 4.50) then {
 	
 switch (side _unit) do {
@@ -791,6 +788,4 @@ switch (side _unit) do {
     };
   };
 };
-uisleep 10;
-if (isPlayer _unit) then {[west, "HQ"] commandChat "Weapon Param!";};
 

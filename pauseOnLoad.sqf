@@ -1,54 +1,15 @@
-// OnPauseScript.sqf //
+// pauseOnLoad.sqf //
 
 //player say3d "HellsBells";
 
 //playSound "HellsBells";
 
-if ((lifeState player == "UNCONSCIOUS") || (lifeState player == "ALIVE") and (damage player > .3)) then 
+if (((lifeState player == "UNCONSCIOUS") || (lifeState player == "ALIVE")) and (damage player > .3)) then 
     {
         [] execVM "HealPlayer.sqf";
 
 };
 /*
-_MedicArray = [];
-switch (playerSide) do 
-    {
-    case west: {_MedicArray = ["US_Delta_Force_Medic_EP1","US_Soldier_Medic_EP1","GER_Soldier_Medic_EP1","BAF_Soldier_Medic_DDPM","BAF_Soldier_Medic_W","BAF_Soldier_Medic_MTP","FR_Sykes","FR_Corpsman","USMC_Soldier_Medic","CDF_Soldier_Medic","Doctor","RU_Doctor"];};
-    case east: {_MedicArray = ["TK_Soldier_Medic_EP1","RU_Soldier_Medic","INS_Soldier_Medic","Doctor","RU_Doctor"];};
-    case resistance: {_MedicArray = ["Soldier_Medic_PMC","GUE_Soldier_Medic","Doctor","RU_Doctor"];};
-    case civilian: {_MedicArray = ["Doctor","RU_Doctor"];};
-    }:
-
-[((units group player) select 5)] spawn 
-    {
-    _medic = _this select 0; 
-
-    if (sleep 1;alive _medic) then 
-        {
-            _medic setCaptive true;
-
-            _medic say3d "HellsBells";
-
-            hintSilent parseText format ["%1<br/><t color='#00FF00' size='1.0'>Group Medic Is On Alert !</t>"];    
-
-            uisleep 10;
-
-            hintSilent "";
-
-        } else {
-
-            hintSilent parseText format ["%1<br/><t color='#00FF00' size='1.0'>Group Medic Is Not Alive !</t>"];
-
-            uisleep 10;
-
-            hintSilent "";
-    };
-};
-*/
-/*
-[this] spawn {while {sleep 1; alive _this} do {{if (((side _x) == West) and (damage _x > 0)) then {_x action ["heal", _this]} forEach allUnits;}}};
-
-
 Arma 3 Script;
 h = [] spawn {
     private _fncLightning = {

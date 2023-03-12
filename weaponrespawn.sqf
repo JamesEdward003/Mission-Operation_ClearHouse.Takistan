@@ -5,11 +5,10 @@
 //////////////////////////////////////////////////////////////////
 _unit = _this select 0;
 
-waituntil {!isNil "WeaponRespawn"};
-if ( ((missionNamespace getVariable "WeaponRespawn") ==7) ) exitWith {};
+waitUntil {!isNil "WeaponParam"};
+WeaponParam = missionNamespace getVariable "WeaponParam";
 
-if ((isNil "WeaponParam") or (WeaponParam==7)) exitWith {};
-if (!isNil "WeaponParam") then {
+if ((WeaponParam != 6) or (WeaponParam != 7)) then {
     waitUntil {(!isNil {_unit getVariable "CLY_addweapon"})};
     uisleep 10;
 };
@@ -19,19 +18,17 @@ if (isNil {_unit getVariable "Loadout"}) then {
     _backpack = typeOf unitBackpack _unit;
     _backpackmags = getMagazineCargo unitBackpack _unit;
     _backpackweap = getWeaponCargo unitBackpack _unit;
-    _unit setVariable ["Loadout",[_wep,_mag,_backpack,_backpackmags,_backpackweap], true];   
+    missionNamespace setVariable ["Loadout",[_wep,_mag,_backpack,_backpackmags,_backpackweap]];   
 
     //hintSilent parseText format["<t size='1' font='Zeppelin33' color='#FFFF00'>Loadout Saved!</t>"];
     //titleText [format ["Loadout Saved! - %1,%2,%3,%4,%5",name player,_wep,_mag,_backpack,_backpackmags,_backpackweap],"plain down"];
     uisleep 5;
     hintSilent "";
 };
-uisleep 11;
-if (isPlayer _unit) then {[west, "HQ"] commandChat "Weapon Respawn!";};
 while {alive player} do {
     waitUntil {!alive player};
-    _loadout = player getVariable "Loadout";
     waitUntil {alive player};
+    _loadout = missionNamespace getVariable "Loadout";
     _p = player;
     removeAllWeapons _p;
     removeAllItems _p;

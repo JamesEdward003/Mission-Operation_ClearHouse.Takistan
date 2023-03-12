@@ -183,6 +183,25 @@ switch (group player) do
 	};	
 };
 
+tskInsertLZassigned=false;publicVariable "tskInsertLZassigned";
+tskInsertLZcompleted=false;publicVariable "tskInsertLZcompleted";
+tskClearVillageAssigned=false;publicVariable "tskClearVillageAssigned";
+tskClearVillageCompleted=false;publicVariable "tskClearVillageCompleted";
+tskExvillLZassigned=false;publicVariable "tskExvillLZassigned";
+tskExvillLZcompleted=false;publicVariable "tskExvillLZcompleted";
+tskRTBassigned=false;publicVariable "tskRTBassigned";
+tskRTBcompleted=false;publicVariable "tskRTBcompleted";
+
+if (tskInsertLZassigned) then {tskInsertLZ setTaskState "ASSIGNED"};
+if (tskInsertLZcompleted) then {tskInsertLZ setTaskState "SUCCEDED"};
+if (tskClearVillageAssigned) then {tskClearVillage setTaskState "ASSIGNED"};
+if (tskClearVillageCompleted) then {tskClearVillage setTaskState "SUCCEEDED"};
+if (tskExvillLZassigned) then {tskExvillLZ setTaskState "ASSIGNED"};
+if (tskExvillLZcompleted) then {tskExvillLZ setTaskState "SUCCEDED"};
+if (tskRTBassigned) then {tskRTB setTaskState "ASSIGNED"};
+if (tskRTBcompleted) then {tskRTB setTaskState "SUCCEDED"};
+
+/*
 if (!isMultiplayer) then {
 	
 	publicVariable "mk_killedEHadded";
@@ -205,3 +224,4 @@ if (!isMultiplayer) then {
 
 	};
 };
+*/

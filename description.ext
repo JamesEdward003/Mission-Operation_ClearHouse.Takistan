@@ -5,7 +5,7 @@ onLoadMissionTime=true;
 loadScreen="Images\Textures\Screens\Loading_Screen01.paa";
 loadScreenText=by Soldier2390 & Konyo;
 onMinimapScript[] = {"BIS_fnc_customGPS_Spawn"};
-onPauseScript = "OnPauseScript.sqf";
+onPauseScript = "pauseOnLoad.sqf";
 MinScore=0;
 AvgScore=7500;
 MaxScore=15000;
@@ -92,37 +92,44 @@ class Params
 	  texts[]={"Player Only","Player Group","Whole Team","None"};
 	  default=2;
   };
-  	class UnlimitedAmmo 
+  class UnlimitedAmmo 
  	{
 	  title = "Unlimited Ammo:"; 
 	  values[] = {1,2,3,4}; 
 	  texts[] = {"Player Only","Player Group","Whole Team","None"}; 
 	  default = 2; 
 	};
-  	class UnitArmor 
+  class UnitArmor 
  	{
 	  title = "Unit Armor:"; 
 	  values[] = {1,2,3,4}; 
 	  texts[] = {"Player Only","Player Group","Whole Team","None"}; 
 	  default = 4; 
 	};
-  	class ClyHeal
+  class HealSelf
  	{
 	  title = "Player Heal:"; 
 	  values[] = {1,2,3,4}; 
 	  texts[] = {"Player Only","Player Group","Whole Team","None"}; 
 	  default = 1; 
 	};
-  	class UnitMarkers
+  class UnitMarkers
  	{
 	  title = "Unit Markers:"; 
 	  values[] = {1,2,3,4}; 
 	  texts[] = {"Player Only","Player Group","Whole Team","None"}; 
 	  default = 3; 
 	};
-  	class OnLeaderRespawn
+  class OnLeaderRespawn
  	{
 	  title = "On Leader Respawn:"; 
+	  values[] = {1,2}; 
+	  texts[] = {"Yes","No"}; 
+	  default = 1; 
+	};
+  class FirstAidModules
+ 	{
+	  title = "First Aid Modules:"; 
 	  values[] = {1,2}; 
 	  texts[] = {"Yes","No"}; 
 	  default = 1; 
@@ -194,8 +201,7 @@ class RunThroughTheJungle
 	{
 		name = "RunThroughTheJungle"; 
 		sound[] = {"\music\RunThroughTheJungle.ogg", db+1, 1.0};
-	};
-	
+	};	
 class AM92Intro
 	{
 		name = "AM92Intro";
@@ -786,6 +792,30 @@ class CfgIdentities
 	class Ohara
 	{
 		name="Ohara (Razor5)";
+		face="default";
+		glasses="none";
+		speaker="Male03EN";
+		pitch=0.98;
+	};
+	class Ohara_1
+	{
+		name="Ohara_1 (Razor)";
+		face="default";
+		glasses="none";
+		speaker="Male03EN";
+		pitch=0.98;
+	};
+	class Ohara_2
+	{
+		name="Ohara_2 (Razor)";
+		face="default";
+		glasses="none";
+		speaker="Male03EN";
+		pitch=0.98;
+	};
+	class Ohara_3
+	{
+		name="Ohara_3 (Razor)";
 		face="default";
 		glasses="none";
 		speaker="Male03EN";

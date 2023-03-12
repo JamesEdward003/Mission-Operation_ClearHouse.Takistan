@@ -31,7 +31,7 @@ So if you have a guard with azimut 0, and want it to scan 180 degrees - the unit
 Example: nul = [this,180] execVM "GuardPost.sqf"
 
 Behaviour:
-Set the starting behaviour of the unit.  Possible settings are CARELESS, SAFE, AWARE, COMBAR, STEALTH.
+Set the starting behaviour of the unit.  Possible settings are CARELESS, SAFE, AWARE, COMBAT, STEALTH.
 If you want the unit to have his weapon rested while looking, set it to SAFE. If you want the unit to aim while
 looking  set it to "COMBAT".  You must use quotations.
 Example: nul = [this,180,"COMBAT"] execVM "GuardPost.sqf"

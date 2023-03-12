@@ -21,13 +21,15 @@ if (isMultiplayer) then {
 		_unit = _this select 0;
 		[_unit] execVM "weaponrespawn.sqf";
 	}];
+	/*
 	player addEventHandler ["Killed",{
 		_unit = _this select 0;
 		[_unit] execVM "aiHealthRegen2.sqf";
 	}];
+	*/
 	player addEventHandler ["Killed",{
 		_unit = _this select 0;
-		[_unit,0.1,0,5,true] execVM "cly_heal.sqf";
+		_unit addAction ["<t color='#00FFFF'>Heal Self</t>","008\healSelf\healSelf.sqf",[],-99,false,false,"","(getDammage _target) > 0.1"];
 	}];
 	player addEventHandler ["Killed",{
 		_unit = _this select 0;

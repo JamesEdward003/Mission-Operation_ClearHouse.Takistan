@@ -23,20 +23,17 @@ private ["_Angle", "_PosX", "_PosY", "_Position", "_Member"];
 // =======================================================================================
 
 _Player 		= Player;
-_Side 			= side _Player;
 _Location		= getPos _Player;
 _Group 			= group _Player;
 _Units			= units _Group;
-_Distance 		= 100;
 _ValidArray		= [];
-_MedicArray = [];
 _ValidArrayCount	= 0;	
 _ValidMedicArray		= [];
 _ValidMedicArrayCount	= 0;	
-_ValidArrayPlayerSideCount	= 0;
 _ValidArrayPlayerSide = [];
+_ValidArrayPlayerSideCount	= 0;
 {
-    if ((side _x == _Side) and ((_x distance _Player) < _Distance)) then
+    if ((side _x == playerSide) and ((_x distance player) < 50)) then
     {
         _ValidArrayPlayerSide = _ValidArrayPlayerSide + [_x];
     };
@@ -50,7 +47,7 @@ _ValidArrayPlayerSide = [];
 // ESTABLISH THE PLAYER'S X AND Y POSITIONS AND A PERIMETER DISTANCE
 // =======================================================================================
 
-if ((lifeState _Player == "UNCONSCIOUS") || (lifeState _Player == "ALIVE")) then
+if (alive _Player) then
 {
 	_CenterX	= _Location select 0;
 	_CenterY	= _Location select 1;
@@ -59,26 +56,25 @@ if ((lifeState _Player == "UNCONSCIOUS") || (lifeState _Player == "ALIVE")) then
 // =======================================================================================
 // GRAB ONLY VALID UNITS BY CHECKING IF THEY ARE ON FOOT AND ARE NOT PLAYERS
 // ======================================================================================= 
-
-	switch (_Side) do 
+_MedicArray = [];
+switch (side _Player) do 
 	{
-//	case west: {_MedicArray = ["US_Delta_Force_Medic_EP1","US_Soldier_Medic_EP1"]};
-	case west: {_MedicArray = ["US_Delta_Force_Medic_EP1","US_Soldier_Medic_EP1","GER_Soldier_Medic_EP1","BAF_Soldier_Medic_DDPM","BAF_Soldier_Medic_W","BAF_Soldier_Medic_MTP","FR_OHara","FR_Corpsman","USMC_Soldier_Medic","CDF_Soldier_Medic","Doctor","RU_Doctor"];};
+	case west: {_MedicArray = ["SoldierWB"];};
+	//case west: {_MedicArray = ["US_Delta_Force_Medic_EP1","US_Soldier_Medic_EP1","GER_Soldier_Medic_EP1","BAF_Soldier_Medic_DDPM","BAF_Soldier_Medic_W","BAF_Soldier_Medic_MTP","FR_Sykes","FR_Corpsman","USMC_Soldier_Medic","CDF_Soldier_Medic","Doctor","RU_Doctor"];};
 	case east: {_MedicArray = ["TK_Soldier_Medic_EP1","RU_Soldier_Medic","INS_Soldier_Medic","Doctor","RU_Doctor"];};
 	case resistance: {_MedicArray = ["Soldier_Medic_PMC","GUE_Soldier_Medic","Doctor","RU_Doctor"];};
 	case civilian: {_MedicArray = ["Doctor","RU_Doctor"];};
 	}:
-	hint format ["%1",_ValidArray];
+//	hint format ["%1",_medicarray];
 	uisleep .01;
-    {if ((vehicle _x == _x) && (_x != _Player) && (typeOf _x in _MedicArray)) then {_ValidArray = _ValidArray + [_x];};} forEach _ValidArrayPlayerSide;
+    {if ((vehicle _x == _x) && (_x != player) && (_x in _MedicArray)) then {_ValidArray = _ValidArray + [_x];};} forEach _ValidArrayPlayerSide;
 
 // =======================================================================================
 // EVERY VALID SQUAD UNIT AND SUBSEQUENT ONE WILL MOVE TO THE PLAYER AND PERFORM A HEAL ACTION
 // =======================================================================================
-
-	if (count _ValidArray > 0) then {
+	
+	if (_ValidArrayCount > 0) then {
 		
-		//hintSilent parseText format["<t size='1.25' color='#ff6161'>Medics in range!</t>"];
 		_ValidArrayCount = count _ValidArray;
 		_Interval = 360/(_ValidArrayCount);
 	
@@ -97,8 +93,6 @@ if ((lifeState _Player == "UNCONSCIOUS") || (lifeState _Player == "ALIVE")) then
 		_Member		setSpeedMode "FULL";
 		_Member 	setUnitPos "MIDDLE";
 		_Player 	action ["Heal", _Member];
-		_Player  	setUnconscious false;
-		_Player   	setCaptive false;
 		
 	};	
 	
@@ -108,31 +102,30 @@ if ((lifeState _Player == "UNCONSCIOUS") || (lifeState _Player == "ALIVE")) then
 
 } else {
 	
-	//hintSilent parseText format["<t size='1.25' color='#ff6161'>No medics in range!</t>"];			
-	_PosX 		= _CenterX + _Perimeter * cos(360);
-	_PosY 		= _CenterY + _Perimeter * sin(360);
-	_Position	= [_PosX,_PosY];
-
-	"FR_OHara" createUnit [_Position,_Group,"Ohara2=this;",1,"CORPORAL"];
-
-	Ohara2 	doMove _Position;
-	Ohara2 	moveTo _Position;
-	Ohara2 	setBehaviour "AWARE";
-	Ohara2 	setCombatMode "YELLOW";
-	Ohara2 	setSpeedMode "FULL";
-	Ohara2 	setUnitPos "MIDDLE";
-	_Player 	action ["Heal",Ohara];
-	_Player 	setUnconscious false;
-	_Player 	setCaptive false;	
+	_validMedicArray 	= player nearEntities [_MedicArray, 50];
+	_ValidMedicArrayCount = count _validMedicArray;
+	if (_ValidMedicArrayCount == 0) exitWith {hint parseText format["<t size='1.25' color='#ff6161'>No medics in 50m range!</t>"];};
+	_Interval = 360/(_ValidMedicArrayCount);
+		
+	for [{_i = _ValidMedicArrayCount},{_i > 0},{_i =_i-1}] do
+	{
+		_Angle		= 0 + (_Interval*_i);
+		_PosX 		= _CenterX + _Perimeter * cos(_Angle);
+		_PosY 		= _CenterY + _Perimeter * sin(_Angle);
+		_Position	= [_PosX,_PosY];
+			
+		_Member 	= (_ValidMedicArray select _i-1);
+		_Member		doMove _Position;
+		_Member		moveTo _Position;
+		_Member		setBehaviour "AWARE";
+		_Member		setCombatMode "YELLOW";
+		_Member		setSpeedMode "FULL";
+		_Member 	setUnitPos "MIDDLE";
+		_Player 	action ["Heal", _Member];
+		
+		};	
 	
 	};		
+
 };
-hint format ["%1",_ValidArray];
-/*
-	_validMedicArray 	= player nearEntities [_MedicArray, _Distance];
-	_ValidMedicArrayCount = count _validMedicArray;
-	if (_ValidMedicArrayCount == 0) then {hintSilent parseText format["<t size='1.25' color='#ff6161'>No medics in range!</t>"];};
 
-	this setCaptive true;this setVehicleVarName 'Ohara';this setIdentity 'Ohara';
-
-*/

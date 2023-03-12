@@ -14,7 +14,7 @@ _vehicle = [];
 
 switch (playerSide) do 
 {
-	case west: 		{_vehicle = "CH_47F_EP1";      //"UH1Y"};
+	case west: 		{_vehicle = "CH_47F_EP1"};      //"UH1Y"};
 	case east: 		{_vehicle = "Mi17_rockets_RU"};
 	case resistance: 	{_vehicle = "UH1H_TK_GUE_EP1"};
 	case civilian: 	{_vehicle = "Mi17_Civilian"};
@@ -136,14 +136,7 @@ sleep 0.25;
 	deleteVehicle _blinky;
 	lzPickup = "HeliHEmpty" createvehicle _landPos;
 	lzDropOff = "HeliHEmpty" createvehicle _end;
-	// Select random Task numbers
-	_arrayX  = ["TaskX11","TaskX12","TaskX13","TaskX14","TaskX15","TaskX16","TaskX17","TaskX18","TaskX19","TaskX21","TaskX22","TaskX23","TaskX24","TaskX25"];
-	_arrayY  = ["TaskY11","TaskY12","TaskY13","TaskY14","TaskY15","TaskY16","TaskY17","TaskY18","TaskY19","TaskY21","TaskY22","TaskY23","TaskY24","TaskY25"];
-	_randomX = _arrayX select floor random count _arrayX;
-	_randomY = _arrayY select floor random count _arrayY;
 
-	[_randomX,"Landing Zone","Landing Zone",player,[_randomX,getpos lzPickup],"Assigned",lzPickup] call SHK_Taskmaster_add;
-	
 	driver TransportHelo setBehaviour "CARELESS";
 	
 	// Give the helo a waypoint to where the player is and make it land, engines on.
@@ -188,7 +181,5 @@ sleep 0.25;
 	deleteVehicle lzPickup;
 	deleteVehicle lzDropOff;
 	deleteMarker "hEnd";
-	deleteMarker _randomX;
-	deleteMarker _randomy;
 	_hStart setMarkerPos _hDestLoc;
 };

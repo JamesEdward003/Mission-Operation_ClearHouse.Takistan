@@ -190,9 +190,9 @@ execVM "briefing.sqf";
 
 [player] execVM "aiHealthRegen2.sqf";
 
-[player,0.1,0,5,true] execVM "cly_heal.sqf";
-
 [player] execVM "markerID.sqf";
+
+player addAction ["<t color='#00FFFF'>Heal Self</t>","008\healSelf\healSelf.sqf",[],-99,false,false,"","(getDammage _target) > 0.1"];
 
 execVM "OnLeaderRespawn.sqf";
 

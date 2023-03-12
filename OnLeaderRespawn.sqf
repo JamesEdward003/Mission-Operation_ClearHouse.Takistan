@@ -1,11 +1,5 @@
 // OnLeaderRespawn.sqf //
-waituntil {!isNil "OnLeaderRespawn"};
-if ( ((missionNamespace getVariable "OnLeaderRespawn") ==2) ) exitWith {};
-
 LeaderRespawn=true;publicVariable "LeaderRespawn";
-
-uisleep 16;
-if (alive player) then {[west, "HQ"] commandChat "On Leader Respawn!";};
 
 while {alive player and LeaderRespawn} do {
    	_spawnPos = getPos leader player;

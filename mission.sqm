@@ -32,7 +32,9 @@ class Mission
 		"cacharacters2",
 		"caair_e_ch_47f",
 		"CAA10",
-		"CAAir"
+		"CAAir",
+		"BI_SRRS",
+		"camisc_e_wf"
 	};
 	addOnsAuto[]=
 	{
@@ -49,6 +51,8 @@ class Mission
 		"cacharacters2",
 		"ca_missions_alternativeinjurysimulation",
 		"ca_missions_firstaidsystem",
+		"BI_SRRS",
+		"ca_missions_battlefieldclearance",
 		"camisc3",
 		"CAWheeled_E_ATV",
 		"cawheeled_e_hmmwv",
@@ -59,6 +63,7 @@ class Mission
 		"CAAir",
 		"kyo_CutsceneUH1Y",
 		"caweapons_e",
+		"camisc_e_wf",
 		"takistan"
 	};
 	randomSeed=8713767;
@@ -79,7 +84,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=50;
+		items=53;
 		class Item0
 		{
 			side="EAST";
@@ -419,6 +424,7 @@ class Mission
 					text="Echo1_AH6J_1";
 					init="(driver this) setIdentity ""Echo1_1""; _null=[this] execVM ""markerID.sqf""; Echo1 = group this; this flyinheight 45; Echo1_AH6J_1 engineOn false; this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],-99,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],-99,false,true,"""",""_this in _target""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'AWARE';(_this select 0) lockCargo false""]; this lockCargo true; this addEventHandler [""Fired"",{(_this select 0) setVehicleAmmo 1}]; this addAction [""Service"",""x_reload.sqf"",[],-99,false,true,"""",""_this in _target""]; this addAction [""Get In Cargo"",""GetInCargo.sqf"",[],-99,false,true,"""",""""];";
 					description="ODA Echo 1-1";
+					synchronizations[]={216,215};
 				};
 				class Item1
 				{
@@ -434,7 +440,7 @@ class Mission
 					skill=1;
 					text="Echo1_AH6J_2";
 					init="(driver this) setIdentity ""Echo1_2""; _null=[this] execVM ""markerID.sqf""; this flyinheight 40; Echo1_AH6J_2 engineOn false; this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],-99,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],-99,false,true,"""",""_this in _target""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'AWARE';(_this select 0) lockCargo false""]; this lockCargo true; this addEventHandler [""Fired"",{(_this select 0) setVehicleAmmo 1}]; this addAction [""Service"",""x_reload.sqf"",[],-99,false,true,"""",""_this in _target""]; this addAction [""Get In Cargo"",""GetInCargo.sqf"",[],-99,false,true,"""",""""];";
-					description="Echo 1_2";
+					description="Echo 1-2";
 				};
 			};
 			class Waypoints
@@ -445,7 +451,7 @@ class Mission
 					position[]={8263.2275,296.03885,1800.9707};
 					combat="SAFE";
 					expActiv="Echo1_AH6J_1 land ""land""; if (isEngineOn Echo1_AH6J_1) then { Echo1_AH6J_1 engineOn false; (driver Echo1_AH6J_1) action [""engineOff"", Echo1_AH6J_1];}; Echo1_AH6J_2 land ""land""; if (isEngineOn Echo1_AH6J_2) then { Echo1_AH6J_2 engineOn false; (driver Echo1_AH6J_2) action [""engineOff"", Echo1_AH6J_2];};";
-					synchronizations[]={17};
+					synchronizations[]={16};
 					class Effects
 					{
 					};
@@ -1093,6 +1099,7 @@ class Mission
 					type="SAD";
 					combatMode="RED";
 					combat="AWARE";
+					synchronizations[]={23};
 					class Effects
 					{
 					};
@@ -1366,6 +1373,7 @@ class Mission
 					text="Kilo6_4_1";
 					init="this setIdentity ""Kilo6_4_1""; Kilo6_4 = group this; (group this) addVehicle MH47E_Kilo6_4; (units group this) allowGetIn true; (units group this) orderGetIn true; (leader (group this)) moveInDriver MH47E_Kilo6_4; {_x moveInTurret [MH47E_Kilo6_4, [_forEachIndex-1]]} forEach units group this;";
 					description="MH-47E Kilo 6-4_1";
+					synchronizations[]={216,215};
 				};
 				class Item1
 				{
@@ -1458,7 +1466,7 @@ class Mission
 					combatMode="YELLOW";
 					speed="LIMITED";
 					combat="CARELESS";
-					synchronizations[]={0,14};
+					synchronizations[]={0,13};
 					class Effects
 					{
 					};
@@ -1496,7 +1504,7 @@ class Mission
 					speed="NORMAL";
 					combat="AWARE";
 					expActiv="(driver vehicle this) setBehaviour ""CARELESS"";";
-					synchronizations[]={11};
+					synchronizations[]={10};
 					class Effects
 					{
 					};
@@ -1527,7 +1535,7 @@ class Mission
 					type="LEADER";
 					speed="LIMITED";
 					combat="CARELESS";
-					synchronizations[]={12,22};
+					synchronizations[]={11,21};
 					class Effects
 					{
 					};
@@ -1575,6 +1583,7 @@ class Mission
 					text="Delta1_1";
 					init="this setIdentity ""Delta1_1""; Delta1 = group this;";
 					description="ODA Delta 1-1";
+					synchronizations[]={216,215};
 				};
 				class Item1
 				{
@@ -1706,7 +1715,7 @@ class Mission
 				{
 					position[]={10110.6,342.77191,2243.6108};
 					type="GETOUT";
-					synchronizations[]={11};
+					synchronizations[]={10};
 					class Effects
 					{
 					};
@@ -1722,7 +1731,7 @@ class Mission
 				};
 				class Item7
 				{
-					position[]={10133.96,346.51355,2335.2112};
+					position[]={10134.153,347.40109,2344.2871};
 					combatMode="RED";
 					speed="FULL";
 					combat="COMBAT";
@@ -1735,7 +1744,8 @@ class Mission
 				{
 					position[]={10134.084,347.478,2346.1731};
 					type="LEADER";
-					synchronizations[]={2,3,4};
+					expActiv="titleText [""Delta Force Joined!"", ""PLAIN""];tskExvillLZ setTaskState ""ASSIGNED""; tskExvillLZassigned=true;publicVariable ""tskExvillLZassigned"";";
+					synchronizations[]={2,3,4,24};
 					class Effects
 					{
 					};
@@ -1745,7 +1755,6 @@ class Mission
 				{
 					position[]={10712.065,382.1882,2346.7766};
 					placement=20;
-					synchronizations[]={5};
 					class Effects
 					{
 					};
@@ -1757,7 +1766,7 @@ class Mission
 					type="LEADER";
 					speed="NORMAL";
 					combat="AWARE";
-					synchronizations[]={6,18,19,24};
+					synchronizations[]={5,17,18};
 					class Effects
 					{
 					};
@@ -1767,7 +1776,7 @@ class Mission
 				{
 					position[]={11043.808,408.93991,2502.8928};
 					type="GETIN";
-					synchronizations[]={8};
+					synchronizations[]={7,25};
 					class Effects
 					{
 					};
@@ -1816,6 +1825,7 @@ class Mission
 					text="Kilo6_3_1";
 					init="this setIdentity ""Kilo6_3_1""; Kilo6_3 = group this; (group this) addVehicle MH47E_Kilo6_3; (units group this) allowGetIn true; (units group this) orderGetIn true; (leader (group this)) moveInDriver MH47E_Kilo6_3; {_x moveInTurret [MH47E_Kilo6_3, [_forEachIndex-1]]} forEach units group this;";
 					description="MH-47E Kilo 6-3_1";
+					synchronizations[]={216,215};
 				};
 				class Item1
 				{
@@ -1908,7 +1918,7 @@ class Mission
 					combatMode="YELLOW";
 					speed="LIMITED";
 					combat="CARELESS";
-					synchronizations[]={15,16};
+					synchronizations[]={14,15};
 					class Effects
 					{
 					};
@@ -1945,7 +1955,7 @@ class Mission
 					type="TR UNLOAD";
 					speed="LIMITED";
 					expActiv="(driver vehicle this) setBehaviour ""CARELESS"";";
-					synchronizations[]={10};
+					synchronizations[]={9};
 					class Effects
 					{
 					};
@@ -1984,7 +1994,7 @@ class Mission
 				{
 					position[]={8188.6001,296.04001,2022.1924};
 					type="JOIN";
-					synchronizations[]={12};
+					synchronizations[]={11};
 					class Effects
 					{
 					};
@@ -2012,6 +2022,7 @@ class Mission
 					text="Charlie1_1";
 					init="this setIdentity ""Charlie1_1""; Charlie1 = group this;";
 					description="ODA Charlie 1-1";
+					synchronizations[]={216,215};
 				};
 				class Item1
 				{
@@ -2133,7 +2144,7 @@ class Mission
 					combatMode="RED";
 					formation="FILE";
 					speed="FULL";
-					synchronizations[]={15};
+					synchronizations[]={14};
 					class Effects
 					{
 					};
@@ -2143,7 +2154,7 @@ class Mission
 				{
 					position[]={10504.836,366.88217,2412.5674};
 					type="GETOUT";
-					synchronizations[]={10};
+					synchronizations[]={9};
 					class Effects
 					{
 					};
@@ -2159,7 +2170,7 @@ class Mission
 				};
 				class Item7
 				{
-					position[]={10147.712,347.49622,2346.9771};
+					position[]={10147.557,347.50195,2346.9771};
 					combatMode="RED";
 					speed="FULL";
 					combat="COMBAT";
@@ -2198,9 +2209,9 @@ class Mission
 					rank="LIEUTENANT";
 					skill=1;
 					text="Bravo1_1";
-					init="this setIdentity ""Bravo1_1""; Bravo1 = group this;";
+					init="this setIdentity ""Bravo1_1""; Bravo1 = group this;_null=[this] execVM ""008\healSelf\healSelf.sqf"";";
 					description="ODA Bravo 1-1";
-					synchronizations[]={30,31,32,120,121};
+					synchronizations[]={30,31,32,121,216,215};
 				};
 				class Item1
 				{
@@ -2322,7 +2333,7 @@ class Mission
 					combatMode="RED";
 					formation="FILE";
 					speed="FULL";
-					synchronizations[]={23};
+					synchronizations[]={22};
 					class Effects
 					{
 					};
@@ -2332,7 +2343,7 @@ class Mission
 				{
 					position[]={10038.591,347.85565,2380.1633};
 					type="GETOUT";
-					synchronizations[]={21};
+					synchronizations[]={20};
 					class Effects
 					{
 					};
@@ -2391,6 +2402,7 @@ class Mission
 					text="Kilo6_1_1";
 					init="this setIdentity ""Kilo6_1_1""; Kilo6_1 = group this; (group this) addVehicle MH47E_Kilo6_1; (units group this) allowGetIn true; (units group this) orderGetIn true; (leader (group this)) moveInDriver MH47E_Kilo6_1; {_x moveInTurret [MH47E_Kilo6_1, [_forEachIndex-1]]} forEach units group this;";
 					description="MH-47E Kilo 6-1_1";
+					synchronizations[]={216,215};
 				};
 				class Item1
 				{
@@ -2483,7 +2495,7 @@ class Mission
 					combatMode="YELLOW";
 					speed="LIMITED";
 					combat="CARELESS";
-					synchronizations[]={1,13};
+					synchronizations[]={1,12};
 					class Effects
 					{
 					};
@@ -2521,7 +2533,7 @@ class Mission
 					speed="NORMAL";
 					combat="AWARE";
 					expActiv="(driver vehicle this) setBehaviour ""CARELESS"";";
-					synchronizations[]={9};
+					synchronizations[]={8};
 					class Effects
 					{
 					};
@@ -2539,7 +2551,7 @@ class Mission
 				{
 					position[]={8287.4033,296.04001,2053.5093};
 					expActiv="MH47E_Kilo6_1 moveTo Kilo6_1H; MH47E_Kilo6_1 land ""land""; MH47E_Kilo6_1 flyInHeight 0; if (isEngineOn MH47E_Kilo6_1) then { MH47E_Kilo6_1 engineOn false; (driver MH47E_Kilo6_1) action [""engineOff"", MH47E_Kilo6_1];}; ";
-					synchronizations[]={7};
+					synchronizations[]={6};
 					class Effects
 					{
 					};
@@ -2570,7 +2582,7 @@ class Mission
 					speed="NORMAL";
 					combat="AWARE";
 					expActiv="(driver vehicle this) setBehaviour ""CARELESS"";";
-					synchronizations[]={8};
+					synchronizations[]={7};
 					class Effects
 					{
 					};
@@ -2646,6 +2658,7 @@ class Mission
 					text="Alpha1_1";
 					init="this setIdentity ""Alpha1_1""; Alpha1 = group this;";
 					description="ODA Alpha 1-1";
+					synchronizations[]={216,215};
 				};
 				class Item1
 				{
@@ -2777,7 +2790,7 @@ class Mission
 				{
 					position[]={10255.837,358.0759,2509.0181};
 					type="GETOUT";
-					synchronizations[]={9};
+					synchronizations[]={8};
 					class Effects
 					{
 					};
@@ -2822,7 +2835,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={8100.4106,293.98337,2131.0757};
+					position[]={8087.7314,293.88748,2125.3835};
 					azimut=-25.375563;
 					id=33;
 					side="LOGIC";
@@ -2891,7 +2904,6 @@ class Mission
 					lock="UNLOCKED";
 					skill=0.60000002;
 					init="setGroupIconsVisible [false, false];";
-					synchronizations[]={95};
 				};
 			};
 		};
@@ -2955,7 +2967,8 @@ class Mission
 					rank="SERGEANT";
 					skill=1;
 					text="Ambulance2";
-					init="(driver this) setIdentity ""Adams""; {[_x] execVM ""markerID.sqf""} forEach units group this; this addAction [""Service"",""x_reload.sqf"",[],-99,false,true,"""",""_this in _target""]; this addAction [""Get In Cargo"",""GetInCargo.sqf"",[],-99,false,true,"""",""""];";
+					init="(driver this) setIdentity ""Adams""; {[_x] execVM ""markerID.sqf""} forEach units group this; this addAction [""Service"",""x_reload.sqf"",[],-99,false,true,"""",""_this in _target""]; this addAction [""Get In Cargo"",""GetInCargo.sqf"",[],-99,false,true,"""",""""]; this addEventHandler [""GetOut"", {_unit = _this select 2;[_unit] execVM ""Heal_Player.sqf""}];";
+					synchronizations[]={216,215};
 				};
 				class Item1
 				{
@@ -3003,7 +3016,8 @@ class Mission
 					rank="SERGEANT";
 					skill=1;
 					text="Ambulance1";
-					init="(driver this) setIdentity ""Chicago""; {[_x] execVM ""markerID.sqf""} forEach units group this; this addAction [""Service"",""x_reload.sqf"",[],-99,false,true,"""",""_this in _target""]; this addAction [""Get In Cargo"",""GetInCargo.sqf"",[],-99,false,true,"""",""""];";
+					init="(driver this) setIdentity ""Chicago""; {[_x] execVM ""markerID.sqf""} forEach units group this; this addAction [""Service"",""x_reload.sqf"",[],-99,false,true,"""",""_this in _target""]; this addAction [""Get In Cargo"",""GetInCargo.sqf"",[],-99,false,true,"""",""""]; this addEventHandler [""GetOut"", {_unit = _this select 2;[_unit] execVM ""Heal_Player.sqf""}];";
+					synchronizations[]={216,215};
 				};
 				class Item1
 				{
@@ -3054,7 +3068,7 @@ class Mission
 					text="Venom1_1";
 					init="this setIdentity ""Venom1_1""; Venom = group this; (group this) addVehicle Venom1; (units group this) allowGetIn true; (units group this) orderGetIn true; (leader (group this)) moveInDriver Venom1;";
 					description="ODA Captain Krenshaw Venom-1_1";
-					synchronizations[]={144,145};
+					synchronizations[]={144,145,216,215};
 				};
 				class Item1
 				{
@@ -3200,8 +3214,9 @@ class Mission
 				};
 				class Item8
 				{
-					position[]={9645.1953,342.45233,2372.6389};
-					type="GETOUT";
+					position[]={9703.2148,335.30237,2369.3452};
+					combatMode="RED";
+					combat="COMBAT";
 					expActiv="((units group this) select 3) action [""moveToTurret"", vehicle this, [0]];";
 					class Effects
 					{
@@ -3223,7 +3238,7 @@ class Mission
 				{
 					position[]={11010.27,404.81061,2461.0146};
 					type="JOIN";
-					synchronizations[]={18};
+					synchronizations[]={17};
 					class Effects
 					{
 					};
@@ -3251,7 +3266,7 @@ class Mission
 					text="Command1";
 					init="this setIdentity ""Command1""; Command = group this; {_x moveincargo venom1} forEach units this;";
 					description="ODA Colonel Powell Command-1-Razor";
-					synchronizations[]={145,144};
+					synchronizations[]={145,144,216,215};
 				};
 				class Item1
 				{
@@ -3355,7 +3370,9 @@ class Mission
 				};
 				class Item4
 				{
-					position[]={9663.9873,340.12799,2378.4885};
+					position[]={9666.2266,339.73816,2378.9385};
+					combatMode="RED";
+					combat="COMBAT";
 					expActiv="((units group this) select 3) action [""moveToTurret"", vehicle this, [0]];";
 					class Effects
 					{
@@ -3377,7 +3394,7 @@ class Mission
 				{
 					position[]={11000.774,403.78638,2468.0955};
 					type="JOIN";
-					synchronizations[]={19};
+					synchronizations[]={18};
 					class Effects
 					{
 					};
@@ -3466,6 +3483,7 @@ class Mission
 					text="Kilo6_5_1";
 					init="this setIdentity ""Kilo6_5_1""; _null=[this] execVM ""markerID.sqf""; Kilo6_5 = group this; (group this) addVehicle MH47E_Kilo6_5; (units group this) allowGetIn true; (units group this) orderGetIn true; (leader (group this)) moveInDriver MH47E_Kilo6_5; {_x moveInTurret [MH47E_Kilo6_5, [_forEachIndex-1]]} forEach units group this;";
 					description="MH-47E Kilo 6-5_1";
+					synchronizations[]={216,215};
 				};
 				class Item1
 				{
@@ -3677,6 +3695,7 @@ class Mission
 					skill=1;
 					text="p1";
 					init="this setIdentity ""Pyro1""; FO2 = group this; _null=[this] execVM ""markerID.sqf""; _null=[this] execVM ""Cly_AddWeapon\cly_addweapon_m249_scoped_smaw.sqf""; this removeWeapon ""NVGoggles""; _null = [this,180,""COMBAT"",""UP"",true, 10] execVM ""GuardPost.sqf"";";
+					synchronizations[]={216,215};
 				};
 			};
 		};
@@ -3832,6 +3851,7 @@ class Mission
 					text="Kilo6_2_1";
 					init="this setIdentity ""Kilo6_2_1""; Kilo6_2 = group this; (group this) addVehicle MH47E_Kilo6_2; (units group this) allowGetIn true; (units group this) orderGetIn true;  (leader (group this)) moveInDriver MH47E_Kilo6_2; {_x moveInTurret [MH47E_Kilo6_2, [_forEachIndex-1]]} forEach units group this;";
 					description="MH-47E Kilo 6-2_1";
+					synchronizations[]={216,215};
 				};
 				class Item5
 				{
@@ -3860,7 +3880,7 @@ class Mission
 					combatMode="YELLOW";
 					speed="LIMITED";
 					combat="CARELESS";
-					synchronizations[]={20,23};
+					synchronizations[]={19,22};
 					class Effects
 					{
 					};
@@ -3895,7 +3915,7 @@ class Mission
 					position[]={10039.269,348.61182,2390.4595};
 					type="TR UNLOAD";
 					expActiv="(driver vehicle this) setBehaviour ""CARELESS""; 10 fadeMusic .5;";
-					synchronizations[]={21};
+					synchronizations[]={20};
 					class Effects
 					{
 					};
@@ -3933,7 +3953,7 @@ class Mission
 				{
 					position[]={8189.3018,296.04001,2022.2329};
 					type="JOIN";
-					synchronizations[]={22};
+					synchronizations[]={21};
 					class Effects
 					{
 					};
@@ -3981,10 +4001,71 @@ class Mission
 				};
 			};
 		};
+		class Item50
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={8166.7842,294.06476,2164.7891};
+					azimut=-26.113464;
+					id=214;
+					side="LOGIC";
+					vehicle="BIS_SRRS_Logic";
+					leader=1;
+					lock="UNLOCKED";
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item51
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={8110.3677,294.02765,2136.259};
+					azimut=-25.150711;
+					id=215;
+					side="LOGIC";
+					vehicle="BattleFieldClearance";
+					leader=1;
+					lock="UNLOCKED";
+					skill=0.60000002;
+					text="FA2";
+					synchronizations[]={137,139,110,132,134,103,95,87,22,102,94,29,147,153,215,0};
+				};
+			};
+		};
+		class Item52
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={8121.9512,294.07596,2141.9597};
+					azimut=-25.150711;
+					id=216;
+					side="LOGIC";
+					vehicle="AlternativeInjurySimulation";
+					leader=1;
+					lock="UNLOCKED";
+					skill=0.60000002;
+					text="FA3";
+					synchronizations[]={137,139,110,132,134,103,95,87,22,102,94,29,147,153,0};
+				};
+			};
+		};
 	};
 	class Vehicles
 	{
-		items=52;
+		items=58;
 		class Item0
 		{
 			position[]={10119.017,342.70221,2243.4128};
@@ -4312,6 +4393,7 @@ class Mission
 			side="EMPTY";
 			vehicle="A10";
 			skill=0.60000002;
+			init="this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],-99,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],-99,false,true,"""",""_this in _target""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'AWARE'""]; this addAction [""Service"",""x_reload.sqf"",[],-99,false,true,"""",""_this in _target""];";
 		};
 		class Item32
 		{
@@ -4321,6 +4403,7 @@ class Mission
 			side="EMPTY";
 			vehicle="AH1Z";
 			skill=0.60000002;
+			init="this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],-99,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],-99,false,true,"""",""_this in _target""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'AWARE'""]; this addAction [""Service"",""x_reload.sqf"",[],-99,false,true,"""",""_this in _target""];";
 		};
 		class Item33
 		{
@@ -4555,10 +4638,68 @@ class Mission
 			text="flag1";
 			init="{_x allowDamage false} forEach (nearestObjects [this, [], 10]);";
 		};
+		class Item52
+		{
+			position[]={5811.4976,83.040001,11326.225};
+			azimut=43;
+			id=217;
+			side="EMPTY";
+			vehicle="Sign_arrow_down_large_EP1";
+			skill=0.60000002;
+			init="this setPos (this modelToWorld [0,0,2]);";
+		};
+		class Item53
+		{
+			position[]={8185.0767,296.04001,1745.4009};
+			azimut=60;
+			id=218;
+			side="EMPTY";
+			vehicle="US_WarfareBVehicleServicePoint_Base_EP1";
+			skill=0.60000002;
+		};
+		class Item54
+		{
+			position[]={8385.5391,296.04001,2060.2734};
+			azimut=330;
+			id=219;
+			side="EMPTY";
+			vehicle="US_WarfareBVehicleServicePoint_Base_EP1";
+			skill=0.60000002;
+		};
+		class Item55
+		{
+			position[]={8172.7461,296.04001,2046.8374};
+			azimut=60;
+			id=220;
+			side="EMPTY";
+			vehicle="Sign_arrow_down_large_EP1";
+			skill=0.60000002;
+			init="this setPos (this modelToWorld [0,0,2]);";
+		};
+		class Item56
+		{
+			position[]={8181.7705,296.14001,2079.9485};
+			azimut=60;
+			id=221;
+			side="EMPTY";
+			vehicle="Sign_arrow_down_large_EP1";
+			skill=0.60000002;
+			init="this setPos (this modelToWorld [0,0,2]);";
+		};
+		class Item57
+		{
+			position[]={8139.7148,296.14001,2057.0276};
+			azimut=60;
+			id=222;
+			side="EMPTY";
+			vehicle="Sign_arrow_down_large_EP1";
+			skill=0.60000002;
+			init="this setPos (this modelToWorld [0,0,2]);";
+		};
 	};
 	class Markers
 	{
-		items=29;
+		items=30;
 		class Item0
 		{
 			position[]={10128.292,346.86813,2339.6558};
@@ -4682,7 +4823,7 @@ class Mission
 		};
 		class Item16
 		{
-			position[]={8188.208,296.04001,1756.8756};
+			position[]={8183.6816,296.04001,1747.8942};
 			name="helicopter_support";
 			type="b_empty";
 			angle=150;
@@ -4771,10 +4912,17 @@ class Mission
 			text="boot_hill";
 			type="Empty";
 		};
+		class Item29
+		{
+			position[]={8383.5488,296.04001,2058.9448};
+			name="jet_support";
+			type="b_empty";
+			angle=240;
+		};
 	};
 	class Sensors
 	{
-		items=53;
+		items=57;
 		class Item0
 		{
 			position[]={8214.9346,353.56479,2894.4519};
@@ -4788,22 +4936,21 @@ class Mission
 			class Effects
 			{
 			};
-			synchronizations[]={13,14,16,17,20};
+			synchronizations[]={12,13,15,16,19};
 		};
 		class Item1
 		{
 			position[]={10709.599,381.89291,2351.2092};
 			a=150;
 			b=150;
-			activationBy="EAST";
-			activationType="NOT PRESENT";
+			activationBy="WEST";
 			interruptable=1;
-			type="SWITCH";
 			age="UNKNOWN";
+			expCond="this and (""Man"" countType thislist  > 0) && (getpos (thislist select 0) select 2 < 1)";
 			class Effects
 			{
 			};
-			synchronizations[]={5};
+			synchronizations[]={23};
 		};
 		class Item2
 		{
@@ -4817,7 +4964,7 @@ class Mission
 			class Effects
 			{
 			};
-			synchronizations[]={6};
+			synchronizations[]={5};
 		};
 		class Item3
 		{
@@ -4828,26 +4975,25 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			text="Launch Extraction!";
-			expCond="this and (TaskState tskClearVillage == ""SUCCEEDED"") and (((alive leader Delta1) && (alive leader Command) && (alive leader Venom)) in thislist) ";
+			expCond="this and tskRTBassigned and ((""Man"" countType thislist  > 1) && (getpos (thislist select 0) select 2 < 1)) and (alive leader Delta1) in thislist";
 			expActiv="MH47E_Kilo6_1 flyInHeight 50; if (!isEngineOn MH47E_Kilo6_1) then { MH47E_Kilo6_1 engineOn true; (driver MH47E_Kilo6_1) action [""engineOn"", MH47E_Kilo6_1];};";
 			class Effects
 			{
 			};
-			synchronizations[]={7};
+			synchronizations[]={6,25};
 		};
 		class Item4
 		{
-			position[]={10140.822,347.81894,2352.1326};
+			position[]={10134.089,347.13025,2341.2629};
 			a=35;
 			b=35;
-			activationBy="WEST";
 			interruptable=1;
 			age="UNKNOWN";
-			expCond="this and (((alive leader Delta1) && (alive leader Alpha1) && (alive leader Bravo1) && (alive leader Charlie1)) in thislist)";
+			expCond="((alive leader Delta1) && (alive leader Alpha1) && (alive leader Bravo1) && (alive leader Charlie1)) in thislist";
+			expActiv="tskExvillLZ setTaskState ""ASSIGNED""; tskExvillLZassigned=true;publicVariable ""tskExvillLZassigned"";";
 			class Effects
 			{
 			};
-			synchronizations[]={24};
 		};
 		class Item5
 		{
@@ -4857,25 +5003,13 @@ class Mission
 			activationBy="WEST";
 			interruptable=1;
 			age="UNKNOWN";
-			expActiv="tskInsertLZ setTaskState ""SUCCEEDED"";";
+			expCond="this and tskExvillLZassigned and ((""Man"" countType thislist  > 0) && (getpos (thislist select 0) select 2 < 1)) and ((alive leader Charlie1) in thislist)";
+			expActiv="tskInsertLZ setTaskState ""SUCCEEDED""; tskInsertLZCompleted=true;publicVariable ""tskInsertLZCompleted"";";
 			class Effects
 			{
 			};
 		};
 		class Item6
-		{
-			position[]={11026.817,406.37369,2478.0647};
-			a=60;
-			b=60;
-			interruptable=1;
-			age="UNKNOWN";
-			expCond="this and (TaskState tskClearVillage == ""SUCCEEDED"")";
-			expActiv="tskExvillLZ setTaskState ""Assigned"";tskExvillLZassigned=true;publicVariable ""tskExvillLZassigned"";";
-			class Effects
-			{
-			};
-		};
-		class Item7
 		{
 			position[]={8215.3604,357.67883,2821.5574};
 			a=0;
@@ -4890,7 +5024,7 @@ class Mission
 			{
 			};
 		};
-		class Item8
+		class Item7
 		{
 			position[]={8215.4385,360.53223,2772.2896};
 			a=0;
@@ -4906,7 +5040,7 @@ class Mission
 				titleEffect="PLAIN DOWN";
 			};
 		};
-		class Item9
+		class Item8
 		{
 			position[]={8215.1797,365.41336,2677.3872};
 			a=0;
@@ -4921,7 +5055,7 @@ class Mission
 			{
 			};
 		};
-		class Item10
+		class Item9
 		{
 			position[]={8163.7832,353.19788,2701.2012};
 			a=0;
@@ -4935,7 +5069,7 @@ class Mission
 			{
 			};
 		};
-		class Item11
+		class Item10
 		{
 			position[]={8215.9932,354.87515,2870.7693};
 			a=0;
@@ -4950,7 +5084,7 @@ class Mission
 			{
 			};
 		};
-		class Item12
+		class Item11
 		{
 			position[]={8190.9531,359.64996,2724.54};
 			a=0;
@@ -4964,7 +5098,7 @@ class Mission
 			{
 			};
 		};
-		class Item13
+		class Item12
 		{
 			position[]={8214.707,362.16336,2748.5764};
 			a=0;
@@ -4979,7 +5113,7 @@ class Mission
 			{
 			};
 		};
-		class Item14
+		class Item13
 		{
 			position[]={8215.8037,359.42752,2796.9336};
 			a=0;
@@ -4995,7 +5129,7 @@ class Mission
 				titleEffect="PLAIN DOWN";
 			};
 		};
-		class Item15
+		class Item14
 		{
 			position[]={8215.8779,356.10056,2846.4133};
 			a=0;
@@ -5010,7 +5144,7 @@ class Mission
 			{
 			};
 		};
-		class Item16
+		class Item15
 		{
 			position[]={8265.9521,363.77097,2894.0581};
 			a=0;
@@ -5026,7 +5160,7 @@ class Mission
 			{
 			};
 		};
-		class Item17
+		class Item16
 		{
 			position[]={8190.7734,360.72708,2701.3638};
 			a=0;
@@ -5040,7 +5174,7 @@ class Mission
 			{
 			};
 		};
-		class Item18
+		class Item17
 		{
 			position[]={8262.9404,296.03931,1800.583};
 			a=4;
@@ -5056,7 +5190,7 @@ class Mission
 			{
 			};
 		};
-		class Item19
+		class Item18
 		{
 			position[]={8266.1484,367.32028,2846.7307};
 			a=0;
@@ -5069,7 +5203,7 @@ class Mission
 			{
 			};
 		};
-		class Item20
+		class Item19
 		{
 			position[]={8237.8135,305.16183,2071.0959};
 			a=1000;
@@ -5088,7 +5222,7 @@ class Mission
 			{
 			};
 		};
-		class Item21
+		class Item20
 		{
 			position[]={8222.9902,296.0332,1776.5962};
 			a=4;
@@ -5104,7 +5238,7 @@ class Mission
 			{
 			};
 		};
-		class Item22
+		class Item21
 		{
 			position[]={8180.5435,296.04001,1752.3783};
 			a=4;
@@ -5120,7 +5254,7 @@ class Mission
 			{
 			};
 		};
-		class Item23
+		class Item22
 		{
 			position[]={8104.2998,296.04001,1947.2841};
 			a=4;
@@ -5136,7 +5270,7 @@ class Mission
 			{
 			};
 		};
-		class Item24
+		class Item23
 		{
 			position[]={8168.0781,296.04001,1984.5399};
 			a=4;
@@ -5152,7 +5286,7 @@ class Mission
 			{
 			};
 		};
-		class Item25
+		class Item24
 		{
 			position[]={8228.4092,296.04001,2019.5909};
 			a=4;
@@ -5168,7 +5302,7 @@ class Mission
 			{
 			};
 		};
-		class Item26
+		class Item25
 		{
 			position[]={8286.9883,296.04001,2053.5112};
 			a=4;
@@ -5184,7 +5318,7 @@ class Mission
 			{
 			};
 		};
-		class Item27
+		class Item26
 		{
 			position[]={8266.6533,370.99551,2820.916};
 			a=0;
@@ -5199,7 +5333,7 @@ class Mission
 			{
 			};
 		};
-		class Item28
+		class Item27
 		{
 			position[]={8215.2539,364.40826,2724.4941};
 			a=0;
@@ -5214,7 +5348,7 @@ class Mission
 			{
 			};
 		};
-		class Item29
+		class Item28
 		{
 			position[]={8214.9404,365.31174,2701.6938};
 			a=0;
@@ -5224,12 +5358,12 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			text="SECOP/MENU";
-			expActiv="if (isPlayer Bravo1_1) then {[[""transport"", ""aerial_reconnaissance"", ""supply_drop"", ""tactical_airstrike"", ""artillery_barrage"", ""gunship_run""], player] call BIS_SOM_addSupportRequestFunc; hint ""SECOP SUPPORT\nAVAILABLE"";} else { _null=[] execVM ""menu.sqf""; hint ""SUPPORT MENU\nAVAILABLE"";};";
+			expActiv="if (isPlayer Bravo1_1) then {[[""transport"", ""aerial_reconnaissance"", ""supply_drop"", ""tactical_airstrike"", ""artillery_barrage"", ""gunship_run""], player] call BIS_SOM_addSupportRequestFunc; hintSilent ""SECOP SUPPORT\nAVAILABLE"";} else { _null=[] execVM ""menu.sqf""; hintSilent ""SUPPORT MENU\nAVAILABLE"";};";
 			class Effects
 			{
 			};
 		};
-		class Item30
+		class Item29
 		{
 			position[]={8294.6289,369.03439,2894.355};
 			a=0;
@@ -5242,7 +5376,7 @@ class Mission
 			{
 			};
 		};
-		class Item31
+		class Item30
 		{
 			position[]={8294.3828,370.28439,2870.3152};
 			a=0;
@@ -5254,7 +5388,7 @@ class Mission
 			{
 			};
 		};
-		class Item32
+		class Item31
 		{
 			position[]={8294.1465,372.31073,2846.6643};
 			a=0;
@@ -5266,7 +5400,7 @@ class Mission
 			{
 			};
 		};
-		class Item33
+		class Item32
 		{
 			position[]={8053.082,296.04001,1971.5919};
 			a=4;
@@ -5283,7 +5417,7 @@ class Mission
 			{
 			};
 		};
-		class Item34
+		class Item33
 		{
 			position[]={8238.7002,309.03305,2069.2253};
 			a=1000;
@@ -5302,7 +5436,7 @@ class Mission
 			{
 			};
 		};
-		class Item35
+		class Item34
 		{
 			position[]={8190.6563,352.57571,2796.5178};
 			a=0;
@@ -5317,7 +5451,7 @@ class Mission
 				titleEffect="PLAIN DOWN";
 			};
 		};
-		class Item36
+		class Item35
 		{
 			position[]={8236.6855,300.59451,2073.3208};
 			a=1000;
@@ -5337,7 +5471,7 @@ class Mission
 			{
 			};
 		};
-		class Item37
+		class Item36
 		{
 			position[]={8181.271,296.14001,2079.8503};
 			a=5;
@@ -5355,7 +5489,7 @@ class Mission
 			{
 			};
 		};
-		class Item38
+		class Item37
 		{
 			position[]={8181.1587,296.14001,2079.9063};
 			a=5;
@@ -5375,7 +5509,7 @@ class Mission
 			{
 			};
 		};
-		class Item39
+		class Item38
 		{
 			position[]={8107.96,296.04001,2006.7094};
 			a=14;
@@ -5393,7 +5527,7 @@ class Mission
 			{
 			};
 		};
-		class Item40
+		class Item39
 		{
 			position[]={8241.9746,367.10666,2796.9253};
 			a=0;
@@ -5411,7 +5545,7 @@ class Mission
 			{
 			};
 		};
-		class Item41
+		class Item40
 		{
 			position[]={8189.7549,348.76361,2894.5088};
 			a=0;
@@ -5427,7 +5561,7 @@ class Mission
 			{
 			};
 		};
-		class Item42
+		class Item41
 		{
 			position[]={8139.1064,296.12735,2057.1521};
 			a=5;
@@ -5445,7 +5579,7 @@ class Mission
 			{
 			};
 		};
-		class Item43
+		class Item42
 		{
 			position[]={8138.9941,296.12735,2057.208};
 			a=5;
@@ -5465,7 +5599,7 @@ class Mission
 			{
 			};
 		};
-		class Item44
+		class Item43
 		{
 			position[]={8163.8467,346.06812,2796.3586};
 			a=0;
@@ -5480,7 +5614,7 @@ class Mission
 				titleEffect="PLAIN DOWN";
 			};
 		};
-		class Item45
+		class Item44
 		{
 			position[]={7999.5283,296.04001,2010.5508};
 			a=14;
@@ -5498,7 +5632,7 @@ class Mission
 			{
 			};
 		};
-		class Item46
+		class Item45
 		{
 			position[]={8389.501,296.04001,1925.2322};
 			a=14;
@@ -5516,7 +5650,7 @@ class Mission
 			{
 			};
 		};
-		class Item47
+		class Item46
 		{
 			position[]={8248.1709,296.04001,2053.0068};
 			a=10;
@@ -5533,53 +5667,52 @@ class Mission
 				soundDet="crow2";
 			};
 		};
-		class Item48
+		class Item47
 		{
-			position[]={10128.384,346.49686,2335.7422};
+			position[]={10134.219,346.58676,2336.1907};
 			a=260;
 			b=260;
+			activationBy="EAST";
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="this and ((""Man"" countType thislist  > 10) && (getpos (thislist select 0) select 2 < 1))";
+			expActiv="tskClearVillage setTaskState ""ASSIGNED"";tskClearVillageAssigned=true;publicVariable ""tskClearVillageAssigned"";tskInsertLZ setTaskState ""ASSIGNED"";tskInsertLZAssigned=true;publicVariable ""tskInsertLZAssigned"";";
+			class Effects
+			{
+			};
+		};
+		class Item48
+		{
+			position[]={11031.214,406.70584,2478.0847};
+			a=60;
+			b=60;
 			activationBy="WEST";
 			interruptable=1;
 			age="UNKNOWN";
-			expCond="this and (""Man"" countType thislist  > 0) && ((getpos (thislist select 0)) select 2 < 1)";
-			expActiv="tskClearVillage setTaskState ""ASSIGNED"";tskClearVillageAssigned=true;publicVariable ""tskClearVillageAssigned"";";
+			expCond="this and tskExvillLZassigned and ((""Man"" countType thislist  > 0) && (getpos (thislist select 0) select 2 < 1))";
+			expActiv="tskRTB setTaskState ""ASSIGNED"";tskRTBassigned=true;publicVariable ""tskRTBassigned"";";
 			class Effects
 			{
 			};
 		};
 		class Item49
 		{
-			position[]={11031.116,406.71078,2478.4792};
-			a=60;
-			b=60;
-			activationBy="WEST";
-			activationType="NOT PRESENT";
-			interruptable=1;
-			age="UNKNOWN";
-			expCond="this and tskExvillLZassigned and (""Man"" countType thislist  > 0) && ((getpos (thislist select 0)) select 2 < 1)";
-			expActiv="tskExvillLZ setTaskState ""SUCCEEDED"";                                tskRTB setTaskState ""ASSIGNED"";";
-			class Effects
-			{
-			};
-		};
-		class Item50
-		{
-			position[]={10128.46,346.33521,2333.8552};
+			position[]={10134.295,346.44308,2334.3037};
 			a=260;
 			b=260;
 			activationBy="EAST";
-			activationType="NOT PRESENT";
 			interruptable=1;
 			age="UNKNOWN";
-			expCond="this and tskClearVillageAssigned";
-			expActiv="tskClearVillage setTaskState ""SUCCEEDED"";                                tskExvillLZ setTaskState ""ASSIGNED"";";
+			expCond="this and ((""Man"" countType thislist  < 2) && (getpos (thislist select 0) select 2 < 1)) and tskInsertLZAssigned and tskClearVillageAssigned";
+			expActiv="tskInsertLZ setTaskState ""SUCCEEDED""; tskInsertLZCompleted=true;publicVariable ""tskInsertLZCompleted"";tskClearVillage setTaskState ""SUCCEEDED""; tskClearVillageCompleted=true;publicVariable ""tskClearVillageCompleted""; tskExvillLZ setTaskState ""ASSIGNED""; tskExvillLZassigned=true;publicVariable ""tskExvillLZassigned"";";
 			class Effects
 			{
 			};
+			synchronizations[]={24};
 		};
-		class Item51
+		class Item50
 		{
-			position[]={8186.2495,296.13214,2071.2527};
+			position[]={8172.5386,296.04001,2047.2673};
 			a=5;
 			b=8;
 			angle=60;
@@ -5594,9 +5727,9 @@ class Mission
 			{
 			};
 		};
-		class Item52
+		class Item51
 		{
-			position[]={8186.1372,296.13214,2071.3086};
+			position[]={8172.4263,296.04001,2047.3232};
 			a=5;
 			b=8;
 			angle=60;
@@ -5609,7 +5742,86 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and player in thislist";
-			expActiv="player setdamage (getdammage player + .2);hintSilent format [""%1! Need more...try again!"",getdammage player];";
+			expActiv="player setdamage (getdammage player + .2); if (getdammage player > .4) then {player setUnconscious true;[] execVM ""HealPlayer.sqf"";}; hintSilent format [""%1! Need more damage...do again!"",getdammage player];";
+			class Effects
+			{
+			};
+		};
+		class Item52
+		{
+			position[]={5811.6631,83.040001,11326.397};
+			a=5;
+			b=8;
+			angle=43;
+			rectangular=1;
+			activationBy="WEST";
+			repeating=1;
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="this and player in thislist";
+			expActiv="hintSilent ""Heal test in 10 seconds..."";";
+			class Effects
+			{
+			};
+		};
+		class Item53
+		{
+			position[]={5811.5508,83.040001,11326.453};
+			a=5;
+			b=8;
+			angle=43;
+			rectangular=1;
+			activationBy="WEST";
+			repeating=1;
+			timeoutMin=10;
+			timeoutMid=10;
+			timeoutMax=10;
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="this and player in thislist";
+			expActiv="player setdamage (getdammage player + .2); if (getdammage player > .4) then {player setUnconscious true;[] execVM ""HealPlayer.sqf"";}; hintSilent format [""%1! Need more damage...do again!"",getdammage player];";
+			class Effects
+			{
+			};
+		};
+		class Item54
+		{
+			position[]={10060.744,348.27518,2383.2458};
+			a=30;
+			b=30;
+			activationBy="WEST";
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="this and tskExvillLZassigned and ((""Man"" countType thislist  > 0) && (getpos (thislist select 0) select 2 < 1)) and ((alive leader Bravo1) in thislist)";
+			expActiv="tskInsertLZ setTaskState ""SUCCEEDED""; tskInsertLZCompleted=true;publicVariable ""tskInsertLZCompleted"";";
+			class Effects
+			{
+			};
+		};
+		class Item55
+		{
+			position[]={10122.979,342.75363,2243.0303};
+			a=30;
+			b=30;
+			activationBy="WEST";
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="this and tskExvillLZassigned and ((""Man"" countType thislist  > 0) && (getpos (thislist select 0) select 2 < 1)) and ((alive leader Delta1) in thislist)";
+			expActiv="tskInsertLZ setTaskState ""SUCCEEDED""; tskInsertLZCompleted=true;publicVariable ""tskInsertLZCompleted"";";
+			class Effects
+			{
+			};
+		};
+		class Item56
+		{
+			position[]={10283.376,360.92444,2513.6528};
+			a=30;
+			b=30;
+			activationBy="WEST";
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="this and tskExvillLZassigned and ((""Man"" countType thislist  > 0) && (getpos (thislist select 0) select 2 < 1)) and ((alive leader Alpha1) in thislist)";
+			expActiv="tskInsertLZ setTaskState ""SUCCEEDED""; tskInsertLZCompleted=true;publicVariable ""tskInsertLZCompleted"";";
 			class Effects
 			{
 			};
