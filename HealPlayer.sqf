@@ -68,7 +68,7 @@ if ((lifeState _Player == "UNCONSCIOUS") || (lifeState _Player == "ALIVE")) then
 	case resistance: {_MedicArray = ["Soldier_Medic_PMC","GUE_Soldier_Medic","Doctor","RU_Doctor"];};
 	case civilian: {_MedicArray = ["Doctor","RU_Doctor"];};
 	}:
-	hint format ["%1",_ValidArray];
+	//hint format ["%1",_ValidArray];
 	uisleep .01;
     {if ((vehicle _x == _x) && (_x != _Player) && (typeOf _x in _MedicArray)) then {_ValidArray = _ValidArray + [_x];};} forEach _ValidArrayPlayerSide;
 
@@ -121,13 +121,13 @@ if ((lifeState _Player == "UNCONSCIOUS") || (lifeState _Player == "ALIVE")) then
 	Ohara2 	setCombatMode "YELLOW";
 	Ohara2 	setSpeedMode "FULL";
 	Ohara2 	setUnitPos "MIDDLE";
-	_Player 	action ["Heal",Ohara];
+	_Player 	action ["Heal",Ohara2];
 	_Player 	setUnconscious false;
 	_Player 	setCaptive false;	
 	
 	};		
 };
-hint format ["%1",_ValidArray];
+//hint format ["%1",_ValidArray];
 /*
 	_validMedicArray 	= player nearEntities [_MedicArray, _Distance];
 	_ValidMedicArrayCount = count _validMedicArray;
