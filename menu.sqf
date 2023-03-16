@@ -91,7 +91,7 @@ AirSupport_Menu =
 	["Air Strike",[5],"",-5,[["expression","nul=[player] execvm '008\airStrike.sqf'"]],"1","1"],
 	["Missile Strike",[6],"",-5,[["expression","nul=[player] execvm '008\MissileStrike\missile_airstrike_init.sqf'"]],"1","1"],
 	["Fixed-Wing CAS",[7],"",-5,[["expression","nul=[player] execvm '008\plannedFixedWing.sqf'"]],"1","1"],
-	["Rotary-Wing CAS",[8],"",-5,[["expression","nul=[player] execvm '008\plannedRotaryWing.sqf'"]],"1","1"]
+	["Rotary-Wing CAS",[8],"",-5,[["expression","nul=[player] execvm '008\plannedRotaryWing2.sqf'"]],"1","1"]
 ];
 
 AirSupport_Menu2 =

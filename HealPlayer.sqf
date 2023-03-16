@@ -41,7 +41,7 @@ _ValidArrayPlayerSide = [];
         _ValidArrayPlayerSide = _ValidArrayPlayerSide + [_x];
     };
 } forEach allUnits;	
-
+//hint format ["%1",_ValidArrayPlayerSide];
 // =======================================================================================
 // ======================================  SCRIPT  ======================================= 
 // =======================================================================================
@@ -68,12 +68,11 @@ if ((lifeState _Player == "UNCONSCIOUS") || (lifeState _Player == "ALIVE")) then
 	case resistance: {_MedicArray = ["Soldier_Medic_PMC","GUE_Soldier_Medic","Doctor","RU_Doctor"];};
 	case civilian: {_MedicArray = ["Doctor","RU_Doctor"];};
 	}:
-	//hint format ["%1",_ValidArray];
 	uisleep .01;
     {if ((vehicle _x == _x) && (_x != _Player) && (typeOf _x in _MedicArray)) then {_ValidArray = _ValidArray + [_x];};} forEach _ValidArrayPlayerSide;
-
+//hint format ["%1",_ValidArray];
 // =======================================================================================
-// EVERY VALID SQUAD UNIT AND SUBSEQUENT ONE WILL MOVE TO THE PLAYER AND PERFORM A HEAL ACTION
+// EVERY VALID TEAM UNIT AND SUBSEQUENT ONE WILL MOVE TO THE PLAYER AND PERFORM A HEAL ACTION
 // =======================================================================================
 
 	if (count _ValidArray > 0) then {
@@ -99,11 +98,12 @@ if ((lifeState _Player == "UNCONSCIOUS") || (lifeState _Player == "ALIVE")) then
 		_Player 	action ["Heal", _Member];
 		_Player  	setUnconscious false;
 		_Player   	setCaptive false;
+//		_Player 	setVariable ["BIS_IS_inAgony",false];
 		
 	};	
 	
 // =======================================================================================
-// EVERY VALID AREA UNIT AND SUBSEQUENT ONE WILL MOVE TO THE PLAYER AND PERFORM A HEAL ACTION
+// A CREATED UNIT WILL MOVE TO THE PLAYER AND PERFORM A HEAL ACTION
 // =======================================================================================
 
 } else {
@@ -124,15 +124,25 @@ if ((lifeState _Player == "UNCONSCIOUS") || (lifeState _Player == "ALIVE")) then
 	_Player 	action ["Heal",Ohara2];
 	_Player 	setUnconscious false;
 	_Player 	setCaptive false;	
+//	_Player 	setVariable ["BIS_IS_inAgony",false];
 	
 	};		
 };
-//hint format ["%1",_ValidArray];
+secop synchronizeObjectsAdd [_Player];
+fa2 synchronizeObjectsAdd [_Player];
+fa3 synchronizeObjectsAdd [_Player];
+acm synchronizeObjectsAdd [_Player];
 /*
 	_validMedicArray 	= player nearEntities [_MedicArray, _Distance];
 	_ValidMedicArrayCount = count _validMedicArray;
 	if (_ValidMedicArrayCount == 0) then {hintSilent parseText format["<t size='1.25' color='#ff6161'>No medics in range!</t>"];};
 
 	this setCaptive true;this setVehicleVarName 'Ohara';this setIdentity 'Ohara';
+
+//	_Player 	setVariable ["BIS_IS_inAgony",true];
+	_Player 	action ["Heal",_Member];
+	_Player 	setDamage .1;
+//	_Player 	setUnconscious false;
+//	_Player 	setCaptive false;	
 
 */

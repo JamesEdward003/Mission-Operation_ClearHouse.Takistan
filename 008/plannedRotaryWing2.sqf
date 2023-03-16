@@ -141,9 +141,6 @@ if (count _targets > 0) then
 	this addeventhandler ['getin', {_nul=[_this select 2] execVM '008\adfalse.sqf'}];
 	this addeventhandler ['getout', {_nul=[_this select 2] execVM '008\adtrue.sqf'}];";
 	processInitCommands;
-
-	_arrayY 	= ["laze11","laze12","laze13","laze14","laze15","laze16","laze17","laze18","laze19","laze21","laze22","laze23","laze24","laze25"];
-	_laze 	= _arrayY select floor random count _arrayY;
 			
 //	_laze = "LaserTargetW" createVehicle getPos _target;
 	_laze = "Sign_sphere25cm_EP1" createVehicle getPos _target;

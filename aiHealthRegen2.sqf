@@ -7,7 +7,7 @@ _unit addEventHandler ["Hit",{
     _unit = _this select 0; 
     [_unit] spawn {
     	_unit = _this select 0;
-		while {alive _unit} do {
+		while {(getDammage _unit) > .3} do {
 			if ((getDammage _unit) > .3) then
 			{
 				_unit setDamage ((getDammage _unit) - 0.1);

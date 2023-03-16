@@ -2,6 +2,8 @@
 0 fadeSound 1;
 0 fadeMusic 1;
 
+execVM "briefing.sqf";
+
 execVM "Day&WheaterScript\DWwind_init.sqf";
 
 execVM "ParamScript\Params_init.sqf";

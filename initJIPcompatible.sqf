@@ -1,6 +1,4 @@
 // initJIPcompatible.sqf //
-execVM "briefing.sqf";
-
 if (isMultiplayer) then {	
 	
 	player addEventHandler ["Respawn",{
@@ -21,12 +19,10 @@ if (isMultiplayer) then {
 		_unit = _this select 0;
 		[_unit] execVM "weaponrespawn.sqf";
 	}];
-	/*
 	player addEventHandler ["Killed",{
 		_unit = _this select 0;
 		[_unit] execVM "aiHealthRegen2.sqf";
 	}];
-	*/
 	player addEventHandler ["Killed",{
 		_unit = _this select 0;
 		_unit addAction ["<t color='#00FFFF'>Heal Self</t>","008\healSelf\healSelf.sqf",[],-99,false,false,"","(getDammage _target) > 0.1"];
@@ -43,7 +39,6 @@ if (isMultiplayer) then {
 player action ["WEAPONONBACK", player];
 
 [nil,nil,rSPAWN,hintSilent format ["Enjoy the game\n %1",name player]] call RE;
-
 
 /*
 [player] execVM "Cly_addweapon\cly_unitweapons.sqf";

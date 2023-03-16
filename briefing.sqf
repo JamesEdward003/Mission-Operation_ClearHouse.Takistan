@@ -1,5 +1,10 @@
 waitUntil {!isNil {player}};
 waitUntil {player == player};
+if (!isNil {player getVariable "Briefing"}) exitWith {};
+_i = 0; 
+waitUntil { _i = _i + 1; _i >= 30 };
+
+player setVariable ["Briefing",true];
 
 player createDiaryRecord["Diary", ["Help", "Hints from 'Helluigi':<br/>
 	- GPS toggle option set to 'Insert' or 'Home' in Control Options<br/>
@@ -8,6 +13,7 @@ player createDiaryRecord["Diary", ["Help", "Hints from 'Helluigi':<br/>
 "]];
 player createDiaryRecord ["Diary", ["Assets", "Your assets for this mission are:<br/>
 	- Four top-notch infantry squads-U.S.Army<br/>
+	- Two top-notch infantry squads-U.S.M.C.<br/>
 	- Reinforcements-Medics-U.S.Army<br/>
 	- Reinforcements-Fireteams-U.S.Army<br/>
 	- SecOp Module synced to Bravo 1-1<br/>
@@ -17,8 +23,8 @@ player createDiaryRecord ["Diary", ["Assets", "Your assets for this mission are:
 	- Attack Helicopters<br/>
 	- Supply Drops<br/>
 	- TPW Houselights 1.08<br/>
-	- Razor Team drops in from the North, Wait For Them...Or Not!<br/>
-	- Teamswitch in Singleplayer. Try before Launching the Operation!
+	- Razor Team drops in from the North, Wait For Them!<br/>
+	- Teamswitch in Singleplayer.
 "]];
 
 player createDiaryRecord["Diary", ["Mission", "Overview: <br/>Since the enemy operations in the AO have been getting worse the U.S. Military has made its presence felt, By setting up more Military instalations and more recently upgraded the Main Air Base in the South.
@@ -183,23 +189,23 @@ switch (group player) do
 	};	
 };
 
-tskInsertLZassigned=false;publicVariable "tskInsertLZassigned";
-tskInsertLZcompleted=false;publicVariable "tskInsertLZcompleted";
-tskClearVillageAssigned=false;publicVariable "tskClearVillageAssigned";
-tskClearVillageCompleted=false;publicVariable "tskClearVillageCompleted";
-tskExvillLZassigned=false;publicVariable "tskExvillLZassigned";
-tskExvillLZcompleted=false;publicVariable "tskExvillLZcompleted";
-tskRTBassigned=false;publicVariable "tskRTBassigned";
-tskRTBcompleted=false;publicVariable "tskRTBcompleted";
-
-if (tskInsertLZassigned) then {tskInsertLZ setTaskState "ASSIGNED"};
-if (tskInsertLZcompleted) then {tskInsertLZ setTaskState "SUCCEDED"};
-if (tskClearVillageAssigned) then {tskClearVillage setTaskState "ASSIGNED"};
-if (tskClearVillageCompleted) then {tskClearVillage setTaskState "SUCCEEDED"};
-if (tskExvillLZassigned) then {tskExvillLZ setTaskState "ASSIGNED"};
-if (tskExvillLZcompleted) then {tskExvillLZ setTaskState "SUCCEDED"};
-if (tskRTBassigned) then {tskRTB setTaskState "ASSIGNED"};
 if (tskRTBcompleted) then {tskRTB setTaskState "SUCCEDED"};
+if (tskRTBassigned) then {tskRTB setTaskState "ASSIGNED"};
+if (tskExvillLZcompleted) then {tskExvillLZ setTaskState "SUCCEDED"};
+if (tskExvillLZassigned) then {tskExvillLZ setTaskState "ASSIGNED"};
+if (tskClearVillageCompleted) then {tskClearVillage setTaskState "SUCCEEDED"};
+if (tskClearVillageAssigned) then {tskClearVillage setTaskState "ASSIGNED"};
+if (tskInsertLZcompleted) then {tskInsertLZ setTaskState "SUCCEDED"};
+if (tskInsertLZassigned) then {tskInsertLZ setTaskState "ASSIGNED"};
+
+publicVariable "tskRTBcompleted";
+publicVariable "tskRTBassigned";
+publicVariable "tskExvillLZcompleted";
+publicVariable "tskExvillLZassigned";
+publicVariable "tskClearVillageCompleted";
+publicVariable "tskClearVillageAssigned";
+publicVariable "tskInsertLZcompleted";
+publicVariable "tskInsertLZassigned";
 
 /*
 if (!isMultiplayer) then {

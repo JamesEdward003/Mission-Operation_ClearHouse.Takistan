@@ -180,6 +180,11 @@ camDestroy _camera;
 //_null = [] execVM "blahblahblah.sqf";
 //_null = [_plyr,_kilr,"respawn_west"] execVM "playerKilled.sqf";
 
+secop synchronizeObjectsAdd [player];
+fa2 synchronizeObjectsAdd [player];
+fa3 synchronizeObjectsAdd [player];
+acm synchronizeObjectsAdd [player];
+
 execVM "briefing.sqf";
 
 [player] execVM "Cly_addweapon\cly_unitweapons.sqf";

@@ -62,7 +62,7 @@ class Params
 		title = "Wind Direction:";
 		values[] = {1, 2, 3, 4, 5, 6, 7, 8};
 		texts[] = {"North","NorthEast","East","SouthEast","South","SouthWest","West","NorthWest"};
-		default = 7;
+		default = 6;
 	};
 	class WindStrength      
 	{
@@ -104,7 +104,7 @@ class Params
 	  title = "Unit Armor:"; 
 	  values[] = {1,2,3,4}; 
 	  texts[] = {"Player Only","Player Group","Whole Team","None"}; 
-	  default = 4; 
+	  default = 2; 
 	};
   class HealSelf
  	{
@@ -797,25 +797,25 @@ class CfgIdentities
 		speaker="Male03EN";
 		pitch=0.98;
 	};
-	class Ohara_1
+	class Ohara1
 	{
-		name="Ohara_1 (Razor)";
+		name="Ohara1 (Razor)";
 		face="default";
 		glasses="none";
 		speaker="Male03EN";
 		pitch=0.98;
 	};
-	class Ohara_2
+	class Ohara2
 	{
-		name="Ohara_2 (Razor)";
+		name="Ohara2 (Razor)";
 		face="default";
 		glasses="none";
 		speaker="Male03EN";
 		pitch=0.98;
 	};
-	class Ohara_3
+	class Ohara3
 	{
-		name="Ohara_3 (Razor)";
+		name="Ohara3 (Razor)";
 		face="default";
 		glasses="none";
 		speaker="Male03EN";
