@@ -71,8 +71,9 @@ switch (WeaponParam) do {
 		case 3:	{{[_x] execVM "Cly_addweapon\cly_unitweapons.sqf"} forEach (if ismultiplayer then {playableunits} else {switchableunits});};
 		case 4:	{{[_x] execVM "Cly_addweapon\w_rockets\cly_unitweapons.sqf"} forEach units group player;};
 		case 5:	{{[_x] execVM "Cly_addweapon\w_rockets\cly_unitweapons.sqf"} forEach (if ismultiplayer then {playableunits} else {switchableunits});};
-		case 6:	{{[_x] execVM "weaponrespawn.sqf"} forEach (if ismultiplayer then {playableunits} else {switchableunits});};
-		case 7:	{};
+		case 6:	{exec "loadouts\sf_weapons.sqs"};
+		case 7:	{{[_x] execVM "weaponrespawn.sqf"} forEach (if ismultiplayer then {playableunits} else {switchableunits});};
+		case 8:	{};
 	};
 ////////////////////////////////////////
 //           WEAPON RESPAWN           //

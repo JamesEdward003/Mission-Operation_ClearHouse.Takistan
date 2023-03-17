@@ -25,7 +25,8 @@ RydFAW_ShellView = true;
 
 onTeamSwitch { [_from, _to] execVM "OnTeamSwitch.sqf" };
 
-[str ("Operation Clear House") ,  str(date select 1) + "." + str(date select 2) + "." + str(date select 0), str("Takistan")] spawn BIS_fnc_infoText;
+//cause of stumble - do not use until checked out
+//[str ("Operation Clear House") ,  str(date select 1) + "." + str(date select 2) + "." + str(date select 0), str("Takistan")] spawn BIS_fnc_infoText;
 
 set_h_time=false;publicVariable "set_h_time";
 
@@ -45,7 +46,7 @@ onGroupIconClick  {
 	_ctrl = _this select 7;
 	_alt = _this select 8;
 
-    (vehicle ((units _group) select 0)) cameraEffect ["FixedWithZoom","LEFT TOP"];if (daytime > 18.50 || daytime < 4.50) then {showCinemaBorder false;camUseNVG true};
+    (vehicle ((units _group) select 0)) cameraEffect ["FixedWithZoom","LEFT TOP"];if (daytime > 19.50 || daytime < 4.50) then {showCinemaBorder false;camUseNVG true};
     if (_RMB == 1) then { (vehicle ((units _group) select 0)) cameraEffect ["FixedWithZoom","FRONT TOP"];if (daytime > 18.50 || daytime < 4.50) then {showCinemaBorder false;camUseNVG true}; };
     titleText [format ["GROUP: %1\nLEADER GROUP: %2",_group,leader _group],"PLAIN DOWN"];
 };

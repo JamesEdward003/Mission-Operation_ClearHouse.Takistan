@@ -48,7 +48,7 @@ if (isNil {_caller getVariable "Loadout"}) then
 						(unitBackpack _unit) addWeaponCargo [(_backpackweap select 0) select _i,(_backpackweap select 1) select _i];
 					};
 				};
-				[objNull,_unit] execVM "OnLeaderRespawn.sqf";
+				//[objNull,_unit] execVM "OnLeaderRespawn.sqf";
 			}}];
 		} else {
 				
@@ -61,8 +61,7 @@ if (isNil {_caller getVariable "Loadout"}) then
 		_backpackmags = getMagazineCargo unitBackpack _caller;
 		_backpackweap = getWeaponCargo unitBackpack _caller;
 		_caller setVariable ["Loadout", [_wep,_mag,_backpack,_backpackmags,_backpackweap], true]; 	
-
-		hintSilent "Saved Loadout";
+		hintSilent parseText format ["<br/><t color='#00FF00' size='1.0'>Saved Loadout!</t>"];
 		uisleep 6;
 		hintSilent "";
 	};

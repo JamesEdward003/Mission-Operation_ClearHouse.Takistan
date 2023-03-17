@@ -189,23 +189,39 @@ switch (group player) do
 	};	
 };
 
-if (tskRTBcompleted) then {tskRTB setTaskState "SUCCEDED"};
-if (tskRTBassigned) then {tskRTB setTaskState "ASSIGNED"};
-if (tskExvillLZcompleted) then {tskExvillLZ setTaskState "SUCCEDED"};
-if (tskExvillLZassigned) then {tskExvillLZ setTaskState "ASSIGNED"};
-if (tskClearVillageCompleted) then {tskClearVillage setTaskState "SUCCEEDED"};
-if (tskClearVillageAssigned) then {tskClearVillage setTaskState "ASSIGNED"};
-if (tskInsertLZcompleted) then {tskInsertLZ setTaskState "SUCCEDED"};
-if (tskInsertLZassigned) then {tskInsertLZ setTaskState "ASSIGNED"};
+taskStateCheck = {
+	if (tskRTBcompleted) then {tskRTB setTaskState "SUCCEDED"};
+	if (tskRTBassigned) then {tskRTB setTaskState "ASSIGNED"};
+	if (tskExvillLZcompleted) then {tskExvillLZ setTaskState "SUCCEDED"};
+	if (tskExvillLZassigned) then {tskExvillLZ setTaskState "ASSIGNED"};
+	if (tskClearVillageCompleted) then {tskClearVillage setTaskState "SUCCEEDED"};
+	if (tskClearVillageAssigned) then {tskClearVillage setTaskState "ASSIGNED"};
+	if (tskInsertLZcompleted) then {tskInsertLZ setTaskState "SUCCEDED"};
+	if (tskInsertLZassigned) then {tskInsertLZ setTaskState "ASSIGNED"};
 
-publicVariable "tskRTBcompleted";
-publicVariable "tskRTBassigned";
-publicVariable "tskExvillLZcompleted";
-publicVariable "tskExvillLZassigned";
-publicVariable "tskClearVillageCompleted";
-publicVariable "tskClearVillageAssigned";
-publicVariable "tskInsertLZcompleted";
-publicVariable "tskInsertLZassigned";
+	publicVariable "tskRTBcompleted";
+	publicVariable "tskRTBassigned";
+	publicVariable "tskExvillLZcompleted";
+	publicVariable "tskExvillLZassigned";
+	publicVariable "tskClearVillageCompleted";
+	publicVariable "tskClearVillageAssigned";
+	publicVariable "tskInsertLZcompleted";
+	publicVariable "tskInsertLZassigned";
+};
+call taskStateCheck;
+
+if (isMultiplayer) then {	
+	
+	player addEventHandler ["MPRespawn", {
+		_unit = _this select 0;
+		_dead = _this select 1;
+		_varName = vehicleVarname _dead;
+		_unit setIdentity _varName;
+		call taskStateCheck;
+	}];
+};
+
+
 
 /*
 if (!isMultiplayer) then {

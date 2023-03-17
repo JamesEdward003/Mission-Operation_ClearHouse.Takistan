@@ -8,13 +8,16 @@
 End_Operation = {
 
 	{ for "_i" from count waypoints _x - 1 to 0 step -1 do { deleteWaypoint [_x, _i]; }; } forEach allGroups; 
-	hintsilent "End the Operation!";
-	uisleep 10;
+	hintSilent parseText format ["<br/><t color='#00FF00' size='1.0'>End the Operation!</t>"];
+	uisleep 6;
 	{ _wp1 = _x addWaypoint [position leader _x, 10]; 
 	  _wp1 setWaypointType "GETIN NEAREST"; 
 	  _wp1 setWaypointSpeed "FULL"; 
       _wp2 = _x addWaypoint [MarkerPos "fin_marker", 100]; 
 	  _wp2 setWaypointType "GETOUT"; } forEach allGroups; 
-    hintsilent "Return To Base!";
+    hintSilent parseText format ["<br/><t color='#00FF00' size='1.0'>Return To Base!</t>"];
+	tskExvillLZ setTaskState "SUCCEEDED";
+	tskExvillLZcompleted=true;publicVariable "tskExvillLZcompleted";
+	player setCurrentTask tskRTB;
 };
 

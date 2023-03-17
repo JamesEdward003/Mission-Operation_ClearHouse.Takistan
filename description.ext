@@ -36,26 +36,26 @@ class Header
 };
 class Params
 {
-   class Day_Time
-   {
+	class Day_Time
+	{
 		title = "Time Of Day:";
 		values[] = {1, 2, 3, 4, 5, 6, 7, 8};
 		texts[] = {"Random", "Early Morning", "Morning", "Noon", "Sundown", "Early Evening", "Night with Full Moon", "Dark Night"};     
-      default = 2;
+    default = 2;
 	};
 	class Weather
-   {
-      title = "Weather:";
-      values[] = {1, 2, 3, 4, 5, 6};
-      texts[] = {"Random", "Clear", "Partly Cloudy", "Cloudy", "Overcast", "Storm"};     
-      default = 6;
+	{
+    title = "Weather:";
+    values[] = {1, 2, 3, 4, 5, 6};
+    texts[] = {"Random", "Clear", "Partly Cloudy", "Cloudy", "Overcast", "Storm"};     
+    default = 6;
 	};
 	class FogParam
-   {
-      title = "Fog:";
-      values[] = {1, 2, 3, 4, 5, 6};
-      texts[] = {"Random", "Clear", "Thin", "Thick", "Thicker", "Dense"};     
-      default = 3;
+	{
+		title = "Fog:";
+   	values[] = {1, 2, 3, 4, 5, 6};
+   	texts[] = {"Random", "Clear", "Thin", "Thick", "Thicker", "Dense"};     
+   	default = 3;
 	};
 	class WindDirection      
 	{
@@ -81,9 +81,9 @@ class Params
   class WeaponParam
   {
 	  title="Weapon Type:";
-	  values[]={1,2,3,4,5,6,7};
-	  texts[]={"Cly Weapons for Player with Weapon Respawn","Cly Weapons for Player Group with Weapon Respawn","Cly Weapons for Every Group with Weapon Respawn","Cly Weapons for Player Group with Rockets and Weapon Respawn","Cly Weapons for Everyone with Rockets and Weapon Respawn","Game Weapons with Weapon Respawn","Game Weapons Only"};
-	  default=2;
+	  values[]={1,2,3,4,5,6,7,8};
+	  texts[]={"Cly Weapons for Player with Weapon Respawn","Cly Weapons for Player Group with Weapon Respawn","Cly Weapons for Every Group with Weapon Respawn","Cly Weapons for Player Group with Rockets and Weapon Respawn","Cly Weapons for Everyone with Rockets and Weapon Respawn","Special Forces Weapons with Weapon Respawn","Game Weapons with Weapon Respawn","Game Weapons Only"};
+	  default=6;
   };
   class WeaponRespawn
   {

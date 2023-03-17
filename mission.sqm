@@ -34,7 +34,8 @@ class Mission
 		"CAA10",
 		"CAAir",
 		"BI_SRRS",
-		"camisc_e_wf"
+		"camisc_e_wf",
+		"casigns_e"
 	};
 	addOnsAuto[]=
 	{
@@ -64,6 +65,7 @@ class Mission
 		"kyo_CutsceneUH1Y",
 		"caweapons_e",
 		"camisc_e_wf",
+		"casigns_e",
 		"takistan"
 	};
 	randomSeed=8713767;
@@ -4075,7 +4077,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=60;
+		items=63;
 		class Item0
 		{
 			position[]={10119.017,342.70221,2243.4128};
@@ -4733,6 +4735,36 @@ class Mission
 			vehicle="Misc_Backpackheap_EP1";
 			skill=0.33333331;
 			init="this addAction [""<t color='#FFFFFF'>Get Backpack</t>"",""bon_getbackpack\openmenu.sqf"",[],-99,false,true,"""",""_this distance _target<8""]; this addAction [""<t color='#FFFFFF'>Get Equipment Preset</t>"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],-99,false,true,"""",""_this distance _target<8""]; this allowdamage false; this enableSimulation false;";
+		};
+		class Item60
+		{
+			position[]={8247.1816,296.04001,2064.2649};
+			azimut=330;
+			id=225;
+			side="EMPTY";
+			vehicle="SignM_FOB_Revolve_EP1";
+			skill=0.60000002;
+			init="this setObjectTexture [0,""images\textures\signs\signm_usmc_airbase_co.paa""];this setPos (this modelToWorld [0,0,.5]);";
+		};
+		class Item61
+		{
+			position[]={8289.7891,300.38785,2105.0898};
+			azimut=150;
+			id=226;
+			side="EMPTY";
+			vehicle="SignM_FOB_Prostejov_EP1";
+			skill=0.60000002;
+			init="this setObjectTexture [0,""images\textures\signs\targets_big_co.paa""];this setPos (this modelToWorld [0,0,.1]);";
+		};
+		class Item62
+		{
+			position[]={8291.5879,300.38565,2106.1323};
+			azimut=150;
+			id=227;
+			side="EMPTY";
+			vehicle="SignM_FOB_Blanik_EP1";
+			skill=0.60000002;
+			init="this setObjectTexture [0,""images\textures\signs\targets_big_co.paa""];this setPos (this modelToWorld [0,0,.1]);";
 		};
 	};
 	class Markers
