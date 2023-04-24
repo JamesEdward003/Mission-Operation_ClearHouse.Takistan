@@ -139,7 +139,7 @@ class Params
 	  title = "Enable Saving:"; 
 	  values[] = {1,2}; 
 	  texts[] = {"Yes","No"}; 
-	  default = 1; 
+	  default = 2; 
 	};
 	class tskInsertLZpv
 	{
