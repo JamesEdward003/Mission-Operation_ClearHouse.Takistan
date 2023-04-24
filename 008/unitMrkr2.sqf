@@ -3,7 +3,7 @@ _unit 	= _this select 0;
 _varname	= name _unit;
 
 if (isMultiplayer) then {	
-	player addMPEventHandler ["MPRespawn",{_this execVM "008\unitMrkr2.sqf"}];
+	player addEventHandler ["Respawn",{_this execVM "008\unitMrkr2.sqf"}];
 };
 
 if (side _unit == side player) then {

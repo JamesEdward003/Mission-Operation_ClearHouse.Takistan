@@ -6,5 +6,3 @@
 _unit = _this select 0;
 
 _unit allowdamage true;
-
-_unit removeEventhandler["HandleDamage", safeZoneDamageEH];

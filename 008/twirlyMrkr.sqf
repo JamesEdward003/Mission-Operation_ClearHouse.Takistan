@@ -1,6 +1,5 @@
 //////////////////////////////////////////////////////////////////
-private ["_unit","_unitname","_marker","_mrkrcolor"];
-
+private ["_unit","_type","_marker","_mrkrcolor"];
 _unit = _this select 0;
 _type = typeOf _unit;
 
@@ -14,15 +13,12 @@ switch (side _unit) do {
          case civilian:		{_mrkrcolor = "ColorYellow"};
 };
 
-_arrayM 	= ["TARGET1","TARGET2","TARGET3","TARGET4","TARGET5","TARGET6","TARGET7","TARGET8","TARGET9","TARGET11","TARGET12","TARGET13","TARGET14","TARGET15"];
-_randomM	= _arrayM select floor random count _arrayM;
-
 if (isMultiplayer) then {	
-	_unit addMPEventHandler ["MPRespawn",{_this execVM "008\twirlyMrkr.sqf"}];
+	_unit addEventHandler ["Respawn",{_this execVM "008\twirlyMrkr.sqf"}];
 };
 
 While {alive _unit} do {
-	_marker = createMarkerLocal [_randomM, position _unit];
+	_marker = createMarkerLocal [_type, position _unit];
 	_marker setMarkerTypeLocal "select";
 	_marker setMarkerShapeLocal "Icon";  
 	_marker setMarkerTextLocal _type;
@@ -31,3 +27,5 @@ While {alive _unit} do {
 	sleep 2;
 	deleteMarkerLocal _marker;
 };
+sleep 2;
+deleteMarkerLocal _type;

@@ -5,7 +5,7 @@ _unit 		= _this select 0;
 _mrkrcolor 	= [];
 
 if (isMultiplayer) then {	
-	_unit addMPEventHandler ["MPRespawn",{_this execVM "008\twirlyMrkr2.sqf"}];
+	_unit addEventHandler ["Respawn",{_this execVM "008\twirlyMrkr2.sqf"}];
 };
 
 switch (side _unit) do {

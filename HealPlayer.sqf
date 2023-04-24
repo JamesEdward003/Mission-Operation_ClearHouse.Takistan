@@ -23,7 +23,7 @@ private ["_Angle", "_PosX", "_PosY", "_Position", "_Member"];
 // =======================================================================================
 
 _Player 		= Player;
-_Side 			= side _Player;
+_Side 			= playerSide;
 _Location		= getPos _Player;
 _Group 			= group _Player;
 _Units			= units _Group;
@@ -54,7 +54,7 @@ if ((lifeState _Player == "UNCONSCIOUS") || (lifeState _Player == "ALIVE")) then
 {
 	_CenterX	= _Location select 0;
 	_CenterY	= _Location select 1;
-	_Perimeter	= 3; // is 6 meters in diameter
+	_Perimeter	= 3;
 
 // =======================================================================================
 // GRAB ONLY VALID UNITS BY CHECKING IF THEY ARE ON FOOT AND ARE NOT PLAYERS
@@ -68,7 +68,7 @@ if ((lifeState _Player == "UNCONSCIOUS") || (lifeState _Player == "ALIVE")) then
 	case resistance: {_MedicArray = ["Soldier_Medic_PMC","GUE_Soldier_Medic","Doctor","RU_Doctor"];};
 	case civilian: {_MedicArray = ["Doctor","RU_Doctor"];};
 	}:
-	uisleep .01;
+	uisleep .1;
     {if ((vehicle _x == _x) && (_x != _Player) && (typeOf _x in _MedicArray)) then {_ValidArray = _ValidArray + [_x];};} forEach _ValidArrayPlayerSide;
 //hint format ["%1",_ValidArray];
 // =======================================================================================

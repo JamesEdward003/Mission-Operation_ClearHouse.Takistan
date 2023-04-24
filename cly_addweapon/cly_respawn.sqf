@@ -1,7 +1,7 @@
 /////////this addaction ["cly loadout","cly_respawn.sqf"];//////////
 _unit 	= _this select 1;                       
 
-_unit setVariable ["CLY_addweapon",nil,true];
+_unit setVariable ["CLY_addweapon",nil];
 
 _unit setVariable ["savedloadout",nil,true];
 

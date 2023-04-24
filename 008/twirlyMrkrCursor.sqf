@@ -5,7 +5,7 @@ _unit 		= cursorTarget;
 _mrkrcolor 	= [];
 
 if (isMultiplayer) then {	
-	_unit addMPEventHandler ["MPRespawn",{_this execVM "twirlyMrkr.sqf"}];
+	_unit addEventHandler ["Respawn",{_this execVM "twirlyMrkr.sqf"}];
 };
 
 switch (side _unit) do {

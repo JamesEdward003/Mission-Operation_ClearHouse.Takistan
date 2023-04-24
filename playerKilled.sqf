@@ -180,28 +180,30 @@ camDestroy _camera;
 //_null = [] execVM "blahblahblah.sqf";
 //_null = [_plyr,_kilr,"respawn_west"] execVM "playerKilled.sqf";
 
+if (missionNamespace getVariable "WeaponParam" != 6) then {[player] execVM "Cly_addweapon\cly_unitweapons.sqf"};
+
+if (missionNamespace getVariable "WeaponRespawn" != 4) then {[player] execVM "weaponrespawn.sqf"};
+
+if (missionNamespace getVariable "UnlimitedAmmo" != 4) then {[player] execVM "Cly_addweapon\cly_unlimited.sqf"};
+
+if (missionNamespace getVariable "UnitArmor" != 4) then {[player] execVM "aiHealthRegen2.sqf"};
+
+if (missionNamespace getVariable "HealSelf" != 4) then {player addAction ["<t color='#00FFFF'>Heal Self</t>","008\healSelf\healSelf.sqf",[],-99,false,false,"","((_target == _this) and (getDammage _target) > 0.1)"]};
+
+if (missionNamespace getVariable "UnitMarkers" != 4) then {[player] execVM "markerID.sqf"};
+
+if (missionNamespace getVariable "OnLeaderRespawn" != 2) then {execVM "OnLeaderRespawn.sqf"};
+
+player setUnitRecoilCoefficient 0.50;
+
+player action ["WEAPONONBACK", player];
+
+execVM "briefing.sqf";
+
 secop synchronizeObjectsAdd [player];
 fa2 synchronizeObjectsAdd [player];
 fa3 synchronizeObjectsAdd [player];
 acm synchronizeObjectsAdd [player];
-
-execVM "briefing.sqf";
-
-[player] execVM "Cly_addweapon\cly_unitweapons.sqf";
-
-[player] execVM "Cly_addweapon\cly_unlimited.sqf";
-
-[player] execVM "weaponrespawn.sqf";
-
-[player] execVM "aiHealthRegen2.sqf";
-
-[player] execVM "markerID.sqf";
-
-player addAction ["<t color='#00FFFF'>Heal Self</t>","008\healSelf\healSelf.sqf",[],-99,false,false,"","(getDammage _target) > 0.1"];
-
-execVM "OnLeaderRespawn.sqf";
-
-player action ["WEAPONONBACK", player];
 
 [nil,nil,rSPAWN,hintSilent format ["Welcome Back\n %1",name player]] call RE;
 

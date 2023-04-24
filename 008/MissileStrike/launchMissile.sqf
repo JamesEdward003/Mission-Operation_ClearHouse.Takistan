@@ -1,4 +1,4 @@
-//////////////////////////////////////////////////////////////////
+// [laserTarget player, getpos missilestart,"M_Ch29_AT",200] execvm "launchmissile.sqf" //
 _unit = _this select 0;  
 _caller = _this select 1;  
 _action = _this select 2; 

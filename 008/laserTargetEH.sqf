@@ -1,18 +1,23 @@
 //_target addEventHandler["killed", {[_this select 0, _this select 1, [_laze,_smoke]] execVM "scripts\laserTargetEH.sqf"}];//
-_target 		= _this select 0;
-_killer 		= _this select 1;
-_laze 		= _this select 2 select 0;
-_smoke 		= _this select 2 select 1;
+private ["_target","_killer","_lazes","_laze","_smoke","_cameras","_camera"];
+_target 	= _this select 0;
+_killer 	= _this select 1;
+/*
+_laze 		= if ((count _this >2) and (!isNull (_this select 2 select 0))) then {_this select 2 select 0} else {_laze=objNull};
+_smoke      = if ((count _this >2) and (!isNull (_this select 2 select 1))) then {_this select 2 select 1} else {_smoke=objNull};
 
 detach _laze;
 deleteVehicle _laze;
 deleteVehicle _smoke;
-
+*/
 _lazes = nearestObjects [_target, ["LaserTargetW"], 20];
-_laze = _lazes select 0;
+//_laze = _lazes select 0;
 
 _cameras = nearestObjects [_target, ["camera"], 20];
-_camera = _camera select 0;
+//_camera = _camera select 0;
+
+_smokes = nearestObjects [_target, ["SmokeShellYellow"], 20];
+//_smoke = _smokes select 0;
 
 while {(count _lazes) > 0} do
 {
@@ -21,9 +26,15 @@ deleteVehicle _lazes select 0;
 sleep 0.1; 
 };
 
-while {(count _cameras) > 0) do
+while {(count _cameras) > 0} do
 { 
-camDestroy _camera;
+camDestroy _cameras select 0;
+sleep 0.1;  
+}; 
+
+while {(count _smokes) > 0} do
+{ 
+deleteVehicle _smokes select 0;
 sleep 0.1;  
 }; 
 

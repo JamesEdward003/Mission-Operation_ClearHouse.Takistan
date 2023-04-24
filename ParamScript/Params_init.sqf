@@ -18,6 +18,7 @@ if (isNil "paramsArray") then { // SP or Editor Preview
 	};
 };
 _debug = false;
+_debugtasks = false;
 Day_Time = missionNamespace getVariable "Day_Time";
 Weather = missionNamespace getVariable "Weather";
 FogParam = missionNamespace getVariable "FogParam";
@@ -28,10 +29,16 @@ WeaponParam = missionNamespace getVariable "WeaponParam";
 WeaponRespawn = missionNamespace getVariable "WeaponRespawn";
 UnlimitedAmmo = missionNamespace getVariable "UnlimitedAmmo";
 UnitArmor = missionNamespace getVariable "UnitArmor";
-ClyHeal = missionNamespace getVariable "ClyHeal";
+HealSelf = missionNamespace getVariable "HealSelf";
 UnitMarkers = missionNamespace getVariable "UnitMarkers";
 OnLeaderRespawn = missionNamespace getVariable "OnLeaderRespawn";
 FirstAidModules = missionNamespace getVariable "FirstAidModules";
+
+tskInsertLZpv = missionNamespace getVariable "tskInsertLZpv";
+tskClearVillagepv = missionNamespace getVariable "tskClearVillagepv";
+tskElimHVTpv = missionNamespace getVariable "tskElimHVTpv";
+tskExvillLZpv = missionNamespace getVariable "tskExvillLZpv";
+tskRTBpv = missionNamespace getVariable "tskRTBpv";
 ////////////////////////////////////////
 //          AICURRENTSKILL            //
 ////////////////////////////////////////
@@ -71,9 +78,7 @@ switch (WeaponParam) do {
 		case 3:	{{[_x] execVM "Cly_addweapon\cly_unitweapons.sqf"} forEach (if ismultiplayer then {playableunits} else {switchableunits});};
 		case 4:	{{[_x] execVM "Cly_addweapon\w_rockets\cly_unitweapons.sqf"} forEach units group player;};
 		case 5:	{{[_x] execVM "Cly_addweapon\w_rockets\cly_unitweapons.sqf"} forEach (if ismultiplayer then {playableunits} else {switchableunits});};
-		case 6:	{exec "loadouts\sf_weapons.sqs"};
-		case 7:	{{[_x] execVM "weaponrespawn.sqf"} forEach (if ismultiplayer then {playableunits} else {switchableunits});};
-		case 8:	{};
+		case 6:	{};
 	};
 ////////////////////////////////////////
 //           WEAPON RESPAWN           //
@@ -106,9 +111,9 @@ switch (UnitArmor) do {
 //                HEALSELF		     //
 ///////////////////////////////////////////////	
 switch (HealSelf) do {
-		case 1:	{player addAction ["<t color='#00FFFF'>Heal Self</t>","008\healSelf\healSelf.sqf",[],-99,false,false,"","(getDammage _target) > 0.1"];};
-		case 2:	{{[_x] addAction ["<t color='#00FFFF'>Heal Self</t>","008\healSelf\healSelf.sqf",[],-99,false,false,"","(getDammage _target) > 0.1"];} forEach units group player;};
-		case 3:	{{[_x] addAction ["<t color='#00FFFF'>Heal Self</t>","008\healSelf\healSelf.sqf",[],-99,false,false,"","(getDammage _target) > 0.1"];} forEach (if ismultiplayer then {playableunits} else {switchableunits});};
+		case 1:	{player addAction ["<t color='#00FFFF'>Heal Self</t>","008\healSelf\healSelf.sqf",[],-99,false,false,"","((_target == _this) and (getDammage _target) > 0.1)"];};
+		case 2:	{{[_x] addAction ["<t color='#00FFFF'>Heal Self</t>","008\healSelf\healSelf.sqf",[],-99,false,false,"","((_target == _this) and (getDammage _target) > 0.1)"];} forEach units group player;};
+		case 3:	{{[_x] addAction ["<t color='#00FFFF'>Heal Self</t>","008\healSelf\healSelf.sqf",[],-99,false,false,"","((_target == _this) and (getDammage _target) > 0.1)"];} forEach (if ismultiplayer then {playableunits} else {switchableunits});};
 		case 4:	{};
 	};
 ///////////////////////////////////////////////
@@ -135,6 +140,61 @@ switch (FirstAidModules) do {
 		case 2:	{execVM "FirstAidModules.sqf"};
 	};
 ///////////////////////////////////////////////
+//              ENABLESAVING		     //
+///////////////////////////////////////////////	
+switch (EnableSaves) do {
+		case 1:	{enableSaving [true, true]};
+		case 2:	{enableSaving [false, false]};
+	};
+///////////////////////////////////////////////
+//             	   TASKS		     //
+///////////////////////////////////////////////
+switch (tskInsertLZpv) do {
+		case 1:	{tskInsertLZ setTaskState "NONE"};
+		case 2:	{tskInsertLZ setTaskState "CREATED"};
+		case 3:	{tskInsertLZ setTaskState "ASSIGNED"};
+		case 4:	{tskInsertLZ setTaskState "SUCCEEDED"};
+		case 5:	{tskInsertLZ setTaskState "FAILED"};
+		case 6:	{tskInsertLZ setTaskState "CANCELED"};
+		default {tskInsertLZ setTaskState "CREATED"};
+	};
+switch (tskClearVillagepv) do {
+		case 1:	{tskClearVillage setTaskState "NONE"};
+		case 2:	{tskClearVillage setTaskState "CREATED"};
+		case 3:	{tskClearVillage setTaskState "ASSIGNED"};
+		case 4:	{tskClearVillage setTaskState "SUCCEEDED"};
+		case 5:	{tskClearVillage setTaskState "FAILED"};
+		case 6:	{tskClearVillage setTaskState "CANCELED"};
+		default {tskClearVillage setTaskState "CREATED"};
+	};
+switch (tskElimHVTpv) do {
+		case 1:	{tskElimHVT setTaskState "NONE"};
+		case 2:	{tskElimHVT setTaskState "CREATED"};
+		case 3:	{tskElimHVT setTaskState "ASSIGNED"};
+		case 4:	{tskElimHVT setTaskState "SUCCEEDED"};
+		case 5:	{tskElimHVT setTaskState "FAILED"};
+		case 6:	{tskElimHVT setTaskState "CANCELED"};
+		default {tskElimHVT setTaskState "CREATED"};
+	};
+switch (tskExvillLZpv) do {
+		case 1:	{tskExvillLZ setTaskState "NONE"};
+		case 2:	{tskExvillLZ setTaskState "CREATED"};
+		case 3:	{tskExvillLZ setTaskState "ASSIGNED"};
+		case 4:	{tskExvillLZ setTaskState "SUCCEEDED"};
+		case 5:	{tskExvillLZ setTaskState "FAILED"};
+		case 6:	{tskExvillLZ setTaskState "CANCELED"};
+		default {tskExvillLZ setTaskState "CREATED"};
+	};
+switch (tskRTBpv) do {
+		case 1:	{tskRTB setTaskState "NONE"};
+		case 2:	{tskRTB setTaskState "CREATED"};
+		case 3:	{tskRTB setTaskState "ASSIGNED"};
+		case 4:	{tskRTB setTaskState "SUCCEEDED"};
+		case 5:	{tskRTB setTaskState "FAILED"};
+		case 6:	{tskRTB setTaskState "CANCELED"};
+		default {tskRTB setTaskState "CREATED"};
+	};
+///////////////////////////////////////////////
 //              DEBUG SETTINGS		     //
 ///////////////////////////////////////////////		
 if (_debug) then {
@@ -145,4 +205,11 @@ if (_debug) then {
 		}; 
 	}; 
 };
-//AICurrentSkill: 0.65\nWeaponParam: 3\WeaponRespawn: 2\nUnlimitedAmmo: 2\nUnitArmor: 2\nClyHeal: 1\nUnitMarkers: 3\nOnLeaderRespawn: 2
+if (_debugtasks) then {
+	[] spawn {
+		while {alive player} do {
+		uisleep 10; hintSilent format ["tskInsertLZpv: %1\ntskClearVillagepv: %2\ntskElimHVTpv: %3\ntskExvillLZpv: %4\ntskRTBpv: %5",tskInsertLZpv,tskClearVillagepv,tskElimHVTpv,tskExvillLZpv,tskRTBpv]; copytoclipboard format ["tskInsertLZpv: %1\ntskClearVillagepv: %2\ntskElimHVTpv: %3\ntskExvillLZpv: %4\ntskRTBpv: %5",tskInsertLZpv,tskClearVillagepv,tskElimHVTpv,tskExvillLZpv,tskRTBpv]; uisleep 10; hintSilent "";
+		uisleep 60; 
+		}; 
+	}; 
+};

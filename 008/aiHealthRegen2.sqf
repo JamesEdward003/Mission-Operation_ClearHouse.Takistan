@@ -3,7 +3,7 @@ private ["_unit"];
 _unit = _this select 0;
 
 if (isMultiplayer) then {	
-	_unit addMPEventHandler ["MPRespawn",{_this execVM "aiHealthRegen2.sqf"}];
+	_unit addEventHandler ["Respawn",{_this execVM "aiHealthRegen2.sqf"}];
 };
 		
 _unit addEventHandler ["Hit",{

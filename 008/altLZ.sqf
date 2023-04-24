@@ -1,69 +1,101 @@
-//////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////
 // Function file for Armed Assault
-// Created by:  DieHard - Function file for ArmA 2: Operation Arrowhead
-//////////////////////////////////////////////////////////////////
+// Function file for ArmA 2: Operation Arrowhead
+///////////////////////////////////////////////////
+private ["_vehicle","_vehicleVarName","_vehicleGroup","_caller","_sideCaller","_pos","_mrkrcolor","_marker","_mrkr","_flightPath"];
+waituntil {!isnil "bis_fnc_init"};
+
 _vehicle 	= _this select 0;
-_caller 		= _this select 1;                                       
+_caller 	= _this select 1;        
+_sideCaller = side _caller;                               
 
 _vehicleVarName = vehicleVarName _vehicle;
-_vehiclegroup = group _vehicle;
-_lzMkrColor = "ColorOrange";
-_hEnd2 = "hEnd2";
-_hStart = "hStart";
-_hStartLoc = getMarkerPos "hStart";
-_hDest = "airStart";
-_hDestLoc = getMarkerPos "airStart";
+_vehicleGroup = group _vehicle;
+
+_vars = [lzDropOff2,A_MOVE_TASK];
+{
+	if (isNil "_x") then {
+		_vars set [_forEachIndex, -1]
+} else {
+	if (!isNull _x) then {
+		_vars set [_forEachIndex, -1]
+	}
+}
+} forEach _vars;
+_vars = _vars - [-1];
+hint format ["%1",_vars];
+
+if ((getMarkerColor "Drop") != "") then {deleteMarker "Drop"};
+if (!isNull lzDropOff2) then {deleteVehicle lzDropOff2};
+	
+_mrkrcolor 	= [];
+
+switch (_sideCaller) do {
+
+         case west:			{_mrkrcolor = "ColorBlue"};
+         case east:			{_mrkrcolor = "ColorRed"};
+         case resistance:	{_mrkrcolor = "ColorGreen"};
+         case civilian:		{_mrkrcolor = "ColorYellow"};
+};
+
+_vehicle addEventHandler ["Killed", {[_this select 0, _this select 1, ["Drop",lzDropOff2]]execVM "008\onKilled.sqf"}];
 
 if (isServer) then {
-	
-sleep 0.1;
-openMap true;
 
-	deleteVehicle lzPickup;
-	deleteVehicle lzDropOff;
-	deleteVehicle lzDropOff2;
-	deleteMarker "hEnd";
-	deleteMarker "hEnd2";
-	
-sleep 0.1;
-	PAPABEAR=[West,"HQ"]; PAPABEAR SideChat format ["%1 to your new position, %2, mark your new destination on the map.", _vehicleVarName, name _caller];
-dt=true;
-onMapSingleClick "infTarget2 = _pos;dt=false";
-waitUntil {!dt};
-onMapSingleClick "";
+uisleep 0.25;
+location = false;
+openmap [true,false];
+titleText["Map location", "PLAIN DOWN"];
 
-	createMarkerLocal [_hEnd2, infTarget2];
-	_hEnd2 setMarkerTypeLocal "b_air";
-	_hEnd2 setMarkerShapeLocal "Icon";
-	_hEnd2 setMarkerTextLocal _hEnd2;
-	_hEnd2 setMarkerSizeLocal [1,1];
-	_hEnd2 setMarkerColorLocal _lzMkrColor;
-				
-sleep 0.5;
-openMap false;
-	_end2 = getMarkerPos _hEnd2;
-	_start = getMarkerPos _hStart;
+uisleep 0.25;
+
+PAPABEAR=[_sideCaller,"HQ"]; PAPABEAR SideChat format ["%1 to your new position, %2, mark your new destination on the map.", _vehicleVarName, name _caller];
+
+onMapSingleClick "onMapSingleClick ''; mappos = _pos; location = true";		
+waitUntil {uisleep 1; (!visiblemap OR location OR !alive _caller)};
+	if (!location OR !alive _caller) exitWith {
+	mappos = nil;
+	PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat "Map location canceled";
+	hintSilent parseText format ["<t size='1.25' color='#ff0000'>Map location canceled</t>"];
+	titletext ["","plain"];
+	};
+
+	_mrkr = createMarkerLocal ["Drop", mappos];
+	_mrkr setMarkerTypeLocal "mil_end";
+	_mrkr setMarkerShapeLocal "Icon";
+	_mrkr setMarkerTextLocal "Drop";
+	_mrkr setMarkerSizeLocal [1,1];
+	_mrkr setMarkerDirLocal 0;
+	_mrkr setMarkerColorLocal _mrkrcolor;
+
+titletext ["","plain",0.2];
+hintSilent parseText format ["<t size='1.25' color='#00FFFF'>Mapclick location successful</t>"];
+uisleep 2;
+hintSilent "";
+openmap [false,false];
+uisleep 0.25;   
+
+_airDist = _vehicle distance (getMarkerPos "Drop");
+
+PAPABEAR=[_sideCaller,"HQ"]; PAPABEAR SideChat format ["%1 is %2 meters from your new position.", _vehicleVarName, round(_airDist)/1.0];
 		
-	while {(count (waypoints _vehiclegroup)) > 0} do {
-		deleteWaypoint ((waypoints _vehiclegroup) select 0);
-		sleep 0.01;
+	while {(count (waypoints _vehicleGroup)) > 0} do {
+		deleteWaypoint ((waypoints _vehicleGroup) select 0);
+		uisleep 0.01;
 		};
-	
-	//PAPABEAR=[West,"HQ"]; PAPABEAR SideChat "TRANSPORT HELICOPTER relocating to your new position.";
-	PAPABEAR=[West,"HQ"]; PAPABEAR SideChat format ["%1 relocating to your new position.", _vehicleVarName];
+	uisleep 0.25;
+	PAPABEAR=[_sideCaller,"HQ"]; PAPABEAR SideChat format ["%1 relocating to your new position.",_vehicleVarName];
 
-	lzDropOff2 = "HeliHEmpty" createvehicle _end2;
-	// Select random Task numbers
-	_arrayY  = ["TaskY11","TaskY12","TaskY13","TaskY14","TaskY15","TaskY16","TaskY17","TaskY18","TaskY19","TaskY21","TaskY22","TaskY23","TaskY24","TaskY25"];
-	_arrayZ  = ["TaskZ11","TaskZ12","TaskZ13","TaskZ14","TaskZ15","TaskZ16","TaskZ17","TaskZ18","TaskZ19","TaskZ21","TaskZ22","TaskZ23","TaskZ24","TaskZ25"];
+	_drop = getMarkerPos "Drop";
+	_dropPos = [_drop select 0, _drop select 1, 0];
+	lzDropOff2 = "HeliHEmpty" createvehicle _dropPos;
+	_flightPath = [(vehicle _caller), _dropPos] call BIS_fnc_relativeDirTo;		
+	"Drop" setMarkerDirLocal (_flightPath + 180);
 
-	_randomY = _arrayY select floor random count _arrayY;
-	_randomZ = _arrayZ select floor random count _arrayZ;
-	
-	[_randomY,"Cancelled",[_randomZ,"Next Landing Zone","Next Landing Zone",player,[_randomZ,getpos lzDropOff2],"Assigned",lzDropOff2]] call SHK_Taskmaster_upd;
-				 
+	["DropOff",lzDropOff2] spawn MOVE_TASK;
+
 	// If "TR UNLOAD" It'll auto boot the leader once there, but he'll have to tell the others to get out.	
-	wp0 = _vehiclegroup addWaypoint [_end2, 20];
+	wp0 = _vehicleGroup addWaypoint [_dropPos, 20];
 	wp0 setWaypointType "TR UNLOAD";
 	wp0 setWaypointBehaviour "CARELESS";
 	wp0 setWaypointCombatMode "BLUE";
@@ -72,23 +104,18 @@ openMap false;
 		
 	// Wait till the player's group is out of the helo.
 	waitUntil{{_x in _vehicle} count units group _caller == 0};
-	
-	[_randomZ,"Succeeded"] call SHK_Taskmaster_upd;
-		
-	// Once they are out, set a waypoint back to the start and clean up by deleting the helo and landing pads.
-	wp1 = _vehiclegroup addwaypoint [_start, 20];
+
+	if ((getMarkerColor "Drop") != "") then {deleteMarker "Drop"};
+	if (!isNull lzDropOff2) then {deleteVehicle lzDropOff2};	
+			
+	// Once they are out, set a waypoint back to the start and clean up by deleting the helo and landing pads and markers.
+	wp1 = _vehicleGroup addwaypoint [getMarkerPos "Start", 20];
 	wp1 setwaypointtype "MOVE";
 	wp1 setWaypointBehaviour "CARELESS";
 	wp1 setWaypointCombatMode "BLUE";
 	wp1 setWaypointSpeed "NORMAL";
-	wp1 setWaypointStatements ["true","{deletevehicle _x} foreach (crew vehicle this + [vehicle this]); PAPABEAR=[West,'HQ']; PAPABEAR SideChat format ['TransportHelo ready for reassignment!'];"];
-	
-	deleteVehicle lzPickup;
-	deleteVehicle lzDropOff;
-	deleteVehicle lzDropOff2;
-	deleteMarker "hEnd";
-	deleteMarker "hEnd2";	
-	deleteMarker _randomY;
-	deleteMarker _randomZ;
-	_hStart setMarkerPos _hDestLoc;	
+	wp1 setWaypointStatements ["true","{deletevehicle _x} foreach (crew vehicle this + [vehicle this]);
+	PAPABEAR=[(side (vehicle this)),'HQ']; PAPABEAR SideChat 'Transporthelo ready for reassignment!';
+	deleteMarker 'Start';"];
 };
+

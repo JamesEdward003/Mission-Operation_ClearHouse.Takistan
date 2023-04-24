@@ -26,7 +26,7 @@ if (count _airAliveObjects > 0) then
 	_airDist = _unit distance _airTarget;
 	_type = typeOf _airTarget;
 
-	PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat format ["%1 marked is %2 meters distant from %3.", typeOf _airTarget, round(_airDist)/1.0, name _unit];
+	PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat format ["%1 marked is %2 meters from %3.", typeOf _airTarget, round(_airDist)/1.0, name _unit];
 	      	
 	_airTarget addEventHandler["Killed", {[_this select 0, _this select 1, [_laze, _randomM]] execVM "008\laserTargetEH.sqf"}];
  

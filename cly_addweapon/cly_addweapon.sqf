@@ -125,7 +125,7 @@ _i=0;
 	};
 } forEach _addweaponarray;
 
-_unit setVariable ["savedloadout",nil,true];
+_unit setVariable ["savedloadout",nil];
 
 //Event handler for respawning unit
 if (isNil {_unit getVariable "CLY_addweapon"}) then {
@@ -145,7 +145,7 @@ if (isNil {_unit getVariable "CLY_addweapon"}) then {
 			};
 		}
 	];
-	_unit setVariable ["CLY_addweapon",_this,true];
+	_unit setVariable ["CLY_addweapon",_this];
 };
 
 if (!isPlayer _unit) then {_unit removeweapon "Laserdesignator";};

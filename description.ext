@@ -32,7 +32,7 @@ class Header
 {
 	gameType=Coop;
 	minPlayers=1;
-	maxPlayers=60;
+	maxPlayers=64;
 };
 class Params
 {
@@ -40,7 +40,7 @@ class Params
 	{
 		title = "Time Of Day:";
 		values[] = {1, 2, 3, 4, 5, 6, 7, 8};
-		texts[] = {"Random", "Early Morning", "Morning", "Noon", "Sundown", "Early Evening", "Night with Full Moon", "Dark Night"};     
+		texts[] = {"Random", "4:00 A.M.", "5:00 A.M.", "Noon", "7:00 P.M.", "8:00 P.M.", "Night with Full Moon", "Dark Night"};     
     default = 2;
 	};
 	class Weather
@@ -81,8 +81,8 @@ class Params
   class WeaponParam
   {
 	  title="Weapon Type:";
-	  values[]={1,2,3,4,5,6,7,8};
-	  texts[]={"Cly Weapons for Player with Weapon Respawn","Cly Weapons for Player Group with Weapon Respawn","Cly Weapons for Every Group with Weapon Respawn","Cly Weapons for Player Group with Rockets and Weapon Respawn","Cly Weapons for Everyone with Rockets and Weapon Respawn","Special Forces Weapons with Weapon Respawn","Game Weapons with Weapon Respawn","Game Weapons Only"};
+	  values[]={1,2,3,4,5,6};
+	  texts[]={"Cly Weapons for Player","Cly Weapons for Player Group","Cly Weapons for Every Group","Cly Weapons for Player Group with Rockets","Cly Weapons for Every Group with Rockets","Stock"};
 	  default=6;
   };
   class WeaponRespawn
@@ -133,6 +133,48 @@ class Params
 	  values[] = {1,2}; 
 	  texts[] = {"Yes","No"}; 
 	  default = 1; 
+	};
+  class EnableSaves
+ 	{
+	  title = "Enable Saving:"; 
+	  values[] = {1,2}; 
+	  texts[] = {"Yes","No"}; 
+	  default = 1; 
+	};
+	class tskInsertLZpv
+	{
+		title = "task-InsertLZ";
+	  values[]={1,2,3,4,5,6};
+	  texts[]={"NONE","CREATED","ASSIGNED","SUCCEEDED","FAILED","CANCELED"};
+	  default=2;
+	};
+	class tskClearVillagepv
+	{
+		title = "task-ClearVillage";
+	  values[]={1,2,3,4,5,6};
+	  texts[]={"NONE","CREATED","ASSIGNED","SUCCEEDED","FAILED","CANCELED"};
+	  default=2;
+	};
+	class tskElimHVTpv
+	{
+		title = "task-ElimHVT";
+	  values[]={1,2,3,4,5,6};
+	  texts[]={"NONE","CREATED","ASSIGNED","SUCCEEDED","FAILED","CANCELED"};
+	  default=2;
+	};
+	class tskExvillLZpv
+	{
+		title = "task-ExvillLZ";
+	  values[]={1,2,3,4,5,6};
+	  texts[]={"NONE","CREATED","ASSIGNED","SUCCEEDED","FAILED","CANCELED"};
+	  default=2;
+	};
+	class tskRTBpv
+	{
+		title = "task-RTB";
+	  values[]={1,2,3,4,5,6};
+	  texts[]={"NONE","CREATED","ASSIGNED","SUCCEEDED","FAILED","CANCELED"};
+	  default=2;
 	};
 };
 class CfgSounds
@@ -749,6 +791,14 @@ class CfgIdentities
 		speaker="Male03EN";
 		pitch=0.97;
 	};
+	class Pyro8
+	{
+		name="Pyro Crew (Pyro 8)";
+		face="face03";
+		glasses="Tactical";
+		speaker="Male03EN";
+		pitch=0.97;
+	};
 	class Command1
 	{
 		name="Powell (Command1)";
@@ -864,7 +914,7 @@ class CfgIdentities
   class Adams
   {
     name="Adams";
-    face="Face67";
+    face="Face02";
     glasses="None";
     speaker=Male04EN;
     pitch=.987;
@@ -880,7 +930,7 @@ class CfgIdentities
   class Chicago
   {
     name="Chicago";
-    face="Face102";
+    face="Face66";
     glasses="None";
     speaker=Male04EN;
     pitch=.987;
@@ -888,10 +938,50 @@ class CfgIdentities
   class Denver
   {
     name="Denver";
-    face="Face107";
+    face="Face72";
     glasses="None";
     speaker=Male03EN;
     pitch=.987;
   };
+	class Pilot1
+	{
+		name="Pilot1";
+		face="face01";
+		glasses="none";
+		speaker="Male03EN";
+		pitch=0.99;
+	};
+	class CoPilot1
+	{
+		name="CoPilot1";
+		face="face02";
+		glasses="none";
+		speaker="Male05EN";
+		pitch=0.99;
+	};
+	class Gunner1
+	{
+		name="Gunner1";
+		face="face03";
+		glasses="none";
+		speaker="Male04EN";
+		pitch=0.99;
+	};
+	class Gunner2
+	{
+		name="Gunner2";
+		face="face04";
+		glasses="none";
+		speaker="Male03EN";
+		pitch=0.99;
+	};
+	class Gunner3
+	{
+		name="Gunner3";
+		face="face05";
+		glasses="none";
+		speaker="Male04EN";
+		pitch=0.99;
+	};
 };
 

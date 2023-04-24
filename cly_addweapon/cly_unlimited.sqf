@@ -1,5 +1,16 @@
-/////////////////////////////////////////////////////////////////////////////////////////////////////		
+// cly_addweapon\cly_unlimited.sqf //		
 _unit = _this select 0;
+
+if (isMultiplayer) then {
+	_unit addEventHandler ["Respawn", {
+		private ["_unit","_dead"];
+		_unit = (_this select 0);
+		_dead = (_this select 1);
+		[_unit] execVM "cly_addweapon\cly_unlimited.sqf";
+	}	
+]};
+
+_unit setUnitRecoilCoefficient 0.50;
 
 _unit addEventHandler [
 	"Fired",

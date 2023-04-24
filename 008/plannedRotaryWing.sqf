@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////
 //  From trigger:
-//  _nul = [player] execVM "plannedRotaryWing.sqf";
-/////////////////////////////////////////////////////
+//  _null = [player] execVM "plannedRotaryWing.sqf";
+//////////////////////////////////////////////////////
 private ["_unit","_sideUnit","_unitPos","_sourcePoint","_pos","_blinky","_targets","_target","_type","_airDist","_smoke","_targetPos","_mrkr2color","_marker2","_vehicle","_mrkrcolor","_randDir","_randDist","_spawnLoc","_marker","_flightPath","_ch","_chGroup","_nul","_kv","_airDist2"];
 waituntil {!isnil "bis_fnc_init"};
 
@@ -10,85 +10,26 @@ _sideUnit = side _unit;
 _unitPos = getPos _unit;
 _sourcePoint = _unit;
 
-_randDir  = getDir vehicle _sourcePoint - 10;
-_randDir  = _randDir + random(20);
-_randDist = (random 100) + 3000;
-_spawnLoc = [(getPos vehicle _sourcePoint select 0) + (_randDist * sin(_randDir)), (getPos vehicle _sourcePoint select 1) + (_randDist * cos(_randDir)), 0];
+_vehicle = [];
 
-if (isServer) then {
-
-detach RWlaze;
-deleteVehicle RWlaze;
-deleteVehicle RWsign;
-deleteMarkerLocal "RWTarget";
-		
-uisleep 0.25;
-openMap true;
-uisleep 0.25;
-
-PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat format ["RotaryWingCAS ready, %1, mark your target on the map!", name _unit];
-	
-dt=true;
-onMapSingleClick "RWTarget = _pos;dt=false";
-waitUntil {!dt};
-onMapSingleClick "";
-
-	_blinky = "Sign_sphere10cm_EP1" createVehicle RWTarget;	
-	_targets = nearestObjects[_blinky,["Man","Car","Air","Tank","Truck","Ship","Static","House","Building","Barracks","Hanger"], 75];
-	_target = _targets select 0;
-	[_target] execVM "008\twirlyMrkr.sqf";
-	_type = typeOf _target;
-	deleteVehicle _blinky;
-				
-sleep 2;
-openMap false;	
-
-_airDist = [_unit, _target] call BIS_fnc_distance2D;
-
-if (count _targets > 0) then
-
-{		
-PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat format ["%1 is %2 meters distant from %3.", name _unit, round(_airDist)/1.0, typeOf _target];
-
-_smoke = "SmokeShell" createVehicle [getPos _target select 0, getPos _target select 1, 30];
-
-uisleep 6;
-	
-//RWsign = createVehicle ["sign_sphere25cm_ep1",getPos _smoke,[],0,"can_collide"];
-RWsign = "sign_sphere25cm_ep1" createVehicle position _smoke;
-//RWlaze = createVehicle ["LaserTargetW",getPos RWsign,[],0,"can_collide"];
-RWlaze = "LaserTargetW" createVehicle position RWsign;
-
-RWlaze attachTo [RWsign,[0,0,.2]];
-
-deleteVehicle _smoke;
-
-hideObject RWsign;
-
-_target addEventHandler["Killed", {[_this select 0, _this select 1, [RWlaze,RWsign]] execVM "008\laserTargetEH.sqf"}];
-
-_targetPos = getPos _target;
-
-_mrkr2color 	= [];
-
-switch (side _target) do {
-
-	case west:		{_mrkr2color = "ColorBlue"};
-	case east:		{_mrkr2color = "ColorRed"};
-	case resistance:	{_mrkr2color = "ColorGreen"};
-	case civilian:		{_mrkr2color = "ColorYellow"};
+switch (playerSide) do 
+{
+	case west: 		{_vehicle = "AH64D_EP1"};
+	case east: 		{_vehicle = "Ka52Black"};
+	case resistance: 	{_vehicle = "Ka137_MG_PMC"};
+	case civilian: 	{_vehicle = "Mi17_Civilian"};
 };
 
-_marker2 = createMarkerLocal ["RWTarget", _targetPos];
-_marker2 setMarkerType "EMPTY";
-_marker2 setMarkerShapeLocal "ELLIPSE"; 
-_marker2 setMarkerBrushLocal "BORDER"; 
-_marker2 setMarkerTextLocal "";
-_marker2 setMarkerSizeLocal [100,100];
-_marker2 setMarkerColorLocal _mrkr2color;
-	
-if (isNil {_unit getVariable "RotaryWing"}) then {
-	
+_mrkrcolor 	= [];
+
+switch (_sideUnit) do {
+
+         case west:			{_mrkrcolor = "ColorBlue"};
+         case east:			{_mrkrcolor = "ColorRed"};
+         case resistance:	{_mrkrcolor = "ColorGreen"};
+         case civilian:		{_mrkrcolor = "ColorYellow"};
+};
+
 //_vehicle = "AH1Z";
 //_vehicle = "AH64D";
 //_vehicle = "AH64D_EP1";
@@ -129,208 +70,170 @@ if (isNil {_unit getVariable "RotaryWing"}) then {
 //_vehicle = "UH60M_EP1";
 //_vehicle = "UH60M_MEV_EP1";
 
-_vehicle = [];
+_randDir = getDir vehicle _sourcePoint - 10;
+_randDir = _randDir + random(20);
+_randDist = (random 100) + 2000;
+_spawnLoc =	[(getPos vehicle _sourcePoint select 0) + (_randDist * sin(_randDir)), (getPos vehicle _sourcePoint select 1) + (_randDist * cos(_randDir)), 0];
 
-switch (playerSide) do 
-{
-	case west: 		{_vehicle = "AH64D_EP1"};
-	case east: 		{_vehicle = "Ka52Black"};
-	case resistance: 	{_vehicle = "Ka137_MG_PMC"};
-	case civilian: 	{_vehicle = "Mi17_Civilian"};
-};
-
-_mrkrcolor 	= [];
-
-switch (_sideUnit) do {
-
-	case west:		{_mrkrcolor = "ColorBlue"};
-	case east:		{_mrkrcolor = "ColorRed"};
-	case resistance:	{_mrkrcolor = "ColorGreen"};
-	case civilian:		{_mrkrcolor = "ColorYellow"};        
-};
-
-_marker = createMarkerLocal ["RWStart", _spawnLoc];
+_marker = createMarkerLocal ["HStart", _spawnLoc];
 _marker setMarkerTypeLocal "select";
 _marker setMarkerShapeLocal "Icon";  
-_marker setMarkerTextLocal " RWStart";
+_marker setMarkerTextLocal "HStart";
 _marker setMarkerSizeLocal [0.75,0.75];
 _marker setMarkerColorLocal _mrkrcolor;	
+
+if (isServer) then {
+ 
+uisleep 0.25;
+openMap true;
+uisleep 0.25;
+
+	PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat format ["RotaryWingCAS ready, %1, mark your target on the map!", name _unit];
+	
+dt=true;
+onMapSingleClick "RWTarget = _pos;dt=false";
+waitUntil {!dt};
+onMapSingleClick "";
+
+	_blinky = "Sign_sphere10cm_EP1" createVehicle RWTarget;	
+	_targets = nearestObjects[_blinky,["Man","Car","Air","Tank","Truck","Ship","Static","House","Office","Barracks","Hanger"], 75];
+	_target = _targets select 0;
+	deleteVehicle _blinky;
+
+uisleep 2;
+openMap false;	
+
+uisleep 0.25;   
+
+if (count _targets > 0) then
+
+{		
+	_airDist = _unit distance _target;
+
+	PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat format ["%1 marked is %2 meters from %3.", typeOf _target, round(_airDist)/1.0, name _unit];
+
+	uisleep 1;
+	[_target] execVM "008\twirlyMrkr.sqf";
+	_target addEventHandler ["Killed", {[_this select 0, _this select 1,[]] execVM "008\onKilled.sqf"}];
+	_type = typeOf _target;
+
+	_smoke = "SmokeShellRed" createVehicle (_target modelToWorld [0,0,50]);
 
 	_blinky = "Sign_sphere10cm_EP1" createVehicle _spawnLoc;
 	_flightPath = [_blinky, _target] call BIS_fnc_relativeDirTo;	
 	deleteVehicle _blinky;	
-
-	_ch = [[_spawnLoc select 0, _spawnLoc select 1, 300], _flightPath, _vehicle, side _unit] call BIS_fnc_spawnVehicle;
-
-	_unit setVariable ["RotaryWing", _vehicle, true];
-			
+	
+	_ch = [[_spawnLoc select 0, _spawnLoc select 1, 120], _flightPath, _vehicle, side _unit] call BIS_fnc_spawnVehicle;
+	
 	RotaryWingCAS = _ch select 0;
 	
 	_chGroup = _ch select 2; 
 	
 	addSwitchableUnit leader _chGroup;
-		
+	
 	_ch select 0 setVehicleInit "RotaryWingCAS = this; this setVehicleVarName 'RotaryWingCAS'; RotaryWingCASGroup=group this; this setGroupID ['RotaryWingCASGroup', 'GroupColor4'];  
-	this flyInHeight 70;
-	this setVariable ['speedLimit', 300];
+	this flyInHeight 100;
 	this setvehiclelock 'unlocked'; 
+	clearWeaponCargo this;
 	this addWeaponCargo ['DMR',1]; 
 	this addMagazineCargo ['20Rnd_762x51_DMR',8]; 
 	this addWeaponCargo ['m240_scoped_EP1',1];
 	this addMagazineCargo ['100Rnd_762x51_M240',4];
 	this addWeaponCargo ['JAVELIN',1]; 
 	this addMagazineCargo ['JAVELIN',4];
+	[this] execVM '008\setIdentity.sqf';
 	[this] execVM '008\loadoutAir.sqf';
-	this addEventHandler ['Fired',{[_this select 0,getNumber (configFile/'CfgAmmo'/(_this select 4)/'explosive')] spawn {if (_this select 1==1) then {sleep 0.5};_this select 0 setVehicleAmmo 1; _this select 0 setVariable ['RWCASfired', [] + [1]];}}];
-	this addEventHandler ['killed', {[_this select 0, _this select 1, ['RWStart']] execVM '008\onKilled.sqf'}];
-	this addEventHandler ['handleDamage', { (damage (_this select 0)) +  0.01; (damage (_this select 2)) +  0.01 }]; 
+	this addEventHandler ['Fired',{[_this select 0,getNumber (configFile/'CfgAmmo'/(_this select 4)/'explosive')] spawn {if (_this select 1==1) then {uisleep 0.5};_this select 0 setVehicleAmmo 1}}];
+	this addEventHandler ['Killed', {[_this select 0, _this select 1, ['HStart',objNull,objNull]] execVM '008\onKilled.sqf'}];
 	{[_x] execVM '008\adfalse.sqf'} forEach crew this;
-	this addeventhandler ['getin', {_nul=[_this select 2] execVM '008\adfalse.sqf'}];
-	this addeventhandler ['getout', {_nul=[_this select 2] execVM '008\adtrue.sqf'}];";
+	this addeventhandler ['Getin', {_nul=[_this select 2] execVM '008\adfalse.sqf'}];
+	this addeventhandler ['Getout', {_nul=[_this select 2] execVM '008\adtrue.sqf'}];";
 	processInitCommands;
 	
-	RotaryWingCAS spawn {
-		
-	while {alive _this && canMove _this} do {
-		
-		_this limitSpeed (_this getVariable "speedLimit");
-		
-		uisleep 0.1;			
-		};		
+	[_target,RotaryWingCAS] execVM "008\snapShot2.sqf";
+	//[_target] execVM "008\snapShot5.sqf";
+
+	_target addEventHandler ["Killed", {[_this select 0, _this select 1, []] execVM "008\onKilled.sqf"}];
+	
+	_targetPos = getPos _target;
+
+	_airDist2 = RotaryWingCAS distance _target;
+
+	_height = (_target call BIS_fnc_boundingBoxDimensions) select 2;
+
+	_laze = "LaserTargetW" createVehicle getPos _target;	
+
+	_laze attachTo [_target,[0,0,_height/2]];
+
+	_laze spawn {
+
+	    t = time;
+
+	    waituntil {isnull _this};
+
+	    hintSilent format ["time started\n%1\n\ntime stopped\n%2\n\ntotal time\n%3",str t,str time,str (time - t)];
+
+	    copyToClipboard format ["time started\n%1\n\ntime stopped\n%2\n\ntotal time\n%3",str t,str time,str (time - t)];
 	};
 
-	RotaryWingCAS spawn {
-		
-	while {alive _this && canMove _this} do {
-		
-	if (currentWeapon player == "Laserdesignator" && cameraOn == player && cameraView == "Gunner") then 
-	{	
-		detach RWlaze;
+	{_x doWatch getPos _laze} forEach units _chGroup;
 
-		deleteVehicle RWlaze;
-			    
-		deleteVehicle RWsign;
-		
-		hintSilent "Laser designator view is on. Target laser spot is deleted.";	    
-	} else {		
-		hintSilent "Laser designator view is off.";	
-	};	
-		sleep 2;	   
-	};
+	{_x lookAt _laze} forEach units _chGroup;
 
-	};
-	
-	RotaryWingCAS spawn {
-	
-	while {alive RotaryWingCAS && canMove RotaryWingCAS} do {
-		
-		waitUntil {[RotaryWingCAS, RWlaze] call BIS_fnc_distance2D < 200};
-			
-		_kv = RotaryWingCAS knowsAbout RWlaze;
-		
-	if (_kv < 1) then	
-	{	
-		detach RWlaze;
+	RotaryWingCAS reveal [_laze, 2];
 
-		deleteVehicle RWlaze;
-			    
-		deleteVehicle RWsign;
+	RotaryWingCAS doTarget _laze;
 
-		RotaryWingCAS SideChat format ["Pilot cannot see target. Target knowledge is %1. Laser spot is deleted.",round(_kv)];	    
-	} else {		
-		RotaryWingCAS SideChat format ["Pilot can see target. Target knowledge is %1.",round(_kv)];	
-	};		
-		sleep 5;
-	};
-	
-	};	
-	
-	RotaryWingCAS spawn {
-	
-	while {alive RotaryWingCAS && canMove RotaryWingCAS} do {
-		
-		waitUntil {[RotaryWingCAS, RWlaze] call BIS_fnc_distance2D < 200};
-			
-		_RWCASfired = RotaryWingCAS getVariable "RWCASfired";
-		PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat format ["RotaryWingCAS has fired %1 rocket rounds.", _RWCASfired];
-		//hint format ["%1",_RWCASfired];
-		
-	if (_RWCASfired > 0) then	
-	{	
-		detach RWlaze;
-
-		deleteVehicle RWlaze;
-			    
-		deleteVehicle RWsign;
-
-		RotaryWingCAS SideChat format ["Pilot has fired rockets, %1. Laser spot is deleted.",_RWCASfired];	    
-	} else {		
-		RotaryWingCAS SideChat format ["Pilot has fired rockets, %1. Laser spot is deleted.",_RWCASfired];	
-	};		
-		sleep 5;
-	};
-	
-	};
-};
-
-_airDist2 = [RotaryWingCAS, _targetPos] call BIS_fnc_distance2D;
-	
-PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat format ["RotaryWingCAS is %1 meters distant from %2.", round(_airDist2)/1.0, typeOf _target];
-
-while {(count (waypoints RotaryWingCASGroup)) > 0} do {
-	deleteWaypoint ((waypoints RotaryWingCASGroup) select 0);
-	sleep 0.01;
-	};
-				    
-	wp0 = RotaryWingCASGroup addwaypoint [_targetPos, 100];
+	wp0 = _chGroup addwaypoint [_targetPos, 20];
 	wp0 setwaypointtype "MOVE";	
 	wp0 setWaypointBehaviour "AWARE";
 	wp0 setWaypointCombatMode "YELLOW";
 	wp0 setWaypointSpeed "NORMAL";
-	wp0 setWaypointStatements ["true","RotaryWingCAS setVariable ['speedLimit', 100]; driver (vehicle this) sideChat 'RotaryWingCAS in target area!';"];
-				
-	wp1 = RotaryWingCASGroup addwaypoint [_unitPos, 100];
+	wp0 setWaypointStatements ["true",""];
+
+	waitUntil {([RotaryWingCAS,_target] call BIS_fnc_distance2D) <= 1200};
+
+	{_x doFire _laze} forEach units _chGroup;
+
+	RotaryWingCAS doFire _laze;
+
+	{_x doFire _target} forEach units _chGroup;
+
+	RotaryWingCAS doFire _target;
+
+	waitUntil {([RotaryWingCAS,_target] call BIS_fnc_distance2D) <= 300};
+
+	detach _laze;
+
+	deleteVehicle _laze;
+
+	_target setDamage 1;
+	
+	wp1 = _chGroup addwaypoint [_unitPos, 20];
 	wp1 setwaypointtype "MOVE";	
 	wp1 setWaypointBehaviour "AWARE";
-	wp1 setWaypointCombatMode "RED";
+	wp1 setWaypointCombatMode "GREEN";
 	wp1 setWaypointSpeed "LIMITED";
-	wp1 setWaypointStatements ["true",""];
+	wp1 setWaypointStatements ["true","driver (vehicle this) sideChat format ['RotaryWingCAS returning to BASE!'];"];
 
-	wp2 = RotaryWingCASGroup addwaypoint [_targetPos, 100];
-	wp2 setwaypointtype "MOVE";	
-	wp2 setWaypointBehaviour "AWARE";
-	wp2 setWaypointCombatMode "RED";
-	wp2 setWaypointSpeed "NORMAL";
-	wp2 setWaypointStatements ["true",""];
-				
-	wp3 = RotaryWingCASGroup addwaypoint [_unitPos, 100];
-	wp3 setwaypointtype "MOVE";	
-	wp3 setWaypointBehaviour "AWARE";
-	wp3 setWaypointCombatMode "RED";
-	wp3 setWaypointSpeed "LIMITED";
-	wp3 setWaypointStatements ["true","!alive RWlaze; RotaryWingCAS setVariable ['speedLimit', 300]; driver (vehicle this) sideChat 'RotaryWingCAS returning to BASE!';"];
-	
-	wp4 = RotaryWingCASGroup addwaypoint [_spawnLoc, 100];
-	wp4 setwaypointtype "MOVE";
-	wp4 setWaypointBehaviour "AWARE";
-	wp4 setWaypointCombatMode "GREEN";
-	wp4 setWaypointSpeed "FULL";
-	wp4 setWaypointStatements ["true","{deletevehicle _x} foreach (crew vehicle this + [vehicle this]);"];
-
+	wp2 = _chGroup addwaypoint [_spawnLoc, 20];
+	wp2 setwaypointtype "MOVE";
+	wp2 setWaypointBehaviour "CARELESS";
+	wp2 setWaypointCombatMode "BLUE";
+	wp2 setWaypointSpeed "FULL";
+	wp2 setWaypointStatements ["true","{deletevehicle _x} foreach (crew vehicle this + [vehicle this]);deleteMarkerLocal 'HStart';"];
+			
 	waitUntil {!alive RotaryWingCAS};
 	
- 	PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat format ["RotaryWingCAS ready for reassignment!"];
-
-	_unit setVariable ["RotaryWing",nil];
-	deleteMarkerLocal "RWStart";
-	deleteMarkerLocal "RWTarget";
-	detach RWlaze;
-	deleteVehicle RWlaze;
-	deleteVehicle RWsign;
+	titleText [format ["Press Home To Return"],"plain down"];
 	
+ 	PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat format ["RotaryWingCAS ready for reassignment!", name _unit];
+
 } else {
 		
 	PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat format ["No targets in that area, %1!", name _unit];
 	uisleep 1;
+	
+ 	deleteMarkerLocal _marker;
   };
 };	

@@ -4,15 +4,17 @@ _unit = _this select 0;
 _varName = vehicleVarName _unit;
 _rank = rank _unit;
 
-  if (!(isNil { _unit getVariable "markerCount"})) then
-      {
-      _mrkrCnt = (_unit getVariable "markerCount") select 2;
-      _mrkrCnt = _mrkrCnt + 1;
-      _unit setVariable ["markerCount", [_varName,_rank,_mrkrCnt], true];
-  } else {   
-      _mrkrCnt = 1;
-      _unit setVariable ["markerCount", [_varName,_rank,_mrkrCnt], true];
-  };
+//if (isMultiplayer) then {player addEventHandler ["Respawn", {[(_this select 0),(_this select 1)] execVM "markerID_MP.sqf"}]};
+
+if (!(isNil { _unit getVariable "markerCount"})) then
+    {
+    _mrkrCnt = (_unit getVariable "markerCount") select 2;
+    _mrkrCnt = _mrkrCnt + 1;
+    _unit setVariable ["markerCount", [_varName,_rank,_mrkrCnt]];
+} else {   
+    _mrkrCnt = 1;
+    _unit setVariable ["markerCount", [_varName,_rank,_mrkrCnt]];
+};
 switch true do 
   {
   case (!isMultiplayer): {
@@ -36,17 +38,17 @@ switch true do
       _marker setMarkerPos getPos _unit;
       _marker setMarkerDir getDir _unit;  
       if (vehicle _unit != _unit) then {_marker setMarkerAlphaLocal 0} else {_marker setMarkerAlphaLocal 1};
-      sleep 0.5;
+      uisleep 0.5;
     };
     deleteMarker _marker;
     if (!(isNil { _unit getVariable "markerCount"})) then
         {
         _mrkrCnt = (_unit getVariable "markerCount") select 2;
         _mrkrCnt = _mrkrCnt + 1;
-        _unit setVariable ["markerCount", [_varName,_rank,_mrkrCnt], true];
+        _unit setVariable ["markerCount", [_varName,_rank,_mrkrCnt]];
     } else {   
         _mrkrCnt = 1;
-        _unit setVariable ["markerCount", [_varName,_rank,_mrkrCnt], true];
+        _unit setVariable ["markerCount", [_varName,_rank,_mrkrCnt]];
     };
     _mrkrCnt = (_unit getVariable "markerCount") select 2;  
     _mrkrName = format ["%1_%2",_varName,_mrkrCnt];
@@ -58,10 +60,11 @@ switch true do
     _mrkr setMarkerAlphaLocal .5;
     };
   case (isMultiplayer): {
-  _unit addMPEventHandler ["MPRespawn", {[(_this select 0),(_this select 1)] spawn {
+  _unit addEventHandler ["Respawn", {_this spawn {
     private ["_unit","_dead","_varName","_rank"];
     _unit = _this select 0;
     _dead = _this select 1;
+    hint format ["%1",(_dead getVariable "markerCount")];
     _varName = (_dead getVariable "markerCount") select 0;
     _rank = (_dead getVariable "markerCount") select 1;
     _mrkrCnt = (_dead getVariable "markerCount") select 2;  
@@ -90,17 +93,17 @@ switch true do
       _marker setMarkerPos getPos _unit;
       _marker setMarkerDir getDir _unit;  
       if (vehicle _unit != _unit) then {_marker setMarkerAlphaLocal 0} else {_marker setMarkerAlphaLocal 1};
-      sleep 0.5;
+      uisleep 0.5;
     };
     deleteMarker _marker;
     if (!(isNil { _unit getVariable "markerCount"})) then
         {
         _mrkrCnt = (_unit getVariable "markerCount") select 2;
         _mrkrCnt = _mrkrCnt + 1;
-        _unit setVariable ["markerCount", [_varName,_rank,_mrkrCnt], true];
+        _unit setVariable ["markerCount", [_varName,_rank,_mrkrCnt]];
     } else {   
         _mrkrCnt = 1;
-        _unit setVariable ["markerCount", [_varName,_rank,_mrkrCnt], true];
+        _unit setVariable ["markerCount", [_varName,_rank,_mrkrCnt]];
     };
     _mrkrCnt = (_unit getVariable "markerCount") select 2;  
     _mrkrName = format ["%1_%2",_varName,_mrkrCnt];

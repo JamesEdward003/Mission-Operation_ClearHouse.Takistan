@@ -4,9 +4,9 @@ _unit 	= _this select 1;
 _id 		= _this select 2;                
 //_params = _this select 3;
 
-_unit setVariable ["CLY_addweapon",nil,true];
+_unit setVariable ["CLY_addweapon",nil];
 
-_unit setVariable ["savedloadout","true",true];
+_unit setVariable ["savedloadout","true"];
 
 private ["_weapons","_magazines","_p","_primw"];
 _weapons = weapons player;
@@ -32,5 +32,5 @@ if (_primw != "") then {
     _muzzles = getArray(configFile>>"cfgWeapons" >> _primw >> "muzzles");
     _p selectWeapon (_muzzles select 0);
 };
-_p setVariable ["CLY_addweapon",nil,true];
-_p setVariable ["savedloadout","true",true];
+_p setVariable ["CLY_addweapon",nil];
+_p setVariable ["savedloadout","true"];

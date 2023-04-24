@@ -114,7 +114,7 @@ sleep 1;
 //////////////////////////////////////////////////
 while {!isNil"MdhDwAktWeather"} do
 {	
-setwind [MdhDwWx,MdhDwWy,true];
+setwind [MdhDwWx,MdhDwWy];
 3 setrain MdhDwAktWeather;
 sleep 1;
 };

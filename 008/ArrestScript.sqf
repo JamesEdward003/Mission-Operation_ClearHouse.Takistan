@@ -9,7 +9,7 @@ _unit = cursorTarget;
 
 [_unit] execVM "008\handsUpArrest.sqf";
 
-Act1 = _unit addaction ["<t color='#FF0000'>Arrest Chinaman</t>","008\arreststart.sqf",nil,1,false,true,"","((_target distance _this)<3"];
+Act1 = _unit addaction ["<t color='#FF0000'>Arrest Chinaman</t>","008\arreststart.sqf",[],1,false,true,"","((_target distance _this)<3)"];
 
 ["ArrestStart", {
 	private ["_gen", "_caller", "_id"];

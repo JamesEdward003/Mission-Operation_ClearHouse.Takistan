@@ -21,12 +21,12 @@ for "_i" from 0 to count _injuredGrp - 1 do {
 	
 	if (lifeState _injured == "ALIVE") then {
 		_injured setDamage 0;
-		hintSilent parseText format["<t size='1' font='Zeppelin33' color='#FFFF00'>%1<br/>patched up<br/>%2. You're good to go!", vehicleVarname _teamleader,vehicleVarname _injured];
+		hintSilent parseText format["<t size='1' font='Zeppelin33' color='#FFFF00'>%1<br/>patched up<br/>%2<br/>You're good to go!", vehicleVarname _teamleader,vehicleVarname _injured];
 	};
 	if (lifeState _injured == "UNCONSCIOUS") then {
 		_injured setDamage 0;
 		_injured setUnconscious false;
-		hintSilent parseText format["<t size='1' font='Zeppelin33' color='#FFFF00'>%1<br/>healed<br/>%2. You're good to go!", vehicleVarname _teamleader,vehicleVarname _injured];
+		hintSilent parseText format["<t size='1' font='Zeppelin33' color='#FFFF00'>%1<br/>healed<br/>%2<br/>You're good to go!", vehicleVarname _teamleader,vehicleVarname _injured];
 	};	
 };
 

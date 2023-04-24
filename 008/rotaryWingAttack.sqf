@@ -100,7 +100,7 @@ if (isServer) then {
 if (count _targets > 0) then
 
 {		
-	//PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat format ["%1 marked is %2 meters distant from %3.", typeOf _target, round(_airDist)/1.0, name _unit];
+	//PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat format ["%1 marked is %2 meters from %3.", typeOf _target, round(_airDist)/1.0, name _unit];
 
 	_blinky = "Sign_sphere10cm_EP1" createVehicle _spawnLoc;
 	_flightPath = [_blinky, _target] call BIS_fnc_relativeDirTo;	
@@ -134,7 +134,7 @@ if (count _targets > 0) then
 
 	_airDist2 = RotaryWingCAS distance _target;
 	
-	PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat format ["Enemy air attack is %1 meters distant from %2.", round(_airDist2)/1.0, typeOf _target];
+	PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat format ["Enemy air attack is %1 meters from %2.", round(_airDist2)/1.0, typeOf _target];
 	
 	wp0 = _chGroup addwaypoint [_targetPos, 20];
 	wp0 setwaypointtype "MOVE";	

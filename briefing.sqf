@@ -1,8 +1,6 @@
 waitUntil {!isNil {player}};
 waitUntil {player == player};
 if (!isNil {player getVariable "Briefing"}) exitWith {};
-_i = 0; 
-waitUntil { _i = _i + 1; _i >= 30 };
 
 player setVariable ["Briefing",true];
 
@@ -140,6 +138,11 @@ tskClearVillage = player createSimpleTask ["Clear suspected Taliban held Village
 tskClearVillage setSimpleTaskDescription ["Clear a <marker name='target_location'>Village</marker> that is Suspected of being held by Taliban and Foreign Fighters", "Clear all Taliban out of that Location", "Clear all TALIBAN out of that Location"];
 tskClearVillage setSimpleTaskDestination (getMarkerPos "target_location");
 
+_nearestMarker = [["hvt_1","hvt_2","hvt_3","hvt_4"], hvt1] call BIS_fnc_nearestPosition;
+tskElimHVT = player createSimpleTask ["Eliminate high value targets", tskClearVillage];
+tskElimHVT setSimpleTaskDescription [format["Eliminate any and all <marker name='%1'>HVT's</marker> found!",_nearestMarker], "Eliminate high value targets", "Eliminate high value targets"];
+tskElimHVT setSimpleTaskDestination (getMarkerPos format ['%1',_nearestMarker]);
+
 switch (group player) do
 {
 	case Alpha1:	{
@@ -189,61 +192,65 @@ switch (group player) do
 	};	
 };
 
-taskStateCheck = {
-	if (tskRTBcompleted) then {tskRTB setTaskState "SUCCEDED"};
-	if (tskRTBassigned) then {tskRTB setTaskState "ASSIGNED"};
-	if (tskExvillLZcompleted) then {tskExvillLZ setTaskState "SUCCEDED"};
-	if (tskExvillLZassigned) then {tskExvillLZ setTaskState "ASSIGNED"};
-	if (tskClearVillageCompleted) then {tskClearVillage setTaskState "SUCCEEDED"};
-	if (tskClearVillageAssigned) then {tskClearVillage setTaskState "ASSIGNED"};
-	if (tskInsertLZcompleted) then {tskInsertLZ setTaskState "SUCCEDED"};
-	if (tskInsertLZassigned) then {tskInsertLZ setTaskState "ASSIGNED"};
+player addEventHandler ["Killed", {
+	private ["_unit","_killer"];
+	_unit = _this select 0;
+	_killer = _this select 1;
+	[] spawn {
+		waitUntil {alive player};
+		waitUntil {!isNil {player getVariable "Briefing"}};
+		tskInsertLZpv = missionNamespace getVariable "tskInsertLZpv";
+		tskClearVillagepv = missionNamespace getVariable "tskClearVillagepv";
+		tskElimHVTpv = missionNamespace getVariable "tskElimHVTpv";
+		tskExvillLZpv = missionNamespace getVariable "tskExvillLZpv";
+		tskRTBpv = missionNamespace getVariable "tskRTBpv";
 
-	publicVariable "tskRTBcompleted";
-	publicVariable "tskRTBassigned";
-	publicVariable "tskExvillLZcompleted";
-	publicVariable "tskExvillLZassigned";
-	publicVariable "tskClearVillageCompleted";
-	publicVariable "tskClearVillageAssigned";
-	publicVariable "tskInsertLZcompleted";
-	publicVariable "tskInsertLZassigned";
-};
-call taskStateCheck;
-
-if (isMultiplayer) then {	
-	
-	player addEventHandler ["MPRespawn", {
-		_unit = _this select 0;
-		_dead = _this select 1;
-		_varName = vehicleVarname _dead;
-		_unit setIdentity _varName;
-		call taskStateCheck;
-	}];
-};
-
-
-
-/*
-if (!isMultiplayer) then {
-	
-	publicVariable "mk_killedEHadded";
-
-	if ( isNil{player getVariable "mk_killedEHadded"} ) then {
-		
-		player addEventHandler ["killed", {
-				
-			[] spawn {
-				
-				waitUntil { alive player };
-
-				execVM "briefing.sqf";
-
-			};
-
-		}];
-
-		player setVariable ["mk_killedEHadded", true];
+		switch (tskInsertLZpv) do {
+			case 1:	{tskInsertLZ setTaskState "NONE"};
+			case 2:	{tskInsertLZ setTaskState "CREATED"};
+			case 3:	{tskInsertLZ setTaskState "ASSIGNED"};
+			case 4:	{tskInsertLZ setTaskState "SUCCEEDED"};
+			case 5:	{tskInsertLZ setTaskState "FAILED"};
+			case 6:	{tskInsertLZ setTaskState "CANCELED"};
+			default {tskInsertLZ setTaskState "CREATED"};
+		};
+		switch (tskClearVillagepv) do {
+			case 1:	{tskClearVillage setTaskState "NONE"};
+			case 2:	{tskClearVillage setTaskState "CREATED"};
+			case 3:	{tskClearVillage setTaskState "ASSIGNED"};
+			case 4:	{tskClearVillage setTaskState "SUCCEEDED"};
+			case 5:	{tskClearVillage setTaskState "FAILED"};
+			case 6:	{tskClearVillage setTaskState "CANCELED"};
+			default {tskClearVillage setTaskState "CREATED"};
+		};
+		switch (tskElimHVTpv) do {
+			case 1:	{tskElimHVT setTaskState "NONE"};
+			case 2:	{tskElimHVT setTaskState "CREATED"};
+			case 3:	{tskElimHVT setTaskState "ASSIGNED"};
+			case 4:	{tskElimHVT setTaskState "SUCCEEDED"};
+			case 5:	{tskElimHVT setTaskState "FAILED"};
+			case 6:	{tskElimHVT setTaskState "CANCELED"};
+			default {tskElimHVT setTaskState "CREATED"};
+		};
+		switch (tskExvillLZpv) do {
+			case 1:	{tskExvillLZ setTaskState "NONE"};
+			case 2:	{tskExvillLZ setTaskState "CREATED"};
+			case 3:	{tskExvillLZ setTaskState "ASSIGNED"};
+			case 4:	{tskExvillLZ setTaskState "SUCCEEDED"};
+			case 5:	{tskExvillLZ setTaskState "FAILED"};
+			case 6:	{tskExvillLZ setTaskState "CANCELED"};
+			default {tskExvillLZ setTaskState "CREATED"};
+		};
+		switch (tskRTBpv) do {
+			case 1:	{tskRTB setTaskState "NONE"};
+			case 2:	{tskRTB setTaskState "CREATED"};
+			case 3:	{tskRTB setTaskState "ASSIGNED"};
+			case 4:	{tskRTB setTaskState "SUCCEEDED"};
+			case 5:	{tskRTB setTaskState "FAILED"};
+			case 6:	{tskRTB setTaskState "CANCELED"};
+			default {tskRTB setTaskState "CREATED"};
+		};
 
 	};
-};
-*/
+
+}];

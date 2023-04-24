@@ -2,52 +2,96 @@
 // Function file for Armed Assault
 // Created by: RALPH BELL AMI
 //////////////////////////////////////////////////////////////////
-titleText ["MAPCLICK TARGET", "PLAIN DOWN"];
+//////////////////////////////////////////////////////////////////
+// Function file for Armed Assault
+// Created by:  DieHard - Function file for ArmA 2: Operation Arrowhead
+//////////////////////////////////////////////////////////////////
+_mrkr = [];
 
+switch (playerSide) do 
+{
+	case west: 		{_mrkr = "target_west"};
+	case east: 		{_mrkr = "target_east"};
+	case resistance: 	{_mrkr = "target_guerrila"};
+	case civilian: 	{_mrkr = "target_civilian"};
+};
+
+deleteMarker _mrkr;
+
+_mrkrColor = [];
+
+switch (playerSide) do 
+{
+	case west: 		{_mrkrColor = "ColorBlue"};
+	case east: 		{_mrkrColor = "ColorRed"};
+	case resistance: 	{_mrkrColor = "ColorGreen"};
+	case civilian: 	{_mrkrColor = "ColorYellow"};
+};
+
+_laze = [];
+
+switch (playerSide) do 
+{
+	case west: 		{_laze = laze_west};
+	case east: 		{_laze = laze_east};
+	case resistance: 	{_laze = laze_guerrila};
+	case civilian: 	{_laze = laze_civilian};
+};
+
+detach _laze;
+deleteVehicle _laze;
+
+PAPABEAR=[West,"HQ"]; PAPABEAR SideChat format ["%1, click on the map.", name player];
+
+sleep 1;
 openMap true;
+ 	
+dt=true;
+onMapSingleClick "spwnPt = _pos;dt=false";
+waitUntil {!dt};
+onMapSingleClick "";
 
-onmapsingleclick {
-	
-	deleteVehicle lazeThree;
-	deleteMarkerLocal "TARGET";
-	targets = nearestObjects[_pos,["House","AllVehicles"],100];
-	target = targets select 0;
-	smoke = "SmokeShell" createVehicle [(getpos target select 0),( getpos target select 1), 30];
-//	smoke setPosASL [getPos smoke select 0,getPos smoke select 1,30];
-//	smoke setPosASL [getPos smoke select 0,getPos smoke select 1,(getPosASL smoke select 2)-(getPos smoke select 2)];
-//	smoke setPosATL [getPos smoke select 0,getPos smoke select 1,30];
-//	smoke setPosATL [getPos smoke select 0,getPos smoke select 1,(getPosATL smoke select 2)-(getPos smoke select 2)];
-	//bomb = "Bo_GBU12_LGB" createVehicle [(getpos player select 0),( getpos player select 1), 100];
-//	lazeThree = "LaserTargetW" createVehicle (getpos smoke);
-	lazeThree = "LaserTargetW" createVehicle (getpos target);
-//	lazeThree setpos (getpos smoke);
-//	lazeThree setPosATL [getPos lazeThree select 0,getPos lazeThree select 1,30];
-//	lazeThree setPosATL [getPos lazeThree select 0,getPos lazeThree select 1,(getPosATL lazeThree select 2)-(getPos lazeThree select 2)];
-//	lazeThree setpos (getpos smoke);
-	//lazeThree setPos [ getPos player select 0, getPos player select 1, (getPos player select 2) +2];
-	lazeThree attachTo [target,[0,0,2]];
-	createMarkerLocal ["TARGET", target];
-	"TARGET" setMarkerTypeLocal "select";
-	"TARGET" setMarkerShapeLocal "Icon";
-	"TARGET" setMarkerTextLocal "TARGET";
-	"TARGET" setMarkerSizeLocal [1,1];
-	
-	target addEventHandler["Killed", {[_this select 0, _this select 1, [lazeThree, "TARGET"]] execVM "008\laserTargetEH.sqf"}];
-	//[smoke] execvm "008\snapshot.sqf";
-	[target] exec "camera.sqs";
-		
-	lazeThree spawn {
+	_obj = "Sign_sphere10cm_EP1" createVehicle spwnPt;
+
+sleep 1;	
+openMap false;	
+
+_targets = nearestObjects [_obj, ["Man","Car","Air","Tank","Truck","Ship","Static","House","Office","Barracks","Hanger"], 75];
+
+_target = _targets select 0;
+
+_target execvm "camera.sqf";
+
+_height = (_target call BIS_fnc_boundingBoxDimensions) select 2;
+
+_laze = "LaserTargetW" createVehicle getPos _target;
+
+_laze attachTo [_target,[0,0,_height/2]];
+
+deleteVehicle _obj;
+
+createMarkerLocal [_mrkr, getPos _obj];
+_mrkr setMarkerTypeLocal "select";
+_mrkr setMarkerShapeLocal "Icon";
+_mrkr setMarkerTextLocal "";
+_mrkr setMarkerSizeLocal [1,1];
+_mrkr setMarkerColorLocal _mrkrColor;
+
+titleText [format ["Press Numpad-0 To Return"],"plain down"];
+
+_laze spawn {
 
     t = time;
 
     waituntil {isnull _this};
 
-    hint format ["time started\n%1\n\ntime stopped\n%2\n\ntotal time\n%3",str t,str time,str (time - t)];
+    copyToClipboard format ["time started\n%1\n\ntime stopped\n%2\n\ntotal time\n%3",str t,str time,str (time - t)];
+};
 
- 	};
- 
-titleText ["", "PLAIN DOWN"];
- 
-openMap false;
- 	
-onmapsingleclick {}};
+	//_obj = "Sign_sphere10cm_EP1" createVehicle spwnPt;
+	//_smoke = "SmokeShellRed" createVehicle spwnPt;
+	//_smoke setPosATL (_smoke modelToWorld [0,0,50]);
+	//_smoke = "SmokeShellRed" createVehicle (_obj modelToWorld [0,0,50]);
+/*
+while {alive player} do {hintsilent format ["%1",cursorTarget call BIS_fnc_boundingBoxDimensions];uisleep 5;};
+*/	

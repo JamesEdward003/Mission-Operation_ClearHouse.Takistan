@@ -1,12 +1,23 @@
 // OnLeaderRespawn.sqf //
+private ["_spawnPos"];
 LeaderRespawn=true;publicVariable "LeaderRespawn";
+
+if (isMultiplayer) then {
+	player addEventHandler ["Respawn", {
+		private ["_unit","_dead"];
+		_unit = (_this select 0);
+		_dead = (_this select 1);
+		_unit execVM "OnLeaderRespawn.sqf";
+	}	
+]};
 
 while {alive player and LeaderRespawn} do {
    	_spawnPos = getPos leader player;
    	"respawn_west" setMarkerPos _spawnPos;
    	"respawn_west" setMarkerText "";
-  	sleep 5;
-};
+  	sleep 4;
+};	
+
 
 /*
 _null=[] spawn { if (LeaderRespawn) then {LeaderRespawn=false; publicVariable "LeaderRespawn"; hintSilent "Leader Respawn is OFF"; uisleep 6; hintSilent "";if (shownMap) then {openMap true}; player globalChat "Click on map to place stationary respawn marker";  onMapSingleClick "deleteMarker 'respawn_west'; LeaderRespawn=false;publicVariable 'LeaderRespawn'; _marker = createmarker ['respawn_west',_pos]; 'respawn_west' setMarkerType 'Dot';  'respawn_west' setMarkerSize [1, 1]; 'respawn_west' setMarkerDir 0.9999; 'respawn_west' setMarkerColor 'ColorGreen'; 'respawn_west' setMarkerText 'Stat Respawn';  openMap false; true; onMapSingleClick '';";} else {LeaderRespawn=true; publicVariable "LeaderRespawn"; hintSilent "Leader Respawn is ON"; uisleep 6; hintSilent "";execVM "OnLeaderRespawn.sqf";};};

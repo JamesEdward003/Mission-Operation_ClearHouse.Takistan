@@ -21,10 +21,19 @@ _vehicle = [];
 
 switch (_sideUnit) do 
 {
-	case west: 		{_vehicle = "AV8B"};
+	case west: 		{_vehicle = "F35B"};
 	case east: 		{_vehicle = "Su34"};
 	case resistance: 	{_vehicle = "Su25_Ins"};
 	case civilian: 	{_vehicle = "An2_1_TK_CIV_EP1"};
+};
+_mrkrcolor 	= [];
+
+switch (_sideUnit) do {
+
+         case west:			{_mrkrcolor = "ColorBlue"};
+         case east:			{_mrkrcolor = "ColorRed"};
+         case resistance:	{_mrkrcolor = "ColorGreen"};
+         case civilian:		{_mrkrcolor = "ColorYellow"};
 };
 
 //_vehicle = "rksl_efa_fgr4_raf_9";
@@ -48,6 +57,8 @@ switch (_sideUnit) do
 //_vehicle = "Su39";
 //_vehicle = "C130J";
 //_vehicle = "C130J_US_EP1";
+
+_airType = _vehicle;  // Type of transport.
 
 // Get mouse clicks.
 sleep 0.25;
@@ -75,13 +86,25 @@ _fastAirAliveObjects = [];
 _unit sidechat format["TARGET that ""%1""", typeOf (_fastAirAliveObjects select 0)];
 if(count _fastAirAliveObjects > 0) then
 {
+	titleText ["Fast air is on the way!!!","PLAIN DOWN"];
+	PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat format ["Fast air is on the way!!!"];
 	_fastAirTarget = _fastAirAliveObjects select 0;
 	smoke = "SmokeShellYellow" createVehicle getPos _fastAirTarget;
 	[_fastAirTarget] execVM "008\snapShot3.sqf";
-	"fastAirTargetMkr" setMarkerPos getPos _fastAirTarget;
-	"fastAirTargetMkr" setMarkerType "select";
+	[_fastAirTarget] execVM "008\twirlyMrkr.sqf";
 
-	_airType = _vehicle;  // Type of transport.
+	_randDir = getDir vehicle _sourcePoint - 10;
+	_randDir = _randDir + random(20);
+	_randDist = (random 100) + 2000;
+	_spawnLoc =	[(getPos vehicle _sourcePoint select 0) + (_randDist * sin(_randDir)), (getPos vehicle _sourcePoint select 1) + (_randDist * cos(_randDir)), 0];
+
+	_marker = createMarkerLocal ["airStart", _spawnLoc];
+	_marker setMarkerTypeLocal "select";
+	_marker setMarkerShapeLocal "Icon";  
+	_marker setMarkerTextLocal "airStart";
+	_marker setMarkerSizeLocal [0.75,0.75];
+	_marker setMarkerColorLocal _mrkrcolor;	
+
 	_start = getMarkerPos "airStart";  // location of start/spawn/delete location.
 
 	/////////////// SERVER ///////////////////
@@ -104,7 +127,8 @@ if(count _fastAirAliveObjects > 0) then
 		fastAir sidechat format["Roger that, we are %1km from your TARGET", round(_airDist)/1000.0];
 		
 		// These lines might be needed in MP. :)  Didn't test it yet.
-		_air select 0 setVehicleInit "fastAir = this; this setVehicleVarName ""fastAir""";
+		_air select 0 setVehicleInit "fastAir = this; this setVehicleVarName ""fastAir"";
+		this addEventHandler ['Killed', {[_this select 0, _this select 1, ['airStart']] execVM '008\onKilled.sqf'}];";
 		processInitCommands;
 		
 		// Delete the cute little light that let us spawn facing the right direction
@@ -115,14 +139,14 @@ if(count _fastAirAliveObjects > 0) then
 		fastAir doMove getPos _fastAirTarget;
 		fastAir flyInHeight 75;
 
-		waitUntil {fastAir distance _fastAirTarget < 2000};
-		//titleText ["Fast air is hot!!!","PLAIN DOWN"];
+		waitUntil {fastAir distance _fastAirTarget < 1200};
+		titleText ["Fast air is hot!!!","PLAIN DOWN"];
 		PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat format ["Fast air is hot!!!"];
 
 		// WP 2 - approach to TARGET
 		fastAir doMove getPos _fastAirTarget;
 
-		sleep 16; 
+		sleep 10; 
 		fastAir flyInHeight 1000;
 		bomb = "Bo_GBU12_LGB" createVehicle getPos _fastAirTarget;  
 		_fastAirTarget setDamage 1.0;
@@ -134,7 +158,7 @@ if(count _fastAirAliveObjects > 0) then
 		wp3 setWaypointType "MOVE";
 		wp3 setWaypointCombatMode "BLUE";
 		wp3 setWaypointSpeed "FULL";
-		wp3 setWaypointStatements ["true","titleText [""Fast air is now available"",""PLAIN DOWN""]; {deleteVehicle _x} forEach crew fastAir; deletevehicle fastAir; ""fastAirTargetMkr"" setMarkerType ""Empty"";"];
+		wp3 setWaypointStatements ["true","titleText [""Fast air is now available"",""PLAIN DOWN""]; {deleteVehicle _x} forEach crew fastAir; deletevehicle fastAir; deleteMarkerLocal 'airStart';"];
 	};
 }
 else
