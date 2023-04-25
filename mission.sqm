@@ -2247,7 +2247,7 @@ class Mission
 					text="Bravo1_1";
 					init="this setIdentity ""Bravo1_1""; Bravo1 = group this;";
 					description="ODA Bravo 1-1";
-					synchronizations[]={32,119,213,212};
+					synchronizations[]={32,213,212};
 				};
 				class Item1
 				{
@@ -2973,7 +2973,6 @@ class Mission
 					skill=0.60000002;
 					text="secop";
 					init="this setVariable [""settings"", [[], true, nil, nil, false]];                   this setVariable [""settings"", [[], true, [""Bravo"", [""Bravo""], ""PAPABEAR"", [""PAPABEAR""]], 120, false]]; this setVariable [""TSS_vehicle_custom"", MH47E_Kilo6_5];                                                    ";
-					synchronizations[]={94};
 				};
 			};
 		};
@@ -5150,7 +5149,7 @@ class Mission
 	};
 	class Sensors
 	{
-		items=84;
+		items=85;
 		class Item0
 		{
 			position[]={8215.6738,353.72092,2894.4519};
@@ -5555,8 +5554,8 @@ class Mission
 			repeating=1;
 			interruptable=1;
 			age="UNKNOWN";
-			text="SECOP/MENU";
-			expActiv="if (isPlayer Bravo1_1) then {secop synchronizeObjectsAdd [Bravo1_1];[[""transport"", ""aerial_reconnaissance"", ""supply_drop"", ""tactical_airstrike"", ""artillery_barrage"", ""gunship_run""], Bravo1_1] call BIS_SOM_addSupportRequestFunc; hintSilent ""SECOP SUPPORT\nAVAILABLE"";} else { _null=[] execVM ""menu.sqf""; hint ""SUPPORT MENU\nAVAILABLE"";};";
+			text="SUPPORT MENU";
+			expActiv="_null=[] execVM ""menu.sqf""; hint ""SUPPORT MENU\nAVAILABLE"";";
 			class Effects
 			{
 			};
@@ -6052,13 +6051,13 @@ class Mission
 		class Item56
 		{
 			position[]={10712.412,382.23685,2351.1489};
-			a=140;
-			b=140;
+			a=10;
+			b=10;
 			activationBy="WEST";
 			interruptable=1;
 			type="SWITCH";
 			age="UNKNOWN";
-			expCond="this and (""Man"" countType thislist > 0)";
+			expCond="this and ((""Man"" countType thislist) > 0)";
 			class Effects
 			{
 			};
@@ -6393,7 +6392,6 @@ class Mission
 			timeoutMax=50;
 			interruptable=1;
 			age="UNKNOWN";
-			expCond="thia";
 			expActiv="_null=[""<t size='1.3' color='#00E0FD'>"" + ""To Start The Mission<br />Use Your Radio To Launch Operation"" + ""</t>"",20,-1,-02,3010,5] spawn fnc_dynamicText;";
 			class Effects
 			{
@@ -6467,8 +6465,21 @@ class Mission
 			timeoutMax=10;
 			interruptable=1;
 			age="UNKNOWN";
-			expCond="alive player";
 			expActiv="_null=[""<img size='6' image='images\textures\signs\signm_usmc_airbase_co.paa'/>"",(safezoneX- 1.06)/2,-(safezoneH-0.987)/2,8,0,0,3054] spawn bis_fnc_dynamicText;";
+			class Effects
+			{
+			};
+		};
+		class Item84
+		{
+			position[]={8138.2705,345.6402,2700.9897};
+			a=0;
+			b=0;
+			repeating=1;
+			interruptable=1;
+			age="UNKNOWN";
+			text="SUPPORT MENU";
+			expActiv="if (isPlayer Bravo1_1) then {secop synchronizeObjectsAdd [Bravo1_1];[[""transport"", ""aerial_reconnaissance"", ""supply_drop"", ""tactical_airstrike"", ""artillery_barrage"", ""gunship_run""], Bravo1_1] call BIS_SOM_addSupportRequestFunc; hintSilent ""SECOP SUPPORT\nAVAILABLE"";} else { _null=[] execVM ""menu.sqf""; hint ""SUPPORT MENU\nAVAILABLE"";};";
 			class Effects
 			{
 			};

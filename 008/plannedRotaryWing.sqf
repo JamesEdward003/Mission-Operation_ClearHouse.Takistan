@@ -144,7 +144,7 @@ if (count _targets > 0) then
 	[this] execVM '008\setIdentity.sqf';
 	[this] execVM '008\loadoutAir.sqf';
 	this addEventHandler ['Fired',{[_this select 0,getNumber (configFile/'CfgAmmo'/(_this select 4)/'explosive')] spawn {if (_this select 1==1) then {uisleep 0.5};_this select 0 setVehicleAmmo 1}}];
-	this addEventHandler ['Killed', {[_this select 0, _this select 1, ['HStart',objNull,objNull]] execVM '008\onKilled.sqf'}];
+	this addEventHandler ['Killed', {[_this select 0, _this select 1, ['HStart']] execVM '008\onKilled.sqf'}];
 	{[_x] execVM '008\adfalse.sqf'} forEach crew this;
 	this addeventhandler ['Getin', {_nul=[_this select 2] execVM '008\adfalse.sqf'}];
 	this addeventhandler ['Getout', {_nul=[_this select 2] execVM '008\adtrue.sqf'}];";

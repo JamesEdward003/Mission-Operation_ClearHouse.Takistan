@@ -21,7 +21,7 @@ _vars = [lzDropOff,A_MOVE_TASK];
 }
 } forEach _vars;
 _vars = _vars - [-1];
-hint format ["%1",_vars];
+//hint format ["%1",_vars];
 
 if ((getMarkerColor "LZ") != "") then {deleteMarker "LZ"};
 if (!isNull lzDropOff) then {deleteVehicle lzDropOff};

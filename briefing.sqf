@@ -7,22 +7,21 @@ player setVariable ["Briefing",true];
 player createDiaryRecord["Diary", ["Help", "Hints from 'Helluigi':<br/>
 	- GPS toggle option set to 'Insert' or 'Home' in Control Options<br/>
 	- Use Your Radio To Toggle Group Icons! '0-0-6' -> 'ICONS ON/OFF!'<br/>
-	- LeftClick or Alt-LeftClick On Group Icons To Get Info and Camera View
+	- LeftClick or RightClick On Group Icons To Get Info and Camera View
 "]];
 player createDiaryRecord ["Diary", ["Assets", "Your assets for this mission are:<br/>
 	- Four top-notch infantry squads-U.S.Army<br/>
 	- Two top-notch infantry squads-U.S.M.C.<br/>
 	- Reinforcements-Medics-U.S.Army<br/>
 	- Reinforcements-Fireteams-U.S.Army<br/>
-	- SecOp Module synced to Bravo 1-1<br/>
-	- Artillery Strikes<br/>
+	- Support Menu synced to 0-0-9 for 0-8 access<br/>
+	- Ai-Controlled Mortar Strikes<br/>
 	- Air Strikes<br/>
-	- UAV Drones<br/>
 	- Attack Helicopters<br/>
 	- Supply Drops<br/>
 	- TPW Houselights 1.08<br/>
-	- Razor Team drops in from the North, Wait For Them!<br/>
-	- Teamswitch in Singleplayer.
+	- Teamswitch in Singleplayer<br/>
+	- Razor Team drops in from the North...Wait For Them!
 "]];
 
 player createDiaryRecord["Diary", ["Mission", "Overview: <br/>Since the enemy operations in the AO have been getting worse the U.S. Military has made its presence felt, By setting up more Military instalations and more recently upgraded the Main Air Base in the South.

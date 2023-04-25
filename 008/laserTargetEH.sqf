@@ -11,7 +11,7 @@ deleteVehicle _laze;
 deleteVehicle _smoke;
 */
 _lazes = nearestObjects [_target, ["LaserTargetW"], 20];
-//_laze = _lazes select 0;
+_laze = _lazes select 0;
 
 _cameras = nearestObjects [_target, ["camera"], 20];
 //_camera = _camera select 0;
@@ -21,8 +21,9 @@ _smokes = nearestObjects [_target, ["SmokeShellYellow"], 20];
 
 while {(count _lazes) > 0} do
 {
-detach _lazes select 0;
-deleteVehicle _lazes select 0;
+_laze = _lazes select 0;
+detach _laze;
+deleteVehicle _laze;
 sleep 0.1; 
 };
 

@@ -1,7 +1,8 @@
 // [FixedWingCAS, _laze, FixedWingCAS modelToWorld [0,0,-3], "Bo_FAB_250", 100, getPos MyGameLogic] execvm "MissileStrike\launchAirstrike.sqf"; //
 // Bo_GBU12_LGB Bo_Mk82 Bo_FAB_250 
 // M_Ch29_AT M_AT2_AT M_AT6_AT M_AT9_AT M_Hellfire_AT M_Maverick_AT M_Vikhr_AT 
-_unit = _this select 0;  
+private ["_vehicle","_missile","_missileStart","_missileType","_missileSpeed","_homeMissile","_target","_secondaryTarget","_defaultTargetPos","_guidedRandomly","_perSecondChecks","_getPrimaryTarget","_fireLight","_velocityForCheck"];
+_vehicle = _this select 0;  
 _primaryTarget 		= _this select 1; //target for the missile
 _missileStart 		= _this select 2; //position where the missile will be spawned
 _missileType 		= _this select 3; //type of the missile
@@ -49,14 +50,14 @@ _relDirVer = asin ((((getPosASL _missile) select 2) - ((getPosASL _target) selec
 _relDirVer = (_relDirVer * -1);
 [_missile, _relDirVer, 0] call BIS_fnc_setPitchBank;
 
-_velocityX = (((getPosASL _target) select 0) - ((getPosASL _missile) select 0)) / _travelTime;
-_velocityY = (((getPosASL _target) select 1) - ((getPosASL _missile) select 1)) / _travelTime;
-_velocityZ = (((getPosASL _target) select 2) - ((getPosASL _missile) select 2)) / _travelTime;
+toLower _velocityX = (((getPosASL _target) select 0) - ((getPosASL _missile) select 0)) / _travelTime;
+toLower _velocityY = (((getPosASL _target) select 1) - ((getPosASL _missile) select 1)) / _travelTime;
+toLower _velocityZ = (((getPosASL _target) select 2) - ((getPosASL _missile) select 2)) / _travelTime;
 
 //_defaultTargetPos = position _target;
 };
 
-[_velocityX, _velocityY, _velocityZ]
+[toLower _velocityX, toLower _velocityY, toLower _velocityZ]
 };
 
 call _homeMissile;

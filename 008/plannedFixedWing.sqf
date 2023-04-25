@@ -124,7 +124,7 @@ if (count _targets > 0) then
 	[this] execVM '008\setIdentity.sqf';
 	[this] execVM '008\loadoutAir.sqf';
 	this addEventHandler ['Fired',{[_this select 0,getNumber (configFile/'CfgAmmo'/(_this select 4)/'explosive')] spawn {if (_this select 1==1) then {uisleep 0.5};_this select 0 setVehicleAmmo 1}}];
-	this addEventHandler ['Killed', {[_this select 0, _this select 1, ['FStart',objNull,objNull]] execVM '008\onKilled.sqf'}];
+	this addEventHandler ['Killed', {[_this select 0, _this select 1, ['FStart']] execVM '008\onKilled.sqf'}];
 	{[_x] execVM '008\adfalse.sqf'} forEach crew this;
 	this addeventhandler ['Getin', {_nul=[_this select 2] execVM '008\adfalse.sqf'}];
 	this addeventhandler ['Getout', {_nul=[_this select 2] execVM '008\adtrue.sqf'}];";
@@ -161,20 +161,20 @@ if (count _targets > 0) then
 	wp0 setWaypointSpeed "NORMAL";
 	wp0 setWaypointStatements ["true",""];
 
-	waitUntil {([FixedWingCAS,_laze] call BIS_fnc_distance2D) <= 1600};
+	waitUntil {([FixedWingCAS,_laze] call BIS_fnc_distance2D) <= 1800};
+
+	[FixedWingCAS, _laze, FixedWingCAS modelToWorld [0,0,-2], "Bo_GBU12_LGB", 100, getPos MyGameLogic] execVM "008\MissileStrike\launchAirstrike.sqf";
+	
+	waitUntil {([FixedWingCAS,_laze] call BIS_fnc_distance2D) <= 400};
 
 	{_x doFire _laze} forEach units _chGroup;
 
 	FixedWingCAS doFire _laze;
-	
-	waitUntil {([FixedWingCAS,_laze] call BIS_fnc_distance2D) <= 800};
 
 // Bo_GBU12_LGB Bo_Mk82 Bo_FAB_250 
 // M_Ch29_AT M_AT2_AT M_AT6_AT M_AT9_AT M_Hellfire_AT M_Maverick_AT M_Vikhr_AT 
 
-	[FixedWingCAS, _laze, FixedWingCAS modelToWorld [0,0,-2], "Bo_GBU12_LGB", 100, getPos MyGameLogic] execVM "008\MissileStrike\launchAirstrike.sqf";
-
-	waitUntil {([FixedWingCAS,_laze] call BIS_fnc_distance2D) <= 400};
+	waitUntil {([FixedWingCAS,_laze] call BIS_fnc_distance2D) <= 200};
 	
 	detach _laze;
 
@@ -183,8 +183,8 @@ if (count _targets > 0) then
 	wp1 = _chGroup addwaypoint [_unitPos, 20];
 	wp1 setwaypointtype "MOVE";	
 	wp1 setWaypointBehaviour "AWARE";
-	wp1 setWaypointCombatMode "GREEN";
-	wp1 setWaypointSpeed "LIMITED";
+	wp1 setWaypointCombatMode "BLUE";
+	wp1 setWaypointSpeed "NORMAL";
 	wp1 setWaypointStatements ["true","driver (vehicle this) sideChat format ['FixedWingCAS returning to BASE!'];"];
 
 	wp2 = _chGroup addwaypoint [_spawnLoc, 20];
