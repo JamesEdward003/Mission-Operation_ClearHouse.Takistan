@@ -19,3 +19,4 @@ Joint_Operation = {
     hintSilent parseText format ["<br/><t color='#00FF00' size='2.0'>End Operation Support Menu Added!</t>"];
 };
 
+hintSilent parseText format ["<br/><t color='#00FF00' size='2.0'>Joint Operation Support Added!</t>"];

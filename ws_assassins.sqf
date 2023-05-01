@@ -68,7 +68,7 @@ All modifyable variables are explained below.
 if !(isServer) exitWith {};
 private ["_count","_done","_check","_listclose","_listclosealive","_sleep","_ran","_flee","_skillSet","_superclasses",
 "_unit","_units","_unitloc","_weaponarr","_weapon","_weaponmag","_target1","_target2","_trg","_trgsize","_debug","_chance",
-"_grp","_target","_target_type","_victim","_perfomancesleep","_game","_handle"];
+"_grp","_target","_target_type","_victim","_perfomancesleep","_game"];
 
 // LOCAL VARIABLES - MODIFYABLE
 // These variables can freely be defined by the user!
@@ -165,9 +165,8 @@ if (_check) exitWith {
 };
 
 //If the unit has already been touched by the script there's no need to execute the script again
-_handle = _unit getVariable ["ws_assassin",false];
-if (_handle) exitWith {
-	if (_debug) then {player globalchat format ["ws_assassins.sqf DEBUG: _unit:%1 has ws_assassin handle:%2, exiting",_unit,_handle];};
+if (!(isNil { _unit getVariable "ws_assassin"})) exitWith {
+	if (_debug) then {player globalchat format ["ws_assassins.sqf DEBUG: _unit:%1 already has ws_assassin handle, exiting",_unit];};
 };
 //If the civ fails the chance check there's no need to run anything else; We set the flag to make sure he's not affected again
 //Also, women can't be assassins, ARMA is sexist that way. No assassinesses (assassinas? assassinetten?) for us,

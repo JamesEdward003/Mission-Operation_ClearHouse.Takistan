@@ -8,23 +8,7 @@ waituntil {!isnil "bis_fnc_init"};
 _unit = _this select 0;
 _sideUnit = side _unit;
 _unitPos = getPos _unit;
-_sourcePoint = _unit;
-
-_vars = [lzDropOff,A_MOVE_TASK];
-{
-	if (isNil "_x") then {
-		_vars set [_forEachIndex, -1]
-} else {
-	if (!isNull _x) then {
-		_vars set [_forEachIndex, -1]
-	}
-}
-} forEach _vars;
-_vars = _vars - [-1];
-//hint format ["%1",_vars];
-
-if ((getMarkerColor "LZ") != "") then {deleteMarker "LZ"};
-if (!isNull lzDropOff) then {deleteVehicle lzDropOff};
+_sourcePoint = vehicle _unit;
 
 _vehicle = [];
 
@@ -62,7 +46,7 @@ switch (_sideUnit) do {
 //_vehicle = "MAF_AS555_EALAT";
 
 MOVE_TASK = {
-	if (!isNull A_MOVE_TASK) then {player removeSimpleTask A_MOVE_TASK};
+	if (!isNil "A_MOVE_TASK") then {player removeSimpleTask A_MOVE_TASK};
 	_task = _this select 0;
 	_task_dest = _this select 1;
 	_task_pos = getPosATL _task_dest;
@@ -74,12 +58,14 @@ MOVE_TASK = {
 	_task
 	];
 	A_MOVE_TASK setTaskState "CREATED";
-	[objNull, objNull, A_MOVE_TASK, "CREATED"] execVM "CA\Modules\MP\data\scriptCommands\taskHint.sqf";
+	taskHint ["LZ", [1, 1, .5, 1], "taskNew"];
+	//[objNull, objNull, A_MOVE_TASK, "CREATED"] execVM "CA\Modules\MP\data\scriptCommands\taskHint.sqf";
 	uisleep 4;
 
-	player setCurrentTask A_MOVE_TASK;
 	A_MOVE_TASK setTaskState "ASSIGNED";
-	[objNull, objNull, A_MOVE_TASK, "ASSIGNED"] execVM "CA\Modules\MP\data\scriptCommands\taskHint.sqf";
+	taskHint ["LZ", [0, 1, 0, 1], "taskCurrent"];
+	//[objNull, objNull, A_MOVE_TASK, "ASSIGNED"] execVM "CA\Modules\MP\data\scriptCommands\taskHint.sqf";
+	player setCurrentTask A_MOVE_TASK;
 	uisleep 10; 
 
 	PAPABEAR=[playerSide,"HQ"]; PAPABEAR SideChat "The task marker shown will be removed in 60 seconds";
@@ -173,7 +159,7 @@ openmap [false,false];
 	[this] execVM '008\heliDoors.sqf';
 	this addAction ['Alternate Landing Zone','008\altLZ.sqf',[],1,false,true,'','(alive _target)'];
 	this addEventHandler ['Fired',{[_this select 0,getNumber (configFile/'CfgAmmo'/(_this select 4)/'explosive')] spawn {if (_this select 1==1) then {uisleep 0.5};_this select 0 setVehicleAmmo 1}}];
-	this addEventHandler ['Killed', {[_this select 0, _this select 1, ['Start',lzPickup, lzDropOff]] execVM '008\onKilled.sqf'}];
+	this addEventHandler ['Killed', {[_this select 0,_this select 1,'Start',lzPickup,lzDropOff] execVM '008\onKilled.sqf'}];
 	{[_x] execVM '008\adfalse.sqf'} forEach crew this;
 	this addeventhandler ['Getin', {_nul=[_this select 2] execVM '008\adfalse.sqf'}];
 	this addeventhandler ['Getout', {_nul=[_this select 2] execVM '008\adtrue.sqf'}];
@@ -201,12 +187,12 @@ openmap [false,false];
 	_flightPath2 = [lzPickup, _endPos] call BIS_fnc_relativeDirTo;		
 	_mrkr setMarkerDirLocal (_flightPath2 + 180);
 
-	["Pickup",lzPickup] spawn MOVE_TASK;
+	["LZ",lzPickup] spawn MOVE_TASK;
 
-	_markr = createMarkerLocal ["Pickup", _landPos];
+	_markr = createMarkerLocal ["LZ", _landPos];
 	_markr setMarkerTypeLocal "mil_pickup";
 	_markr setMarkerShapeLocal "Icon";  
-	_markr setMarkerTextLocal "Pickup";
+	_markr setMarkerTextLocal "LZ";
 	_markr setMarkerSizeLocal [0.75,0.75];
 	_markr setMarkerDirLocal 0;
 	_markr setMarkerColorLocal _mrkrcolor;	
@@ -230,7 +216,7 @@ openmap [false,false];
 	lzDropOff = "HeliHEmpty" createvehicle _endPos;
 	PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat format ["TransportHelo to your LZ %1!",name _unit];
 
-	["DropOff",lzDropOff] spawn MOVE_TASK;
+	["LZ",lzDropOff] spawn MOVE_TASK;
 
 	// Once they are, off we go by setting a TRANSPORT UNLOAD waypoint.  
 	// It'll auto boot the leader once there, but he'll have to tell the others to get out.

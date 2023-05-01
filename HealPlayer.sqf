@@ -23,7 +23,7 @@ private ["_Angle", "_PosX", "_PosY", "_Position", "_Member"];
 // =======================================================================================
 
 _Player 		= Player;
-_Side 			= playerSide;
+_Side 			= west;
 _Location		= getPos _Player;
 _Group 			= group _Player;
 _Units			= units _Group;
@@ -98,8 +98,7 @@ if ((lifeState _Player == "UNCONSCIOUS") || (lifeState _Player == "ALIVE")) then
 		_Player 	action ["Heal", _Member];
 		_Player  	setUnconscious false;
 		_Player   	setCaptive false;
-//		_Player 	setVariable ["BIS_IS_inAgony",false];
-		
+		_Player 	setVariable ["BIS_IS_inAgony",false];		
 	};	
 	
 // =======================================================================================
@@ -124,8 +123,7 @@ if ((lifeState _Player == "UNCONSCIOUS") || (lifeState _Player == "ALIVE")) then
 	_Player 	action ["Heal",Ohara2];
 	_Player 	setUnconscious false;
 	_Player 	setCaptive false;	
-//	_Player 	setVariable ["BIS_IS_inAgony",false];
-	
+	_Player 	setVariable ["BIS_IS_inAgony",false];
 	};		
 };
 secop synchronizeObjectsAdd [_Player];

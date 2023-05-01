@@ -18,7 +18,6 @@ player createDiaryRecord ["Diary", ["Assets", "Your assets for this mission are:
 	- Ai-Controlled Mortar Strikes<br/>
 	- Air Strikes<br/>
 	- Attack Helicopters<br/>
-	- Supply Drops<br/>
 	- TPW Houselights 1.08<br/>
 	- Teamswitch in Singleplayer<br/>
 	- Razor Team drops in from the North...Wait For Them!

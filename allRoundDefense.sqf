@@ -22,13 +22,14 @@ _move_fnc1 = {
 	_movePos = _posArray select 0;
 	_watchPos = _posArray select 1;
 	_unit doMove _movePos;
-	//_unit moveTo _movePos;
+	_unit moveTo _movePos;
 	_unit setBehaviour "AWARE";
 	_unit setCombatMode "RED";
 	_unit setSpeedMode "NORMAL";
 	_unit setUnitPos "MIDDLE";
 	_unit doWatch _watchPos;
-	_unit commandFollow (leader _unit);
+	//uisleep 1;
+	//_unit commandFollow (leader _unit);
 };
 
 _diff = 360/_count;

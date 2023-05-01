@@ -124,15 +124,13 @@ if (count _targets > 0) then
 	[this] execVM '008\setIdentity.sqf';
 	[this] execVM '008\loadoutAir.sqf';
 	this addEventHandler ['Fired',{[_this select 0,getNumber (configFile/'CfgAmmo'/(_this select 4)/'explosive')] spawn {if (_this select 1==1) then {uisleep 0.5};_this select 0 setVehicleAmmo 1}}];
-	this addEventHandler ['Killed', {[_this select 0, _this select 1, ['FStart']] execVM '008\onKilled.sqf'}];
+	this addEventHandler ['Killed', {[_this select 0, _this select 1, 'FStart'] execVM '008\onKilled.sqf'}];
 	{[_x] execVM '008\adfalse.sqf'} forEach crew this;
 	this addeventhandler ['Getin', {_nul=[_this select 2] execVM '008\adfalse.sqf'}];
 	this addeventhandler ['Getout', {_nul=[_this select 2] execVM '008\adtrue.sqf'}];";
 	processInitCommands;
 
-	[_target,FixedWingCAS] execVM "008\snapShot2.sqf";
-
-	_target addEventHandler["Killed", {[_this select 0, _this select 1, [_laze]] execVM "008\laserTargetEH.sqf"}];
+	//[_target,FixedWingCAS] execVM "008\snapShot2.sqf";
 	
 	_targetPos = getPosATL _target;
 
@@ -146,6 +144,8 @@ if (count _targets > 0) then
 
 	_laze attachTo [_target,[0,0,_height]];
 
+	_laze addEventHandler["Killed", {[_this select 0, _this select 1, [_laze]] execVM "008\laserTargetEH.sqf"}];
+
 	{_x doWatch getPosATL _laze} forEach units _chGroup;
 
 	{_x lookAt _laze} forEach units _chGroup;
@@ -154,45 +154,45 @@ if (count _targets > 0) then
 
 	FixedWingCAS doTarget _laze;
 
-	wp0 = _chGroup addwaypoint [_targetPos, 20];
-	wp0 setwaypointtype "MOVE";	
-	wp0 setWaypointBehaviour "AWARE";
-	wp0 setWaypointCombatMode "YELLOW";
-	wp0 setWaypointSpeed "NORMAL";
-	wp0 setWaypointStatements ["true",""];
+	_wp0 = _chGroup addwaypoint [_targetPos, 20];
+	_wp0 setwaypointtype "MOVE";	
+	_wp0 setWaypointBehaviour "AWARE";
+	_wp0 setWaypointCombatMode "YELLOW";
+	_wp0 setWaypointSpeed "NORMAL";
+	_wp0 setWaypointStatements ["true",""];
 
-	waitUntil {([FixedWingCAS,_laze] call BIS_fnc_distance2D) <= 1800};
+	waitUntil {([FixedWingCAS,_laze] call BIS_fnc_distance2D) <= 800};
 
-	[FixedWingCAS, _laze, FixedWingCAS modelToWorld [0,0,-2], "Bo_GBU12_LGB", 100, getPos MyGameLogic] execVM "008\MissileStrike\launchAirstrike.sqf";
+	[FixedWingCAS, _laze, FixedWingCAS modelToWorld [0,0,-2], "Bo_GBU12_LGB", 120, getPos MyGameLogic] execVM "008\MissileStrike\launchAirstrike.sqf";
 	
-	waitUntil {([FixedWingCAS,_laze] call BIS_fnc_distance2D) <= 400};
+	//waitUntil {([FixedWingCAS,_laze] call BIS_fnc_distance2D) <= 400};
 
-	{_x doFire _laze} forEach units _chGroup;
+	//{_x doFire _laze} forEach units _chGroup;
 
-	FixedWingCAS doFire _laze;
+	//FixedWingCAS doFire _laze;
 
 // Bo_GBU12_LGB Bo_Mk82 Bo_FAB_250 
 // M_Ch29_AT M_AT2_AT M_AT6_AT M_AT9_AT M_Hellfire_AT M_Maverick_AT M_Vikhr_AT 
 
-	waitUntil {([FixedWingCAS,_laze] call BIS_fnc_distance2D) <= 200};
+	waitUntil {([FixedWingCAS,_laze] call BIS_fnc_distance2D) <= 300};
 	
 	detach _laze;
 
 	deleteVehicle _laze;
 	
-	wp1 = _chGroup addwaypoint [_unitPos, 20];
-	wp1 setwaypointtype "MOVE";	
-	wp1 setWaypointBehaviour "AWARE";
-	wp1 setWaypointCombatMode "BLUE";
-	wp1 setWaypointSpeed "NORMAL";
-	wp1 setWaypointStatements ["true","driver (vehicle this) sideChat format ['FixedWingCAS returning to BASE!'];"];
+	_wp1 = _chGroup addwaypoint [_unitPos, 20];
+	_wp1 setwaypointtype "MOVE";	
+	_wp1 setWaypointBehaviour "AWARE";
+	_wp1 setWaypointCombatMode "GREEN";
+	_wp1 setWaypointSpeed "NORMAL";
+	_wp1 setWaypointStatements ["true","driver (vehicle this) sideChat format ['FixedWingCAS returning to BASE!'];"];
 
-	wp2 = _chGroup addwaypoint [_spawnLoc, 20];
-	wp2 setwaypointtype "MOVE";
-	wp2 setWaypointBehaviour "CARELESS";
-	wp2 setWaypointCombatMode "BLUE";
-	wp2 setWaypointSpeed "FULL";
-	wp2 setWaypointStatements ["true","{deletevehicle _x} foreach (crew vehicle this + [vehicle this]);deleteMarkerLocal 'FStart';"];
+	_wp2 = _chGroup addwaypoint [_spawnLoc, 20];
+	_wp2 setwaypointtype "MOVE";
+	_wp2 setWaypointBehaviour "CARELESS";
+	_wp2 setWaypointCombatMode "BLUE";
+	_wp2 setWaypointSpeed "FULL";
+	_wp2 setWaypointStatements ["true","{deletevehicle _x} foreach (crew vehicle this + [vehicle this]);deleteMarkerLocal 'FStart';"];
 			
 	waitUntil {!alive FixedWingCAS};
 	

@@ -46,6 +46,8 @@ weathercheck=false;publicVariable "weathercheck";
 
 groupcheck=false;publicVariable "groupcheck";
 
+tc_check=false;publicVariable "tc_check";
+
 onGroupIconClick  { 
 
 	_is3D = _this select 0;
@@ -194,4 +196,22 @@ Loadout Saved! - Helmick (Bravo 1-1),["SCAR_H_CQC_CCO","ItemMap","ItemCompass","
 
 MH47E_Kilo6_1 flyInHeight 40; this addAction ["Get Equipment Preset","bon_loadoutpresets\bon_loadout_presets.sqf",[],-99,false,true,"","_this in _target"]; this addAction ["Save Loadout","OnRespawnLoadout.sqf",[],-99,false,true,"","_this in _target"]; this addAction ["Service","x_reload.sqf",[],-99,false,true,"","_this in _target"]; _null=[this] execVM "MH47Emgmt.sqf"; this addAction ["Get In Cargo","GetInCargo.sqf",[],-99,false,true,"",""]; this addEventHandler ["GetIn","(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;"]; this addEventHandler ["GetOut","(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};"]; 
 MH47E_Kilo6_2 flyInHeight 40; this addAction ["Get Equipment Preset","bon_loadoutpresets\bon_loadout_presets.sqf",[],-99,false,true,"","_this in _target"]; this addAction ["Save Loadout","OnRespawnLoadout.sqf",[],-99,false,true,"","_this in _target"]; this addEventHandler ["GetOut","(_this select 2) setBehaviour 'COMBAT'"]; this addAction ["Service","x_reload.sqf",[],-99,false,true,"","_this in _target"]; _null=[this] execVM "MH47Emgmt.sqf"; this addAction ["Get In Cargo","GetInCargo.sqf",[],-99,false,true,"",""]; this addEventHandler ["GetIn","(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;"]; this addEventHandler ["GetOut","(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};"]; 
+
+taskHint ["New Task!\nYellow!", [1, 1, .5, 1], "taskNew"];
+taskHint ["Task Assigned!\nGreen!", [0, 1, 0, 1], "taskCurrent"];
+taskHint ["Task Succeeded!\nBlue!", [0, 0, 1, 1], "taskDone"];
+taskHint ["Task Failed!\nRed!", [1, 0, 0 , 1], "taskFailed"];
+taskHint ["Task Canceled!\nPurple!", [.5, 0, .5, 1], "taskFailed"];
+
+Red: [1, 0, 0 , 1]
+Blue: [0, 0, 1, 1]
+Green: [0, 1, 0, 1]
+Cyan: [0, 1, 1, 1]
+Hot Pink: [1, .5, 1, 1]
+Purple: [.5, 0, .5, 1]
+Black: [0, 0, 0, 1]
+White: [1, 1, 1, 1]
+Orange: [1, .7, .4, 1]
+Yellow: [1, 1, .5, 1]
+Olive: [.2, .4, .2, 1]
 */

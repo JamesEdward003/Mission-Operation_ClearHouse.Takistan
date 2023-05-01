@@ -114,16 +114,16 @@ if (count _targets > 0) then
 
 	uisleep 1;
 	[_target] execVM "008\twirlyMrkr.sqf";
-	_target addEventHandler ["Killed", {[_this select 0, _this select 1,[]] execVM "008\onKilled.sqf"}];
+	_target addEventHandler ["Killed", {[_this select 0, _this select 1] execVM "008\onKilled.sqf"}];
 	_type = typeOf _target;
 
-	_smoke = "SmokeShellRed" createVehicle (_target modelToWorld [0,0,50]);
+	_smoke = "SmokeShellRed" createVehicle (_target modelToWorld [0,0,30]);
 
 	_blinky = "Sign_sphere10cm_EP1" createVehicle _spawnLoc;
 	_flightPath = [_blinky, _target] call BIS_fnc_relativeDirTo;	
 	deleteVehicle _blinky;	
 	
-	_ch = [[_spawnLoc select 0, _spawnLoc select 1, 120], _flightPath, _vehicle, side _unit] call BIS_fnc_spawnVehicle;
+	_ch = [[_spawnLoc select 0, _spawnLoc select 1, 320], _flightPath, _vehicle, side _unit] call BIS_fnc_spawnVehicle;
 	
 	RotaryWingCAS = _ch select 0;
 	
@@ -132,7 +132,7 @@ if (count _targets > 0) then
 	addSwitchableUnit leader _chGroup;
 	
 	_ch select 0 setVehicleInit "RotaryWingCAS = this; this setVehicleVarName 'RotaryWingCAS'; RotaryWingCASGroup=group this; this setGroupID ['RotaryWingCASGroup', 'GroupColor4'];  
-	this flyInHeight 100;
+	this flyInHeight 200;
 	this setvehiclelock 'unlocked'; 
 	clearWeaponCargo this;
 	this addWeaponCargo ['DMR',1]; 
@@ -144,18 +144,16 @@ if (count _targets > 0) then
 	[this] execVM '008\setIdentity.sqf';
 	[this] execVM '008\loadoutAir.sqf';
 	this addEventHandler ['Fired',{[_this select 0,getNumber (configFile/'CfgAmmo'/(_this select 4)/'explosive')] spawn {if (_this select 1==1) then {uisleep 0.5};_this select 0 setVehicleAmmo 1}}];
-	this addEventHandler ['Killed', {[_this select 0, _this select 1, ['HStart']] execVM '008\onKilled.sqf'}];
+	this addEventHandler ['Killed', {[_this select 0, _this select 1, 'HStart'] execVM '008\onKilled.sqf'}];
 	{[_x] execVM '008\adfalse.sqf'} forEach crew this;
 	this addeventhandler ['Getin', {_nul=[_this select 2] execVM '008\adfalse.sqf'}];
 	this addeventhandler ['Getout', {_nul=[_this select 2] execVM '008\adtrue.sqf'}];";
 	processInitCommands;
 	
-	[_target,RotaryWingCAS] execVM "008\snapShot2.sqf";
+	//[_target,RotaryWingCAS] execVM "008\snapShot2.sqf";
 	//[_target] execVM "008\snapShot5.sqf";
-
-	_target addEventHandler ["Killed", {[_this select 0, _this select 1, []] execVM "008\onKilled.sqf"}];
 	
-	_targetPos = getPos _target;
+	_targetPos = getPosATL _target;
 
 	_airDist2 = RotaryWingCAS distance _target;
 
@@ -164,6 +162,8 @@ if (count _targets > 0) then
 	_laze = "LaserTargetW" createVehicle getPos _target;	
 
 	_laze attachTo [_target,[0,0,_height/2]];
+
+	_laze addEventHandler["Killed", {[_this select 0, _this select 1, [_laze]] execVM "008\laserTargetEH.sqf"}];
 
 	_laze spawn {
 
@@ -184,12 +184,12 @@ if (count _targets > 0) then
 
 	RotaryWingCAS doTarget _laze;
 
-	wp0 = _chGroup addwaypoint [_targetPos, 20];
-	wp0 setwaypointtype "MOVE";	
-	wp0 setWaypointBehaviour "AWARE";
-	wp0 setWaypointCombatMode "YELLOW";
-	wp0 setWaypointSpeed "NORMAL";
-	wp0 setWaypointStatements ["true",""];
+	_wp0 = _chGroup addwaypoint [_targetPos, 20];
+	_wp0 setwaypointtype "MOVE";	
+	_wp0 setWaypointBehaviour "AWARE";
+	_wp0 setWaypointCombatMode "YELLOW";
+	_wp0 setWaypointSpeed "NORMAL";
+	_wp0 setWaypointStatements ["true",""];
 
 	waitUntil {([RotaryWingCAS,_target] call BIS_fnc_distance2D) <= 1200};
 
@@ -209,19 +209,19 @@ if (count _targets > 0) then
 
 	_target setDamage 1;
 	
-	wp1 = _chGroup addwaypoint [_unitPos, 20];
-	wp1 setwaypointtype "MOVE";	
-	wp1 setWaypointBehaviour "AWARE";
-	wp1 setWaypointCombatMode "GREEN";
-	wp1 setWaypointSpeed "LIMITED";
-	wp1 setWaypointStatements ["true","driver (vehicle this) sideChat format ['RotaryWingCAS returning to BASE!'];"];
+	_wp1 = _chGroup addwaypoint [_unitPos, 20];
+	_wp1 setwaypointtype "MOVE";	
+	_wp1 setWaypointBehaviour "AWARE";
+	_wp1 setWaypointCombatMode "GREEN";
+	_wp1 setWaypointSpeed "NORMAL";
+	_wp1 setWaypointStatements ["true","driver (vehicle this) sideChat format ['RotaryWingCAS returning to BASE!'];"];
 
-	wp2 = _chGroup addwaypoint [_spawnLoc, 20];
-	wp2 setwaypointtype "MOVE";
-	wp2 setWaypointBehaviour "CARELESS";
-	wp2 setWaypointCombatMode "BLUE";
-	wp2 setWaypointSpeed "FULL";
-	wp2 setWaypointStatements ["true","{deletevehicle _x} foreach (crew vehicle this + [vehicle this]);deleteMarkerLocal 'HStart';"];
+	_wp2 = _chGroup addwaypoint [_spawnLoc, 20];
+	_wp2 setwaypointtype "MOVE";
+	_wp2 setWaypointBehaviour "CARELESS";
+	_wp2 setWaypointCombatMode "BLUE";
+	_wp2 setWaypointSpeed "FULL";
+	_wp2 setWaypointStatements ["true","{deletevehicle _x} foreach (crew vehicle this + [vehicle this]);deleteMarkerLocal 'HStart';"];
 			
 	waitUntil {!alive RotaryWingCAS};
 	

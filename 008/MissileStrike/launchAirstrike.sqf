@@ -50,14 +50,14 @@ _relDirVer = asin ((((getPosASL _missile) select 2) - ((getPosASL _target) selec
 _relDirVer = (_relDirVer * -1);
 [_missile, _relDirVer, 0] call BIS_fnc_setPitchBank;
 
-toLower _velocityX = (((getPosASL _target) select 0) - ((getPosASL _missile) select 0)) / _travelTime;
-toLower _velocityY = (((getPosASL _target) select 1) - ((getPosASL _missile) select 1)) / _travelTime;
-toLower _velocityZ = (((getPosASL _target) select 2) - ((getPosASL _missile) select 2)) / _travelTime;
+_velocityX = (((getPosASL _target) select 0) - ((getPosASL _missile) select 0)) / _travelTime;
+_velocityY = (((getPosASL _target) select 1) - ((getPosASL _missile) select 1)) / _travelTime;
+_velocityZ = (((getPosASL _target) select 2) - ((getPosASL _missile) select 2)) / _travelTime;
 
 //_defaultTargetPos = position _target;
 };
 
-[toLower _velocityX, toLower _velocityY, toLower _velocityZ]
+[_velocityX, _velocityY, _velocityZ]
 };
 
 call _homeMissile;
