@@ -9,15 +9,18 @@ _unit = _this select 0;
 waitUntil {!isNil "WeaponParam"};
 WeaponParam = missionNamespace getVariable "WeaponParam";
 
-if (isMultiplayer) then {
+waitUntil {!isNil "WeaponRespawn"};
+if (missionNamespace getVariable "WeaponRespawn" == 4) exitWith {hintSilent parseText format["<t size='1' font='Zeppelin33' color='#FFFF00'>'Save Loadout' Not A Selected Option!</t>"];};
 
-    if (isNil {_unit getVariable "Loadout"}) then {   
+if (isMultiplayer) then {
+    if (missionNamespace getVariable "WeaponParam" != 4) exitWith {};
+    if (isNil {_unit getVariable "loadout"}) then {   
         _wep = weapons _unit;
         _mag = magazines _unit;
         _backpack = typeOf unitBackpack _unit;
         _backpackmags = getMagazineCargo unitBackpack _unit;
         _backpackweap = getWeaponCargo unitBackpack _unit;
-        _unit setVariable ["Loadout", [_wep,_mag,_backpack,_backpackmags,_backpackweap]];
+        _unit setVariable ["loadout", [_wep,_mag,_backpack,_backpackmags,_backpackweap]];
         hintSilent parseText format ["<br/><t color='#00FF00' size='1.0'>Saved Loadout!</t>"];
         uisleep 6;
         hintSilent "";
@@ -25,7 +28,7 @@ if (isMultiplayer) then {
             private ["_unit","_dead","_loadout","_wep","_mag","_backpack","_backpackmags","_backpackweap","_muzzles"];
             _unit = _this select 0;
             _dead = _this select 1;
-            _loadout = _dead getVariable "Loadout";
+            _loadout = _dead getVariable "loadout";
             _wep = _loadout select 0;
             _mag = _loadout select 1;
             _backpack = _loadout select 2;
@@ -58,7 +61,7 @@ if (isMultiplayer) then {
         _backpack = typeOf unitBackpack _unit;
         _backpackmags = getMagazineCargo unitBackpack _unit;
         _backpackweap = getWeaponCargo unitBackpack _unit;
-        _unit setVariable ["Loadout", [_wep,_mag,_backpack,_backpackmags,_backpackweap]];   
+        _unit setVariable ["loadout", [_wep,_mag,_backpack,_backpackmags,_backpackweap]];   
         hintSilent parseText format ["<br/><t color='#00FF00' size='1.0'>Saved Loadout!</t>"];
         uisleep 6;
         hintSilent "";
@@ -70,7 +73,7 @@ if (isMultiplayer) then {
         _backpack = typeOf unitBackpack _unit;
         _backpackmags = getMagazineCargo unitBackpack _unit;
         _backpackweap = getWeaponCargo unitBackpack _unit;
-        missionNamespace setVariable ["Loadout",[_wep,_mag,_backpack,_backpackmags,_backpackweap]];   
+        missionNamespace setVariable ["loadout",[_wep,_mag,_backpack,_backpackmags,_backpackweap]];   
         hintSilent parseText format["<t size='1' font='Zeppelin33' color='#FFFF00'>Loadout Saved!</t>"];
         //titleText [format ["Loadout Saved! - %1,%2,%3,%4,%5,%6",name player,_wep,_mag,_backpack,_backpackmags,_backpackweap],"plain down"];
         //copyToClipboard format ["Loadout Saved! - %1,%2,%3,%4,%5,%6",name player,_wep,_mag,_backpack,_backpackmags,_backpackweap];
@@ -80,7 +83,7 @@ if (isMultiplayer) then {
 
     waitUntil {!alive player};
     waitUntil {alive player};
-    _loadout = missionNamespace getVariable "Loadout";
+    _loadout = missionNamespace getVariable "loadout";
     _p = player;
     removeAllWeapons _p;
     removeAllItems _p;

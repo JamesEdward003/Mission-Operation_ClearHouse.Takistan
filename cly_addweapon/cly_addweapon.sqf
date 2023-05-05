@@ -127,11 +127,13 @@ _i=0;
 
 _unit setVariable ["savedloadout",nil];
 
-//Event handler for respawning unit
-if (isNil {_unit getVariable "CLY_addweapon"}) then {
+//Event handler for respawning unitif (missionNamespace getVariable "WeaponRespawn" != 4) exitWith {};
+if (!isNil {missionNamespace getVariable "loadout"}) exitWith {};
+if ((isNil {_unit getVariable "CLY_addweapon"}) and (missionNamespace getVariable "WeaponRespawn" != 4)) then {
 	_unit addEventHandler [
 		"Respawn",
 		{
+			if (!isNil {missionNamespace getVariable "loadout"}) exitWith {};
 			if (isNil {_this select 1 getVariable "savedloadout"}) then {
 				if (!isNil {_this select 1 getVariable "CLY_addweapon"}) then {
 					_addweaponarray=_this select 0 getVariable "CLY_addweapon";

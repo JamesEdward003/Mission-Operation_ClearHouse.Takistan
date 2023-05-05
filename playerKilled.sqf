@@ -180,7 +180,7 @@ camDestroy _camera;
 //_null = [] execVM "blahblahblah.sqf";
 //_null = [_plyr,_kilr,"respawn_west"] execVM "playerKilled.sqf";
 
-if (missionNamespace getVariable "WeaponParam" != 6) then {[player] execVM "Cly_addweapon\cly_unitweapons.sqf"};
+if (missionNamespace getVariable "WeaponParam" != 4) then {[player] execVM "Cly_addweapon\cly_unitweapons.sqf"};
 
 if (missionNamespace getVariable "WeaponRespawn" != 4) then {[player] execVM "weaponrespawn.sqf"};
 

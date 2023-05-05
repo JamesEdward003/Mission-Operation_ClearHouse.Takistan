@@ -30,28 +30,29 @@ PlayerSupport_Menu2 =
 DayWeaponSupport_Menu = 
 [
 	["Day Weapon Support",False],
-	["SCAR_H_STD_EGLM_Spect_SMAW",[2],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_SCAR_H_STD_EGLM_Spect_smaw.sqf'"]],"1","1"],
+	["SCAR_H_STD_EGLM_Spect",[2],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_SCAR_H_STD_EGLM_Spect.sqf'"]],"1","1"],
 	["SCAR_H_STD_EGLM_Spect_JAVELIN",[3],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_SCAR_H_STD_EGLM_Spect_Javelin.sqf'"]],"1","1"],
 	["SCAR_H_STD_EGLM_Spect_STINGER",[4],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_SCAR_H_STD_EGLM_Spect_Stinger.sqf'"]],"1","1"],
 	["SCAR_H_STD_EGLM_Spect_M136",[5],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_SCAR_H_STD_EGLM_Spect_M136.sqf'"]],"1","1"],
 	["SCAR_H_STD_EGLM_Spect_SMAW",[6],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_SCAR_H_STD_EGLM_Spect_smaw.sqf'"]],"1","1"],
 	["SCAR_l_STD_EGLM_RCO_JAVELIN",[7],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_scar_l_std_eglm_rco_javelin.sqf'"]],"1","1"],
 	["SCAR_l_STD_EGLM_RCO_SMAW",[8],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_scar_l_std_eglm_rco_smaw.sqf'"]],"1","1"],
-	["M249_SCOPED_SMAW",[9],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_m249_scoped_smaw.sqf'"]],"1","1"],
-	["M240_SCOPED_SMAW",[10],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_m240_scoped.sqf'"]],"1","1"]
+	["M249_SCOPED",[9],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_m249_scoped.sqf'"]],"1","1"],
+	["M240_SCOPED",[10],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_m240_scoped.sqf'"]],"1","1"]
 ];
 //cly_addweapon_SCAR_H_LNG_Sniper
 NightWeaponSupport_Menu =
 [
 	["Night Weapon Support",False],
-	["DMR_SMAW",[2],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_dmr_smaw.sqf'"]],"1","1"],
+	["DMR",[2],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_dmr.sqf'"]],"1","1"],
 	["DMR_JAVELIN",[3],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_dmr_javelin.sqf'"]],"1","1"],
 	["M107_TWS_SMAW",[4],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_M107_TWS_smaw.sqf'"]],"1","1"],
 	["M110_TWS_SMAW",[5],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_M110_TWS_smaw.sqf'"]],"1","1"],
 	["M110_NVG_SMAW",[6],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_M110_NVG_smaw.sqf'"]],"1","1"],
 	["M249_TWS_JAVELIN",[7],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_M249_TWS_Javelin.sqf'"]],"1","1"],
 	["M249_TWS_M136",[8],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_m249_tws_smaw.sqf'"]],"1","1"],
-	["M249_TWS_STINGER",[9],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_m249_tws_stinger.sqf'"]],"1","1"]
+	["M249_TWS_STINGER",[9],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_m249_tws_stinger.sqf'"]],"1","1"],
+	["SAVE LOADOUT",[10],"",-5,[["expression","_null=[player] execvm 'WeaponRespawn.sqf'"]],"1","1"]
 ];	
 
 MusicSupport_Menu = 

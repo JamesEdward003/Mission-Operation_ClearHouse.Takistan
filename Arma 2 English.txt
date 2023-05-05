@@ -1,0 +1,8 @@
+/////////////////////////////////////////////////////////////////////////////////
+Folding of the rotor wing: [this] exec "\ gac_USMC_MH53E \ script \ MH53fold.sqs"
+
+Parachute jump: this setpos [getpos this select 0, getpos select this one, (getpos this select 2) +1000]; this flyinheight 1000; this setvelocity [0,0,0], [this] exec "ca \ air2 \ halo \ data \ scripts \ Halo_init.sqs "
+
+ [["Transport", "aerial_reconnaissance", "supply_drop", "tactical_airstrike" "artillery_barrage"] player] BIS_SOM_addSupportRequestFunc call;
+ 
+ 

@@ -97,8 +97,7 @@ if ((lifeState _Player == "UNCONSCIOUS") || (lifeState _Player == "ALIVE")) then
 		_Member 	setUnitPos "MIDDLE";
 		_Player 	action ["Heal", _Member];
 		_Player  	setUnconscious false;
-		_Player   	setCaptive false;
-		_Player 	setVariable ["BIS_IS_inAgony",false];		
+		_Player   	setCaptive false;	
 	};	
 	
 // =======================================================================================
@@ -123,7 +122,6 @@ if ((lifeState _Player == "UNCONSCIOUS") || (lifeState _Player == "ALIVE")) then
 	_Player 	action ["Heal",Ohara2];
 	_Player 	setUnconscious false;
 	_Player 	setCaptive false;	
-	_Player 	setVariable ["BIS_IS_inAgony",false];
 	};		
 };
 secop synchronizeObjectsAdd [_Player];
@@ -137,10 +135,10 @@ acm synchronizeObjectsAdd [_Player];
 
 	this setCaptive true;this setVehicleVarName 'Ohara';this setIdentity 'Ohara';
 
-//	_Player 	setVariable ["BIS_IS_inAgony",true];
+	_Player 	setVariable ["BIS_IS_inAgony",true]; (arma 3 function) does not work here
 	_Player 	action ["Heal",_Member];
 	_Player 	setDamage .1;
-//	_Player 	setUnconscious false;
-//	_Player 	setCaptive false;	
+	_Player 	setUnconscious false;
+	_Player 	setCaptive false;	
 
 */

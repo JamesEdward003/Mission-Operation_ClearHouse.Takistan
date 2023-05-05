@@ -8,8 +8,8 @@
 
 End_Operation = {
 
-	{ for "_i" from count waypoints _x - 1 to 0 step -1 do { deleteWaypoint [_x, _i]; }; } forEach (allGroups-[MH47E_Kilo6_5]); 
-	hintSilent parseText format ["<br/><t color='#00FF00' size='2.0'>END THE OPERATION!</t>"];
+	{ for "_i" from count waypoints _x - 1 to 0 step -1 do { deleteWaypoint [_x, _i]; }; } forEach (allGroups-[Kilo6_5]); 
+	hintSilent parseText format ["<t color='#00FF00' size='2.0'>END THE OPERATION!</t>"];
 	uisleep 6;
 	{ _wp1 = _x addWaypoint [position leader _x, 10]; 
 	  _wp1 setWaypointType "MOVE"; 
@@ -25,8 +25,8 @@ End_Operation = {
 	  _wp3 setWaypointType "DISMISS";
 	  _wp3 setWaypointBehaviour "AWARE";
 	  _wp3 setWaypointCombatMode "BLUE";
-	  _wp3 setWaypointSpeed "NORMAL"; } forEach (allGroups-[MH47E_Kilo6_5]);
-    hintSilent parseText format ["<br/><t color='#00FF00' size='2.0'>RETURN TO BASE!</t>"];
+	  _wp3 setWaypointSpeed "NORMAL"; } forEach (allGroups-[Kilo6_5]);
+    hintSilent parseText format ["<t color='#00FF00' size='2.0'>RETURN TO BASE!</t>"];
 	tskExvillLZ setTaskState "SUCCEEDED";
 	missionNamespace setVariable ["tskExvillLZpv",4];
 	taskHint ["Exvill at LZ Xray", [0, 1, 0, 1], "taskDone"];
@@ -37,11 +37,34 @@ End_Operation = {
 	//_null=[objNull, objNull, tskRTB, "ASSIGNED"] execVM "CA\Modules\MP\data\scriptCommands\taskHint.sqf";
 	player setCurrentTask tskRTB;
 	EndOperation=true;publicVariable "EndOperation";
-	hintSilent parseText format ["<br/><t color='#00FF00' size='2.0'>End Operation Started!</t>"];
+	hintSilent parseText format ["<t color='#00FF00' size='2.0'>End Operation Started!</t>"];
 	if (!isEngineOn MH47E_Kilo6_5) then { 
 		MH47E_Kilo6_5 engineOn true; 
 		(driver MH47E_Kilo6_5) action ["engineOn", MH47E_Kilo6_5];
 	};  
+	_wp01 = Kilo6_5 addWaypoint [position leader player, 10]; 
+	_wp01 setWaypointType "MOVE"; 
+	_wp01 setWaypointBehaviour "AWARE";
+	_wp01 setWaypointCombatMode "BLUE";
+	_wp01 setWaypointSpeed "FULL"; 
+    _wp02 = Kilo6_5 addWaypoint [position leader player, 10]; 
+	_wp02 setWaypointType "LOAD";
+	_wp02 setWaypointBehaviour "AWARE";
+	_wp02 setWaypointCombatMode "BLUE";
+	_wp02 setWaypointSpeed "FULL";
+    _wp03 = Kilo6_5 addWaypoint [position BIS_transportHeliH, 20]; 
+	_wp03 setWaypointType "MOVE";
+	_wp03 setWaypointBehaviour "AWARE";
+	_wp03 setWaypointCombatMode "BLUE";
+	_wp03 setWaypointSpeed "NORMAL";
+    _wp04 = Kilo6_5 addWaypoint [position BIS_transportHeliH, 20]; 
+	_wp04 setWaypointType "TR UNLOAD";
+	_wp04 setWaypointBehaviour "AWARE";
+	_wp04 setWaypointCombatMode "BLUE";
+	_wp04 setWaypointSpeed "NORMAL";
+	if (isEngineOn MH47E_Kilo6_5) then { 
+		MH47E_Kilo6_5 engineOn false; 
+		(driver MH47E_Kilo6_5) action ["engineOff", MH47E_Kilo6_5];
+	};
 };
-
 

@@ -81,30 +81,30 @@ class Params
   class WeaponParam
   {
 	  title="Weapon Type:";
-	  values[]={1,2,3,4,5,6};
-	  texts[]={"Cly Weapons for Player","Cly Weapons for Player Group","Cly Weapons for Every Group","Cly Weapons for Player Group with Rockets","Cly Weapons for Every Group with Rockets","Stock"};
-	  default=6;
+	  values[]={1,2,3,4};
+	  texts[]={"Cly Weapons for Player","Cly Weapons for Player Group","Cly Weapons for Every Group","Stock"};
+	  default=3;
   };
   class WeaponRespawn
   {
 	  title="Weapon Respawn:";
 	  values[]={1,2,3,4};
 	  texts[]={"Player Only","Player Group","Whole Team","None"};
-	  default=2;
+	  default=3;
   };
   class UnlimitedAmmo 
  	{
 	  title = "Unlimited Ammo:"; 
 	  values[] = {1,2,3,4}; 
 	  texts[] = {"Player Only","Player Group","Whole Team","None"}; 
-	  default = 2; 
+	  default = 3; 
 	};
   class UnitArmor 
  	{
 	  title = "Unit Armor:"; 
 	  values[] = {1,2,3,4}; 
 	  texts[] = {"Player Only","Player Group","Whole Team","None"}; 
-	  default = 2; 
+	  default = 3; 
 	};
   class HealSelf
  	{
@@ -139,7 +139,7 @@ class Params
 	  title = "Enable Saving:"; 
 	  values[] = {1,2}; 
 	  texts[] = {"Yes","No"}; 
-	  default = 2; 
+	  default = 1; 
 	};
 	class tskInsertLZpv
 	{
