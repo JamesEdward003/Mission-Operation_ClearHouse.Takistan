@@ -38,6 +38,10 @@ End_Operation = {
 	player setCurrentTask tskRTB;
 	EndOperation=true;publicVariable "EndOperation";
 	hintSilent parseText format ["<t color='#00FF00' size='2.0'>End Operation Started!</t>"];
+	while {(count (waypoints Kilo6_5)) > 0} do {
+		deleteWaypoint ((waypoints Kilo6_5) select 0);
+		uisleep 0.01;
+		};
 	if (!isEngineOn MH47E_Kilo6_5) then { 
 		MH47E_Kilo6_5 engineOn true; 
 		(driver MH47E_Kilo6_5) action ["engineOn", MH47E_Kilo6_5];
@@ -52,6 +56,7 @@ End_Operation = {
 	_wp02 setWaypointBehaviour "AWARE";
 	_wp02 setWaypointCombatMode "BLUE";
 	_wp02 setWaypointSpeed "FULL";
+	waitUntil {(count (assignedCargo MH47E_Kilo6_5)) > 0};
     _wp03 = Kilo6_5 addWaypoint [position BIS_transportHeliH, 20]; 
 	_wp03 setWaypointType "MOVE";
 	_wp03 setWaypointBehaviour "AWARE";
@@ -62,6 +67,7 @@ End_Operation = {
 	_wp04 setWaypointBehaviour "AWARE";
 	_wp04 setWaypointCombatMode "BLUE";
 	_wp04 setWaypointSpeed "NORMAL";
+	waitUntil {(count (assignedCargo MH47E_Kilo6_5)) < 1};
 	if (isEngineOn MH47E_Kilo6_5) then { 
 		MH47E_Kilo6_5 engineOn false; 
 		(driver MH47E_Kilo6_5) action ["engineOff", MH47E_Kilo6_5];

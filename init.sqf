@@ -89,7 +89,9 @@ if ( Miles hasWeapon "NVGoggles" ) then  { Miles removeweapon "NVGoggles"; addSw
 
 {if (( !isPlayer _x ) and (_x hasWeapon "LASERDESIGNATOR" )) then  {_x removeweapon "LASERDESIGNATOR"}} forEach (if ismultiplayer then {playableunits} else {switchableunits});
 
-["ca\missions_pmc\data\ui_gps_ca.paa",-0.01, 0.1] call bis_fnc_customGPS;
+waituntil {!isnil "bis_fnc_init"};
+
+["ca\missions_pmc\data\ui_gps_ca.paa",-0.01,0.1] call bis_fnc_customGPS;
 
 [Kilo6_5,BIS_transportHeliH,BIS_transportHomeH,"som_transport"] execVM "transportHeliH.sqf";
 

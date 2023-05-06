@@ -136,10 +136,9 @@ tskClearVillage = player createSimpleTask ["Clear suspected Taliban held Village
 tskClearVillage setSimpleTaskDescription ["Clear a <marker name='target_location'>Village</marker> that is Suspected of being held by Taliban and Foreign Fighters", "Clear all Taliban out of that Location", "Clear all TALIBAN out of that Location"];
 tskClearVillage setSimpleTaskDestination (getMarkerPos "target_location");
 
-_nearestMarker = [["hvt_1","hvt_2","hvt_3","hvt_4"], hvt1] call BIS_fnc_nearestPosition;
 tskElimHVT = player createSimpleTask ["Eliminate high value targets", tskClearVillage];
-tskElimHVT setSimpleTaskDescription [format["Eliminate any and all <marker name='%1'>HVT's</marker> found!",_nearestMarker], "Eliminate high value targets", "Eliminate high value targets"];
-tskElimHVT setSimpleTaskDestination (getMarkerPos format ['%1',_nearestMarker]);
+tskElimHVT setSimpleTaskDescription ["Eliminate any and all <marker name='hvt1'>HVT's</marker> found!", "Eliminate high value targets", "Eliminate high value targets"];
+tskElimHVT setSimpleTaskDestination (getMarkerPos "hvt1");
 
 switch (group player) do
 {

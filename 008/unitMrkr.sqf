@@ -1,6 +1,6 @@
-//////////////////////////////////////////////////////////////////
+// [this] execVM "008\unitMrkr.sqf" //
 _unit = _this select 0;
-_varname = name _unit;
+_varname = vehicleVarname _unit;
 
 if (alive _unit) then {
 	
@@ -9,6 +9,7 @@ _varname setMarkerShapeLocal "ICON";
 _varname setMarkerColorLocal "ColorBlack";
 _varname setMarkerSizeLocal [1,1];
 _varname setMarkerTypeLocal "mil_dot";
+_varname setMarkerAlphaLocal 1;
 
 while {true} do {
     waitUntil {
@@ -34,6 +35,7 @@ while {true} do {
         sleep 0.5;
     };
     _varname setMarkerColorLocal "ColorBlack";
+    _varname setMarkerAlphaLocal .5;
     sleep 3;
 };
 
