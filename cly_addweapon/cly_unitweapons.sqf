@@ -1,11 +1,7 @@
 /////////////// _null = [_unit] execVM "cly_unitweapons.sqf" ///////////////
 private ["_unit"];
 _unit = _this select 0;
-
-if (!isNil {missionNamespace getVariable "loadout"}) exitWith {};
-
-_unit setUnitRecoilCoefficient 0.50;
-
+/*
 if (isMultiplayer) then {
 	_unit addEventHandler ["Respawn", {
 		private ["_unit","_dead"];
@@ -14,7 +10,7 @@ if (isMultiplayer) then {
 		[_unit] execVM "cly_addweapon\cly_unitweapons.sqf";
 	}
 ]};
-
+*/
 if (daytime > 18.50 || daytime < 4.50) then {
 	
 switch (side _unit) do {

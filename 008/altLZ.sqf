@@ -16,13 +16,13 @@ _mrkrcolor 	= [];
 
 switch (_sideCaller) do {
 
-         case west:			{_mrkrcolor = "ColorBlue"};
-         case east:			{_mrkrcolor = "ColorRed"};
-         case resistance:	{_mrkrcolor = "ColorGreen"};
-         case civilian:		{_mrkrcolor = "ColorYellow"};
+   	case west:			{_mrkrcolor = "ColorBlue"};
+   	case east:			{_mrkrcolor = "ColorRed"};
+   	case resistance:	{_mrkrcolor = "ColorGreen"};
+   	case civilian:		{_mrkrcolor = "ColorYellow"};
 };
 
-_vehicle addEventHandler ["Killed", {[_this select 0, _this select 1, ["LZ",lzDropOff2]]execVM "008\onKilled.sqf"}];
+_vehicle addEventHandler ["Killed", {[_this select 0, _this select 1, "LZ", lzDropOff2]execVM "008\onKilled.sqf"}];
 
 if (isServer) then {
 
@@ -81,12 +81,12 @@ PAPABEAR=[_sideCaller,"HQ"]; PAPABEAR SideChat format ["%1 is %2 meters from you
 	["LZ",lzDropOff2] spawn MOVE_TASK;
 
 	// If "TR UNLOAD" It'll auto boot the leader once there, but he'll have to tell the others to get out.	
-	wp0 = _vehicleGroup addWaypoint [_dropPos, 20];
-	wp0 setWaypointType "TR UNLOAD";
-	wp0 setWaypointBehaviour "CARELESS";
-	wp0 setWaypointCombatMode "BLUE";
-	wp0 setWaypointSpeed "NORMAL";
-	wp0 setWaypointStatements ["true","(vehicle this) land 'GET OUT'"];
+	_wp0 = _vehicleGroup addWaypoint [_dropPos, 20];
+	_wp0 setWaypointType "TR UNLOAD";
+	_wp0 setWaypointBehaviour "CARELESS";
+	_wp0 setWaypointCombatMode "BLUE";
+	_wp0 setWaypointSpeed "NORMAL";
+	_wp0 setWaypointStatements ["true","(vehicle this) land 'GET OUT'"];
 		
 	// Wait till the player's group is out of the helo.
 	waitUntil{{_x in _vehicle} count units group _caller == 0};
@@ -95,12 +95,12 @@ PAPABEAR=[_sideCaller,"HQ"]; PAPABEAR SideChat format ["%1 is %2 meters from you
 	if (!isNull lzDropOff2) then {deleteVehicle lzDropOff2};	
 			
 	// Once they are out, set a waypoint back to the start and clean up by deleting the helo and landing pads and markers.
-	wp1 = _vehicleGroup addwaypoint [getMarkerPos "Start", 20];
-	wp1 setwaypointtype "MOVE";
-	wp1 setWaypointBehaviour "CARELESS";
-	wp1 setWaypointCombatMode "BLUE";
-	wp1 setWaypointSpeed "NORMAL";
-	wp1 setWaypointStatements ["true","{deletevehicle _x} foreach (crew vehicle this + [vehicle this]);
+	_wp1 = _vehicleGroup addwaypoint [getMarkerPos "Start", 20];
+	_wp1 setwaypointtype "MOVE";
+	_wp1 setWaypointBehaviour "CARELESS";
+	_wp1 setWaypointCombatMode "BLUE";
+	_wp1 setWaypointSpeed "NORMAL";
+	_wp1 setWaypointStatements ["true","{deletevehicle _x} foreach (crew vehicle this + [vehicle this]);
 	PAPABEAR=[(side (vehicle this)),'HQ']; PAPABEAR SideChat 'Transporthelo ready for reassignment!';
 	deleteMarker 'Start';"];
 };

@@ -7,8 +7,8 @@ while {alive _vehicle} do {
 
 		switch true do 
 			{
-			case (((getpos _vehicle) select 2 < 1)): {if (_vehicle animationPhase "Ani_Ramp" > 0.2) then {_vehicle animate["Ani_Ramp",0]}};
-			case (((getpos _vehicle) select 2 > 10)): {if (_vehicle animationPhase "Ani_Ramp" < 0.5) then {_vehicle animate["Ani_Ramp",1]}};
+			case (((getpos _vehicle) select 2 < 6)): {if (_vehicle animationPhase "Ani_Ramp" > 0.2) then {_vehicle animate["Ani_Ramp",0]}};
+			case (((getpos _vehicle) select 2 > 6)): {if (_vehicle animationPhase "Ani_Ramp" < 0.5) then {_vehicle animate["Ani_Ramp",1]}};
 			default {};
 			};	
 			sleep 1;

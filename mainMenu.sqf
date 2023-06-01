@@ -24,7 +24,7 @@ PlayerSupport_Menu2 =
 	["Vehicle Cursor Service",[7],"",-5,[["expression","_null=[cursorTarget] execvm '008\vehicleService.sqf'"]],"1","1"],
 	["Teleport Player",[8],"",-5,[["expression","_null=[player] execvm '008\teleport.sqf'"]],"1","1"],
 	["Teleport Group Player",[9],"",-5,[["expression","_null=[player] execvm '008\teleportGroup.sqf'"]],"1","1"],
-	["HALO Player",[10],"",-5,[["expression","_null=[] execvm '008\flagpoleHALO.sqf'"]],"1","1"]
+	["HALO Player",[10],"",-5,[["expression","_null=[] execvm '008\HaloPlayer.sqf'"]],"1","1"]
 ];
 
 DayWeaponSupport_Menu = 

@@ -1,6 +1,6 @@
 // targetsArray.sqf //
 _targetsarray = [];
-_targetsarray = position player nearentities ["Man", 350];
+_targetsarray = position vehicle player nearentities ["Man", 350];
 _mrkrarray = [];
 
 {
@@ -26,6 +26,6 @@ _mrkrarray = [];
 //hintsilent format ["Targets-%1,Markers-%2",_targetsarray,_mrkrarray];
 
 player globalChat "Targets on the map!";
-uisleep 20;
+uisleep 16;
 {deleteMarker _x} forEach _mrkrArray;
 

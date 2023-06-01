@@ -9,7 +9,6 @@ _unit = _this select 0;
 waitUntil {!isNil "WeaponParam"};
 WeaponParam = missionNamespace getVariable "WeaponParam";
 
-waitUntil {!isNil "WeaponRespawn"};
 if (missionNamespace getVariable "WeaponRespawn" == 4) exitWith {hintSilent parseText format["<t size='1' font='Zeppelin33' color='#FFFF00'>'Save Loadout' Not A Selected Option!</t>"];};
 
 if (isMultiplayer) then {
@@ -21,7 +20,7 @@ if (isMultiplayer) then {
         _backpackmags = getMagazineCargo unitBackpack _unit;
         _backpackweap = getWeaponCargo unitBackpack _unit;
         _unit setVariable ["loadout", [_wep,_mag,_backpack,_backpackmags,_backpackweap]];
-        hintSilent parseText format ["<br/><t color='#00FF00' size='1.0'>Saved Loadout!</t>"];
+        hintSilent parseText format ["<t color='#00FF00' size='1.0'>Saved Loadout!</t>"];
         uisleep 6;
         hintSilent "";
         _unit addEventHandler ["Respawn", {[(_this select 0),(_this select 1)] spawn {
@@ -62,11 +61,12 @@ if (isMultiplayer) then {
         _backpackmags = getMagazineCargo unitBackpack _unit;
         _backpackweap = getWeaponCargo unitBackpack _unit;
         _unit setVariable ["loadout", [_wep,_mag,_backpack,_backpackmags,_backpackweap]];   
-        hintSilent parseText format ["<br/><t color='#00FF00' size='1.0'>Saved Loadout!</t>"];
+        hintSilent parseText format ["<t color='#00FF00' size='1.0'>Saved Loadout!</t>"];
         uisleep 6;
         hintSilent "";
     };
 } else { 
+    if (missionNamespace getVariable "WeaponRespawn" != 4) then {waitUntil {!isNil {missionNamespace getVariable "CLY_addweapon"}}};
     if (isPlayer _unit) then {
         _wep = weapons _unit;
         _mag = magazines _unit;

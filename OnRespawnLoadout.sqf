@@ -21,7 +21,7 @@ if (isMultiplayer) then {
 		_backpackmags = getMagazineCargo unitBackpack _caller;
 		_backpackweap = getWeaponCargo unitBackpack _caller;
 		_caller setVariable ["loadout", [_wep,_mag,_backpack,_backpackmags,_backpackweap]];
-		hintSilent parseText format ["<br/><t color='#00FF00' size='1.0'>Saved Loadout!</t>"];
+		hintSilent parseText format ["<t color='#00FF00' size='1.0'>Saved Loadout!</t>"];
     	//titleText [format ["Loadout Saved! - %1,%2,%3,%4,%5,%6",name player,_wep,_mag,_backpack,_backpackmags,_backpackweap],"plain down"];
     	//copyToClipboard format ["Loadout Saved! - %1,%2,%3,%4,%5,%6",name player,_wep,_mag,_backpack,_backpackmags,_backpackweap];
 		uisleep 6;
@@ -64,7 +64,7 @@ if (isMultiplayer) then {
 		_backpackmags = getMagazineCargo unitBackpack _caller;
 		_backpackweap = getWeaponCargo unitBackpack _caller;
 		_caller setVariable ["loadout", [_wep,_mag,_backpack,_backpackmags,_backpackweap]]; 	
-		hintSilent parseText format ["<br/><t color='#00FF00' size='1.0'>Saved Loadout!</t>"];
+		hintSilent parseText format ["<t color='#00FF00' size='1.0'>Saved Loadout!</t>"];
     	//titleText [format ["Loadout Saved! - %1,%2,%3,%4,%5,%6",name player,_wep,_mag,_backpack,_backpackmags,_backpackweap],"plain down"];
     	//copyToClipboard format ["Loadout Saved! - %1,%2,%3,%4,%5,%6",name player,_wep,_mag,_backpack,_backpackmags,_backpackweap];
 		uisleep 6;

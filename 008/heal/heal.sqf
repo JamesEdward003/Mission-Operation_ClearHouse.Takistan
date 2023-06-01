@@ -31,7 +31,7 @@ if (alive _medic AND alive _wounded AND _dam > 0.1) then {_wounded setDammage (_
 if (alive _medic) then {
 	
 _medic playMove "AinvPknlMstpSnonWrflDnon_medicEnd";
-waitUntil {!alive _medic OR !alive _wounded OR (animationState _medic) == "AinvPknlMstpSnonWrflDnon_medicEnd"};
+//waitUntil {!alive _medic OR !alive _wounded OR (animationState _medic) == "AinvPknlMstpSnonWrflDnon_medicEnd"};
 waitUntil {!alive _medic OR !alive _wounded OR (animationState _medic) != "AinvPknlMstpSnonWrflDnon_medicEnd"};
 
 };

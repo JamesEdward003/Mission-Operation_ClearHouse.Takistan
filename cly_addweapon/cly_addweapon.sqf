@@ -125,25 +125,17 @@ _i=0;
 	};
 } forEach _addweaponarray;
 
-_unit setVariable ["savedloadout",nil];
+if (missionNamespace getVariable "WeaponRespawn" != 4) exitWith {};
 
-//Event handler for respawning unitif (missionNamespace getVariable "WeaponRespawn" != 4) exitWith {};
-if (!isNil {missionNamespace getVariable "loadout"}) exitWith {};
-if ((isNil {_unit getVariable "CLY_addweapon"}) and (missionNamespace getVariable "WeaponRespawn" != 4)) then {
+if (isNil {_unit getVariable "CLY_addweapon"}) then {
 	_unit addEventHandler [
 		"Respawn",
 		{
-			if (!isNil {missionNamespace getVariable "loadout"}) exitWith {};
-			if (isNil {_this select 1 getVariable "savedloadout"}) then {
-				if (!isNil {_this select 1 getVariable "CLY_addweapon"}) then {
-					_addweaponarray=_this select 0 getVariable "CLY_addweapon";
-					_addweaponarray set [0,_this select 0];
-					_addweaponarray execVM "Cly_AddWeapon\cly_addweapon.sqf";
-					hintSilent parseText format["<t size='1' font='Zeppelin33' color='#FFFF00'>Cly Loadout Respawned!</t>"];
-				};
-			} else {
-				hintSilent parseText format["<t size='1' font='Zeppelin33' color='#FFFF00'>Weapon Loadout Respawned!</t>"];
-		//		_this select 0 removeEventHandler ["respawn", 0];
+			if (!isNil {_this select 1 getVariable "CLY_addweapon"}) then {
+				_addweaponarray=_this select 0 getVariable "CLY_addweapon";
+				_addweaponarray set [0,_this select 0];
+				_addweaponarray execVM "Cly_AddWeapon\cly_addweapon.sqf";
+				hintSilent parseText format["<t size='1' font='Zeppelin33' color='#FFFF00'>Cly Loadout Saved!</t>"];
 			};
 		}
 	];
@@ -175,19 +167,22 @@ if (_unit hasWeapon "OFrP_Laserdesignator") then {
 	};	
 };
 */
+_unit setUnitRecoilCoefficient 0.50;
+
 if (isPlayer _unit) then {
 	
-if !(_unit hasWeapon "ItemGPS") then {
+	if !(_unit hasWeapon "ItemGPS") then {
 	
-	_unit addWeapon "ItemGPS";
+		_unit addWeapon "ItemGPS";
 
 	};	
 };
 
 if (isPlayer _unit) then {
-	
-_unit action ["WEAPONONBACK", _unit];
 
-if (daytime > 18.50 || daytime < 4.50) then {_unit action ["nvGoggles", _unit]};
+	if (daytime > 18.50 || daytime < 4.50) then {_unit action ["nvGoggles", _unit]};
+
+	_unit action ["WEAPONONBACK", _unit];
 
 };
+

@@ -7,5 +7,5 @@ axident={
 };
 _null=[]spawn axident;
 
-hintSilent parseText format ["<br/><t color='#00FF00' size='1.0'>Intel...Razor in for rough landing somewhere in Chardarakht!</t>"];
+hintSilent parseText format ["<t color='#00FF00' size='1.0'>Intel...Razor in for rough landing somewhere in Chardarakht!</t>"];
 

@@ -7,15 +7,23 @@
 };
 
 Heal_Player = {
-	if (((lifeState player == "UNCONSCIOUS") || (lifeState player == "ALIVE")) and (damage player > .3)) then 
-	    {
-	        [] execVM "HealPlayer.sqf";
+
+if ((lifeState player == "UNCONSCIOUS") || (lifeState player == "ALIVE")) then
+//if (((lifeState player == "UNCONSCIOUS") || (lifeState player == "ALIVE")) and (damage player > .3)) then 
+    {
+
+        [] execVM "HealPlayer.sqf";
+
+	} else {
+
+		hintSilent parseText format ["<t color='#00FF00' size='2.0'>USE CONSCIOUS HEAL ACTION!</t>"];
 
 	};
 };
 
 _null=[] spawn { 
-	waitUntil { Alpha_loaded and Bravo_loaded and Charlie_loaded and Delta_loaded and LaunchOperation };
+
+	waitUntil { (Alpha_loaded and Bravo_loaded and Charlie_loaded and Delta_loaded and LaunchOperation) || ((vehicle player != player) and LaunchOperation) };
 	taskHint ["Insert at LZ", [0, 1, 0, 1], "taskCurrent"];
 	tskInsertLZ setTaskState "ASSIGNED";
 	missionNamespace setVariable ["tskInsertLZpv",3];

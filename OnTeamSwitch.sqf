@@ -6,6 +6,6 @@ _from enableAI "TeamSwitch";
 
 execVM "briefing.sqf";
 
-[_to] execVM "initJIPcompatible.sqf";
+execVM "taskCheck.sqf";
 
-hintSilent "Switched!";
+hintSilent "TeamMember Switched!";

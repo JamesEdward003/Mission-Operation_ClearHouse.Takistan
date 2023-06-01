@@ -1,8 +1,8 @@
 // jointOperation.sqf //
 [] spawn {
-	_radio=createTrigger["EmptyDetector",[0,0]];
-	_radio setTriggerActivation["Alpha","PRESENT",true];
-	_radio setTriggerStatements["this","0 spawn Joint_Operation",""];
+	radioTrigger1=createTrigger["EmptyDetector",[0,0]];
+	radioTrigger1 setTriggerActivation["Alpha","PRESENT",true];
+	radioTrigger1 setTriggerStatements["this","0 spawn Joint_Operation;deleteTrigger radioTrigger1;",""];
 	1 setRadioMsg "JOINT OPERATION";
 };
 

@@ -1,22 +1,9 @@
 //////////////////////////////////////////////////////////////////
 // joinGroupPlayer.sqf
 //////////////////////////////////////////////////////////////////
-private ["_target", "_caller", "_id"];
+private ["_target", "_caller"];
 _target = _this select 0;
 _caller = _this select 1;
-_id = if (count _this >2) then {_this select 2};
-
-_target removeAction _id;
-_target removeAction act1;
-_target removeAction act2;
-_target removeAction act3;
-_target removeAction act4;
-
-_target = _this select 3 select 0;
-_caller = _this select 3 select 1;
-
-hands_up = false;
-hands_back = false;
 	
 if (_target iskindof "MAN") then {
 		

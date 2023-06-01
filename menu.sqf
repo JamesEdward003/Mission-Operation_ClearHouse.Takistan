@@ -7,10 +7,10 @@ PlayerSupport_Menu =
 	["Unit Cursor Dismiss",[4],"",-5,[["expression","_null=[] execvm '008\dismissCursor.sqf'"]],"1","1"],
 	["Unit Cursor Heal",[5],"",-5,[["expression","_null=[player] execvm '008\heal\heal.sqf'"]],"1","1"],
 	["Unit Cursor Destroy",[6],"",-5,[["expression","_null=[] execvm '008\destroy.sqf'"]],"1","1"],
-	["Unit Heal Self",[7],"",-5,[["expression","_null=[player] execvm '008\healSelf\healSelf.sqf'"]],"1","1"],
+	["Unit Cursor Join Player",[7],"",-5,[["expression","_null=[cursorTarget,player] execvm '008\joinGrpPlayer.sqf'"]],"1","1"],
 	["Unit Cursor Allow Damage False",[8],"",-5,[["expression","_null=[cursorTarget] execvm '008\adFalse.sqf'"]],"1","1"],
 	["Unit Cursor Allow Damage True",[9],"",-5,[["expression","_null=[cursorTarget] execvm '008\adTrue.sqf'"]],"1","1"],
-	["Gear Slot Data",[10],"",-5,[["expression","_null=[] execvm '008\gearSlotData.sqf'"]],"1","1"]
+	["Unit Heal Self",[10],"",-5,[["expression","_null=[player] execvm '008\healSelf\healSelf.sqf'"]],"1","1"]
 ];
 
 PlayerSupport_Menu2 = 
@@ -24,7 +24,7 @@ PlayerSupport_Menu2 =
 	["Vehicle Cursor Service",[7],"",-5,[["expression","_null=[cursorTarget] execvm '008\vehicleService.sqf'"]],"1","1"],
 	["Teleport Player",[8],"",-5,[["expression","_null=[player] execvm '008\teleport.sqf'"]],"1","1"],
 	["Teleport Group Player",[9],"",-5,[["expression","_null=[player] execvm '008\teleportGroup.sqf'"]],"1","1"],
-	["HALO Player",[10],"",-5,[["expression","_null=[] execvm '008\flagpoleHALO.sqf'"]],"1","1"]
+	["HALO Player",[10],"",-5,[["expression","_null=[] execvm '008\HaloPlayer.sqf'"]],"1","1"]
 ];
 
 DayWeaponSupport_Menu = 
@@ -86,9 +86,8 @@ MusicSupport_Menu2 =
 AirSupport_Menu = 
 [
 	["Air Support",False],
-	["Air Cursor LAND",[2],"",-5,[["expression","_null=[] execvm '008\airLand.sqf'"]],"1","1"],
 	["Air Transport",[3],"",-5,[["expression","_null=[player] execVM '008\plannedExtraction.sqf'"]],"1","1"],
-	["Air Alternate LZ",[4],"",-5,[["expression","_null=[] execvm '008\altLZcommand2.sqf'"]],"1","1"],
+	["Air Alternate LZ",[4],"",-5,[["expression","_null=[vehicle player,player] execvm '008\altLZcommand2.sqf'"]],"1","1"],
 	["Air Strike",[5],"",-5,[["expression","_null=[player] execvm '008\airStrike.sqf'"]],"1","1"],
 	["Missile Strike",[6],"",-5,[["expression","_null=[player] execvm '008\MissileStrike\missile_airstrike_init.sqf'"]],"1","1"],
 	["Fixed-Wing CAS",[7],"",-5,[["expression","_null=[player] execvm '008\plannedFixedWing.sqf'"]],"1","1"],
@@ -98,11 +97,11 @@ AirSupport_Menu =
 AirSupport_Menu2 =
 [
 	["Air Support 2",False],
-	["Vehicle Player LZ",[2],"",-5,[["expression","_null=[vehicle player] execvm '008\altLZ.sqf'"]],"1","1"],
-	["Vehicle Player Redirect",[3],"",-5,[["expression","_null=[] execvm '008\altLZcommand.sqf'"]],"1","1"],
-	["Vehicle Cursor LAND",[4],"",-5,[["expression","_null=[] execvm '008\airLand.sqf'"]],"1","1"],
-	["Vehicle Cursor Repair",[5],"",-5,[["expression","_null=[] execvm '008\repair.sqf'"]],"1","1"],
-	["Vehicle Cursor Unlock",[6],"",-5,[["expression","_null=[] execvm '008\unlock.sqf'"]],"1","1"],
+	["Vehicle Player LZ",[2],"",-5,[["expression","_null=[vehicle player,player] execvm '008\altLZ.sqf'"]],"1","1"],
+	["Vehicle Player Redirect",[3],"",-5,[["expression","_null=[vehicle player,player] execvm '008\altLZcommand.sqf'"]],"1","1"],
+	["Vehicle Cursor LAND",[4],"",-5,[["expression","_null=[cursorTarget,player] execvm '008\airLand.sqf'"]],"1","1"],
+	["Vehicle Cursor Repair",[5],"",-5,[["expression","_null=[cursorTarget,player] execvm '008\repair.sqf'"]],"1","1"],
+	["Vehicle Cursor Unlock",[6],"",-5,[["expression","_null=[cursorTarget,player] execvm '008\unlock.sqf'"]],"1","1"],
 	["Vehicle Cursor Service",[7],"",-5,[["expression","_null=[cursorTarget] execvm '008\vehicleService.sqf'"]],"1","1"],
 	["LaserTarget OMC",[8],"",-5,[["expression","_null=[] execvm '008\laseTarget_OMC.sqf'"]],"1","1"],
 	["Cursor LaserTarget",[9],"",-5,[["expression","_null=[player] execvm '008\cursorLaserTarget.sqf'"]],"1","1"]

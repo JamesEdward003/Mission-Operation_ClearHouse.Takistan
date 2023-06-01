@@ -8,7 +8,7 @@ _nearestUnits = nearestObjects [_center, ["man"], _radius];
 
 systemChat "Radar Scan in progress...";
 
-hintSilent parseText format ["<br/><t color='#ff0000' size='1.0'>Radar Scan in progress...</t>"];
+hintSilent parseText format ["<t color='#ff0000' size='1.0'>Radar Scan in progress...</t>"];
 
 _hostiles = [];
 for "_i" from 0 to (count _nearestUnits) - 1 do
@@ -44,7 +44,7 @@ for "_i" from 0 to (count _nearestUnits) - 1 do
 };
 
 systemChat format ["%1 hostile Entities found.",count _hostiles];
-hintSilent parseText format ["<br/><t color='#ff0000' size='1.0'>%1 hostile Entities found</t>",count _hostiles];
+hintSilent parseText format ["<t color='#ff0000' size='1.0'>%1 hostile Entities found</t>",count _hostiles];
 sleep _deleteTime;
 hintSilent "";
 

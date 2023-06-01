@@ -13,12 +13,3 @@ sleep 6;
 cuttext ["All enemy have been eliminated, rechecking...","plain down"];
 sleep 6;
 cuttext ["","plain down"];
-
-//execVM "allDead.sqf";
-
-/*
-titletext ["MISSION COMPLETED","plain",0.4];
-cuttext ["","black out"];
-sleep 4;
-endMission "END1";
-*/

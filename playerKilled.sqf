@@ -105,7 +105,7 @@ if (count _this > 2) then {
 	//_unit = group player createUnit ["SoldierWB", position player, [], 0, "FORM"];
 	//_unit = _group createUnit [_type, (getMarkerPos _mrkr), [], 0, "NONE"];
 	//"soldierWB" createUnit [getMarkerPos "marker_1", groupAlpha,"loon1 = this ; this addweapon {binocular}", 0.6, "corporal"];
-	_spwnPos = [getMarkerPos _mrkr, 10, 180] call BIS_fnc_relPos;
+	_spwnPos = [getMarkerPos _mrkr, 40, 180] call BIS_fnc_relPos;
 	_type createUnit [_spwnPos, _group, "this setUnitPos 'DOWN'; selectPlayer this; addSwitchableUnit this;"];
 	player setRank _rank;
 	if ( _isLeader ) then { _group selectLeader player };

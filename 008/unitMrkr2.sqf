@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////
 _unit 	= _this select 0;
-_varname	= name _unit;
+_varname	= vehicleVarname _unit;
 
 if (isMultiplayer) then {	
 	player addEventHandler ["Respawn",{_this execVM "008\unitMrkr2.sqf"}];

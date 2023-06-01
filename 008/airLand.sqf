@@ -2,8 +2,8 @@
 // Function file for Armed Assault
 // Created by:  DieHard - Function file for ArmA 2: Operation Arrowhead
 //////////////////////////////////////////////////////////////////
-_vehicle 	= vehicle player;
-_caller 		= player;     
+_vehicle 	= _this select 0;
+_caller 	= _this select 1;   
 _vehicle removeaction ALZ;    
 
 _vehicle 	= cursorTarget;              

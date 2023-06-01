@@ -48,6 +48,10 @@ groupcheck=false;publicVariable "groupcheck";
 
 tc_check=false;publicVariable "tc_check";
 
+halo_check_group=false;publicVariable "halo_check_group";
+
+fnc_GetAllTurretPaths = compile preprocessFileLineNumbers "fnc_GetAllTurretPaths.sqf";
+
 onGroupIconClick  { 
 
 	_is3D = _this select 0;
@@ -96,7 +100,7 @@ waituntil {!isnil "bis_fnc_init"};
 [Kilo6_5,BIS_transportHeliH,BIS_transportHomeH,"som_transport"] execVM "transportHeliH.sqf";
 
 //===DisplayAddEventHandler===//===To find the number on YOUR keyboard===//
-//	waituntil {!(IsNull (findDisplay 46))};
+//	waituntil {!(isNull (findDisplay 46))};
 //	_keyDown = (findDisplay 46) displayAddEventHandler ["KeyDown", "hint str _this"];
 
 //while {alive player} do {hintsilent format ["%1",cursorTarget call BIS_fnc_boundingBoxDimensions];uisleep 1;};
@@ -111,7 +115,7 @@ while {true} do {
 
 	uisleep 1;
 
-if (_timeleft < 1) exitWith{ WeatherSet=nil;publicVariable "WeatherSet"; };
+if (_timeleft < 1) exitWith { WeatherSet=nil;publicVariable "WeatherSet"; };
 };
 
 /*

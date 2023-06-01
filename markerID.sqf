@@ -4,31 +4,31 @@ _unit = _this select 0;
 _varName = vehicleVarName _unit;
 _rank = rank _unit;
 
-//if (isMultiplayer) then {player addEventHandler ["Respawn", {[(_this select 0),(_this select 1)] execVM "markerID_MP.sqf"}]};
+if (isMultiplayer) then {player addEventHandler ["Respawn", {[(_this select 0),(_this select 1)] execVM "markerID.sqf"}]};
 
-if (!(isNil { _unit getVariable "markerCount"})) then
-    {
-    _mrkrCnt = (_unit getVariable "markerCount") select 2;
-    _mrkrCnt = _mrkrCnt + 1;
-    _unit setVariable ["markerCount", [_varName,_rank,_mrkrCnt]];
-} else {   
-    _mrkrCnt = 1;
-    _unit setVariable ["markerCount", [_varName,_rank,_mrkrCnt]];
-};
 switch true do 
   {
   case (!isMultiplayer): {
+    if (!(isNil {missionNamespace getVariable "markerCount"})) then
+        {
+        _mrkrCnt = (missionNamespace getVariable "markerCount") select 2;
+        _mrkrCnt = _mrkrCnt + 1;
+        missionNamespace setVariable ["markerCount", [_varName,_rank,_mrkrCnt]];
+    } else {   
+        _mrkrCnt = 1;
+        missionNamespace setVariable ["markerCount", [_varName,_rank,_mrkrCnt]];
+    };
     _mrkrcolor = switch (_rank) do 
-      {
-        case "COLONEL":   {"colorblack"};
-        case "MAJOR":     {"colorbrown"};
-        case "CAPTAIN":   {"colorred"};
-        case "LIEUTENANT":  {"colororange"};
-        case "SERGEANT":  {"coloryellow"};
-        case "CORPORAL":  {"colorgreen"};
-        case "PRIVATE":   {"colorblue"};
-        default           {"colorwhite"};
-      };
+    {
+      case "COLONEL":   {"colorblack"};
+      case "MAJOR":     {"colorbrown"};
+      case "CAPTAIN":   {"colorred"};
+      case "LIEUTENANT":  {"colororange"};
+      case "SERGEANT":  {"coloryellow"};
+      case "CORPORAL":  {"colorgreen"};
+      case "PRIVATE":   {"colorblue"};
+      default           {"colorwhite"};
+    };
     _marker = createMarkerLocal [_varName, getPos _unit];
     _marker setMarkerTypeLocal "Start";
     _marker setMarkerColorLocal _mrkrcolor;
@@ -41,16 +41,16 @@ switch true do
       uisleep 0.5;
     };
     deleteMarker _marker;
-    if (!(isNil { _unit getVariable "markerCount"})) then
+    if (!(isNil { missionNamespace getVariable "markerCount"})) then
         {
-        _mrkrCnt = (_unit getVariable "markerCount") select 2;
+        _mrkrCnt = (missionNamespace getVariable "markerCount") select 2;
         _mrkrCnt = _mrkrCnt + 1;
-        _unit setVariable ["markerCount", [_varName,_rank,_mrkrCnt]];
+        missionNamespace setVariable ["markerCount", [_varName,_rank,_mrkrCnt]];
     } else {   
         _mrkrCnt = 1;
-        _unit setVariable ["markerCount", [_varName,_rank,_mrkrCnt]];
+        missionNamespace setVariable ["markerCount", [_varName,_rank,_mrkrCnt]];
     };
-    _mrkrCnt = (_unit getVariable "markerCount") select 2;  
+    _mrkrCnt = (missionNamespace getVariable "markerCount") select 2;  
     _mrkrName = format ["%1_%2",_varName,_mrkrCnt];
     _mrkr = createMarkerLocal [_mrkrName, getPos _unit];
     _mrkr setMarkerTypeLocal "End";
@@ -60,20 +60,20 @@ switch true do
     _mrkr setMarkerAlphaLocal .5;
     };
   case (isMultiplayer): {
-  _unit addEventHandler ["Respawn", {_this spawn {
-    private ["_unit","_dead","_varName","_rank"];
-    _unit = _this select 0;
-    _dead = _this select 1;
-    hint format ["%1",(_dead getVariable "markerCount")];
-    _varName = (_dead getVariable "markerCount") select 0;
-    _rank = (_dead getVariable "markerCount") select 1;
-    _mrkrCnt = (_dead getVariable "markerCount") select 2;  
-    _unit setVehicleVarname _varName;
-    _unit setIdentity _varName;
-    _unit setRank _rank;
-    [_unit] execVM "markerID.sqf";
-  }}];
-  _mrkrcolor = switch _rank do 
+    _unit addEventHandler ["Respawn", {_this spawn {
+      private ["_unit","_dead","_varName","_rank"];
+      _unit = _this select 0;
+      _dead = _this select 1;
+      hint format ["%1",(_dead getVariable "markerCount")];
+      _varName = (_dead getVariable "markerCount") select 0;
+      _rank = (_dead getVariable "markerCount") select 1;
+      _mrkrCnt = (_dead getVariable "markerCount") select 2;  
+      _unit setVehicleVarname _varName;
+      _unit setIdentity _varName;
+      _unit setRank _rank;
+      [_unit] execVM "markerID.sqf";
+    }}];
+    _mrkrcolor = switch _rank do 
     {
       case "COLONEL":   {"colorblack"};
       case "MAJOR":     {"colorbrown"};

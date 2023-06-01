@@ -40,37 +40,37 @@ switch (group player) do
 	case Alpha1:	{
 		tskRTB = player createSimpleTask ["Return to Base"];
 		tskRTB setSimpleTaskDescription ["Return to <marker name='fin_marker'>Base</marker> and play the end game.", "Return to Base", "Return to Base"];
-		tskRTB setSimpleTaskDestination (getMarkerPos "fin_marker");
+		tskRTB setSimpleTaskDestination (MarkerPos "fin_marker");
 	};
 	case Bravo1: 	{
 		tskRTB = player createSimpleTask ["Return to Base"];
 		tskRTB setSimpleTaskDescription ["Return to <marker name='fin_marker'>Base</marker> and play the end game.", "Return to Base", "Return to Base"];
-		tskRTB setSimpleTaskDestination (getMarkerPos "fin_marker");
+		tskRTB setSimpleTaskDestination (MarkerPos "fin_marker");
 	};
 	case Charlie1: 	{
 		tskRTB = player createSimpleTask ["Return to Base"];
 		tskRTB setSimpleTaskDescription ["Return to <marker name='fin_marker'>Base</marker> and play the end game.", "Return to Base", "Return to Base"];
-		tskRTB setSimpleTaskDestination (getMarkerPos "fin_marker");
+		tskRTB setSimpleTaskDestination (MarkerPos "fin_marker");
 	};
 	case Delta1: 	{
 		tskRTB = player createSimpleTask ["Return to Base"];
 		tskRTB setSimpleTaskDescription ["Return to <marker name='fin_marker'>Base</marker> and play the end game.", "Return to Base", "Return to Base"];
-		tskRTB setSimpleTaskDestination (getMarkerPos "fin_marker");
+		tskRTB setSimpleTaskDestination (MarkerPos "fin_marker");
 	};
 	case Echo1: 	{
 		tskRTB = player createSimpleTask ["Return to Base"];
 		tskRTB setSimpleTaskDescription ["Return to <marker name='fin_marker'>Base</marker> and play the end game.", "Return to Base", "Return to Base"];
-		tskRTB setSimpleTaskDestination (getMarkerPos "fin_marker");
+		tskRTB setSimpleTaskDestination (MarkerPos "fin_marker");
 	};
 	case Venom: 	{
 		tskRTB = player createSimpleTask ["Return to Base"];
 		tskRTB setSimpleTaskDescription ["Return to <marker name='fin_marker'>Base</marker> and play the end game.", "Return to Base", "Return to Base"];
-		tskRTB setSimpleTaskDestination (getMarkerPos "fin_marker");
+		tskRTB setSimpleTaskDestination (MarkerPos "fin_marker");
 	};
 	case Command: 	{
 		tskRTB = player createSimpleTask ["Return to Base"];
 		tskRTB setSimpleTaskDescription ["Return to <marker name='fin_marker'>Base</marker> and play the end game.", "Return to Base", "Return to Base"];
-		tskRTB setSimpleTaskDestination (getMarkerPos "fin_marker");
+		tskRTB setSimpleTaskDestination (MarkerPos "fin_marker");
 	};
 };
 switch (group player) do
@@ -78,114 +78,114 @@ switch (group player) do
 	case Alpha1:	{
 		tskExvillLZ = player createSimpleTask ["Exvill at LZ Xray"];
 		tskExvillLZ setSimpleTaskDescription ["Secure the Landing Zone that is to the far East of the Village Code Named <marker name='LZ_Xray'>LZ XRAY</marker> and wait for Helo pickup", "Exvill at LZ Xray", "Exvill at LZ XRAY"];
-		tskExvillLZ setSimpleTaskDestination (getMarkerPos "LZ_Xray");
+		tskExvillLZ setSimpleTaskDestination (MarkerPos "LZ_Xray");
 	};
 	case Bravo1: 	{
 		tskExvillLZ = player createSimpleTask ["Exvill at LZ Xray"];
 		tskExvillLZ setSimpleTaskDescription ["Secure the Landing Zone that is to the far East of the Village Code Named <marker name='LZ_Xray'>LZ XRAY</marker> and wait for Helo pickup", "Exvill at LZ Xray", "Exvill at LZ XRAY"];
-		tskExvillLZ setSimpleTaskDestination (getMarkerPos "LZ_Xray");
+		tskExvillLZ setSimpleTaskDestination (MarkerPos "LZ_Xray");
 	};
 	case Charlie1: 	{
 		tskExvillLZ = player createSimpleTask ["Exvill at LZ Xray"];
 		tskExvillLZ setSimpleTaskDescription ["Secure the Landing Zone that is to the far East of the Village Code Named <marker name='LZ_Xray'>LZ XRAY</marker> and wait for Helo pickup", "Exvill at LZ Xray", "Exvill at LZ XRAY"];
-		tskExvillLZ setSimpleTaskDestination (getMarkerPos "LZ_Xray");
+		tskExvillLZ setSimpleTaskDestination (MarkerPos "LZ_Xray");
 	};
 	case Delta1: 	{
 		tskExvillLZ = player createSimpleTask ["Exvill at LZ Xray"];
 		tskExvillLZ setSimpleTaskDescription ["Secure the Landing Zone that is to the far East of the Village Code Named <marker name='LZ_Xray'>LZ XRAY</marker> and wait for Helo pickup", "Exvill at LZ Xray", "Exvill at LZ XRAY"];
-		tskExvillLZ setSimpleTaskDestination (getMarkerPos "LZ_Xray");
+		tskExvillLZ setSimpleTaskDestination (MarkerPos "LZ_Xray");
 	};
 	case Venom: 	{
 		tskExvillLZ = player createSimpleTask ["Exvill at LZ Xray"];
 		tskExvillLZ setSimpleTaskDescription ["Secure the Landing Zone that is to the far East of the Village Code Named <marker name='LZ_Xray'>LZ XRAY</marker> and wait for Helo pickup", "Exvill at LZ Xray", "Exvill at LZ XRAY"];
-		tskExvillLZ setSimpleTaskDestination (getMarkerPos "LZ_Xray");
+		tskExvillLZ setSimpleTaskDestination (MarkerPos "LZ_Xray");
 	};
 	case Command: 	{
 		tskExvillLZ = player createSimpleTask ["Exvill at LZ Xray"];
 		tskExvillLZ setSimpleTaskDescription ["Secure the Landing Zone that is to the far East of the Village Code Named <marker name='LZ_Xray'>LZ XRAY</marker> and wait for Helo pickup", "Exvill at LZ Xray", "Exvill at LZ XRAY"];
-		tskExvillLZ setSimpleTaskDestination (getMarkerPos "LZ_Xray");
+		tskExvillLZ setSimpleTaskDestination (MarkerPos "LZ_Xray");
 	};
 	case Echo1: 	{
 		tskExvillLZ = player createSimpleTask ["Secure the Landing Zone"];
 		tskExvillLZ setSimpleTaskDescription ["Secure the Landing Zone that is to the far East of the Village Code Named <marker name='LZ_Xray'>LZ XRAY</marker>", "Secure the Landing Zone", "Secure the Landing Zone"];
-		tskExvillLZ setSimpleTaskDestination (getMarkerPos "LZ_Xray");
+		tskExvillLZ setSimpleTaskDestination (MarkerPos "LZ_Xray");
 	};
 	case Kilo6_1: 	{
 		tskExvillLZ = player createSimpleTask ["Return to Base"];
 		tskExvillLZ setSimpleTaskDescription ["Secure the Landing Zone then return to <marker name='start_marker'>Base</marker>", "Return to Base", "Return to Base"];
-		tskExvillLZ setSimpleTaskDestination (getMarkerPos "start_marker");
+		tskExvillLZ setSimpleTaskDestination (MarkerPos "start_marker");
 	};
 	case Kilo6_2: 	{
 		tskExvillLZ = player createSimpleTask ["Return to Base"];
 		tskExvillLZ setSimpleTaskDescription ["Secure the Landing Zone then return to <marker name='start_marker'>Base</marker>", "Return to Base", "Return to Base"];
-		tskExvillLZ setSimpleTaskDestination (getMarkerPos "start_marker");
+		tskExvillLZ setSimpleTaskDestination (MarkerPos "start_marker");
 	};
 	case Kilo6_3: 	{
 		tskExvillLZ = player createSimpleTask ["Return to Base"];
 		tskExvillLZ setSimpleTaskDescription ["Secure the Landing Zone then return to <marker name='start_marker'>Base</marker>", "Return to Base", "Return to Base"];
-		tskExvillLZ setSimpleTaskDestination (getMarkerPos "start_marker");
+		tskExvillLZ setSimpleTaskDestination (MarkerPos "start_marker");
 	};
 	case Kilo6_4: 	{
 		tskExvillLZ = player createSimpleTask ["Return to Base"];
 		tskExvillLZ setSimpleTaskDescription ["Secure the Landing Zone then return to <marker name='start_marker'>Base</marker>", "Return to Base", "Return to Base"];
-		tskExvillLZ setSimpleTaskDestination (getMarkerPos "start_marker");
+		tskExvillLZ setSimpleTaskDestination (MarkerPos "start_marker");
 	};
 };
 
 tskClearVillage = player createSimpleTask ["Clear suspected Taliban held Village"];
 tskClearVillage setSimpleTaskDescription ["Clear a <marker name='target_location'>Village</marker> that is Suspected of being held by Taliban and Foreign Fighters", "Clear all Taliban out of that Location", "Clear all TALIBAN out of that Location"];
-tskClearVillage setSimpleTaskDestination (getMarkerPos "target_location");
+tskClearVillage setSimpleTaskDestination (MarkerPos "target_location");
 
 tskElimHVT = player createSimpleTask ["Eliminate high value targets", tskClearVillage];
 tskElimHVT setSimpleTaskDescription ["Eliminate any and all <marker name='hvt1'>HVT's</marker> found!", "Eliminate high value targets", "Eliminate high value targets"];
-tskElimHVT setSimpleTaskDestination (getMarkerPos "hvt1");
+tskElimHVT setSimpleTaskDestination (MarkerPos "hvt1");
 
 switch (group player) do
 {
 	case Alpha1:	{
 		tskInsertLZ = player createSimpleTask ["Insert at LZ Alpha"];
 		tskInsertLZ setSimpleTaskDescription ["Insert on <marker name='LZ_Alpha'>Landing Zone Alpha</marker> that is just on the out skirts of the Village to the East Code Named LZ ALPHA", "Insert at LZ Alpha", "Insert at LZ Alpha"];
-		tskInsertLZ setSimpleTaskDestination (getMarkerPos "LZ_Alpha");
+		tskInsertLZ setSimpleTaskDestination (MarkerPos "LZ_Alpha");
 	};
 	case Bravo1: 	{
 		tskInsertLZ = player createSimpleTask ["Insert at LZ Bravo"];
 		tskInsertLZ setSimpleTaskDescription ["Insert on <marker name='LZ_Bravo'>Landing Zone Bravo</marker> that is just on the out skirts of the Village to the East Code Named LZ BRAVO", "Insert at LZ Bravo", "Insert at LZ Bravo"];
-		tskInsertLZ setSimpleTaskDestination (getMarkerPos "LZ_Bravo");
+		tskInsertLZ setSimpleTaskDestination (MarkerPos "LZ_Bravo");
 	};
 	case Charlie1: 	{
 		tskInsertLZ = player createSimpleTask ["Insert at LZ Charlie"];
 		tskInsertLZ setSimpleTaskDescription ["Insert on <marker name='LZ_Charlie'>Landing Zone Charlie</marker> that is just on the out skirts of the Village to the East Code Named LZ CHARLIE", "Insert at LZ Charlie", "Insert at LZ Charlie"];
-		tskInsertLZ setSimpleTaskDestination (getMarkerPos "LZ_Charlie");
+		tskInsertLZ setSimpleTaskDestination (MarkerPos "LZ_Charlie");
 	};
 	case Delta1: 	{
 		tskInsertLZ = player createSimpleTask ["Insert at LZ Delta"];
 		tskInsertLZ setSimpleTaskDescription ["Insert on <marker name='LZ_Delta'>Landing Zone Delta</marker> that is just on the out skirts of the Village to the East Code Named LZ DELTA", "Insert at LZ Delta", "Insert at LZ Delta"];
-		tskInsertLZ setSimpleTaskDestination (getMarkerPos "LZ_Delta");
+		tskInsertLZ setSimpleTaskDestination (MarkerPos "LZ_Delta");
 	};
 	case Echo1: 	{
 		tskInsertLZ = player createSimpleTask ["Move to the Village Chardarakht"];
 		tskInsertLZ setSimpleTaskDescription ["Move to the <marker name='target_location'>Village Chardarakht</marker> and provide Close Air Support", "Move to the Village Chardarakht", "Move to the Village Chardarakht"];
-		tskInsertLZ setSimpleTaskDestination (getMarkerPos "target_location");
+		tskInsertLZ setSimpleTaskDestination (MarkerPos "target_location");
 	};
 	case Kilo6_1: 	{
 		tskInsertLZ = player createSimpleTask ["Insert at LZ Alpha"];
 		tskInsertLZ setSimpleTaskDescription ["Insert on <marker name='LZ_Alpha'>Landing Zone Alpha</marker> that is just on the out skirts of the Village to the East Code Named LZ ALPHA", "Insert at LZ Alpha", "Insert at LZ Alpha"];
-		tskInsertLZ setSimpleTaskDestination (getMarkerPos "LZ_Alpha");	
+		tskInsertLZ setSimpleTaskDestination (MarkerPos "LZ_Alpha");	
 	};	
 	case Kilo6_2: 	{
 		tskInsertLZ = player createSimpleTask ["Insert at LZ Bravo"];
 		tskInsertLZ setSimpleTaskDescription ["Insert on <marker name='LZ_Bravo'>Landing Zone Bravo</marker> that is just on the out skirts of the Village to the North, Code Named LZ BRAVO", "Insert at LZ Bravo", "Insert at LZ Bravo"];
-		tskInsertLZ setSimpleTaskDestination (getMarkerPos "LZ_Bravo");	
+		tskInsertLZ setSimpleTaskDestination (MarkerPos "LZ_Bravo");	
 	};	
 	case Kilo6_3: 	{
 		tskInsertLZ = player createSimpleTask ["Insert at LZ Charlie"];
 		tskInsertLZ setSimpleTaskDescription ["Insert on <marker name='LZ_Charlie'>Landing Zone Charlie</marker> that is just on the out skirts of the Village to the North, Code Named LZ CHARLIE", "Insert at LZ Charlie", "Insert at LZ Charlie"];
-		tskInsertLZ setSimpleTaskDestination (getMarkerPos "LZ_Charlie");	
+		tskInsertLZ setSimpleTaskDestination (MarkerPos "LZ_Charlie");	
 	};	
 	case Kilo6_4: 	{
 		tskInsertLZ = player createSimpleTask ["Insert at LZ Delta"];
 		tskInsertLZ setSimpleTaskDescription ["Insert on <marker name='LZ_Delta'>Landing Zone Delta</marker> that is just on the out skirts of the Village to the South, Code Named LZ DELTA", "Insert at LZ Delta", "Insert at LZ Delta"];
-		tskInsertLZ setSimpleTaskDestination (getMarkerPos "LZ_Delta");	
+		tskInsertLZ setSimpleTaskDestination (MarkerPos "LZ_Delta");	
 	};	
 };
 

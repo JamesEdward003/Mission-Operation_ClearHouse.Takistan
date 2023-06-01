@@ -6,7 +6,7 @@
 
 if (((lifeState player == "UNCONSCIOUS") || (lifeState player == "ALIVE")) and (damage player > .3)) then 
     {
-        [] execVM "HealPlayer.sqf";
+        hintSilent parseText format ["<t color='#00FF00' size='1.0'>Pause On Load!</t>"]; //[] execVM "HealPlayer.sqf";
 
 };
 /*

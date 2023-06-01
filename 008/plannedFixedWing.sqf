@@ -82,7 +82,7 @@ onMapSingleClick "";
 	_target = _targets select 0;
 	uisleep .1;
 	[_target] execVM "008\twirlyMrkr.sqf";
-	_target addEventHandler ["Killed", {[_this select 0, _this select 1, []] execVM "008\onKilled.sqf"}];
+	_target addEventHandler ["Killed", {[_this select 0, _this select 1] execVM "008\onKilled.sqf"}];
 	_type = typeOf _target;
 	_airDist = [_unit,_target] call BIS_fnc_distance2D;
 	deleteVehicle _blinky;
