@@ -115,7 +115,7 @@ openMap false;
 	[this] execVM '008\SeatAction\seat_action.sqf';
 	[this] execVM '008\heliDoors.sqf';
 	this addAction['<t color=''#FFD700''>Deploy RallyPoint</t>', '008\RallyPoint.sqf', [], 6, False, True, '', ''];
-	ALZ = this addAction ['Alternate Landing Zone', '008\altLZ.sqf',[],3,false,true,'',''];
+	this addAction ['Alternate Landing Zone', '008\altLZ.sqf',[],3,false,true,'',''];
 	this setVariable ['Alternate Landing Zone', ALZ];
 	this addEventHandler ['Fired',{[_this select 0,getNumber (configFile/'CfgAmmo'/(_this select 4)/'explosive')] spawn {if (_this select 1==1) then {sleep 0.5};_this select 0 setVehicleAmmo 1}}];
 	this addEventHandler ['killed', {[_this select 0, _this select 1, ['hEnd', lzPickup, lzDropOff]] execVM '008\onKilled.sqf'}];

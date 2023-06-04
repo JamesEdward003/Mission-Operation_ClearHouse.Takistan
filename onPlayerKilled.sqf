@@ -13,3 +13,5 @@ _null = [_plyr,_kilr,"respawn_west"] execVM "playerKilled.sqf";
 
 //If you want to respawn as a playable AI...call the script like this...
 //_null = [_plyr,_kilr] execVM "playerKilled.sqf";
+
+missionNamespace setVariable ["RatingPlayer",rating _plyr];

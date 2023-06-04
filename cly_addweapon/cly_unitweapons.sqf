@@ -11,7 +11,7 @@ if (isMultiplayer) then {
 	}
 ]};
 */
-if (daytime > 18.50 || daytime < 4.50) then {
+if (daytime > 18.50 || daytime < 4.00) then {
 	
 switch (side _unit) do {
 	

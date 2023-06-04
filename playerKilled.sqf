@@ -205,5 +205,7 @@ fa2 synchronizeObjectsAdd [player];
 fa3 synchronizeObjectsAdd [player];
 acm synchronizeObjectsAdd [player];
 
+player addRating (missionNamespace getVariable "RatingPlayer");
+
 [nil,nil,rSPAWN,hintSilent format ["Welcome Back\n %1",name player]] call RE;
 

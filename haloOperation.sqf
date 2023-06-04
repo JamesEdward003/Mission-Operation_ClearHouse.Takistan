@@ -1,9 +1,9 @@
 // haloOperation.sqf //
 [] spawn {
-	_radio=createTrigger["EmptyDetector",[0,0]];
-	_radio setTriggerActivation["India","PRESENT",true];
-	_radio setTriggerStatements["this","0 spawn Halo_Operation",""];
-	9 setRadioMsg "HALO TOGGLE";
+	radioTrigger1=createTrigger["EmptyDetector",[0,0]];
+	radioTrigger1 setTriggerActivation["Alpha","PRESENT",true];
+	radioTrigger1 setTriggerStatements["this","0 spawn Halo_Operation;",""];
+	1 setRadioMsg "HALO TOGGLE";
 };
 
 Halo_Operation = {

@@ -15,7 +15,7 @@ this addMagazineCargo ['JAVELIN',4];
 [this] execVM '008\loadoutAir.sqf';
 [this] execVM '008\SeatAction\seat_action.sqf';
 this addAction['<t color=''#FFD700''>Deploy RallyPoint</t>', 'RallyPoint.sqf',[],6,false,true,'',''];
-this addAction ['Alternate Landing Zone', '008\altLZcommand.sqf',[],3,false,true,'',''];
+this addAction ['Alternate Landing Zone', '008\altLZ.sqf',[],3,false,true,'',''];
 this addEventHandler ['Fired',{[_this select 0,getNumber (configFile/'CfgAmmo'/(_this select 4)/'explosive')] spawn {if (_this select 1==1) then {sleep 0.5};_this select 0 setVehicleAmmo 1}}];
 this addEventHandler ['killed', {[_this select 0, _this select 1, ['hEnd', lzPickup, lzDropOff]] execVM '008\onKilled.sqf'}];
 this addeventhandler ['getin', {_nul=[_this select 2] execVM '008\adfalse.sqf'}];

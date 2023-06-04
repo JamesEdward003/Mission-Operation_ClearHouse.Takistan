@@ -44,12 +44,12 @@ DayWeaponSupport_Menu =
 NightWeaponSupport_Menu =
 [
 	["Night Weapon Support",False],
-	["DMR",[2],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_dmr.sqf'"]],"1","1"],
-	["DMR_JAVELIN",[3],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_dmr_javelin.sqf'"]],"1","1"],
-	["M107_TWS_SMAW",[4],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_M107_TWS_smaw.sqf'"]],"1","1"],
+	["M107_TWS",[2],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_M107_TWS.sqf'"]],"1","1"],
+	["M107_TWS_SMAW",[3],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_M107_TWS_smaw.sqf'"]],"1","1"],
+	["M110_TWS",[4],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_M110_TWS.sqf'"]],"1","1"],
 	["M110_TWS_SMAW",[5],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_M110_TWS_smaw.sqf'"]],"1","1"],
 	["M110_NVG_SMAW",[6],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_M110_NVG_smaw.sqf'"]],"1","1"],
-	["M249_TWS_JAVELIN",[7],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_M249_TWS_Javelin.sqf'"]],"1","1"],
+	["M249_TWS",[7],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_M249_TWS.sqf'"]],"1","1"],
 	["M249_TWS_M136",[8],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_m249_tws_smaw.sqf'"]],"1","1"],
 	["M249_TWS_STINGER",[9],"",-5,[["expression","_null=[player] execvm 'Cly_AddWeapon\cly_addweapon_m249_tws_stinger.sqf'"]],"1","1"],
 	["SAVE LOADOUT",[10],"",-5,[["expression","_null=[player] execvm 'WeaponRespawn.sqf'"]],"1","1"]
@@ -86,20 +86,19 @@ MusicSupport_Menu2 =
 AirSupport_Menu = 
 [
 	["Air Support",False],
-	["Air Transport",[3],"",-5,[["expression","_null=[player] execVM '008\plannedExtraction.sqf'"]],"1","1"],
-	["Air Alternate LZ",[4],"",-5,[["expression","_null=[vehicle player,player] execvm '008\altLZcommand2.sqf'"]],"1","1"],
-	["Air Strike",[5],"",-5,[["expression","_null=[player] execvm '008\airStrike.sqf'"]],"1","1"],
-	["Missile Strike",[6],"",-5,[["expression","_null=[player] execvm '008\MissileStrike\missile_airstrike_init.sqf'"]],"1","1"],
-	["Fixed-Wing CAS",[7],"",-5,[["expression","_null=[player] execvm '008\plannedFixedWing.sqf'"]],"1","1"],
-	["Rotary-Wing CAS",[8],"",-5,[["expression","_null=[player] execvm '008\plannedRotaryWing.sqf'"]],"1","1"]
+	["Air Transport",[2],"",-5,[["expression","_null=[player] execVM '008\plannedExtraction.sqf'"]],"1","1"],
+	["Air Strike",[3],"",-5,[["expression","_null=[player] execvm '008\airStrike.sqf'"]],"1","1"],
+	["Missile Strike",[4],"",-5,[["expression","_null=[player] execvm '008\MissileStrike\missile_airstrike_init.sqf'"]],"1","1"],
+	["Fixed-Wing CAS",[5],"",-5,[["expression","_null=[player] execvm '008\plannedFixedWing.sqf'"]],"1","1"],
+	["Rotary-Wing CAS",[6],"",-5,[["expression","_null=[player] execvm '008\plannedRotaryWing.sqf'"]],"1","1"]
 ];
 
 AirSupport_Menu2 =
 [
 	["Air Support 2",False],
-	["Vehicle Player LZ",[2],"",-5,[["expression","_null=[vehicle player,player] execvm '008\altLZ.sqf'"]],"1","1"],
-	["Vehicle Player Redirect",[3],"",-5,[["expression","_null=[vehicle player,player] execvm '008\altLZcommand.sqf'"]],"1","1"],
-	["Vehicle Cursor LAND",[4],"",-5,[["expression","_null=[cursorTarget,player] execvm '008\airLand.sqf'"]],"1","1"],
+	["Vehicle Player AltLZ",[2],"",-5,[["expression","_null=[vehicle player,player] execvm '008\altLZ.sqf'"]],"1","1"],
+	["Vehicle Player Redirect",[3],"",-5,[["expression","_null=[vehicle player,player] execvm '008\altLZ.sqf'"]],"1","1"],
+	["Vehicle Cursor LAND",[4],"",-5,[["expression","_null=[cursorTarget,player] execvm '008\altLZ.sqf'"]],"1","1"],
 	["Vehicle Cursor Repair",[5],"",-5,[["expression","_null=[cursorTarget,player] execvm '008\repair.sqf'"]],"1","1"],
 	["Vehicle Cursor Unlock",[6],"",-5,[["expression","_null=[cursorTarget,player] execvm '008\unlock.sqf'"]],"1","1"],
 	["Vehicle Cursor Service",[7],"",-5,[["expression","_null=[cursorTarget] execvm '008\vehicleService.sqf'"]],"1","1"],
