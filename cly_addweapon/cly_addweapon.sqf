@@ -125,8 +125,6 @@ _i=0;
 	};
 } forEach _addweaponarray;
 
-if (missionNamespace getVariable "WeaponRespawn" != 4) exitWith {};
-
 if (isNil {_unit getVariable "CLY_addweapon"}) then {
 	_unit addEventHandler [
 		"Respawn",

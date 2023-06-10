@@ -11,6 +11,8 @@ _group = _this select 1;
 
 (leader _group) action ["getInDriver", _vehicle];
 
+(leader _group) moveInDriver _vehicle;
+
 ((units _group) select 1) action ["getInTurret",_vehicle, [0]];
 
 ((units _group) select 2) action ["getInTurret",_vehicle, [1]];

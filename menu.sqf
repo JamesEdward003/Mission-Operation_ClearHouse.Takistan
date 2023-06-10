@@ -5,12 +5,12 @@ PlayerSupport_Menu =
 	["Unit Cursor Arrest",[2],"",-5,[["expression","_null=[cursorTarget,player] execvm '008\ArrestScript.sqf'"]],"1","1"],
 	["Unit Cursor Marker",[3],"",-5,[["expression","_null=[] execvm '008\twirlyMrkrCursor.sqf'"]],"1","1"],
 	["Unit Cursor Dismiss",[4],"",-5,[["expression","_null=[] execvm '008\dismissCursor.sqf'"]],"1","1"],
-	["Unit Cursor Heal",[5],"",-5,[["expression","_null=[player] execvm '008\heal\heal.sqf'"]],"1","1"],
+	["Unit Cursor Heal By Player",[5],"",-5,[["expression","_null=[player] execvm '008\heal\heal.sqf'"]],"1","1"],
 	["Unit Cursor Destroy",[6],"",-5,[["expression","_null=[] execvm '008\destroy.sqf'"]],"1","1"],
-	["Unit Cursor Join Player",[7],"",-5,[["expression","_null=[cursorTarget,player] execvm '008\joinGrpPlayer.sqf'"]],"1","1"],
-	["Unit Cursor Allow Damage False",[8],"",-5,[["expression","_null=[cursorTarget] execvm '008\adFalse.sqf'"]],"1","1"],
-	["Unit Cursor Allow Damage True",[9],"",-5,[["expression","_null=[cursorTarget] execvm '008\adTrue.sqf'"]],"1","1"],
-	["Unit Heal Self",[10],"",-5,[["expression","_null=[player] execvm '008\healSelf\healSelf.sqf'"]],"1","1"]
+	["Unit Cursor Join Player Group",[7],"",-5,[["expression","_null=[cursorTarget,player] execvm '008\joinGrpPlayer.sqf'"]],"1","1"],
+	["Units Area 20m Join Player",[8],"",-5,[["expression","_null=[20] execvm '008\joinPlayerArea.sqf'"]],"1","1"],
+	["Units Area 100m Join Player",[9],"",-5,[["expression","_null=[100] execvm '008\joinPlayerArea.sqf'"]],"1","1"],
+	["Player Heal Self",[10],"",-5,[["expression","_null=[player] execvm '008\healSelf\healSelf.sqf'"]],"1","1"]
 ];
 
 PlayerSupport_Menu2 = 
@@ -18,8 +18,8 @@ PlayerSupport_Menu2 =
 	["Player Support",False],
 	["Respawn Marker Player",[2],"",-5,[["expression","_null=[player] execvm '008\RallyPoint.sqf'"]],"1","1"],
 	["Respawn Marker On MapClick",[3],"",-5,[["expression","_null=[] execvm '008\RallyPointOMC.sqf'"]],"1","1"],
-	["Player Waypoint Attach",[4],"",-5,[["expression","_null=[player] execvm '008\attachWPunit.sqf'"]],"1","1"],
-	["Player Waypoints Delete",[5],"",-5,[["expression","_null=[] execvm '008\deleteWPplayer.sqf'"]],"1","1"],
+	["Player Waypoint Attach",[4],"",-5,[["expression","_null=[player] execvm '008\attachWPunit.sqf'"]],"1","1"],/////
+	["Player Waypoints Delete",[5],"",-5,[["expression","_null=[] execvm '008\deleteWPplayer.sqf'"]],"1","1"],/////
 	["Vehicle Cursor Unlock",[6],"",-5,[["expression","_null=[] execvm '008\unlock.sqf'"]],"1","1"],
 	["Vehicle Cursor Service",[7],"",-5,[["expression","_null=[cursorTarget] execvm '008\vehicleService.sqf'"]],"1","1"],
 	["Teleport Player",[8],"",-5,[["expression","_null=[player] execvm '008\teleport.sqf'"]],"1","1"],

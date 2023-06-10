@@ -4,4 +4,4 @@
 //////////////////////////////////////////////////////////////////
 _unit = _this select 0;
 
-ID = _unit addAction ["Service", "008\x_reload.sqf",[],3,false,true,"","_this distance _target<8"]; 
+_unit addAction ["Service", "008\x_reload.sqf",[],3,false,true,"","_this distance _target<8"]; 

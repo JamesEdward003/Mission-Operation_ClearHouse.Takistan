@@ -45,17 +45,17 @@ class Params
 	};
 	class Weather
 	{
-    title = "Weather:";
-    values[] = {1, 2, 3, 4, 5, 6};
-    texts[] = {"Random", "Clear", "Partly Cloudy", "Cloudy", "Overcast", "Storm"};     
-    default = 6;
+	    title = "Weather:";
+	    values[] = {1, 2, 3, 4, 5, 6};
+	    texts[] = {"Random", "Clear", "Partly Cloudy", "Cloudy", "Overcast", "Storm"};     
+	    default = 4;
 	};
 	class FogParam
 	{
 		title = "Fog:";
-   	values[] = {1, 2, 3, 4, 5, 6};
-   	texts[] = {"Random", "Clear", "Thin", "Thick", "Thicker", "Dense"};     
-   	default = 3;
+	   	values[] = {1, 2, 3, 4, 5, 6};
+	   	texts[] = {"Random", "Clear", "Thin", "Thick", "Thicker", "Dense"};     
+	   	default = 3;
 	};
 	class WindDirection      
 	{
@@ -73,77 +73,77 @@ class Params
 	};
  	class AICurrentSkill 
  	{
-	  title = "AI Skill Level:"; 
-	  values[] = {1,2,3,4,5}; 
-	  texts[] = {"Novice","Rookie","Veteran","Expert","Elite"}; 
-	  default = 3; 
+		title = "AI Skill Level:"; 
+		values[] = {1,2,3,4,5}; 
+		texts[] = {"Novice","Rookie","Veteran","Expert","Elite"}; 
+		default = 3; 
 	};
-  class WeaponParam
-  {
+  	class WeaponParam
+  	{
 	  title="Weapon Type:";
 	  values[]={1,2,3,4};
 	  texts[]={"Cly Weapons for Player","Cly Weapons for Player Group","Cly Weapons for Every Group","Stock"};
-	  default=3;
-  };
-  class WeaponRespawn
-  {
+	  default=2;
+  	};
+  	class WeaponRespawn
+  	{
 	  title="Weapon Respawn:";
 	  values[]={1,2,3,4};
 	  texts[]={"Player Only","Player Group","Whole Team","None"};
-	  default=3;
-  };
-  class UnlimitedAmmo 
+	  default=2;
+  	};
+  	class UnlimitedAmmo 
  	{
 	  title = "Unlimited Ammo:"; 
 	  values[] = {1,2,3,4}; 
 	  texts[] = {"Player Only","Player Group","Whole Team","None"}; 
-	  default = 3; 
+	  default = 2; 
 	};
-  class UnitArmor 
+  	class UnitArmor 
  	{
 	  title = "Unit Armor:"; 
 	  values[] = {1,2,3,4}; 
 	  texts[] = {"Player Only","Player Group","Whole Team","None"}; 
 	  default = 3; 
 	};
-  class HealSelf
+  	class HealSelf
  	{
 	  title = "Player Heal:"; 
 	  values[] = {1,2,3,4}; 
 	  texts[] = {"Player Only","Player Group","Whole Team","None"}; 
 	  default = 1; 
 	};
-  class UnitMarkers
+  	class UnitMarkers
  	{
 	  title = "Unit Markers:"; 
 	  values[] = {1,2,3,4}; 
 	  texts[] = {"Player Only","Player Group","Whole Team","None"}; 
 	  default = 3; 
 	};
-  class OnLeaderRespawn
+  	class OnLeaderRespawn
  	{
 	  title = "On Leader Respawn:"; 
 	  values[] = {1,2}; 
 	  texts[] = {"Yes","No"}; 
 	  default = 1; 
 	};
-  class FirstAidModules
+  	class FirstAidModules
  	{
 	  title = "First Aid Modules:"; 
 	  values[] = {1,2}; 
 	  texts[] = {"Yes","No"}; 
 	  default = 1; 
 	};
-  class EnableSaves
+  	class EnableSaves
  	{
 	  title = "Enable Saving:"; 
 	  values[] = {1,2}; 
 	  texts[] = {"Yes","No"}; 
-	  default = 1; 
+	  default = 2; 
 	};
 	class tskInsertLZpv
 	{
-		title = "task-InsertLZ";
+	  title = "task-InsertLZ";
 	  values[]={1,2,3,4,5,6};
 	  texts[]={"NONE","CREATED","ASSIGNED","SUCCEEDED","FAILED","CANCELED"};
 	  default=2;

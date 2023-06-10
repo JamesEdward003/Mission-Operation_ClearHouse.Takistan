@@ -456,7 +456,7 @@ class Mission
 					position[]={8263.6172,296.03821,1800.4932};
 					combat="AWARE";
 					expActiv="Echo1_AH6J_1 land ""land""; if (isEngineOn Echo1_AH6J_1) then { Echo1_AH6J_1 engineOn false; (driver Echo1_AH6J_1) action [""engineOff"", Echo1_AH6J_1];}; Echo1_AH6J_2 land ""land""; if (isEngineOn Echo1_AH6J_2) then { Echo1_AH6J_2 engineOn false; (driver Echo1_AH6J_2) action [""engineOff"", Echo1_AH6J_2];};";
-					synchronizations[]={16};
+					synchronizations[]={15};
 					class Effects
 					{
 					};
@@ -1123,7 +1123,7 @@ class Mission
 					id=64;
 					combatMode="RED";
 					combat="AWARE";
-					synchronizations[]={31};
+					synchronizations[]={27};
 					class Effects
 					{
 					};
@@ -1503,7 +1503,7 @@ class Mission
 					combatMode="YELLOW";
 					speed="LIMITED";
 					combat="CARELESS";
-					synchronizations[]={0,13};
+					synchronizations[]={0,12};
 					class Effects
 					{
 					};
@@ -1541,7 +1541,7 @@ class Mission
 					speed="NORMAL";
 					combat="AWARE";
 					expActiv="(driver vehicle this) setBehaviour ""CARELESS""; ";
-					synchronizations[]={10};
+					synchronizations[]={9};
 					class Effects
 					{
 					};
@@ -1571,7 +1571,7 @@ class Mission
 					type="LEADER";
 					speed="LIMITED";
 					combat="AWARE";
-					synchronizations[]={11,21};
+					synchronizations[]={10,18};
 					class Effects
 					{
 					};
@@ -1760,7 +1760,7 @@ class Mission
 					type="GETOUT";
 					formation="WEDGE";
 					expActiv="(group this) setFormDir 300;";
-					synchronizations[]={10};
+					synchronizations[]={9};
 					class Effects
 					{
 					};
@@ -1784,7 +1784,7 @@ class Mission
 					type="SAD";
 					combatMode="RED";
 					combat="COMBAT";
-					synchronizations[]={25};
+					synchronizations[]={21};
 					class Effects
 					{
 					};
@@ -1796,7 +1796,7 @@ class Mission
 					type="LEADER";
 					combat="AWARE";
 					expActiv="titleText [""Delta Force Mission Completed\nEast To Exfill!"", ""PLAIN""];";
-					synchronizations[]={2,3,4,29};
+					synchronizations[]={2,3,4,25};
 					class Effects
 					{
 					};
@@ -1810,7 +1810,7 @@ class Mission
 					formation="STAG COLUMN";
 					speed="NORMAL";
 					combat="AWARE";
-					synchronizations[]={28};
+					synchronizations[]={24};
 					class Effects
 					{
 					};
@@ -1818,11 +1818,10 @@ class Mission
 				};
 				class Item10
 				{
-					position[]={11015.008,405.38004,2478.2554};
-					type="LEADER";
+					position[]={11015.572,405.30396,2468.0308};
 					speed="NORMAL";
 					combat="AWARE";
-					synchronizations[]={5,17,18};
+					synchronizations[]={5};
 					class Effects
 					{
 					};
@@ -1830,9 +1829,9 @@ class Mission
 				};
 				class Item11
 				{
-					position[]={11021.289,407.7731,2519.8894};
+					position[]={11027.373,407.53116,2512.4683};
 					type="GETIN";
-					synchronizations[]={7,23};
+					synchronizations[]={28};
 					class Effects
 					{
 					};
@@ -1974,7 +1973,7 @@ class Mission
 					combatMode="YELLOW";
 					speed="LIMITED";
 					combat="CARELESS";
-					synchronizations[]={14,15};
+					synchronizations[]={13,14};
 					class Effects
 					{
 					};
@@ -2010,7 +2009,7 @@ class Mission
 					type="TR UNLOAD";
 					speed="LIMITED";
 					expActiv="(driver vehicle this) setBehaviour ""CARELESS""; ";
-					synchronizations[]={9};
+					synchronizations[]={8};
 					class Effects
 					{
 					};
@@ -2048,7 +2047,7 @@ class Mission
 				{
 					position[]={8188.6001,296.04001,2022.1924};
 					type="JOIN";
-					synchronizations[]={11};
+					synchronizations[]={10};
 					class Effects
 					{
 					};
@@ -2202,7 +2201,7 @@ class Mission
 					formation="FILE";
 					speed="FULL";
 					expActiv="Charlie_loaded=true;publicVariable ""Charlie_loaded"";";
-					synchronizations[]={14};
+					synchronizations[]={13};
 					class Effects
 					{
 					};
@@ -2214,7 +2213,7 @@ class Mission
 					type="GETOUT";
 					formation="WEDGE";
 					expActiv="(group this) setFormDir 100;";
-					synchronizations[]={9};
+					synchronizations[]={8};
 					class Effects
 					{
 					};
@@ -2238,7 +2237,7 @@ class Mission
 					type="SAD";
 					combatMode="RED";
 					combat="COMBAT";
-					synchronizations[]={24};
+					synchronizations[]={20};
 					class Effects
 					{
 					};
@@ -2342,7 +2341,7 @@ class Mission
 					rank="CORPORAL";
 					skill=1;
 					text="Bravo1_6";
-					init="this setIdentity ""Bravo1_6""; _null=[player,this] spawn BIS_fnc_spotter;";
+					init="this setIdentity ""Bravo1_6"";";
 				};
 			};
 			class Waypoints
@@ -2403,7 +2402,7 @@ class Mission
 					formation="FILE";
 					speed="FULL";
 					expActiv="Bravo_loaded=true;publicVariable ""Bravo_loaded"";";
-					synchronizations[]={22};
+					synchronizations[]={19};
 					class Effects
 					{
 					};
@@ -2415,7 +2414,7 @@ class Mission
 					type="GETOUT";
 					formation="WEDGE";
 					expActiv="(group this) setFormDir 180;";
-					synchronizations[]={20};
+					synchronizations[]={17};
 					class Effects
 					{
 					};
@@ -2439,7 +2438,7 @@ class Mission
 					type="SAD";
 					combatMode="RED";
 					combat="COMBAT";
-					synchronizations[]={27};
+					synchronizations[]={23};
 					class Effects
 					{
 					};
@@ -2573,7 +2572,7 @@ class Mission
 					combatMode="YELLOW";
 					speed="LIMITED";
 					combat="CARELESS";
-					synchronizations[]={1,12};
+					synchronizations[]={1,11};
 					class Effects
 					{
 					};
@@ -2608,7 +2607,7 @@ class Mission
 					position[]={10532.296,441.06851,2673.1289};
 					type="TR UNLOAD";
 					expActiv="(driver vehicle this) setBehaviour ""CARELESS""; ";
-					synchronizations[]={8};
+					synchronizations[]={7};
 					class Effects
 					{
 					};
@@ -2652,12 +2651,12 @@ class Mission
 				};
 				class Item8
 				{
-					position[]={11031.51,408.49057,2524.9263};
+					position[]={11031.05,408.46326,2524.8276};
 					type="LOAD";
 					speed="NORMAL";
 					combat="AWARE";
 					expActiv="(vehicle this) land ""LAND"";";
-					synchronizations[]={7};
+					synchronizations[]={28};
 					class Effects
 					{
 					};
@@ -2879,7 +2878,7 @@ class Mission
 					type="GETOUT";
 					formation="WEDGE";
 					expActiv="(group this) setFormDir 240;";
-					synchronizations[]={8};
+					synchronizations[]={7};
 					class Effects
 					{
 					};
@@ -2903,7 +2902,7 @@ class Mission
 					type="SAD";
 					combatMode="RED";
 					combat="COMBAT";
-					synchronizations[]={26};
+					synchronizations[]={22};
 					class Effects
 					{
 					};
@@ -3277,8 +3276,7 @@ class Mission
 				class Item6
 				{
 					position[]={8180.3652,296.04001,2037.1704};
-					type="GETIN NEAREST";
-					expActiv="(group this) addVehicle sov2; _null=[sov2,group this] execVM ""008\assignGetinTurrets.sqf"";";
+					expActiv="_null=[sov2,group this] execVM ""008\assignToVehiclePos.sqf"";";
 					class Effects
 					{
 					};
@@ -3296,11 +3294,13 @@ class Mission
 				{
 					position[]={9703.2148,335.30237,2369.3452};
 					combatMode="RED";
-					combat="COMBAT";
-					expActiv="((units group this) select 4) action [""moveToTurret"", vehicle this, [1]];";
+					combat="AWARE";
 					class Effects
 					{
 					};
+					timeoutMin=20;
+					timeoutMid=40;
+					timeoutMax=60;
 					showWP="NEVER";
 				};
 				class Item9
@@ -3317,9 +3317,9 @@ class Mission
 				};
 				class Item10
 				{
-					position[]={11010.27,404.81061,2461.0146};
+					position[]={11013.7,405.13504,2461.3296};
 					type="JOIN";
-					synchronizations[]={17};
+					synchronizations[]={29};
 					class Effects
 					{
 					};
@@ -3408,7 +3408,7 @@ class Mission
 			};
 			class Waypoints
 			{
-				items=7;
+				items=9;
 				class Item0
 				{
 					position[]={8182.145,296.04001,1757.682};
@@ -3434,8 +3434,7 @@ class Mission
 				class Item2
 				{
 					position[]={8177.5894,296.04001,2035.5713};
-					type="GETIN NEAREST";
-					expActiv="(group this) addVehicle sov1; _null=[sov1,group this] execVM ""008\assignGetinTurrets.sqf"";";
+					expActiv="_null=[sov1,group this] execVM ""008\assignToVehiclePos.sqf"";";
 					class Effects
 					{
 					};
@@ -3453,11 +3452,13 @@ class Mission
 				{
 					position[]={9667.7158,339.45502,2377.7451};
 					combatMode="RED";
-					combat="COMBAT";
-					expActiv="((units group this) select 4) action [""moveToTurret"", vehicle this, [1]];";
+					combat="AWARE";
 					class Effects
 					{
 					};
+					timeoutMin=20;
+					timeoutMid=40;
+					timeoutMax=60;
 					showWP="NEVER";
 				};
 				class Item5
@@ -3474,9 +3475,28 @@ class Mission
 				};
 				class Item6
 				{
-					position[]={11000.774,403.78638,2468.0955};
+					position[]={11014.87,405.23611,2465.512};
 					type="JOIN";
-					synchronizations[]={18};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item7
+				{
+					position[]={11016.077,405.34619,2462.8325};
+					type="LEADER";
+					synchronizations[]={29};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item8
+				{
+					position[]={11028.19,407.48154,2508.9043};
+					type="GETIN";
+					synchronizations[]={30};
 					class Effects
 					{
 					};
@@ -3659,7 +3679,7 @@ class Mission
 				{
 					position[]={8059.7168,296.3718,1960.3975};
 					expActiv="MH47E_Kilo6_5 land ""land""; if (isEngineOn MH47E_Kilo6_5) then { MH47E_Kilo6_5 engineOn false; (driver MH47E_Kilo6_5) action [""engineOff"", MH47E_Kilo6_5];}; ";
-					synchronizations[]={30};
+					synchronizations[]={26};
 					class Effects
 					{
 					};
@@ -3685,9 +3705,10 @@ class Mission
 				};
 				class Item4
 				{
-					position[]={11032.329,408.52463,2524.9253};
-					type="GETOUT";
-					expActiv="(vehicle this) land ""LAND"";";
+					position[]={11032.525,408.53293,2524.959};
+					type="LOAD";
+					expActiv="MH47E_Kilo6_5 land ""land""; if (isEngineOn MH47E_Kilo6_5) then { MH47E_Kilo6_5 engineOn false; (driver MH47E_Kilo6_5) action [""engineOff"", MH47E_Kilo6_5];}; ";
+					synchronizations[]={30};
 					class Effects
 					{
 					};
@@ -3713,7 +3734,8 @@ class Mission
 				class Item7
 				{
 					position[]={8054.1167,296.04001,1969.5854};
-					type="HOLD";
+					type="GETOUT";
+					expActiv="MH47E_Kilo6_5 land ""land""; if (isEngineOn MH47E_Kilo6_5) then { MH47E_Kilo6_5 engineOn false; (driver MH47E_Kilo6_5) action [""engineOff"", MH47E_Kilo6_5];};";
 					class Effects
 					{
 					};
@@ -4007,7 +4029,7 @@ class Mission
 					formation="WEDGE";
 					speed="LIMITED";
 					combat="CARELESS";
-					synchronizations[]={19,22};
+					synchronizations[]={16,19};
 					class Effects
 					{
 					};
@@ -4042,7 +4064,7 @@ class Mission
 					position[]={10039.269,348.61182,2390.4595};
 					type="TR UNLOAD";
 					expActiv="(driver vehicle this) setBehaviour ""CARELESS""; 10 fadeMusic .5;";
-					synchronizations[]={20};
+					synchronizations[]={17};
 					class Effects
 					{
 					};
@@ -4079,7 +4101,7 @@ class Mission
 				{
 					position[]={8189.3018,296.04001,2022.2329};
 					type="JOIN";
-					synchronizations[]={21};
+					synchronizations[]={18};
 					class Effects
 					{
 					};
@@ -5419,7 +5441,7 @@ class Mission
 	};
 	class Sensors
 	{
-		items=92;
+		items=94;
 		class Item0
 		{
 			position[]={8215.6738,353.72092,2894.4519};
@@ -5428,11 +5450,11 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			text="LAUNCH OPERATION";
-			expCond="(Alpha_loaded and Bravo_loaded and Charlie_loaded and Delta_loaded and LaunchOperation) || ((vehicle player != player) and LaunchOperation)";
+			expCond="(Alpha_loaded and Bravo_loaded and Charlie_loaded and Delta_loaded and LaunchOperation)";
 			class Effects
 			{
 			};
-			synchronizations[]={12,13,15,16,19};
+			synchronizations[]={11,12,14,15,16};
 		};
 		class Item1
 		{
@@ -5446,7 +5468,7 @@ class Mission
 			class Effects
 			{
 			};
-			synchronizations[]={31};
+			synchronizations[]={27};
 		};
 		class Item2
 		{
@@ -5471,12 +5493,12 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			text="Launch Extraction!";
-			expCond="this and ((taskState tskRTB) == ""ASSIGNED"")";
+			expCond="this and ((taskState tskRTB) == ""ASSIGNED"") and (!(alive leader Delta1) or (leader Delta1 in thisList))";
 			expActiv="MH47E_Kilo6_1 flyInHeight 50; if (!isEngineOn MH47E_Kilo6_1) then { MH47E_Kilo6_1 engineOn true; (driver MH47E_Kilo6_1) action [""engineOn"", MH47E_Kilo6_1];};_null=[""<t color='#2cb88e' size='1'>Exfill and Return to Base!</t>"",-1,-1,10,1,-1,789] spawn BIS_fnc_dynamicText;";
 			class Effects
 			{
 			};
-			synchronizations[]={6,23};
+			synchronizations[]={6};
 		};
 		class Item4
 		{
@@ -5985,7 +6007,7 @@ class Mission
 			age="UNKNOWN";
 			text="Weather";
 			expCond="WeatherCheck";
-			expActiv="_null= [] spawn { while {alive player and WeatherCheck} do { uisleep 5; hintSilent format [""Date: %1\nOvercast: %2\nRain: %3\nFog: %4\nWind: %5"",date,overcast,rain,fog,wind]; copytoclipboard format [""Date: %1\nOvercast: %2\nRain: %3\nFog: %4\nWind: %5"",date,overcast,rain,fog,wind]; uisleep 10; hintSilent """"; uisleep 60; }; };";
+			expActiv="_null= [] spawn { while {alive player and WeatherCheck} do { uisleep 2; hintSilent format [""Date: %1\nOvercast: %2\nRain: %3\nFog: %4\nWind: %5"",date,overcast,rain,fog,wind]; copytoclipboard format [""Date: %1\nOvercast: %2\nRain: %3\nFog: %4\nWind: %5"",date,overcast,rain,fog,wind]; uisleep 10; hintSilent """"; uisleep 10; }; };";
 			class Effects
 			{
 			};
@@ -6001,7 +6023,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="(Alpha_loaded and Bravo_loaded and Charlie_loaded and Delta_loaded)";
-			expActiv="Kilo6_1d=leader Kilo6_1; Kilo6_1d globalChat format [""%1 'Start the Mission!'"",Kilo6_1d]; Kilo6_2d=leader Kilo6_2; Kilo6_2d globalChat format [""%1 'Onward!'"",Kilo6_2d]; Kilo6_3d=leader Kilo6_3; Kilo6_3d globalChat format [""%1 'Let's Move!'"",Kilo6_3d]; Kilo6_4d=leader Kilo6_4; Kilo6_4d globalChat format [""%1 'To The Hunt!'"",Kilo6_4d]; Kilo6_5d=leader Kilo6_5; Kilo6_5d globalChat format [""%1 'Tsuki Tsuki Tsuki Soo!'"",Kilo6_5d];";
+			expActiv="hintSilent parseText format [""<t color='#00FF00' size='1.0'>All Groups Loaded!</t>""]; Kilo6_1d=leader Kilo6_1; Kilo6_1d globalChat format [""%1 'Start the Mission!'"",Kilo6_1d]; Kilo6_2d=leader Kilo6_2; Kilo6_2d globalChat format [""%1 'Onward!'"",Kilo6_2d]; Kilo6_3d=leader Kilo6_3; Kilo6_3d globalChat format [""%1 'Let's Move!'"",Kilo6_3d]; Kilo6_4d=leader Kilo6_4; Kilo6_4d globalChat format [""%1 'To The Hunt!'"",Kilo6_4d]; Kilo6_5d=leader Kilo6_5; Kilo6_5d globalChat format [""%1 'Tsuki Tsuki Tsuki Soo!'"",Kilo6_5d];";
 			class Effects
 			{
 			};
@@ -6136,7 +6158,7 @@ class Mission
 			class Effects
 			{
 			};
-			synchronizations[]={24,25,26,27};
+			synchronizations[]={20,21,22,23};
 		};
 		class Item45
 		{
@@ -6263,13 +6285,13 @@ class Mission
 		};
 		class Item52
 		{
-			position[]={11026.072,406.32233,2478.0613};
+			position[]={11024.777,406.23022,2478.085};
 			a=60;
 			b=60;
 			activationBy="WEST";
 			interruptable=1;
 			age="UNKNOWN";
-			expCond="this and (""Man"" countType thislist > 8) and ((taskState tskExvillLZ) == ""ASSIGNED"")";
+			expCond="this and (""Man"" countType thislist > 8) and ((taskState tskExvillLZ) == ""ASSIGNED"") and (!(alive leader Delta1) or (leader Delta1 in thisList))";
 			expActiv="tskRTB setTaskState ""ASSIGNED"";taskHint [""Return To Base"", [0, 1, 0, 1], ""taskCurrent""];missionNamespace setVariable [""tskRTBpv"",3];   OpforElim=true;publicVariable ""OpforElim"";";
 			class Effects
 			{
@@ -6306,7 +6328,7 @@ class Mission
 		};
 		class Item55
 		{
-			position[]={11029.786,406.59622,2478.1563};
+			position[]={11029.403,406.56311,2478.0601};
 			a=60;
 			b=60;
 			timeoutMin=10;
@@ -6332,7 +6354,7 @@ class Mission
 			class Effects
 			{
 			};
-			synchronizations[]={28};
+			synchronizations[]={24};
 		};
 		class Item57
 		{
@@ -6340,11 +6362,12 @@ class Mission
 			a=0;
 			b=0;
 			activationBy="ALPHA";
+			repeating=1;
 			interruptable=1;
 			age="UNKNOWN";
 			text="LAUNCH OPERATION";
 			name="LAUNCH_OPERATION";
-			expActiv="_null=[] execVM ""LaunchOperation.sqf"";            LaunchOperation=true;publicVariable ""LaunchOperation"";              ";
+			expActiv="if (Alpha_loaded and Bravo_loaded and Charlie_loaded and Delta_loaded) then { _null=[] execVM ""LaunchOperation.sqf"";            LaunchOperation=true;publicVariable ""LaunchOperation""} else {hintSilent parseText format [""<t color='#00FF00' size='1.0'>All Groups Not Loaded Yet!</t>""]};              ";
 			class Effects
 			{
 			};
@@ -6499,7 +6522,7 @@ class Mission
 		};
 		class Item67
 		{
-			position[]={11027.922,406.44962,2478.0637};
+			position[]={11027.802,406.44138,2478.0637};
 			a=60;
 			b=60;
 			activationBy="WEST";
@@ -6524,7 +6547,7 @@ class Mission
 			class Effects
 			{
 			};
-			synchronizations[]={29};
+			synchronizations[]={25};
 		};
 		class Item69
 		{
@@ -6708,17 +6731,19 @@ class Mission
 		};
 		class Item82
 		{
-			position[]={8047.3311,296.15854,1954.1504};
-			a=0;
-			b=0;
+			position[]={11015.181,405.32199,2473.5076};
+			a=25;
+			b=25;
+			activationBy="WEST";
 			interruptable=1;
 			age="UNKNOWN";
-			text="END OPERATION";
-			expCond="EndOperation";
+			text="Launch Extraction!";
+			expCond="this and ((taskState tskRTB) == ""ASSIGNED"") and (!(alive leader Command1) or (leader Command1 in thisList)) and (!(alive leader Venom1_1) or (leader Venom1_1 in thisList))";
+			expActiv="MH47E_Kilo6_5 flyInHeight 50; if (!isEngineOn MH47E_Kilo6_5) then { MH47E_Kilo6_5 engineOn true; (driver MH47E_Kilo6_5) action [""engineOn"", MH47E_Kilo6_5];};_null=[""<t color='#2cb88e' size='1'>Exfill and Return to Base!</t>"",-1,-1,10,1,-1,789] spawn BIS_fnc_dynamicText;";
 			class Effects
 			{
 			};
-			synchronizations[]={30};
+			synchronizations[]={26};
 		};
 		class Item83
 		{
@@ -6859,8 +6884,37 @@ class Mission
 			timeoutMax=5;
 			interruptable=1;
 			age="UNKNOWN";
-			text="LAUNCH OPERATION";
-			expActiv="hintSilent parseText format[""<t size='1' font='Zeppelin33' color='#FFFF00'>Assigned Vehicle Role: %1</t>"", assignedVehicleRole player];";
+			expActiv="hintSilent parseText format [""<t color='#00FF00' size='1.0'>Assigned Vehicle Role: %1</t>"", assignedVehicleRole player];";
+			class Effects
+			{
+			};
+		};
+		class Item92
+		{
+			position[]={11026.338,406.34048,2478.0569};
+			a=60;
+			b=60;
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="this and (""Man"" countType thislist > 8) and ((taskState tskExvillLZ) == ""ASSIGNED"") and (!(alive leader Command1) or (leader Command1 in thisList)) and (!(alive leader Venom1_1) or (leader Venom1_1 in thisList))";
+			expActiv="tskRTB setTaskState ""ASSIGNED"";taskHint [""Return To Base"", [0, 1, 0, 1], ""taskCurrent""];missionNamespace setVariable [""tskRTBpv"",3];   OpforElim=true;publicVariable ""OpforElim"";";
+			class Effects
+			{
+			};
+		};
+		class Item93
+		{
+			position[]={8168.1768,296.13214,2081.5032};
+			a=3;
+			b=3;
+			angle=60;
+			rectangular=1;
+			activationBy="ANY";
+			repeating=1;
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="player in thislist";
+			expActiv="call BIS_fnc_help; hintSilent ""'BIS_fnc_help' called"";";
 			class Effects
 			{
 			};
