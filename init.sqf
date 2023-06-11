@@ -50,8 +50,6 @@ tc_check=false;publicVariable "tc_check";
 
 halo_check_group=false;publicVariable "halo_check_group";
 
-fnc_GetAllTurretPaths = compile preprocessFileLineNumbers "fnc_GetAllTurretPaths.sqf";
-
 onGroupIconClick  { 
 
 	_is3D = _this select 0;
@@ -64,8 +62,8 @@ onGroupIconClick  {
 	_ctrl = _this select 7;
 	_alt = _this select 8;
 
-    (vehicle ((units _group) select 0)) cameraEffect ["FixedWithZoom","LEFT TOP"];if (daytime >= 19 || daytime <= 5) then {showCinemaBorder false;camUseNVG true} else {showCinemaBorder true;camUseNVG false};
-    if (_RMB == 1) then { (vehicle ((units _group) select 0)) cameraEffect ["FixedWithZoom","FRONT TOP"];if (daytime >= 19 || daytime <= 5) then {showCinemaBorder false;camUseNVG true} else {showCinemaBorder true;camUseNVG false}; };
+    (vehicle ((units _group) select 0)) cameraEffect ["FixedWithZoom","LEFT TOP"];if (daytime >= 19 || daytime <= 4.5) then {showCinemaBorder false;camUseNVG true} else {showCinemaBorder true;camUseNVG false};
+    if (_RMB == 1) then { (vehicle ((units _group) select 0)) cameraEffect ["FixedWithZoom","FRONT TOP"];if (daytime >= 19 || daytime <= 4.5) then {showCinemaBorder false;camUseNVG true} else {showCinemaBorder true;camUseNVG false}; };
     titleText [format ["GROUP: %1\nLEADER GROUP: %2",_group,leader _group],"PLAIN DOWN"];
 };
 
@@ -97,7 +95,7 @@ waituntil {!isnil "bis_fnc_init"};
 
 ["ca\missions_pmc\data\ui_gps_ca.paa",-0.01,0.1] call bis_fnc_customGPS;
 
-[Kilo6_5,BIS_transportHeliH,BIS_transportHomeH,"som_transport"] execVM "transportHeliH.sqf";
+//[Kilo6_5,BIS_transportHeliH,BIS_transportHomeH,"som_transport"] execVM "transportHeliH.sqf";
 
 //===DisplayAddEventHandler===//===To find the number on YOUR keyboard===//
 //	waituntil {!(isNull (findDisplay 46))};

@@ -7,6 +7,7 @@ if (isMultiplayer) then {
 		publicVariable 'tskClearVillagepv';
 		publicVariable 'tskExvillLZpv';
 		publicVariable 'tskRTBpv';
+		publicVariable 'tskDGCpv';
 	";
 
 	execVM "briefing.sqf";
@@ -19,3 +20,4 @@ uisleep 20;
 [nil,nil,rSPAWN,hintSilent format ["Enjoy the game\n %1",name player]] call RE;
 
 PAPABEAR=[playerSide,"HQ"]; PAPABEAR SideChat format ["Enjoy the game %1",name player];
+

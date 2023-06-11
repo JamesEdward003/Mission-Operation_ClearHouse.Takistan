@@ -80,101 +80,108 @@ class Params
 	};
   	class WeaponParam
   	{
-	  title="Weapon Type:";
-	  values[]={1,2,3,4};
-	  texts[]={"Cly Weapons for Player","Cly Weapons for Player Group","Cly Weapons for Every Group","Stock"};
-	  default=2;
+	  	title="Weapon Type:";
+	  	values[]={1,2,3,4};
+	  	texts[]={"Cly Weapons for Player","Cly Weapons for Player Group","Cly Weapons for Every Group","Stock"};
+	  	default=2;
   	};
   	class WeaponRespawn
   	{
-	  title="Weapon Respawn:";
-	  values[]={1,2,3,4};
-	  texts[]={"Player Only","Player Group","Whole Team","None"};
-	  default=2;
+	  	title="Weapon Respawn:";
+	  	values[]={1,2,3,4};
+	  	texts[]={"Player Only","Player Group","Whole Team","None"};
+	  	default=2;
   	};
   	class UnlimitedAmmo 
  	{
-	  title = "Unlimited Ammo:"; 
-	  values[] = {1,2,3,4}; 
-	  texts[] = {"Player Only","Player Group","Whole Team","None"}; 
-	  default = 2; 
+	  	title = "Unlimited Ammo:"; 
+	  	values[] = {1,2,3,4}; 
+	  	texts[] = {"Player Only","Player Group","Whole Team","None"}; 
+	  	default = 2; 
 	};
   	class UnitArmor 
  	{
-	  title = "Unit Armor:"; 
-	  values[] = {1,2,3,4}; 
-	  texts[] = {"Player Only","Player Group","Whole Team","None"}; 
-	  default = 3; 
+	  	title = "Unit Armor:"; 
+	  	values[] = {1,2,3,4}; 
+	  	texts[] = {"Player Only","Player Group","Whole Team","None"}; 
+	  	default = 3; 
 	};
   	class HealSelf
  	{
-	  title = "Player Heal:"; 
-	  values[] = {1,2,3,4}; 
-	  texts[] = {"Player Only","Player Group","Whole Team","None"}; 
-	  default = 1; 
+	  	title = "Player Heal:"; 
+	  	values[] = {1,2,3,4}; 
+	  	texts[] = {"Player Only","Player Group","Whole Team","None"}; 
+	  	default = 1; 
 	};
   	class UnitMarkers
  	{
-	  title = "Unit Markers:"; 
-	  values[] = {1,2,3,4}; 
-	  texts[] = {"Player Only","Player Group","Whole Team","None"}; 
-	  default = 3; 
+	  	title = "Unit Markers:"; 
+	  	values[] = {1,2,3,4}; 
+	  	texts[] = {"Player Only","Player Group","Whole Team","None"}; 
+	  	default = 3; 
 	};
   	class OnLeaderRespawn
  	{
-	  title = "On Leader Respawn:"; 
-	  values[] = {1,2}; 
-	  texts[] = {"Yes","No"}; 
-	  default = 1; 
+	  	title = "On Leader Respawn:"; 
+	  	values[] = {1,2}; 
+	  	texts[] = {"Yes","No"}; 
+	  	default = 1; 
 	};
   	class FirstAidModules
  	{
-	  title = "First Aid Modules:"; 
-	  values[] = {1,2}; 
-	  texts[] = {"Yes","No"}; 
-	  default = 1; 
+	  	title = "First Aid Modules:"; 
+	  	values[] = {1,2}; 
+	  	texts[] = {"Yes","No"}; 
+	  	default = 1; 
 	};
   	class EnableSaves
  	{
-	  title = "Enable Saving:"; 
-	  values[] = {1,2}; 
-	  texts[] = {"Yes","No"}; 
-	  default = 2; 
+	  	title = "Enable Saving:"; 
+	  	values[] = {1,2}; 
+	  	texts[] = {"Yes","No"}; 
+	  	default = 2; 
 	};
 	class tskInsertLZpv
 	{
-	  title = "task-InsertLZ";
-	  values[]={1,2,3,4,5,6};
-	  texts[]={"NONE","CREATED","ASSIGNED","SUCCEEDED","FAILED","CANCELED"};
-	  default=2;
+	  	title = "tskInsertLZ";
+	  	values[]={1,2,3,4,5,6};
+	  	texts[]={"NONE","CREATED","ASSIGNED","SUCCEEDED","FAILED","CANCELED"};
+	  	default=2;
 	};
 	class tskClearVillagepv
 	{
-		title = "task-ClearVillage";
-	  values[]={1,2,3,4,5,6};
-	  texts[]={"NONE","CREATED","ASSIGNED","SUCCEEDED","FAILED","CANCELED"};
-	  default=2;
+		title = "tskClearVillage";
+	  	values[]={1,2,3,4,5,6};
+	  	texts[]={"NONE","CREATED","ASSIGNED","SUCCEEDED","FAILED","CANCELED"};
+	  	default=2;
 	};
 	class tskElimHVTpv
 	{
-		title = "task-ElimHVT";
-	  values[]={1,2,3,4,5,6};
-	  texts[]={"NONE","CREATED","ASSIGNED","SUCCEEDED","FAILED","CANCELED"};
-	  default=2;
+		title = "tskElimHVT";
+	  	values[]={1,2,3,4,5,6};
+	  	texts[]={"NONE","CREATED","ASSIGNED","SUCCEEDED","FAILED","CANCELED"};
+	  	default=2;
 	};
 	class tskExvillLZpv
 	{
-		title = "task-ExvillLZ";
-	  values[]={1,2,3,4,5,6};
-	  texts[]={"NONE","CREATED","ASSIGNED","SUCCEEDED","FAILED","CANCELED"};
-	  default=2;
+		title = "tskExvillLZ";
+	  	values[]={1,2,3,4,5,6};
+	  	texts[]={"NONE","CREATED","ASSIGNED","SUCCEEDED","FAILED","CANCELED"};
+	  	default=2;
 	};
 	class tskRTBpv
 	{
-		title = "task-RTB";
-	  values[]={1,2,3,4,5,6};
-	  texts[]={"NONE","CREATED","ASSIGNED","SUCCEEDED","FAILED","CANCELED"};
-	  default=2;
+		title = "tskRTB";
+	  	values[]={1,2,3,4,5,6};
+	  	texts[]={"NONE","CREATED","ASSIGNED","SUCCEEDED","FAILED","CANCELED"};
+	  	default=2;
+	};
+	class tskDGCpv
+	{
+		title = "tskDGC";
+	  	values[]={1,2,3,4,5,6};
+	  	texts[]={"NONE","CREATED","ASSIGNED","SUCCEEDED","FAILED","CANCELED"};
+	  	default=1;
 	};
 };
 class CfgSounds

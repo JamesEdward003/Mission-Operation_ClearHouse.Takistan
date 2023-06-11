@@ -18,8 +18,8 @@ PlayerSupport_Menu2 =
 	["Player Support",False],
 	["Respawn Marker Player",[2],"",-5,[["expression","_null=[player] execvm '008\RallyPoint.sqf'"]],"1","1"],
 	["Respawn Marker On MapClick",[3],"",-5,[["expression","_null=[] execvm '008\RallyPointOMC.sqf'"]],"1","1"],
-	["Player Waypoint Attach",[4],"",-5,[["expression","_null=[player] execvm '008\attachWPunit.sqf'"]],"1","1"],/////
-	["Player Waypoints Delete",[5],"",-5,[["expression","_null=[] execvm '008\deleteWPplayer.sqf'"]],"1","1"],/////
+	["Player TaskCheck",[4],"",-5,[["expression","_null=[player] execvm 'taskCheck.sqf'"]],"1","1"],/////
+	["Player Call BIS_fnc_help",[5],"",-5,[["expression","_null=[] call BIS_fnc_help"]],"1","1"],/////
 	["Vehicle Cursor Unlock",[6],"",-5,[["expression","_null=[] execvm '008\unlock.sqf'"]],"1","1"],
 	["Vehicle Cursor Service",[7],"",-5,[["expression","_null=[cursorTarget] execvm '008\vehicleService.sqf'"]],"1","1"],
 	["Teleport Player",[8],"",-5,[["expression","_null=[player] execvm '008\teleport.sqf'"]],"1","1"],
@@ -86,11 +86,13 @@ MusicSupport_Menu2 =
 AirSupport_Menu = 
 [
 	["Air Support",False],
-	["Air Transport",[2],"",-5,[["expression","_null=[player] execVM '008\plannedExtraction.sqf'"]],"1","1"],
-	["Air Strike",[3],"",-5,[["expression","_null=[player] execvm '008\airStrike.sqf'"]],"1","1"],
-	["Missile Strike",[4],"",-5,[["expression","_null=[player] execvm '008\MissileStrike\missile_airstrike_init.sqf'"]],"1","1"],
-	["Fixed-Wing CAS",[5],"",-5,[["expression","_null=[player] execvm '008\plannedFixedWing.sqf'"]],"1","1"],
-	["Rotary-Wing CAS",[6],"",-5,[["expression","_null=[player] execvm '008\plannedRotaryWing.sqf'"]],"1","1"]
+	["Group Halo",[2],"",-5,[["expression","_null=[player] execVM '008\HaloGroup.sqf'"]],"1","1"],
+	["Player Halo",[3],"",-5,[["expression","_null=[player] execvm '008\HaloPlayer.sqf'"]],"1","1"],
+	["Air Transport",[4],"",-5,[["expression","_null=[player] execVM '008\plannedExtraction.sqf'"]],"1","1"],
+	["Air Strike",[5],"",-5,[["expression","_null=[player] execvm '008\airStrike.sqf'"]],"1","1"],
+	["Missile Strike",[6],"",-5,[["expression","_null=[player] execvm '008\MissileStrike\missile_airstrike_init.sqf'"]],"1","1"],
+	["Fixed-Wing CAS",[7],"",-5,[["expression","_null=[player] execvm '008\plannedFixedWing.sqf'"]],"1","1"],
+	["Rotary-Wing CAS",[8],"",-5,[["expression","_null=[player] execvm '008\plannedRotaryWing.sqf'"]],"1","1"]
 ];
 
 AirSupport_Menu2 =

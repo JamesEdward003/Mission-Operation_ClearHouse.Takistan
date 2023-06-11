@@ -39,6 +39,7 @@ tskClearVillagepv = missionNamespace getVariable "tskClearVillagepv";
 tskElimHVTpv = missionNamespace getVariable "tskElimHVTpv";
 tskExvillLZpv = missionNamespace getVariable "tskExvillLZpv";
 tskRTBpv = missionNamespace getVariable "tskRTBpv";
+tskDGCpv = missionNamespace getVariable "tskDGCpv";
 ////////////////////////////////////////
 //          AICURRENTSKILL            //
 ////////////////////////////////////////
@@ -192,13 +193,22 @@ switch (tskRTBpv) do {
 		case 6:	{tskRTB setTaskState "CANCELED"};
 		default {tskRTB setTaskState "CREATED"};
 	};
+switch (tskDGCpv) do {
+		case 1:	{tskDGC setTaskState "NONE"};
+		case 2:	{tskDGC setTaskState "CREATED"};
+		case 3:	{tskDGC setTaskState "ASSIGNED"};
+		case 4:	{tskDGC setTaskState "SUCCEEDED"};
+		case 5:	{tskDGC setTaskState "FAILED"};
+		case 6:	{tskDGC setTaskState "CANCELED"};
+		default {tskDGC setTaskState "NONE"};
+	};
 ///////////////////////////////////////////////
 //              DEBUG SETTINGS		     //
 ///////////////////////////////////////////////		
 if (_debug) then {
 	[] spawn {
 		while {alive player} do {
-		uisleep 10; hintSilent format ["AICurrentSkill: %1\nWeaponParam: %2\nWeaponRespawn: %3\nUnlimitedAmmo: %4\nUnitArmor: %5\nClyHeal: %6\nUnitMarkers: %7\nOnLeaderRespawn: %8\nFirstAidModules: %9",AICurrentSkill,WeaponParam,WeaponRespawn,UnlimitedAmmo,UnitArmor,ClyHeal,UnitMarkers,OnLeaderRespawn,FirstAidModules]; copytoclipboard format ["AICurrentSkill: %1\nWeaponParam: %2\nWeaponRespawn: %3\nUnlimitedAmmo: %4\nUnitArmor: %5\nClyHeal: %6\nUnitMarkers: %7\nOnLeaderRespawn: %8\nFirstAidModules: %9",AICurrentSkill,WeaponParam,WeaponRespawn,UnlimitedAmmo,UnitArmor,ClyHeal,UnitMarkers,OnLeaderRespawn,FirstAidModules]; uisleep 10; hintSilent "";
+		uisleep 10; hintSilent format ["AICurrentSkill: %1\nWeaponParam: %2\nWeaponRespawn: %3\nUnlimitedAmmo: %4\nUnitArmor: %5\nClyHeal: %6\nUnitMarkers: %7\nOnLeaderRespawn: %8\nFirstAidModules: %9\nEnableSaves: %10",AICurrentSkill,WeaponParam,WeaponRespawn,UnlimitedAmmo,UnitArmor,ClyHeal,UnitMarkers,OnLeaderRespawn,FirstAidModules,EnableSaves]; copytoclipboard format ["AICurrentSkill: %1\nWeaponParam: %2\nWeaponRespawn: %3\nUnlimitedAmmo: %4\nUnitArmor: %5\nClyHeal: %6\nUnitMarkers: %7\nOnLeaderRespawn: %8\nFirstAidModules: %9\nEnableSaves: %10",AICurrentSkill,WeaponParam,WeaponRespawn,UnlimitedAmmo,UnitArmor,ClyHeal,UnitMarkers,OnLeaderRespawn,FirstAidModules,EnableSaves]; uisleep 10; hintSilent "";
 		uisleep 60; 
 		}; 
 	}; 
@@ -206,7 +216,7 @@ if (_debug) then {
 if (_debugtasks) then {
 	[] spawn {
 		while {alive player} do {
-		uisleep 10; hintSilent format ["tskInsertLZpv: %1\ntskClearVillagepv: %2\ntskElimHVTpv: %3\ntskExvillLZpv: %4\ntskRTBpv: %5",tskInsertLZpv,tskClearVillagepv,tskElimHVTpv,tskExvillLZpv,tskRTBpv]; copytoclipboard format ["tskInsertLZpv: %1\ntskClearVillagepv: %2\ntskElimHVTpv: %3\ntskExvillLZpv: %4\ntskRTBpv: %5",tskInsertLZpv,tskClearVillagepv,tskElimHVTpv,tskExvillLZpv,tskRTBpv]; uisleep 10; hintSilent "";
+		uisleep 10; hintSilent format ["tskInsertLZpv: %1\ntskClearVillagepv: %2\ntskElimHVTpv: %3\ntskExvillLZpv: %4\ntskRTBpv: %5\ntskDGCpv: %6",tskInsertLZpv,tskClearVillagepv,tskElimHVTpv,tskExvillLZpv,tskRTBpv,tskDGCpv]; copytoclipboard format ["tskInsertLZpv: %1\ntskClearVillagepv: %2\ntskElimHVTpv: %3\ntskExvillLZpv: %4\ntskRTBpv: %5\ntskDGCpv: %6",tskInsertLZpv,tskClearVillagepv,tskElimHVTpv,tskExvillLZpv,tskRTBpv,tskDGCpv]; uisleep 10; hintSilent "";
 		uisleep 60; 
 		}; 
 	}; 

@@ -98,7 +98,12 @@ onMapSingleClick "";
 	_blinky = "Sign_sphere10cm_EP1" createVehicle RWTarget;	
 	_targets = nearestObjects[_blinky,["Man","Car","Air","Tank","Truck","Ship","Static","House","Office","Barracks","Hanger"], 75];
 	_target = _targets select 0;
+	uisleep .1;
+	[_target] execVM "008\twirlyMrkr.sqf";
+	_target addEventHandler ["Killed", {[_this select 0, _this select 1] execVM "008\onKilled.sqf"}];
 	deleteVehicle _blinky;
+
+	_smoke = "SmokeShellRed" createVehicle (_target modelToWorld [0,0,30]);
 
 uisleep 2;
 openMap false;	
@@ -108,16 +113,10 @@ uisleep 0.25;
 if (count _targets > 0) then
 
 {		
-	_airDist = _unit distance _target;
+	_type = typeOf _target;
+	_airDist = [_unit,_target] call BIS_fnc_distance2D;
 
 	PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat format ["%1 marked is %2 meters from %3.", typeOf _target, round(_airDist)/1.0, name _unit];
-
-	uisleep 1;
-	[_target] execVM "008\twirlyMrkr.sqf";
-	_target addEventHandler ["Killed", {[_this select 0, _this select 1] execVM "008\onKilled.sqf"}];
-	_type = typeOf _target;
-
-	_smoke = "SmokeShellRed" createVehicle (_target modelToWorld [0,0,30]);
 
 	_blinky = "Sign_sphere10cm_EP1" createVehicle _spawnLoc;
 	_flightPath = [_blinky, _target] call BIS_fnc_relativeDirTo;	
@@ -151,7 +150,7 @@ if (count _targets > 0) then
 	processInitCommands;
 	
 	//[_target,RotaryWingCAS] execVM "008\snapShot2.sqf";
-	//[_target] execVM "008\snapShot5.sqf";
+	//titleText [format ["Press Home To Return"],"plain down"];
 	
 	_targetPos = getPosATL _target;
 
@@ -224,9 +223,7 @@ if (count _targets > 0) then
 	_wp2 setWaypointStatements ["true","{deletevehicle _x} foreach (crew vehicle this + [vehicle this]);deleteMarkerLocal 'HStart';"];
 			
 	waitUntil {!alive RotaryWingCAS};
-	
-	titleText [format ["Press Home To Return"],"plain down"];
-	
+		
  	PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat format ["RotaryWingCAS ready for reassignment!", name _unit];
 
 } else {

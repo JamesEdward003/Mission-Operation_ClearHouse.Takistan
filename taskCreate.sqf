@@ -83,3 +83,14 @@ uisleep 10;
 PAPABEAR=[playerSide,"HQ"]; PAPABEAR SideChat "The task marker shown will be removed in 60 seconds";
 uisleep 60; 
 player removeSimpleTask A_SIMPLE_TASK;
+
+/*
+A_SIMPLE_TASK = player createSimpleTask ["simple task title"];
+A_SIMPLE_TASK setSimpleTaskDestination (position player);
+A_SIMPLE_TASK setSimpleTaskDescription[
+  "simple task long description",
+  "simple task title",
+  "simple task waypoint label"
+];
+A_SIMPLE_TASK setTaskState "CREATED";
+*/

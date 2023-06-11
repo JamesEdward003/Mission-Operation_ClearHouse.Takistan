@@ -140,6 +140,14 @@ tskElimHVT = player createSimpleTask ["Eliminate high value targets", tskClearVi
 tskElimHVT setSimpleTaskDescription ["Eliminate any and all <marker name='hvt1'>HVT's</marker> found!", "Eliminate high value targets", "Eliminate high value targets"];
 tskElimHVT setSimpleTaskDestination (MarkerPos "hvt1");
 
+tskDGC = player createSimpleTask ["DESTROY GUERILLA CACHE"];  
+tskDGC setSimpleTaskDescription[ "DESTROY GUERILLA CACHE", "GUERILLA CACHE", "GUERILLA CACHE"]; 
+tskDGC setSimpleTaskDestination (MarkerPos "hvt1");
+tskDGC setTaskState "NONE"; 
+missionNamespace setVariable ["tskDGCpv",1]; 
+player removeSimpleTask tskDGC;
+
+
 switch (group player) do
 {
 	case Alpha1:	{
@@ -201,6 +209,7 @@ player addEventHandler ["Killed", {
 		tskElimHVTpv = missionNamespace getVariable "tskElimHVTpv";
 		tskExvillLZpv = missionNamespace getVariable "tskExvillLZpv";
 		tskRTBpv = missionNamespace getVariable "tskRTBpv";
+		tskDGCpv = missionNamespace getVariable "tskDGCpv";
 
 		switch (tskInsertLZpv) do {
 			case 1:	{tskInsertLZ setTaskState "NONE"};
@@ -247,7 +256,14 @@ player addEventHandler ["Killed", {
 			case 6:	{tskRTB setTaskState "CANCELED"};
 			default {tskRTB setTaskState "CREATED"};
 		};
-
+		switch (tskDGCpv) do {
+			case 1:	{tskDGC setTaskState "NONE"};
+			case 2:	{tskDGC setTaskState "CREATED"};
+			case 3:	{tskDGC setTaskState "ASSIGNED"};
+			case 4:	{tskDGC setTaskState "SUCCEEDED"};
+			case 5:	{tskDGC setTaskState "FAILED"};
+			case 6:	{tskDGC setTaskState "CANCELED"};
+			default {tskDGC setTaskState "NONE"};
+		};
 	};
-
 }];

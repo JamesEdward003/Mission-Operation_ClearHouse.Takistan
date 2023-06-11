@@ -1,14 +1,15 @@
 // endOperation.sqf //
+deleteVehicle radioTrigger1;
 [] spawn {
 	radioTrigger1=createTrigger["EmptyDetector",[0,0]];
 	radioTrigger1 setTriggerActivation["Alpha","PRESENT",true];
-	radioTrigger1 setTriggerStatements["this","0 spawn End_Operation;deleteTrigger radioTrigger1;",""];
+	radioTrigger1 setTriggerStatements["this","0 spawn End_Operation;",""];
 	1 setRadioMsg "END OPERATION";
 };
 
 End_Operation = {
 
-	{ for "_i" from count waypoints _x - 1 to 0 step -1 do { deleteWaypoint [_x, _i]; }; } forEach (allGroups-[Kilo6_5]); 
+	{ for "_i" from count waypoints _x - 1 to 0 step -1 do { deleteWaypoint [_x, _i]; }; } forEach (allGroups-[Kilo6_5,group player]); 
 	hintSilent parseText format ["<t color='#00FF00' size='2.0'>END THE OPERATION!</t>"];
 	uisleep 6;
 	{ _wp1 = _x addWaypoint [position leader _x, 0]; 
@@ -25,7 +26,7 @@ End_Operation = {
 	  _wp3 setWaypointType "DISMISS";
 	  _wp3 setWaypointBehaviour "AWARE";
 	  _wp3 setWaypointCombatMode "BLUE";
-	  _wp3 setWaypointSpeed "NORMAL"; } forEach (allGroups-[Kilo6_5]);
+	  _wp3 setWaypointSpeed "NORMAL"; } forEach (allGroups-[Kilo6_5,group player]);
     hintSilent parseText format ["<t color='#00FF00' size='2.0'>RETURN TO BASE!</t>"];
 	tskExvillLZ setTaskState "SUCCEEDED";
 	missionNamespace setVariable ["tskExvillLZpv",4];
@@ -46,7 +47,7 @@ End_Operation = {
 		MH47E_Kilo6_5 engineOn true; 
 		(driver MH47E_Kilo6_5) action ["engineOn", MH47E_Kilo6_5];
 	};  
-	lzPickup = "HeliHEmpty" createvehicle (player ModelToWorld [0,20,0]);
+	lzPickup = "HeliHEmpty" createvehicle (player modelToWorld [0,20,0]);
 	_wp01 = Kilo6_5 addWaypoint [position leader player, 0]; 
 	_wp01 setWaypointType "MOVE"; 
 	_wp01 setWaypointBehaviour "AWARE";
@@ -56,7 +57,7 @@ End_Operation = {
 	_wp02 setWaypointType "LOAD";
 	_wp02 setWaypointBehaviour "AWARE";
 	_wp02 setWaypointCombatMode "BLUE";
-	_wp02 setWaypointSpeed "FULL";
+	_wp02 setWaypointSpeed "NORMAL";
 	_wp02 setWaypointStatements ["true","PAPABEAR=[(side (vehicle this)),'HQ']; PAPABEAR SideChat 'Transport ready!';"];
 	waitUntil {(count (assignedCargo MH47E_Kilo6_5)) > 0};
 	deleteVehicle lzPickup;

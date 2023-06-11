@@ -83,8 +83,6 @@ onMapSingleClick "";
 	uisleep .1;
 	[_target] execVM "008\twirlyMrkr.sqf";
 	_target addEventHandler ["Killed", {[_this select 0, _this select 1] execVM "008\onKilled.sqf"}];
-	_type = typeOf _target;
-	_airDist = [_unit,_target] call BIS_fnc_distance2D;
 	deleteVehicle _blinky;
 
 	_smoke = "SmokeShellYellow" createVehicle (_target modelToWorld [0,0,30]);
@@ -95,7 +93,8 @@ openMap false;
 if (count _targets > 0) then
 
 {		
-	_airDist = _unit distance _target;
+	_type = typeOf _target;
+	_airDist = [_unit,_target] call BIS_fnc_distance2D;
 
 	PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat format ["%1 marked is %2 meters from %3.", typeOf _target, round(_airDist)/1.0, name _unit];
 
@@ -131,7 +130,10 @@ if (count _targets > 0) then
 	processInitCommands;
 
 	//[_target,FixedWingCAS] execVM "008\snapShot2.sqf";
+	//titleText [format ["Press Home To Return"],"plain down"];
 	
+	titleText [format ["Press Home To Return"],"plain down"];
+
 	_targetPos = getPosATL _target;
 
 	_airDist2 = [FixedWingCAS,_target] call BIS_fnc_distance2D;
@@ -196,8 +198,6 @@ if (count _targets > 0) then
 			
 	waitUntil {!alive FixedWingCAS};
 	
-	titleText [format ["Press Home To Return"],"plain down"];
-
  	PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat format ["FixedWingCAS ready for reassignment!"];
 
 } else {

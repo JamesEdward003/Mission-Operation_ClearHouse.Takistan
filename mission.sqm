@@ -427,7 +427,7 @@ class Mission
 					rank="LIEUTENANT";
 					skill=1;
 					text="Echo1_AH6J_1";
-					init="(driver this) setIdentity ""Echo1_1""; Echo1 = group this; this flyinheight 45;  Echo1_AH6J_1 engineOn false; this setvehiclelock ""unlocked""; this addAction [""Alternate Landing Zone"",""008\altLZ.sqf"",[Echo1_hPad1],1,false,true,"""",""(alive _target)""]; this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],3,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],2,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT'""]; this addAction [""Service"",""x_reload.sqf"",[],6,false,true,"""",""_this in _target""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""<t color='#00FFFF'>Get In Cargo"",""GetInCargo.sqf"",[],5,false,true,"""",""""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""]; this addEventHandler [""Fired"",{(_this select 0) setVehicleAmmo 1}];";
+					init="(driver this) setIdentity ""Echo1_1""; Echo1 = group this; this flyinheight 45;  Echo1_AH6J_1 engineOn false; this setvehiclelock ""unlocked""; this addAction [""Alternate Landing Zone"",""008\altLZ.sqf"",[Echo1_hPad1],1,false,true,"""",""(alive _target)""]; this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],3,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],2,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT'""]; this addAction [""Service"",""x_reload.sqf"",[],6,false,true,"""",""_this in _target""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""<t color='#00FFFF'>Get In Cargo"",""GetInCargo.sqf"",[],5,false,true,"""",""""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""]; this addEventHandler [""Fired"",{(_this select 0) setVehicleAmmo 1}]; this respawnVehicle [20];";
 					description="ODA Echo 1-1";
 					synchronizations[]={211,210};
 				};
@@ -444,7 +444,7 @@ class Mission
 					rank="SERGEANT";
 					skill=1;
 					text="Echo1_AH6J_2";
-					init="(driver this) setIdentity ""Echo1_2""; this flyinheight 40; Echo1_AH6J_2 engineOn false; this setvehiclelock ""unlocked""; this addAction [""Alternate Landing Zone"",""008\altLZ.sqf"",[Echo1_hPad2],1,false,true,"""",""(alive _target)""]; this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],3,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],2,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT'""]; this addAction [""Service"",""x_reload.sqf"",[],6,false,true,"""",""_this in _target""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""<t color='#00FFFF'>Get In Cargo"",""GetInCargo.sqf"",[],5,false,true,"""",""""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""]; this addEventHandler [""Fired"",{(_this select 0) setVehicleAmmo 1}];";
+					init="(driver this) setIdentity ""Echo1_2""; this flyinheight 40; Echo1_AH6J_2 engineOn false; this setvehiclelock ""unlocked""; this addAction [""Alternate Landing Zone"",""008\altLZ.sqf"",[Echo1_hPad2],1,false,true,"""",""(alive _target)""]; this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],3,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],2,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT'""]; this addAction [""Service"",""x_reload.sqf"",[],6,false,true,"""",""_this in _target""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""<t color='#00FFFF'>Get In Cargo"",""GetInCargo.sqf"",[],5,false,true,"""",""""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""]; this addEventHandler [""Fired"",{(_this select 0) setVehicleAmmo 1}]; this respawnVehicle [20];";
 					description="Echo 1-2";
 				};
 			};
@@ -2655,7 +2655,7 @@ class Mission
 					type="LOAD";
 					speed="NORMAL";
 					combat="AWARE";
-					expActiv="(vehicle this) land ""LAND"";";
+					expActiv="(vehicle this) land ""LAND""; if (isEngineOn MH47E_Kilo6_1) then { MH47E_Kilo6_1 engineOn false; (driver MH47E_Kilo6_1) action [""engineOff"", MH47E_Kilo6_1];}; ";
 					synchronizations[]={28};
 					class Effects
 					{
@@ -3707,7 +3707,7 @@ class Mission
 				{
 					position[]={11032.525,408.53293,2524.959};
 					type="LOAD";
-					expActiv="MH47E_Kilo6_5 land ""land""; if (isEngineOn MH47E_Kilo6_5) then { MH47E_Kilo6_5 engineOn false; (driver MH47E_Kilo6_5) action [""engineOff"", MH47E_Kilo6_5];}; ";
+					expActiv="(vehicle this) land ""LAND""; if (isEngineOn MH47E_Kilo6_5) then { MH47E_Kilo6_5 engineOn false; (driver MH47E_Kilo6_5) action [""engineOff"", MH47E_Kilo6_5];}; ";
 					synchronizations[]={30};
 					class Effects
 					{
@@ -3734,7 +3734,6 @@ class Mission
 				class Item7
 				{
 					position[]={8054.1167,296.04001,1969.5854};
-					type="GETOUT";
 					expActiv="MH47E_Kilo6_5 land ""land""; if (isEngineOn MH47E_Kilo6_5) then { MH47E_Kilo6_5 engineOn false; (driver MH47E_Kilo6_5) action [""engineOff"", MH47E_Kilo6_5];};";
 					class Effects
 					{
@@ -4312,7 +4311,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=75;
+		items=76;
 		class Item0
 		{
 			position[]={10119.017,342.70221,2243.4128};
@@ -4426,7 +4425,7 @@ class Mission
 			side="EMPTY";
 			vehicle="ATV_US_EP1";
 			skill=0.60000002;
-			init="this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],-99,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],-99,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT'""]; this addAction [""Service"",""x_reload.sqf"",[],-99,false,true,"""",""_this in _target""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""Get In Cargo"",""GetInCargo.sqf"",[],-99,false,true,"""",""""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""];";
+			init="this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],-99,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],-99,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT'""]; this addAction [""Service"",""x_reload.sqf"",[],-99,false,true,"""",""_this in _target""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""Get In Cargo"",""GetInCargo.sqf"",[],-99,false,true,"""",""""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""]; this respawnVehicle [20];";
 		};
 		class Item10
 		{
@@ -4436,7 +4435,7 @@ class Mission
 			side="EMPTY";
 			vehicle="ATV_US_EP1";
 			skill=0.60000002;
-			init="this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],-99,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],-99,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT'""]; this addAction [""Service"",""x_reload.sqf"",[],-99,false,true,"""",""_this in _target""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""Get In Cargo"",""GetInCargo.sqf"",[],-99,false,true,"""",""""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""];";
+			init="this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],-99,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],-99,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT'""]; this addAction [""Service"",""x_reload.sqf"",[],-99,false,true,"""",""_this in _target""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""Get In Cargo"",""GetInCargo.sqf"",[],-99,false,true,"""",""""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""]; this respawnVehicle [20];";
 		};
 		class Item11
 		{
@@ -4446,7 +4445,7 @@ class Mission
 			side="EMPTY";
 			vehicle="HMMWV_M998A2_SOV_DES_EP1";
 			skill=0.60000002;
-			init="this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],-99,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],-99,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT'""]; this addAction [""Service"",""x_reload.sqf"",[],-99,false,true,"""",""_this in _target""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""Get In Cargo"",""GetInCargo.sqf"",[],-99,false,true,"""",""""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""];";
+			init="this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],-99,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],-99,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT'""]; this addAction [""Service"",""x_reload.sqf"",[],-99,false,true,"""",""_this in _target""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""Get In Cargo"",""GetInCargo.sqf"",[],-99,false,true,"""",""""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""]; this respawnVehicle [20];";
 		};
 		class Item12
 		{
@@ -4507,7 +4506,7 @@ class Mission
 			vehicle="HMMWV_M998A2_SOV_DES_EP1";
 			skill=0.60000002;
 			text="sov2";
-			init="this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],3,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],2,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT'""]; this addAction [""Service"",""x_reload.sqf"",[],6,false,true,"""",""_this in _target""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""<t color='#00FFFF'>Get In Cargo"",""GetInCargo.sqf"",[],5,false,true,"""",""""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""];";
+			init="this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],3,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],2,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT'""]; this addAction [""Service"",""x_reload.sqf"",[],6,false,true,"""",""_this in _target""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""<t color='#00FFFF'>Get In Cargo"",""GetInCargo.sqf"",[],5,false,true,"""",""""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""]; this respawnVehicle [20];";
 		};
 		class Item18
 		{
@@ -4518,7 +4517,7 @@ class Mission
 			vehicle="HMMWV_M998A2_SOV_DES_EP1";
 			skill=0.60000002;
 			text="sov1";
-			init="this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],3,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],2,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT'""]; this addAction [""Service"",""x_reload.sqf"",[],6,false,true,"""",""_this in _target""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""<t color='#00FFFF'>Get In Cargo"",""GetInCargo.sqf"",[],5,false,true,"""",""""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""];";
+			init="this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],3,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],2,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT'""]; this addAction [""Service"",""x_reload.sqf"",[],6,false,true,"""",""_this in _target""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""<t color='#00FFFF'>Get In Cargo"",""GetInCargo.sqf"",[],5,false,true,"""",""""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""]; this respawnVehicle [20];";
 		};
 		class Item19
 		{
@@ -4663,7 +4662,7 @@ class Mission
 			lock="UNLOCKED";
 			skill=1;
 			text="MH47E_Kilo6_1";
-			init="MH47E_Kilo6_1 flyInHeight 45; this setvehiclelock ""unlocked""; this addAction [""Alternate Landing Zone"",""008\altLZ.sqf"",[Kilo6_1H],1,false,true,"""",""(alive _target) && AltZok""]; this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],3,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],2,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT'""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""<t color='#00FFFF'>Player Group GetIn</t>"",""008\getIn\groupGetIn.sqf"",[],-1,false,true,"""",""((_target distance _this) < 30)""]; this addAction [""<t color='#00FFFF'>Get In Cargo"",""GetInCargo.sqf"",[],-1,false,true,"""",""((_target distance _this) < 30)""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""];";
+			init="MH47E_Kilo6_1 flyInHeight 45; this setvehiclelock ""unlocked""; this addAction [""Alternate Landing Zone"",""008\altLZ.sqf"",[Kilo6_1H],1,false,true,"""",""(alive _target) && AltZok""]; this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],3,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],2,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT'""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""<t color='#00FFFF'>Player Group GetIn</t>"",""008\getIn\groupGetIn.sqf"",[],-1,false,true,"""",""((_target distance _this) < 30)""]; this addAction [""<t color='#00FFFF'>Get In Cargo"",""GetInCargo.sqf"",[],-1,false,true,"""",""((_target distance _this) < 30)""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""]; this respawnVehicle [20];";
 			description="MH-47E Kilo 6-1";
 		};
 		class Item32
@@ -4678,7 +4677,7 @@ class Mission
 			lock="UNLOCKED";
 			skill=1;
 			text="MH47E_Kilo6_2";
-			init="MH47E_Kilo6_2 flyInHeight 45; this setvehiclelock ""unlocked""; this addAction [""Alternate Landing Zone"",""008\altLZ.sqf"",[Kilo6_2H],1,false,true,"""",""(alive _target) && AltZok""]; this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],3,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],2,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT'""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""<t color='#00FFFF'>Player Group GetIn</t>"",""008\getIn\groupGetIn.sqf"",[],-1,false,true,"""",""((_target distance _this) < 30)""]; this addAction [""<t color='#00FFFF'>Get In Cargo"",""GetInCargo.sqf"",[],-1,false,true,"""",""((_target distance _this) < 30)""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""];";
+			init="MH47E_Kilo6_2 flyInHeight 45; this setvehiclelock ""unlocked""; this addAction [""Alternate Landing Zone"",""008\altLZ.sqf"",[Kilo6_2H],1,false,true,"""",""(alive _target) && AltZok""]; this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],3,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],2,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT'""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""<t color='#00FFFF'>Player Group GetIn</t>"",""008\getIn\groupGetIn.sqf"",[],-1,false,true,"""",""((_target distance _this) < 30)""]; this addAction [""<t color='#00FFFF'>Get In Cargo"",""GetInCargo.sqf"",[],-1,false,true,"""",""((_target distance _this) < 30)""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""]; this respawnVehicle [20];";
 			description="MH-47E Kilo 6-2";
 		};
 		class Item33
@@ -4693,7 +4692,7 @@ class Mission
 			lock="UNLOCKED";
 			skill=1;
 			text="MH47E_Kilo6_3";
-			init="MH47E_Kilo6_3 flyInHeight 45; this setvehiclelock ""unlocked""; this addAction [""Alternate Landing Zone"",""008\altLZ.sqf"",[Kilo6_3H],1,false,true,"""",""(alive _target) && AltZok""]; this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],3,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],2,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT'""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""<t color='#00FFFF'>Player Group GetIn</t>"",""008\getIn\groupGetIn.sqf"",[],-1,false,true,"""",""((_target distance _this) < 30)""]; this addAction [""<t color='#00FFFF'>Get In Cargo"",""GetInCargo.sqf"",[],-1,false,true,"""",""((_target distance _this) < 30)""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""];";
+			init="MH47E_Kilo6_3 flyInHeight 45; this setvehiclelock ""unlocked""; this addAction [""Alternate Landing Zone"",""008\altLZ.sqf"",[Kilo6_3H],1,false,true,"""",""(alive _target) && AltZok""]; this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],3,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],2,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT'""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""<t color='#00FFFF'>Player Group GetIn</t>"",""008\getIn\groupGetIn.sqf"",[],-1,false,true,"""",""((_target distance _this) < 30)""]; this addAction [""<t color='#00FFFF'>Get In Cargo"",""GetInCargo.sqf"",[],-1,false,true,"""",""((_target distance _this) < 30)""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""]; this respawnVehicle [20];";
 			description="MH-47E Kilo 6-3";
 			synchronizations[]={161};
 		};
@@ -4709,7 +4708,7 @@ class Mission
 			lock="UNLOCKED";
 			skill=1;
 			text="MH47E_Kilo6_4";
-			init="MH47E_Kilo6_4 flyInHeight 45; this setvehiclelock ""unlocked""; this addAction [""Alternate Landing Zone"",""008\altLZ.sqf"",[Kilo6_4H],1,false,true,"""",""(alive _target) && AltZok""]; this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],3,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],2,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT'""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""<t color='#00FFFF'>Player Group GetIn</t>"",""008\getIn\groupGetIn.sqf"",[],-1,false,true,"""",""((_target distance _this) < 30)""]; this addAction [""<t color='#00FFFF'>Get In Cargo"",""GetInCargo.sqf"",[],-1,false,true,"""",""((_target distance _this) < 30)""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""];";
+			init="MH47E_Kilo6_4 flyInHeight 45; this setvehiclelock ""unlocked""; this addAction [""Alternate Landing Zone"",""008\altLZ.sqf"",[Kilo6_4H],1,false,true,"""",""(alive _target) && AltZok""]; this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],3,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],2,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT'""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""<t color='#00FFFF'>Player Group GetIn</t>"",""008\getIn\groupGetIn.sqf"",[],-1,false,true,"""",""((_target distance _this) < 30)""]; this addAction [""<t color='#00FFFF'>Get In Cargo"",""GetInCargo.sqf"",[],-1,false,true,"""",""((_target distance _this) < 30)""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""]; this respawnVehicle [20];";
 			description="MH-47E Kilo 6-4";
 		};
 		class Item35
@@ -4724,7 +4723,7 @@ class Mission
 			lock="UNLOCKED";
 			skill=1;
 			text="MH47E_Kilo6_5";
-			init="MH47E_Kilo6_5 flyInHeight 100; this setvehiclelock ""unlocked""; this addAction [""Alternate Landing Zone"",""008\altLZ.sqf"",[BIS_transportHeliH],1,false,true,"""",""(alive _target) && AltZok""]; this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],3,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],2,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""<t color='#00FFFF'>Player Group GetIn</t>"",""008\getIn\groupGetIn.sqf"",[],-1,false,true,"""",""((_target distance _this) < 30)""]; this addAction [""<t color='#00FFFF'>Get In Cargo"",""GetInCargo.sqf"",[],-1,false,true,"""",""((_target distance _this) < 30)""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""]; ";
+			init="MH47E_Kilo6_5 flyInHeight 100; this setvehiclelock ""unlocked""; this addAction [""Alternate Landing Zone"",""008\altLZ.sqf"",[BIS_transportHeliH],1,false,true,"""",""(alive _target) && AltZok""]; this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],3,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],2,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""<t color='#00FFFF'>Player Group GetIn</t>"",""008\getIn\groupGetIn.sqf"",[],-1,false,true,"""",""((_target distance _this) < 30)""]; this addAction [""<t color='#00FFFF'>Get In Cargo"",""GetInCargo.sqf"",[],-1,false,true,"""",""((_target distance _this) < 30)""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""]; this respawnVehicle [20];";
 			description="MH-47E Kilo 6-5";
 		};
 		class Item36
@@ -4751,6 +4750,7 @@ class Mission
 			leader=1;
 			skill=1;
 			text="aa1";
+			init="this respawnVehicle [20];";
 		};
 		class Item38
 		{
@@ -4775,6 +4775,7 @@ class Mission
 			leader=1;
 			skill=1;
 			text="m2";
+			init="this respawnVehicle [20];";
 		};
 		class Item40
 		{
@@ -4787,6 +4788,7 @@ class Mission
 			leader=1;
 			skill=1;
 			text="m3";
+			init="this respawnVehicle [20];";
 		};
 		class Item41
 		{
@@ -4798,6 +4800,7 @@ class Mission
 			leader=1;
 			skill=1;
 			text="aa2";
+			init="this respawnVehicle [20];";
 		};
 		class Item42
 		{
@@ -5052,6 +5055,7 @@ class Mission
 			vehicle="HMMWV_Avenger_DES_EP1";
 			skill=0.60000002;
 			text="Avenger";
+			init="this respawnVehicle [20];";
 		};
 		class Item66
 		{
@@ -5062,6 +5066,7 @@ class Mission
 			vehicle="HMMWV_M998_crows_MK19_DES_EP1";
 			skill=0.60000002;
 			text="CROWS";
+			init="this respawnVehicle [20];";
 		};
 		class Item67
 		{
@@ -5095,7 +5100,7 @@ class Mission
 			vehicle="MH6J_EP1";
 			skill=0.60000002;
 			text="MH6J";
-			init="MH6J flyInHeight 50; this setvehiclelock ""unlocked""; this addAction [""Alternate Landing Zone"",""008\altLZ.sqf"",[mh_transportHomeH],1,false,true,"""",""(alive _target) && AltZok""]; this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],3,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],2,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""<t color='#00FFFF'>Get In Cargo"",""GetInCargo.sqf"",[],-1,false,true,"""",""""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""]; ";
+			init="MH6J flyInHeight 50; this setvehiclelock ""unlocked""; this addAction [""Alternate Landing Zone"",""008\altLZ.sqf"",[mh_transportHomeH],1,false,true,"""",""(alive _target) && AltZok""]; this addAction [""Get Equipment Preset"",""bon_loadoutpresets\bon_loadout_presets.sqf"",[],3,false,true,"""",""_this in _target""]; this addAction [""Save Loadout"",""OnRespawnLoadout.sqf"",[],2,false,true,"""",""((_this in _target) and (missionNamespace getVariable """"WeaponRespawn"""" != 4))""]; _null=[this] execVM ""MH47Emgmt.sqf""; this addAction [""<t color='#00FFFF'>Get In Cargo"",""GetInCargo.sqf"",[],-1,false,true,"""",""""]; this addEventHandler [""GetIn"",""(_this select 2) setBehaviour 'CARELESS';(_this select 2) allowDamage FALSE;""]; this addEventHandler [""GetOut"",""(_this select 2) setBehaviour 'COMBAT';(_this select 2) allowDamage FALSE;[(_this select 0),(_this select 2)] spawn {waitUntil {((_this select 1) distance (_this select 0)) > 20;}; (_this select 1) allowDamage TRUE;};""]; this respawnVehicle [20]; ";
 		};
 		class Item70
 		{
@@ -5109,7 +5114,7 @@ class Mission
 		};
 		class Item71
 		{
-			position[]={8000.582,296.04001,2009.6671};
+			position[]={8003.3115,296.04001,1998.7052};
 			azimut=60;
 			id=238;
 			side="EMPTY";
@@ -5119,7 +5124,7 @@ class Mission
 		};
 		class Item72
 		{
-			position[]={8392.6826,296.04001,1920.3595};
+			position[]={8396.2852,296.04001,1914.5657};
 			azimut=60;
 			id=239;
 			side="EMPTY";
@@ -5146,6 +5151,15 @@ class Mission
 			vehicle="Sign_arrow_down_large_EP1";
 			skill=0.60000002;
 			init="this setPos (this modelToWorld [0,0,2]);";
+		};
+		class Item75
+		{
+			position[]={8002.6831,296.04001,1998.314};
+			azimut=60;
+			id=242;
+			side="EMPTY";
+			vehicle="US_WarfareBVehicleServicePoint_Base_EP1";
+			skill=0.60000002;
 		};
 	};
 	class Markers
@@ -5345,13 +5359,13 @@ class Mission
 		class Item26
 		{
 			position[]={8000.8911,296.04001,2008.39};
-			name="respawn_vehicle_west";
+			name="Vehicle_Maintenance";
 			type="b_maint";
 			angle=152;
 		};
 		class Item27
 		{
-			position[]={8392.7314,296.04001,1920.4408};
+			position[]={8392.8721,296.04001,1920.4409};
 			name="maintenance_2_1";
 			type="b_maint";
 			angle=149.5;
@@ -5441,7 +5455,7 @@ class Mission
 	};
 	class Sensors
 	{
-		items=94;
+		items=95;
 		class Item0
 		{
 			position[]={8215.6738,353.72092,2894.4519};
@@ -5472,7 +5486,7 @@ class Mission
 		};
 		class Item2
 		{
-			position[]={11006.192,404.496,2477.9915};
+			position[]={11012.394,405.13177,2477.9846};
 			a=120;
 			b=120;
 			activationBy="EAST";
@@ -5486,9 +5500,9 @@ class Mission
 		};
 		class Item3
 		{
-			position[]={11017.379,405.59845,2478.0137};
-			a=25;
-			b=25;
+			position[]={11016.897,405.55215,2477.9695};
+			a=60;
+			b=60;
 			activationBy="WEST";
 			interruptable=1;
 			age="UNKNOWN";
@@ -6242,7 +6256,7 @@ class Mission
 			activationBy="WEST";
 			interruptable=1;
 			age="UNKNOWN";
-			expCond="this and (""Man"" countType thislist > 0)";
+			expCond="this and (""Man"" countType thislist > 1)";
 			expActiv="tskInsertLZ setTaskState ""SUCCEEDED"";taskHint [""Insert at LZ"", [0, 0, 1, 1], ""taskDone""];missionNamespace setVariable [""tskInsertLZpv"",4];tskClearVillage setTaskState ""ASSIGNED"";taskHint [""Clear Taliban Held Village"", [0, 1, 0, 1], ""taskCurrent""];missionNamespace setVariable [""tskClearVillagepv"",3];player setCurrentTask tskClearVillage; deleteVehicle LZ_Bravo;";
 			class Effects
 			{
@@ -6285,7 +6299,7 @@ class Mission
 		};
 		class Item52
 		{
-			position[]={11024.777,406.23022,2478.085};
+			position[]={11018.571,405.71063,2477.998};
 			a=60;
 			b=60;
 			activationBy="WEST";
@@ -6328,15 +6342,18 @@ class Mission
 		};
 		class Item55
 		{
-			position[]={11029.403,406.56311,2478.0601};
-			a=60;
-			b=60;
+			position[]={11081.067,424.08371,2567.0701};
+			a=6;
+			b=6;
+			angle=50;
+			rectangular=1;
+			activationBy="WEST";
 			timeoutMin=10;
 			timeoutMid=10;
 			timeoutMax=10;
 			interruptable=1;
 			age="UNKNOWN";
-			expActiv="{ if (side _x == east) then { _x setdamage 1 } } foreach allunits;";
+			expActiv="{ if (side _x == east) then { _x setdamage 1 } } foreach allunits;_null=[""<t color='#2cb88e' size='1'>East Enemy All Killed!</t>"",-1,-1,10,1,-1,789] spawn BIS_fnc_dynamicText;";
 			class Effects
 			{
 			};
@@ -6350,7 +6367,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((""Man"" countType thislist) > 0)";
-			expActiv="hintSilent parseText format [""<t color='#00FF00' size='2.0'>GUERILLA CACHE IN THE AREA!</t>""];A_SIMPLE_TASK = player createSimpleTask [""DESTROY GUERILLA CACHE""]; A_SIMPLE_TASK setSimpleTaskDestination (position GUERILLA_CACHE); A_SIMPLE_TASK setSimpleTaskDescription[ ""DESTROY GUERILLA CACHE"", ""GUERILLA CACHE"", ""GUERILLA CACHE""]; A_SIMPLE_TASK setTaskState ""CREATED"";";
+			expActiv="hintSilent parseText format [""<t color='#00FF00' size='2.0'>GUERILLA CACHE IN THE AREA!</t>""];tskDGC = player createSimpleTask [""DESTROY GUERILLA CACHE""]; tskDGC setSimpleTaskDestination (position GUERILLA_CACHE); tskDGC setSimpleTaskDescription[ ""DESTROY GUERILLA CACHE"", ""GUERILLA CACHE"", ""GUERILLA CACHE""]; tskDGC setTaskState ""CREATED""; taskHint [""DESTROY GUERILLA CACHE"", [0, 1, 0, 1], ""taskCurrent""];missionNamespace setVariable [""tskDGCpv"",3];";
 			class Effects
 			{
 			};
@@ -6366,7 +6383,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			text="LAUNCH OPERATION";
-			name="LAUNCH_OPERATION";
+			name="radioTrigger1";
 			expActiv="if (Alpha_loaded and Bravo_loaded and Charlie_loaded and Delta_loaded) then { _null=[] execVM ""LaunchOperation.sqf"";            LaunchOperation=true;publicVariable ""LaunchOperation""} else {hintSilent parseText format [""<t color='#00FF00' size='1.0'>All Groups Not Loaded Yet!</t>""]};              ";
 			class Effects
 			{
@@ -6522,13 +6539,13 @@ class Mission
 		};
 		class Item67
 		{
-			position[]={11027.802,406.44138,2478.0637};
-			a=60;
-			b=60;
+			position[]={11010.822,404.97324,2477.9746};
+			a=120;
+			b=120;
 			activationBy="WEST";
 			interruptable=1;
 			age="UNKNOWN";
-			expCond="(""Man"" countType thislist < 1) and ((taskState tskRTB) == ""ASSIGNED"") and (""Helicopter"" countType thislist > 0) && ((getpos (thislist select 0)) select 2 < 1)";
+			expCond="(""Man"" countType thislist < 1) and ((taskState tskRTB) == ""ASSIGNED"") and (""Helicopter"" countType thislist > 0)";
 			expActiv="tskExvillLZ setTaskState ""SUCCEEDED"";taskHint [""Exvill at LZ Xray"", [0, 1, 0, 1], ""taskDone""];missionNamespace setVariable [""tskExvillLZpv"",4];player setCurrentTask tskRTB;";
 			class Effects
 			{
@@ -6537,9 +6554,10 @@ class Mission
 		class Item68
 		{
 			position[]={10131.799,347.61224,2358.8625};
-			a=20;
-			b=20;
+			a=260;
+			b=260;
 			activationBy="WEST";
+			repeating=1;
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((taskState tskClearVillage) == ""SUCCEEDED"") and (!(alive leader Alpha1) or (leader Alpha1 in thisList)) and (!(alive leader Bravo1) or (leader Bravo1 in thisList)) and (!(alive leader Charlie1) or (leader Charlie1 in thisList)) and (!(alive leader Delta1) or (leader Delta1 in thisList))";
@@ -6557,7 +6575,7 @@ class Mission
 			activationBy="WEST";
 			interruptable=1;
 			age="UNKNOWN";
-			expCond="this and (""Man"" countType thislist > 0)";
+			expCond="this and (""Man"" countType thislist > 1)";
 			expActiv="tskInsertLZ setTaskState ""SUCCEEDED"";taskHint [""Insert at LZ"", [0, 0, 1, 1], ""taskDone""];missionNamespace setVariable [""tskInsertLZpv"",4];tskClearVillage setTaskState ""ASSIGNED"";taskHint [""Clear Taliban Held Village"", [0, 1, 0, 1], ""taskCurrent""];missionNamespace setVariable [""tskClearVillagepv"",3];player setCurrentTask tskClearVillage; deleteVehicle LZ_Delta;";
 			class Effects
 			{
@@ -6571,7 +6589,7 @@ class Mission
 			activationBy="WEST";
 			interruptable=1;
 			age="UNKNOWN";
-			expCond="this and (""Man"" countType thislist > 0)";
+			expCond="this and (""Man"" countType thislist > 1)";
 			expActiv="tskInsertLZ setTaskState ""SUCCEEDED"";taskHint [""Insert at LZ"", [0, 0, 1, 1], ""taskDone""];missionNamespace setVariable [""tskInsertLZpv"",4];tskClearVillage setTaskState ""ASSIGNED"";taskHint [""Clear Taliban Held Village"", [0, 1, 0, 1], ""taskCurrent""];missionNamespace setVariable [""tskClearVillagepv"",3];player setCurrentTask tskClearVillage; deleteVehicle LZ_Alpha;";
 			class Effects
 			{
@@ -6585,7 +6603,7 @@ class Mission
 			activationBy="WEST";
 			interruptable=1;
 			age="UNKNOWN";
-			expCond="this and (""Man"" countType thislist > 0)";
+			expCond="this and (""Man"" countType thislist > 1)";
 			expActiv="tskInsertLZ setTaskState ""SUCCEEDED"";taskHint [""Insert at LZ"", [0, 0, 1, 1], ""taskDone""];missionNamespace setVariable [""tskInsertLZpv"",4];tskClearVillage setTaskState ""ASSIGNED"";taskHint [""Clear Taliban Held Village"", [0, 1, 0, 1], ""taskCurrent""];missionNamespace setVariable [""tskClearVillagepv"",3];player setCurrentTask tskClearVillage; deleteVehicle LZ_Charlie;";
 			class Effects
 			{
@@ -6731,9 +6749,9 @@ class Mission
 		};
 		class Item82
 		{
-			position[]={11015.181,405.32199,2473.5076};
-			a=25;
-			b=25;
+			position[]={11025.101,406.25537,2478.0554};
+			a=70;
+			b=70;
 			activationBy="WEST";
 			interruptable=1;
 			age="UNKNOWN";
@@ -6820,7 +6838,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="!alive Guerilla_Cache";
-			expActiv="hintSilent parseText format [""<t color='#00FF00' size='2.0'>GUERILLA CACHE DESTROYED!</t>""]; A_SIMPLE_TASK setTaskState ""SUCCEEDED"";";
+			expActiv="hintSilent parseText format [""<t color='#00FF00' size='2.0'>GUERILLA CACHE DESTROYED!</t>""]; tskDGC setTaskState ""SUCCEEDED""; taskHint [""DESTROY GUERILLA CACHE"", [0, 0, 1, 1], ""taskDone""];missionNamespace setVariable [""tskDGCpv"",4];";
 			class Effects
 			{
 			};
@@ -6891,9 +6909,9 @@ class Mission
 		};
 		class Item92
 		{
-			position[]={11026.338,406.34048,2478.0569};
-			a=60;
-			b=60;
+			position[]={11026.687,406.36447,2478.0569};
+			a=70;
+			b=70;
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and (""Man"" countType thislist > 8) and ((taskState tskExvillLZ) == ""ASSIGNED"") and (!(alive leader Command1) or (leader Command1 in thisList)) and (!(alive leader Venom1_1) or (leader Venom1_1 in thisList))";
@@ -6915,6 +6933,23 @@ class Mission
 			age="UNKNOWN";
 			expCond="player in thislist";
 			expActiv="call BIS_fnc_help; hintSilent ""'BIS_fnc_help' called"";";
+			class Effects
+			{
+			};
+		};
+		class Item94
+		{
+			position[]={8238.9854,296.04001,2077.2263};
+			a=3;
+			b=6;
+			angle=149.5;
+			rectangular=1;
+			activationBy="ANY";
+			repeating=1;
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="player in thislist";
+			expActiv="_null=[] execVM ""taskCheck.sqf""; hintSilent ""'Task Check' run"";";
 			class Effects
 			{
 			};

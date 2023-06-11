@@ -1,4 +1,5 @@
 // haloOperation.sqf //
+deleteVehicle radioTrigger1;
 [] spawn {
 	radioTrigger1=createTrigger["EmptyDetector",[0,0]];
 	radioTrigger1 setTriggerActivation["Alpha","PRESENT",true];
