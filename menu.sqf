@@ -99,11 +99,11 @@ AirSupport_Menu2 =
 [
 	["Air Support 2",False],
 	["Vehicle Player AltLZ",[2],"",-5,[["expression","_null=[vehicle player,player] execvm '008\altLZ.sqf'"]],"1","1"],
-	["Vehicle Player Redirect",[3],"",-5,[["expression","_null=[vehicle player,player] execvm '008\altLZ.sqf'"]],"1","1"],
-	["Vehicle Cursor LAND",[4],"",-5,[["expression","_null=[cursorTarget,player] execvm '008\altLZ.sqf'"]],"1","1"],
+	["Vehicle Player LAND",[3],"",-5,[["expression","_null=[vehicle player] execvm '008\land.sqf'"]],"1","1"],
+	["Vehicle Cursor LAND",[4],"",-5,[["expression","_null=[cursorTarget] execvm '008\land.sqf'"]],"1","1"],
 	["Vehicle Cursor Repair",[5],"",-5,[["expression","_null=[cursorTarget,player] execvm '008\repair.sqf'"]],"1","1"],
 	["Vehicle Cursor Unlock",[6],"",-5,[["expression","_null=[cursorTarget,player] execvm '008\unlock.sqf'"]],"1","1"],
-	["Vehicle Cursor Service",[7],"",-5,[["expression","_null=[cursorTarget] execvm '008\vehicleService.sqf'"]],"1","1"],
+	["Vehicle Cursor Service Addaction",[7],"",-5,[["expression","_null=[cursorTarget] execvm '008\vehicleService.sqf'"]],"1","1"],
 	["LaserTarget OMC",[8],"",-5,[["expression","_null=[] execvm '008\laseTarget_OMC.sqf'"]],"1","1"],
 	["Cursor LaserTarget",[9],"",-5,[["expression","_null=[player] execvm '008\cursorLaserTarget.sqf'"]],"1","1"]
 ];	

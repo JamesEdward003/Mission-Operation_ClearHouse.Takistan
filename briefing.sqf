@@ -142,11 +142,10 @@ tskElimHVT setSimpleTaskDestination (MarkerPos "hvt1");
 
 tskDGC = player createSimpleTask ["DESTROY GUERILLA CACHE"];  
 tskDGC setSimpleTaskDescription[ "DESTROY GUERILLA CACHE", "GUERILLA CACHE", "GUERILLA CACHE"]; 
-tskDGC setSimpleTaskDestination (MarkerPos "hvt1");
+tskDGC setSimpleTaskDestination (position Guerilla_Cache);
 tskDGC setTaskState "NONE"; 
 missionNamespace setVariable ["tskDGCpv",1]; 
 player removeSimpleTask tskDGC;
-
 
 switch (group player) do
 {

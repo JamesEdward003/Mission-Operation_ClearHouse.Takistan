@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////
-_caller = player;
-_target = cursorTarget;
+_target = _this select 0;  
+_caller = _this select 1;
 
 _target setvehiclelock "unlocked"; vehicle _caller setvehiclelock "unlocked";
 

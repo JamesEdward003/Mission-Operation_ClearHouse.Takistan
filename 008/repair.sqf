@@ -1,11 +1,6 @@
 //////////////////////////////////////////////////////////////////
-//_unit = _this select 0;  
-_caller = player;  
-//_action = _this select 2;  
-
-//_caller removeAction _action;
-
-_target = cursorTarget;
+_target = _this select 0;  
+_caller = _this select 1;
 
 _damage = getDammage _target;
 

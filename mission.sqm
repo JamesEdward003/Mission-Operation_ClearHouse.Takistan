@@ -3408,7 +3408,7 @@ class Mission
 			};
 			class Waypoints
 			{
-				items=9;
+				items=10;
 				class Item0
 				{
 					position[]={8182.145,296.04001,1757.682};
@@ -3497,6 +3497,18 @@ class Mission
 					position[]={11028.19,407.48154,2508.9043};
 					type="GETIN";
 					synchronizations[]={30};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item9
+				{
+					position[]={8265.1113,296.04001,2064.9275};
+					combatMode="RED";
+					formation="STAG COLUMN";
+					speed="NORMAL";
+					combat="AWARE";
 					class Effects
 					{
 					};
@@ -5479,6 +5491,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and (""Man"" countType thislist > 0)";
+			expActiv="""hvt1"" setMarkerAlpha 1;""hvt2"" setMarkerAlpha 1;""hvt3"" setMarkerAlpha 1;""hvt4"" setMarkerAlpha 1;";
 			class Effects
 			{
 			};
@@ -6431,7 +6444,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="alive hvt1 || alive hvt2 || alive hvt3 || alive hvt4";
-			expActiv="taskHint [""Eliminate High Value Targets"", [0, 1, 0, 1], ""taskCurrent""];missionNamespace setVariable [""tskElimHVTpv"",3];player setCurrentTask tskElimHVT;";
+			expActiv="taskHint [""Eliminate High Value Targets"", [0, 1, 0, 1], ""taskCurrent""];missionNamespace setVariable [""tskElimHVTpv"",3];player setCurrentTask tskElimHVT;""hvt1"" setMarkerAlpha 0;""hvt2"" setMarkerAlpha 0;""hvt3"" setMarkerAlpha 0;""hvt4"" setMarkerAlpha 0;";
 			class Effects
 			{
 			};
