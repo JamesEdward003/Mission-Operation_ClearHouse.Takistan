@@ -10,15 +10,15 @@ if (_caller == vehicle _caller) then {
 
 	sleep 4;
 
-	_target setvehiclelock "unlocked";
+	_target setvehiclelock "locked";
 
-	_caller commandChat format["%1 unlocked by %2", typeOf _target, name _caller];
+	_caller commandChat format["%1 locked by %2", typeOf _target, name _caller];
 
 } else {
 
 	_target = vehicle _caller;
 
-	_target setvehiclelock "unlocked";
+	_target setvehiclelock "locked";
 
-	_caller commandChat format["%1 unlocked by %2", typeOf _target, name _caller];
+	_caller commandChat format["%1 locked by %2", typeOf _target, name _caller];
 };

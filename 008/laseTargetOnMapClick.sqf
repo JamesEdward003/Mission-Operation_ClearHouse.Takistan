@@ -1,10 +1,6 @@
 //////////////////////////////////////////////////////////////////
-// Function file for Armed Assault
+// Function file for ArmA 2: Operation Arrowhead
 // Created by: RALPH BELL AMI
-//////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////
-// Function file for Armed Assault
-// Created by:  DieHard - Function file for ArmA 2: Operation Arrowhead
 //////////////////////////////////////////////////////////////////
 _mrkr = [];
 
@@ -38,8 +34,8 @@ switch (playerSide) do
 	case civilian: 	{_laze = laze_civilian};
 };
 
-detach _laze;
-deleteVehicle _laze;
+if (!(isNil "_laze")) then {detach _laze};
+if (!(isNil "_laze")) then {deleteVehicle _laze};
 
 PAPABEAR=[West,"HQ"]; PAPABEAR SideChat format ["%1, click on the map.", name player];
 

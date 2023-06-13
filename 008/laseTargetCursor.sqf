@@ -1,11 +1,10 @@
 //////////////////////////////////////////////////////////////////
-//  From trigger:
-//  nul = [player] execVM "cursorLaserTarget.sqf";
-//
+// Function file for ArmA 2: Operation Arrowhead
+// Created by: RALPH BELL AMI
 //////////////////////////////////////////////////////////////////
 _unit= _this select 0;
 _sideUnit = side _unit;
-_laze = laserTarget player;
+_laze = cursorTarget;
 _lazePos = position _laze;
 				
 _blinky = "Sign_sphere10cm_EP1" createVehicle _lazePos;	
@@ -28,7 +27,7 @@ if (count _airAliveObjects > 0) then
 
 	PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat format ["%1 marked is %2 meters from %3.", typeOf _airTarget, round(_airDist)/1.0, name _unit];
 	      	
-	_airTarget addEventHandler["Killed", {[_this select 0, _this select 1, [_laze, _randomM]] execVM "008\laserTargetEH.sqf"}];
+	_airTarget addEventHandler["Killed", {[_this select 0, _this select 1, _laze] execVM "008\laserTargetEH.sqf"}];
  
 // 	myNinja = group player createUnit ["USMC_SoldierS_SniperH", position _airTarget, [], 0, "FORM"];
 //	addSwitchableUnit myNinja;
@@ -56,7 +55,7 @@ if (count _airAliveObjects > 0) then
 	 
 } else {
 		
-	PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat format ["Make sure your laserDesignator is on, %1.", name _unit];
+	PAPABEAR=[_sideUnit,"HQ"]; PAPABEAR SideChat format ["No Target in the area, %1", name _unit];
 };
 
 /*	_type = getText (configFile >> "CfgVehicles" >> typeOf _airTarget >> "displayName");

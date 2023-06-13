@@ -1,9 +1,11 @@
 // land.sqf //
-_unit = _this select 0;
-_unit land "LAND"; PAPABEAR=[(side _unit),"HQ"]; PAPABEAR SideChat "Vehicle landing, engines off";
+_vehicle 	= _this select 0;
+_caller 	= _this select 1;   
+if (_caller == vehicle _caller) then {_vehicle = cursorTarget} else {_vehicle = vehicle player};
+_vehicle land "LAND"; PAPABEAR=[(side _vehicle),"HQ"]; PAPABEAR SideChat "Vehicle landing, engines off";
 uisleep 10;
-_unit land "LAND";
-	if (isEngineOn _unit) then { 
-		_unit engineOn false; 
-		(driver _unit) action ["engineOff", _unit];};
+_vehicle land "LAND";
+	if (isEngineOn _vehicle) then { 
+		_vehicle engineOn false; 
+		(driver _vehicle) action ["engineOff", _vehicle];};
 

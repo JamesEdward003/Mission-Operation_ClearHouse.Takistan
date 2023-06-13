@@ -86,26 +86,28 @@ MusicSupport_Menu2 =
 AirSupport_Menu = 
 [
 	["Air Support",False],
-	["Group Halo",[2],"",-5,[["expression","_null=[player] execVM '008\HaloGroup.sqf'"]],"1","1"],
-	["Player Halo",[3],"",-5,[["expression","_null=[player] execvm '008\HaloPlayer.sqf'"]],"1","1"],
-	["Air Transport",[4],"",-5,[["expression","_null=[player] execVM '008\plannedExtraction.sqf'"]],"1","1"],
-	["Air Strike",[5],"",-5,[["expression","_null=[player] execvm '008\airStrike.sqf'"]],"1","1"],
-	["Missile Strike",[6],"",-5,[["expression","_null=[player] execvm '008\MissileStrike\missile_airstrike_init.sqf'"]],"1","1"],
-	["Fixed-Wing CAS",[7],"",-5,[["expression","_null=[player] execvm '008\plannedFixedWing.sqf'"]],"1","1"],
-	["Rotary-Wing CAS",[8],"",-5,[["expression","_null=[player] execvm '008\plannedRotaryWing.sqf'"]],"1","1"]
+	["CameraSQF",[2],"",-5,[["expression","_null=player execVM '008\snapshots\CameraSQF.sqf'"]],"1","1"],
+	["Camera Mapclick",[3],"",-5,[["expression","_null=[player] execVM '008\snapshots\onMapClickCamera.sqf'"]],"1","1"],
+	["Group Halo",[4],"",-5,[["expression","_null=[player] execVM '008\HaloGroup.sqf'"]],"1","1"],
+	["Player Halo",[5],"",-5,[["expression","_null=[player] execvm '008\HaloPlayer.sqf'"]],"1","1"],
+	["Air Transport",[6],"",-5,[["expression","_null=[player] execVM '008\plannedExtraction.sqf'"]],"1","1"],
+	["Air Strike",[7],"",-5,[["expression","_null=[player] execvm '008\airStrike.sqf'"]],"1","1"],
+	["Missile Strike",[8],"",-5,[["expression","_null=[player] execvm '008\MissileStrike\missile_airstrike_init.sqf'"]],"1","1"],
+	["Fixed-Wing CAS",[9],"",-5,[["expression","_null=[player] execvm '008\plannedFixedWing.sqf'"]],"1","1"],
+	["Rotary-Wing CAS",[10],"",-5,[["expression","_null=[player] execvm '008\plannedRotaryWing.sqf'"]],"1","1"]
 ];
 
 AirSupport_Menu2 =
 [
 	["Air Support 2",False],
-	["Vehicle Player AltLZ",[2],"",-5,[["expression","_null=[vehicle player,player] execvm '008\altLZ.sqf'"]],"1","1"],
-	["Vehicle Player LAND",[3],"",-5,[["expression","_null=[vehicle player] execvm '008\land.sqf'"]],"1","1"],
-	["Vehicle Cursor LAND",[4],"",-5,[["expression","_null=[cursorTarget] execvm '008\land.sqf'"]],"1","1"],
-	["Vehicle Cursor Repair",[5],"",-5,[["expression","_null=[cursorTarget,player] execvm '008\repair.sqf'"]],"1","1"],
-	["Vehicle Cursor Unlock",[6],"",-5,[["expression","_null=[cursorTarget,player] execvm '008\unlock.sqf'"]],"1","1"],
-	["Vehicle Cursor Service Addaction",[7],"",-5,[["expression","_null=[cursorTarget] execvm '008\vehicleService.sqf'"]],"1","1"],
-	["LaserTarget OMC",[8],"",-5,[["expression","_null=[] execvm '008\laseTarget_OMC.sqf'"]],"1","1"],
-	["Cursor LaserTarget",[9],"",-5,[["expression","_null=[player] execvm '008\cursorLaserTarget.sqf'"]],"1","1"]
+	["Vehicle AltLZ",[2],"",-5,[["expression","_null=[objNull,player] execvm '008\altLZalt.sqf'"]],"1","1"],
+	["Vehicle LAND",[3],"",-5,[["expression","_null=[objNull,player] execvm '008\land.sqf'"]],"1","1"],
+	["Vehicle Unlock",[4],"",-5,[["expression","_null=[objNull,player] execvm '008\unlock.sqf'"]],"1","1"],
+	["Vehicle Lock",[5],"",-5,[["expression","_null=[objNull,player] execvm '008\lock.sqf'"]],"1","1"],
+	["Vehicle Repair",[6],"",-5,[["expression","_null=[objNull,player] execvm '008\repair.sqf'"]],"1","1"],
+	["Vehicle Service Addaction",[7],"",-5,[["expression","_null=[objNull,player] execvm '008\vehicleService.sqf'"]],"1","1"],
+	["LaserTarget OnMapClick",[8],"",-5,[["expression","_null=[] execvm '008\laseTargetOnMapClick.sqf'"]],"1","1"],
+	["LaserTarget CursorTarget",[9],"",-5,[["expression","_null=[player] execvm '008\laseTargetCursor.sqf'"]],"1","1"]
 ];	
 
 GroundSupport_Menu = 
