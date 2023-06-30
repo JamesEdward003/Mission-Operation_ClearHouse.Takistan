@@ -2,12 +2,16 @@
 
 //player say3d "HellsBells";
 
-//playSound "HellsBells";
+playSound "HellsBells";
 
 if (((lifeState player == "UNCONSCIOUS") || (lifeState player == "ALIVE")) and (damage player > .3)) then 
     {
-        hintSilent parseText format ["<t color='#00FF00' size='1.0'>Pause On Load!</t>"]; //[] execVM "HealPlayer.sqf";
+        //hintSilent parseText format ["<t color='#00FF00' size='1.0'>PAUSE!</t>"]; 
+		[] execVM "HealPlayer.sqf";
 
+} else {
+		//hintSilent parseText format ["<t color='#00FF00' size='3.0'>PAUSE!</t>"];
+		["<t color='#2cb88e' size='1'>PAUSE!</t>",-1,-1,10,1,-1,789] spawn BIS_fnc_dynamicText;
 };
 /*
 Arma 3 Script;

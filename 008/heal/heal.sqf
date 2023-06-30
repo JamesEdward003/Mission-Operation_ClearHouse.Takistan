@@ -1,8 +1,6 @@
 ////////////////////////////////////////////////////////////////// 
-_medic = _this select 0;  
-//_id = _this select 2;  
-
-//_target removeAction _id;
+_wounded = _this select 0;  
+_medic = _this select 1;  
 
 _wounded = cursortarget;
 
@@ -26,6 +24,10 @@ _wounded setDammage _dam;
 
 if (alive _medic AND alive _wounded AND _dam > 0.1) then {_wounded setDammage (_dam - 0.1)} else {_wounded setDammage 0};
 
+_wounded setUnconscious false;
+
+_wounded setCaptive false;
+
 };
 
 if (alive _medic) then {
@@ -44,6 +46,10 @@ _wounded playMove "amovpknlmstpsraswrfldnon_amovppnemstpsraswrfldnon";
 
 if (alive _wounded AND alive _medic) then {_wounded setDammage 0};
 
+_wounded setUnconscious false;
+
+_wounded setCaptive false;
+
 // if first aid modules is used.
 if ((_wounded getVariable ["BIS_IS_inAgony", false]) AND alive _medic AND alive _wounded) then {
 	{_wounded setVariable [_x,0,true]} foreach ["head_hit","body","hands","legs","bloodlossPerSecond","bloodloss"];
@@ -54,6 +60,9 @@ if ((_wounded getVariable ["BIS_IS_inAgony", false]) AND alive _medic AND alive 
 
 if (alive _wounded AND alive _medic) then {_wounded setDammage 0};
 
+_wounded setUnconscious false;
+
+_wounded setCaptive false;	
 
 hint parseText format["<t>You healed %1</t>", _nameUnit];
 

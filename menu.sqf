@@ -3,9 +3,9 @@ PlayerSupport_Menu =
 [
 	["Player Support",False],
 	["Unit Cursor Arrest",[2],"",-5,[["expression","_null=[cursorTarget,player] execvm '008\ArrestScript.sqf'"]],"1","1"],
-	["Unit Cursor Marker",[3],"",-5,[["expression","_null=[] execvm '008\twirlyMrkrCursor.sqf'"]],"1","1"],
+	["Unit Cursor Marker",[3],"",-5,[["expression","_null=[cursortarget] execvm '008\twirlyMrkrCursor.sqf'"]],"1","1"],
 	["Unit Cursor Dismiss",[4],"",-5,[["expression","_null=[] execvm '008\dismissCursor.sqf'"]],"1","1"],
-	["Unit Cursor Heal By Player",[5],"",-5,[["expression","_null=[player] execvm '008\heal\heal.sqf'"]],"1","1"],
+	["Unit Cursor Heal By Player",[5],"",-5,[["expression","_null=[cursortarget,player] execvm '008\heal\heal.sqf'"]],"1","1"],
 	["Unit Cursor Destroy",[6],"",-5,[["expression","_null=[] execvm '008\destroy.sqf'"]],"1","1"],
 	["Unit Cursor Join Player Group",[7],"",-5,[["expression","_null=[cursorTarget,player] execvm '008\joinGrpPlayer.sqf'"]],"1","1"],
 	["Units Area 20m Join Player",[8],"",-5,[["expression","_null=[20] execvm '008\joinPlayerArea.sqf'"]],"1","1"],
@@ -18,12 +18,12 @@ PlayerSupport_Menu2 =
 	["Player Support",False],
 	["Respawn Marker Player",[2],"",-5,[["expression","_null=[player] execvm '008\RallyPoint.sqf'"]],"1","1"],
 	["Respawn Marker On MapClick",[3],"",-5,[["expression","_null=[] execvm '008\RallyPointOMC.sqf'"]],"1","1"],
-	["Player TaskCheck",[4],"",-5,[["expression","_null=[player] execvm 'taskCheck.sqf'"]],"1","1"],/////
-	["Player Call BIS_fnc_help",[5],"",-5,[["expression","_null=[] call BIS_fnc_help"]],"1","1"],/////
-	["Vehicle Cursor Unlock",[6],"",-5,[["expression","_null=[] execvm '008\unlock.sqf'"]],"1","1"],
-	["Vehicle Cursor Service",[7],"",-5,[["expression","_null=[cursorTarget] execvm '008\vehicleService.sqf'"]],"1","1"],
-	["Teleport Player",[8],"",-5,[["expression","_null=[player] execvm '008\teleport.sqf'"]],"1","1"],
-	["Teleport Group Player",[9],"",-5,[["expression","_null=[player] execvm '008\teleportGroup.sqf'"]],"1","1"],
+	["Player TaskCheck",[4],"",-5,[["expression","_null=[player] execvm 'taskCheck.sqf'"]],"1","1"],
+	["Vehicle Cursor Unlock",[5],"",-5,[["expression","_null=[] execvm '008\unlock.sqf'"]],"1","1"],
+	["Vehicle Cursor Service",[6],"",-5,[["expression","_null=[cursorTarget] execvm '008\vehicleService.sqf'"]],"1","1"],
+	["Teleport Player",[7],"",-5,[["expression","_null=[player] execvm '008\teleport.sqf'"]],"1","1"],
+	["Teleport Group Player",[8],"",-5,[["expression","_null=[player] execvm '008\teleportGroup.sqf'"]],"1","1"],
+	["HALO Group",[9],"",-5,[["expression","_null=[] execvm '008\HaloGroup.sqf'"]],"1","1"],
 	["HALO Player",[10],"",-5,[["expression","_null=[] execvm '008\HaloPlayer.sqf'"]],"1","1"]
 ];
 

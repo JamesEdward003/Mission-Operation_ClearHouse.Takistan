@@ -2,7 +2,13 @@
 // 008\HaloGroup.sqf
 // hint 'Close the map and don''t forget to open your chute!';
 ///////////////////////////////////////////////////////////////
-private ["_mrkrcolor", "_mrkr"];
+private ["_mrkrcolor", "_mrkr", "_currTask"];
+
+enableRadio false;
+enableSentences false;
+{_x disableConversation true} forEach units group player;
+
+_currTask = currentTask (leader (group player));
 
 _mrkrcolor 	= [];
 
@@ -86,14 +92,14 @@ enableRadio false;
 titleCut ["Pull the ripcord before height 300 meters!", "BLACK FADED", 999];
 player setPos mappos;
 leader group player setPos getMarkerPos "LZ_Halo";
-[leader group player,2000] call BIS_fnc_halo;
+[leader group player,3000] call BIS_fnc_halo;
 //[_x,2000] exec "ca\air2\halo\data\Scripts\HALO_init.sqs";
 leader group player move (getMarkerPos "LZ_Halo");
 ["LZ_Halo","LZ_Halo"] spawn MOVE_TASK;
-uisleep 0.5;
+uisleep 1;
 openmap [false,false];
 
-titlecut ["","BLACK IN",5];
+titlecut ["Pull the ripcord before height 300 meters!","BLACK IN",5];
 
 //PAPABEAR=[playerSide,"HQ"]; PAPABEAR SideChat format ["Pull the ripcord, %1, before height 300 meters!", name player];
 
@@ -104,23 +110,28 @@ titlecut ["","BLACK IN",5];
 	_x allowDamage false;
 	_x setPos [(getPos leader group player select 0)-10*sin(random 359),(getPos leader group player select 1)-10*cos(random 359)];
 	_x setDir direction leader group player;
-	[_x,2000] call BIS_fnc_halo;
+	[_x,2850] call BIS_fnc_halo;
 	//[_x,2000] exec "ca\air2\halo\data\Scripts\HALO_init.sqs";
 	_x move (getMarkerPos "LZ_Halo");	
 }} forEach units group player;
+
+{_x allowDamage false} forEach units group player;
 
 {if (isPlayer _x) then {[_x] execVM "008\altimeter.sqf";}} forEach units group player;
 
 waitUntil {((getPos player) select 2) < 1 || !alive player};
 
-player disableConversation false;
 enableRadio true;
+enableSentences true;
+{_x disableConversation false} forEach units group player;
 
-uisleep 6; 
+uisleep 20; 
 
 {_x allowDamage true} forEach units group player;
 
 deleteMarker "LZ_Halo";
+
+player setCurrentTask _currTask;
 
 };
 

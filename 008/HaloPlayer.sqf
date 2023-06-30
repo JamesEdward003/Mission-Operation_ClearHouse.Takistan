@@ -2,7 +2,13 @@
 // 008\HaloPlayer.sqf
 // hint 'Close the map and don''t forget to open your chute!';
 ///////////////////////////////////////////////////////////////
-private ["_mrkrcolor", "_mrkr"];
+private ["_mrkrcolor", "_mrkr", "_currTask"];
+
+enableRadio false;
+enableSentences false;
+{_x disableConversation true} forEach units group player;
+
+_currTask = currentTask (leader (group player));
 
 _mrkrcolor 	= [];
 
@@ -42,7 +48,7 @@ MOVE_TASK = {
 	player removeSimpleTask A_MOVE_TASK;
 };
 
-if (isServer) then {
+if (!isServer) then {
 
 uisleep 0.25;
 location = false;
@@ -85,27 +91,32 @@ player disableConversation true;
 enableRadio false;
 titleCut ["Pull the ripcord before height 300 meters!", "BLACK FADED", 999];
 player setPos mappos;
-[player, 2000] exec "ca\air2\halo\data\Scripts\HALO_init.sqs";
+[player, 3000] exec "ca\air2\halo\data\Scripts\HALO_init.sqs";
 [player] execVM "008\altimeter.sqf";
 ["LZ_Halo","LZ_Halo"] spawn MOVE_TASK;
 uisleep 0.5;
 openmap [false,false];
 
-titlecut ["","BLACK IN",5];
+titlecut ["Pull the ripcord before height 300 meters!","BLACK IN",5];
 
-PAPABEAR=[playerSide,"HQ"]; PAPABEAR SideChat format ["Pull the ripcord, %1, before height 300 meters!", name player];
+//PAPABEAR=[playerSide,"HQ"]; PAPABEAR SideChat format ["Pull the ripcord, %1, before height 300 meters!", name player];
 	
 waitUntil {((getPos player) select 2) < 1 || !alive player};
 
-player disableConversation false;
 enableRadio true;
+enableSentences true;
+{_x disableConversation false} forEach units group player;
 
-uisleep 6; 
+uisleep 16; 
 
 player allowDamage true;
-	
-enableRadio true;
 
 deleteMarker "LZ_Halo";
+
+uisleep 20;
+
+deleteMarker "LZ_Halo";
+
+player setCurrentTask _currTask;
 
 };

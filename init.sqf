@@ -1,4 +1,5 @@
 // init.sqf //
+[playerSide, "HQ"] commandChat "Initiating v2023.6.30";
 0 fadeSound 1;
 0 fadeMusic 1;
 /*
@@ -62,8 +63,8 @@ onGroupIconClick  {
 	_ctrl = _this select 7;
 	_alt = _this select 8;
 
-    (vehicle ((units _group) select 0)) cameraEffect ["FixedWithZoom","LEFT TOP"];if (daytime >= 19 || daytime <= 4.5) then {showCinemaBorder false;camUseNVG true} else {showCinemaBorder true;camUseNVG false};
-    if (_RMB == 1) then { (vehicle ((units _group) select 0)) cameraEffect ["FixedWithZoom","FRONT TOP"];if (daytime >= 19 || daytime <= 4.5) then {showCinemaBorder false;camUseNVG true} else {showCinemaBorder true;camUseNVG false}; };
+    (vehicle ((units _group) select 0)) cameraEffect ["FixedWithZoom","LEFT TOP"];if (daytime >= 19 || daytime <= 5) then {showCinemaBorder false;camUseNVG true} else {showCinemaBorder true;camUseNVG false};
+    if (_RMB == 1) then { (vehicle ((units _group) select 0)) cameraEffect ["FixedWithZoom","FRONT TOP"];if (daytime >= 19 || daytime <= 5) then {showCinemaBorder false;camUseNVG true} else {showCinemaBorder true;camUseNVG false}; };
     titleText [format ["GROUP: %1\nLEADER GROUP: %2",_group,leader _group],"PLAIN DOWN"];
 };
 

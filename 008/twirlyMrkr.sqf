@@ -2,6 +2,7 @@
 private ["_unit","_type","_marker","_mrkrcolor"];
 _unit = _this select 0;
 _type = typeOf _unit;
+_mrkrName = _type;
 
 _mrkrcolor 	= [];
 
@@ -18,7 +19,7 @@ if (isMultiplayer) then {
 };
 
 While {alive _unit} do {
-	_marker = createMarkerLocal [_type, position _unit];
+	_marker = createMarkerLocal [_mrkrName, position _unit];
 	_marker setMarkerTypeLocal "select";
 	_marker setMarkerShapeLocal "Icon";  
 	_marker setMarkerTextLocal _type;
@@ -27,5 +28,6 @@ While {alive _unit} do {
 	sleep 2;
 	deleteMarkerLocal _marker;
 };
+
 sleep 2;
-deleteMarkerLocal _type;
+deleteMarkerLocal _mrkrName;

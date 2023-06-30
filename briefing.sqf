@@ -7,7 +7,13 @@ player setVariable ["Briefing",true];
 player createDiaryRecord["Diary", ["Help", "Hints from 'Helluigi':<br/>
 	- GPS toggle option set to 'Insert' or 'Home' in Control Options<br/>
 	- Use Your Radio To Toggle Group Icons! '0-0-6' -> 'ICONS ON/OFF!'<br/>
-	- LeftClick or RightClick On Group Icons To Get Info and Camera View
+	- LeftClick or RightClick On Group Icons To Get Info and Camera View<br/>
+	- Alpha Radio '0-0-1' will be helpful to you if needed!'<br/>
+	- Medic for you from surrounding area medics while capturing the village<br/>
+	- Joint Operations if you would like to take over Delta Squad<br/>
+	- End Operations if you would like to exfil team as Delta Squad Leader<br/>
+	- Toggle Group or Just Player Halo Jumps back at the base<br/>
+	- Do not use helicopter ropes without the addon for it
 "]];
 player createDiaryRecord ["Diary", ["Assets", "Your assets for this mission are:<br/>
 	- Four top-notch infantry squads-U.S.Army<br/>
@@ -76,33 +82,33 @@ switch (group player) do
 switch (group player) do
 {
 	case Alpha1:	{
-		tskExvillLZ = player createSimpleTask ["Exvill at LZ Xray"];
-		tskExvillLZ setSimpleTaskDescription ["Secure the Landing Zone that is to the far East of the Village Code Named <marker name='LZ_Xray'>LZ XRAY</marker> and wait for Helo pickup", "Exvill at LZ Xray", "Exvill at LZ XRAY"];
+		tskExvillLZ = player createSimpleTask ["Exfil at LZ Xray"];
+		tskExvillLZ setSimpleTaskDescription ["Secure the Landing Zone that is to the far East of the Village Code Named <marker name='LZ_Xray'>LZ XRAY</marker> and wait for Helo pickup", "Exfil at LZ Xray", "Exfil at LZ XRAY"];
 		tskExvillLZ setSimpleTaskDestination (MarkerPos "LZ_Xray");
 	};
 	case Bravo1: 	{
-		tskExvillLZ = player createSimpleTask ["Exvill at LZ Xray"];
-		tskExvillLZ setSimpleTaskDescription ["Secure the Landing Zone that is to the far East of the Village Code Named <marker name='LZ_Xray'>LZ XRAY</marker> and wait for Helo pickup", "Exvill at LZ Xray", "Exvill at LZ XRAY"];
+		tskExvillLZ = player createSimpleTask ["Exfil at LZ Xray"];
+		tskExvillLZ setSimpleTaskDescription ["Secure the Landing Zone that is to the far East of the Village Code Named <marker name='LZ_Xray'>LZ XRAY</marker> and wait for Helo pickup", "Exfil at LZ Xray", "Exfil at LZ XRAY"];
 		tskExvillLZ setSimpleTaskDestination (MarkerPos "LZ_Xray");
 	};
 	case Charlie1: 	{
-		tskExvillLZ = player createSimpleTask ["Exvill at LZ Xray"];
-		tskExvillLZ setSimpleTaskDescription ["Secure the Landing Zone that is to the far East of the Village Code Named <marker name='LZ_Xray'>LZ XRAY</marker> and wait for Helo pickup", "Exvill at LZ Xray", "Exvill at LZ XRAY"];
+		tskExvillLZ = player createSimpleTask ["Exfil at LZ Xray"];
+		tskExvillLZ setSimpleTaskDescription ["Secure the Landing Zone that is to the far East of the Village Code Named <marker name='LZ_Xray'>LZ XRAY</marker> and wait for Helo pickup", "Exfil at LZ Xray", "Exfil at LZ XRAY"];
 		tskExvillLZ setSimpleTaskDestination (MarkerPos "LZ_Xray");
 	};
 	case Delta1: 	{
-		tskExvillLZ = player createSimpleTask ["Exvill at LZ Xray"];
-		tskExvillLZ setSimpleTaskDescription ["Secure the Landing Zone that is to the far East of the Village Code Named <marker name='LZ_Xray'>LZ XRAY</marker> and wait for Helo pickup", "Exvill at LZ Xray", "Exvill at LZ XRAY"];
+		tskExvillLZ = player createSimpleTask ["Exfil at LZ Xray"];
+		tskExvillLZ setSimpleTaskDescription ["Secure the Landing Zone that is to the far East of the Village Code Named <marker name='LZ_Xray'>LZ XRAY</marker> and wait for Helo pickup", "Exfil at LZ Xray", "Exfil at LZ XRAY"];
 		tskExvillLZ setSimpleTaskDestination (MarkerPos "LZ_Xray");
 	};
 	case Venom: 	{
-		tskExvillLZ = player createSimpleTask ["Exvill at LZ Xray"];
-		tskExvillLZ setSimpleTaskDescription ["Secure the Landing Zone that is to the far East of the Village Code Named <marker name='LZ_Xray'>LZ XRAY</marker> and wait for Helo pickup", "Exvill at LZ Xray", "Exvill at LZ XRAY"];
+		tskExvillLZ = player createSimpleTask ["Exfil at LZ Xray"];
+		tskExvillLZ setSimpleTaskDescription ["Secure the Landing Zone that is to the far East of the Village Code Named <marker name='LZ_Xray'>LZ XRAY</marker> and wait for Helo pickup", "Exfil at LZ Xray", "Exfil at LZ XRAY"];
 		tskExvillLZ setSimpleTaskDestination (MarkerPos "LZ_Xray");
 	};
 	case Command: 	{
-		tskExvillLZ = player createSimpleTask ["Exvill at LZ Xray"];
-		tskExvillLZ setSimpleTaskDescription ["Secure the Landing Zone that is to the far East of the Village Code Named <marker name='LZ_Xray'>LZ XRAY</marker> and wait for Helo pickup", "Exvill at LZ Xray", "Exvill at LZ XRAY"];
+		tskExvillLZ = player createSimpleTask ["Exfil at LZ Xray"];
+		tskExvillLZ setSimpleTaskDescription ["Secure the Landing Zone that is to the far East of the Village Code Named <marker name='LZ_Xray'>LZ XRAY</marker> and wait for Helo pickup", "Exfil at LZ Xray", "Exfil at LZ XRAY"];
 		tskExvillLZ setSimpleTaskDestination (MarkerPos "LZ_Xray");
 	};
 	case Echo1: 	{

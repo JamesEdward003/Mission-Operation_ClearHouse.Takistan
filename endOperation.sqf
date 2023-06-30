@@ -8,8 +8,8 @@ deleteVehicle radioTrigger1;
 };
 
 End_Operation = {
-
-	{ for "_i" from count waypoints _x - 1 to 0 step -1 do { deleteWaypoint [_x, _i]; }; } forEach (allGroups-[Kilo6_5,group player]); 
+	[] execVM "haloOperation.sqf";
+	{ for "_i" from count waypoints _x - 1 to 0 step -1 do { deleteWaypoint [_x, _i]; }; } forEach (allGroups-[Kilo6_1,Kilo6_2,Kilo6_3,Kilo6_4,Kilo6_5,Echo1,group player]); 
 	hintSilent parseText format ["<t color='#00FF00' size='2.0'>END THE OPERATION!</t>"];
 	uisleep 6;
 	{ _wp1 = _x addWaypoint [position leader _x, 0]; 
@@ -26,7 +26,7 @@ End_Operation = {
 	  _wp3 setWaypointType "DISMISS";
 	  _wp3 setWaypointBehaviour "AWARE";
 	  _wp3 setWaypointCombatMode "BLUE";
-	  _wp3 setWaypointSpeed "NORMAL"; } forEach (allGroups-[Kilo6_5,group player]);
+	  _wp3 setWaypointSpeed "NORMAL"; } forEach (allGroups-[Kilo6_1,Kilo6_2,Kilo6_3,Kilo6_4,Kilo6_5,Echo1,group player]);
     hintSilent parseText format ["<t color='#00FF00' size='2.0'>RETURN TO BASE!</t>"];
 	tskExvillLZ setTaskState "SUCCEEDED";
 	missionNamespace setVariable ["tskExvillLZpv",4];
@@ -82,8 +82,7 @@ End_Operation = {
 	_wp05 setWaypointCombatMode "GREEN";
 	_wp05 setWaypointSpeed "NORMAL";
 	_wp05 setWaypointStatements ["true","(vehicle this) land 'LAND'; PAPABEAR=[(side (vehicle this)),'HQ']; PAPABEAR SideChat 'Transport ready for reassignment!';"];
-    [] execVM "haloOperation.sqf";
-    hintSilent parseText format ["<t color='#00FF00' size='2.0'>Halo Support Added!</t>"];
+	hintSilent parseText format ["<t color='#00FF00' size='2.0'>Halo Support Added!</t>"];
 };
 
 hintSilent parseText format ["<t color='#00FF00' size='2.0'>End Operation Support Added!</t>"];

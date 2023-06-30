@@ -22,6 +22,10 @@ uisleep 6;
 		
 _target setDamage 0;
 
+_target setUnconscious false;
+
+_target setCaptive false;	
+		
 uisleep 1;
 
 //hintSilent parseText format["<t>You healed %1</t>", _target];
